@@ -4,22 +4,12 @@ namespace Streunerkatzen;
 use SilverStripe\ORM\DataObject;
 
 class Cat extends DataObject {
+    private static $table_name = 'data_Cats';
 
     private static $db = [
         'Title' => 'Varchar(250)',
-        // 'PublishStatus' => 'Varchar(20)',
         'PublishTime' => 'Datetime',
-        // icon
-        // images
-        // attachments
-        // creator
-        // farbe
-        // fundstatus => dropdown status, (vermisst, gefunden, tot gefunden)
-        // 'Gender' => dropdown status,
-        // 'IsCastrated' => dropdown status,
-        // 'IsHouseCat' => dropdown status,
-        // 'IsChipped' => ,
-        // 'HairLength' => ,
+
         'Age' => 'Varchar(250)',
         'HasPetCollar' => 'Boolean',
         'PetCollarDescription' => 'Varchar(250)',
@@ -34,15 +24,31 @@ class Cat extends DataObject {
         'BehaviourStranger' => 'Varchar(500)',
 
         'LostFoundDate' => 'Date',
-        // 'LostFoundTime' => dropdown
+
         'Street' => 'Varchar(250)',
         'Town' => 'Varchar(250)',
         'Zipcode' => 'Int',
         'Country' => 'Varchar(250)',
         'LostFoundDescription' => 'Varchar(1000)',
-        // owner/finder
 
         'MoreInfo' => 'Varchar(1000)'
+    ];
+        // owner/finder/contact
+        // 'LostFoundTime' => dropdown (morgens/vormittags, mittags/nachmittags, abends/nachts, nicht bekannt)
+        // 'PublishStatus' => 'Varchar(20)',
+        // icon
+        // images
+        // attachments
+        // creator
+        // farbe
+        // fundstatus => dropdown status, (vermisst, gefunden, tot gefunden)
+        // 'Gender' => dropdown status,
+        // 'IsCastrated' => dropdown status,
+        // 'IsHouseCat' => dropdown status,
+        // 'IsChipped' => ,
+        // 'HairLength' => ,
+    private static $has_one = [
+        'LostFoundTime' => LostFoundTime::class
     ];
 
 }
