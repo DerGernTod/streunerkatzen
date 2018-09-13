@@ -11,6 +11,7 @@ class Cat extends DataObject {
         'PublishTime' => 'Datetime',
 
         'Age' => 'Varchar(250)',
+        'Gender' => 'Enum("nicht bekannt,männlich,weiblich")',
         'HasPetCollar' => 'Boolean',
         'PetCollarDescription' => 'Varchar(250)',
         'Characteristics' => 'Varchar(500)',
@@ -19,6 +20,9 @@ class Cat extends DataObject {
         'ChipNumber' => 'Varchar(100)',
         'Tattoo' => 'Varchar(250)',
         'Breed' => 'Varchar(250)',
+        'IsCastrated' => 'Enum("nicht bekannt,ja,nein")',
+        'IsHouseCat' => 'Enum("nicht bekannt,ja,nein")',
+        'IsChipped' => 'Enum("nicht bekannt,ja,nein")',
 
         'BehaviourOwner' => 'Varchar(500)',
         'BehaviourStranger' => 'Varchar(500)',
@@ -34,21 +38,16 @@ class Cat extends DataObject {
         'MoreInfo' => 'Varchar(1000)'
     ];
         // owner/finder/contact
-        // 'LostFoundTime' => dropdown (morgens/vormittags, mittags/nachmittags, abends/nachts, nicht bekannt)
         // 'PublishStatus' => 'Varchar(20)',
         // icon
         // images
         // attachments
         // creator
-        // farbe
-        // fundstatus => dropdown status, (vermisst, gefunden, tot gefunden)
-        // 'Gender' => dropdown status,
-        // 'IsCastrated' => dropdown status,
-        // 'IsHouseCat' => dropdown status,
-        // 'IsChipped' => ,
-        // 'HairLength' => ,
     private static $has_one = [
-        'LostFoundTime' => LostFoundTime::class
+        'LostFoundTime' => LostFoundTime::class,
+        'LostFoundStatus' => LostFoundStatus::class,
+        'HairLength' => HairLength::class,
+        'HairColor' => HairColor::class
     ];
 
 }
