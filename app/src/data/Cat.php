@@ -2,8 +2,15 @@
 namespace Streunerkatzen;
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\DropdownField;
 
 class Cat extends DataObject {
+    private static $singular_name = 'Katze';
+    private static $plural_name = 'Katzen';
     private static $table_name = 'data_Cats';
 
     private static $db = [
@@ -50,4 +57,49 @@ class Cat extends DataObject {
         'HairColor' => HairColor::class
     ];
 
+    public function getCMSFields() {
+        $fields = FieldList::create(
+            TextField::create('Title', 'Name der Katze'),
+            DateField::create('PublishTime', 'Datum der Veröffentlichung'),
+            TextField::create('Age', 'Alter'),
+            DropdownField::create(
+                'Gender',
+                'Geschlecht',
+                singleton(Cat::class)->dbObject('Gender')->enumValues()
+            ),
+            CheckboxField::create('HasPetCollar', 'Halsband?'),
+            TextField::create('PetCollarDescription', 'Beschreibung des Halsbands'),
+            TextField::create('Characteristics', 'Besonderheiten'),
+            TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
+            TextField::create('EyeColor', 'Augenfarbe'),
+            TextField::create('ChipNumber', 'Chipnummer'),
+            TextField::create('Tattoo', 'Tattoo'),
+            TextField::create('Breed', 'Rasse'),
+            DropdownField::create(
+                'IsCastrated',
+                'Kastriert?',
+                singleton(Cat::class)->dbObject('IsCastrated')->enumValues()
+            ),
+            DropdownField::create(
+                'IsHouseCat',
+                'Hauskatze?',
+                singleton(Cat::class)->dbObject('IsHouseCat')->enumValues()
+            ),
+            DropdownField::create(
+                'IsChipped',
+                'Gechippt?',
+                singleton(Cat::class)->dbObject('IsChipped')->enumValues()
+            ),
+            TextField::create('BehaviourOwner', 'Verhalten gegenüber Besitzer'),
+            TextField::create('BehaviourStranger', 'Verhalten gegenüber Fremden'),
+            DateField::create('LostFoundDate', 'Datum'),
+            TextField::create('Street', 'Straße'),
+            TextField::create('Town', 'Ort'),
+            TextField::create('ZipCode', 'PLZ'),
+            TextField::create('Country', 'Land'),
+            TextField::create('LostFoundDescription', 'Beschreibung der Situation'),
+            TextField::create('MoreInfo', 'Details')
+        );
+        return $fields;
+    }
 }
