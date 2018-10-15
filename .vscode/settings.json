@@ -1,3 +1,4 @@
 {
-  "php.suggest.basic": false
+  "php.suggest.basic": false,
+  "phpcs.executablePath": "C:\\Users\\gegen\\AppData\\Roaming\\Composer\\vendor\\squizlabs\\php_codesniffer\\bin\\phpcs.bat",
 }
