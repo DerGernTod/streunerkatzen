@@ -59,22 +59,23 @@ class Cat extends DataObject {
 
     public function getCMSFields() {
         $fields = FieldList::create(
-            TextField::create('Title', 'Name der Katze'),
             DateField::create('PublishTime', 'Datum der Veröffentlichung'),
+            TextField::create('Title', 'Name der Katze'),
+            TextField::create('Breed', 'Rasse'),
             TextField::create('Age', 'Alter'),
             DropdownField::create(
                 'Gender',
                 'Geschlecht',
                 singleton(Cat::class)->dbObject('Gender')->enumValues()
             ),
-            CheckboxField::create('HasPetCollar', 'Halsband?'),
-            TextField::create('PetCollarDescription', 'Beschreibung des Halsbands'),
+            DropdownField::create('HairColor', 'Fellfarbe', HairColor::get()->map('ID', 'Name')),
+            DropdownField::create('HairLength', 'Haarlänge', HairLength::get()->map('ID', 'Name')),
             TextField::create('Characteristics', 'Besonderheiten'),
             TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
             TextField::create('EyeColor', 'Augenfarbe'),
-            TextField::create('ChipNumber', 'Chipnummer'),
             TextField::create('Tattoo', 'Tattoo'),
-            TextField::create('Breed', 'Rasse'),
+            CheckboxField::create('HasPetCollar', 'Halsband?'),
+            TextField::create('PetCollarDescription', 'Beschreibung des Halsbands'),
             DropdownField::create(
                 'IsCastrated',
                 'Kastriert?',
@@ -90,9 +91,12 @@ class Cat extends DataObject {
                 'Gechippt?',
                 singleton(Cat::class)->dbObject('IsChipped')->enumValues()
             ),
+            TextField::create('ChipNumber', 'Chipnummer'),
             TextField::create('BehaviourOwner', 'Verhalten gegenüber Besitzer'),
             TextField::create('BehaviourStranger', 'Verhalten gegenüber Fremden'),
             DateField::create('LostFoundDate', 'Datum'),
+            DropdownField::create('LostFoundTime', 'Zeitpunkt', LostFoundTime::get()->map('ID', 'Name')),
+            DropdownField::create('LostFoundStatus', 'Status', LostFoundStatus::get()->map('ID', 'Name')),
             TextField::create('Street', 'Straße'),
             TextField::create('Town', 'Ort'),
             TextField::create('ZipCode', 'PLZ'),
