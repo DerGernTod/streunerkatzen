@@ -9,6 +9,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\File;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -61,7 +62,7 @@ class Cat extends DataObject {
         'Owner' => User::class
     ];
 
-    private static $has_many = [
+    private static $many_many = [
         'Attachments' => File::class
     ];
 
