@@ -1,8 +1,11 @@
 <?php
 namespace Streunerkatzen;
 
-use SilverStripe\ORM\DataObject;
 use Streunerkatzen\Cat;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
 
 class User extends DataObject {
     private static $singular_name = 'Benutzer';
@@ -21,7 +24,24 @@ class User extends DataObject {
     ];
 
     private static $has_many = [
-        'ReportedCats' => Cat::class,
-        'OwnedCats' => Cat::class
+        'ReportedCats' => 'Streunerkatzen\\Cat.Reporter',
+        'OwnedCats' => 'Streunerkatzen\\Cat.Owner'
     ];
+
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
+        $reportedCatsGridField = GridField::create(
+            'ReportedCats',
+            'Gemeldete Katzen',
+            $this->ReportedCats(),
+            GridFieldConfig_RelationEditor::create()
+        );
+
+        $fields->addFieldToTab(
+            'Root.ReportedCats',
+            $reportedCatsGridField
+        );
+
+        return $fields;
+    }
 }

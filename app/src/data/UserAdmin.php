@@ -3,6 +3,7 @@
 namespace Streunerkatzen;
 
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 
 class UserAdmin extends ModelAdmin {
 
@@ -13,4 +14,5 @@ class UserAdmin extends ModelAdmin {
     private static $managed_models = [
         User::class,
     ];
+
 }

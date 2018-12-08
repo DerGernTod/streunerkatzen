@@ -35,18 +35,23 @@ class CatImportTask extends BuildTask {
             $cat->LostFoundStatus = mapLostFoundStatus($fields["gesuchtgefunden"]);
             $cat->IsChipped = $fields["gechipt"];
             $cat->HasPetCollar = $fields["halsband"];
-            $cat->ReporterID = createReporter($fields);
+            $reporter = createReporter($fields);
+            $reporterId = $reporter->write();
+            $cat->ReporterID = $reporterId;
             //$lostFoundTime = LostFoundTime::;
             //$cat->LostFoundTimeID = ;
             $newCatID = $cat->write();
             echo ".";
+            if ($i > 10) {
+                break;
+            }
         }
         echo "wrote ".count($exportResult["cats"])." cats into db!";
     }
 }
 
 function assignIfDate($newCat, $index, $value) {
-    if (DateTime::createFromFormat('Y-m-d', $value) !== FALSE) {
+    if (DateTime::createFromFormat('Y-m-d', $value) !== false) {
         $newCat->{$index} = $value;
     }
 }
@@ -62,7 +67,8 @@ function createReporter($importedCatFields) {
     // i'll just assume the reporter lives in the same country
     // as they found/are missing the cat...
     $reporter->Country = $importedCatFields["bundesland"];
-    return $reporter->write();
+
+    return $reporter;
 }
 
 /**
