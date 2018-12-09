@@ -67,6 +67,9 @@ class CatImportTask extends BuildTask {
         if (!$this->hairColors) {
             $this->hairColors = HairColor::get();
         }
+        if (strpos($importedHairColor, "zur Farbauswahl") !== false) {
+            $importedHairColor = "schwarz";
+        }
         $id = $this->hairColors->find('Name', str_ireplace("m. ", "mit ", $importedHairColor))->ID;
         if (!$id) {
             echo "<div>no dropdown entry found for hairColor: ".$importedHairColor."!</div>";
@@ -115,7 +118,14 @@ class CatImportTask extends BuildTask {
         if (!$this->lostFoundStates) {
             $this->lostFoundStates = LostFoundStatus::get();
         }
-        $id = $this->lostFoundStates->find('Name', $importedLostFoundStatus)->ID;
+        $id = $this->lostFoundStates->find(
+            'Name',
+            str_ireplace(
+                "tot aufgefunden",
+                "Tot gefunden",
+                ucFirst($importedLostFoundStatus)
+            )
+        )->ID;
         if (!$id) {
             echo "<div>no dropdown entry found for lostFoundState: ".$importedLostFoundStatus."!</div>";
         }
