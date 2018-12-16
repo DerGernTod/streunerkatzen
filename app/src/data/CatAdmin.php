@@ -13,5 +13,4 @@ class CatAdmin extends ModelAdmin {
     private static $managed_models = [
         Cat::class,
     ];
-
 }

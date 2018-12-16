@@ -7,6 +7,9 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\File;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -54,7 +57,13 @@ class Cat extends DataObject {
         'LostFoundTime' => LostFoundTime::class,
         'LostFoundStatus' => LostFoundStatus::class,
         'HairLength' => HairLength::class,
-        'HairColor' => HairColor::class
+        'HairColor' => HairColor::class,
+        'Reporter' => User::class,
+        'Owner' => User::class
+    ];
+
+    private static $many_many = [
+        'Attachments' => File::class
     ];
 
     public function getCMSFields() {
@@ -68,8 +77,8 @@ class Cat extends DataObject {
                 'Geschlecht',
                 singleton(Cat::class)->dbObject('Gender')->enumValues()
             ),
-            DropdownField::create('HairColor', 'Fellfarbe', HairColor::get()->map('ID', 'Name')),
-            DropdownField::create('HairLength', 'Haarlänge', HairLength::get()->map('ID', 'Name')),
+            DropdownField::create('HairColorID', 'Fellfarbe', HairColor::get()->map('ID', 'Name')),
+            DropdownField::create('HairLengthID', 'Haarlänge', HairLength::get()->map('ID', 'Name')),
             TextField::create('Characteristics', 'Besonderheiten'),
             TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
             TextField::create('EyeColor', 'Augenfarbe'),
@@ -95,14 +104,15 @@ class Cat extends DataObject {
             TextField::create('BehaviourOwner', 'Verhalten gegenüber Besitzer'),
             TextField::create('BehaviourStranger', 'Verhalten gegenüber Fremden'),
             DateField::create('LostFoundDate', 'Datum'),
-            DropdownField::create('LostFoundTime', 'Zeitpunkt', LostFoundTime::get()->map('ID', 'Name')),
-            DropdownField::create('LostFoundStatus', 'Status', LostFoundStatus::get()->map('ID', 'Name')),
+            DropdownField::create('LostFoundTimeID', 'Zeitpunkt', LostFoundTime::get()->map('ID', 'Name')),
+            DropdownField::create('LostFoundStatusID', 'Status', LostFoundStatus::get()->map('ID', 'Name')),
             TextField::create('Street', 'Straße'),
             TextField::create('Town', 'Ort'),
             TextField::create('ZipCode', 'PLZ'),
             TextField::create('Country', 'Land'),
             TextField::create('LostFoundDescription', 'Beschreibung der Situation'),
-            TextField::create('MoreInfo', 'Details')
+            TextField::create('MoreInfo', 'Details'),
+            UploadField::create('Attachments', 'Anhänge')
         );
         return $fields;
     }
