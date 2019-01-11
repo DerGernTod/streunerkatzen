@@ -2,5 +2,5 @@
   "php.executablePath": "C:/Users/gegen/workspaces/devtools/xampp/php/php.exe",
   "php.validate.executablePath": "C:/Users/gegen/workspaces/devtools/xampp/php/php.exe",
   "php.suggest.basic": false,
-  "phpcs.executablePath": "C:\\Users\\gegen\\AppData\\Roaming\\Composer\\vendor\\squizlabs\\php_codesniffer\\bin\\phpcs.bat",
+  "phpcs.executablePath": "C:\\Users\\gegen\\AppData\\Roaming\\Composer\\vendor\\squizlabs\\php_codesniffer\\bin\\phpcs.bat"
 }
