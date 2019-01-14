@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 11, 2019 at 08:06 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Host: localhost
+-- Generation Time: Jan 14, 2019 at 09:58 PM
+-- Server version: 5.7.24-0ubuntu0.18.04.1
+-- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -2740,7 +2740,10 @@ CREATE TABLE `loginattempt` (
 
 INSERT INTO `loginattempt` (`ID`, `ClassName`, `LastEdited`, `Created`, `Email`, `EmailHashed`, `Status`, `IP`, `MemberID`) VALUES
 (1, 'SilverStripe\\Security\\LoginAttempt', '2018-09-09 11:48:11', '2018-09-09 11:48:11', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '::1', 1),
-(2, 'SilverStripe\\Security\\LoginAttempt', '2018-10-29 14:01:49', '2018-10-29 14:01:49', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '::1', 1);
+(2, 'SilverStripe\\Security\\LoginAttempt', '2018-10-29 14:01:49', '2018-10-29 14:01:49', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '::1', 1),
+(3, 'SilverStripe\\Security\\LoginAttempt', '2019-01-13 10:26:37', '2019-01-13 10:26:37', NULL, 'f211415f027ed2f4d8ef1a9a8e63b57faccd73f2', 'Failure', '86.56.201.25', 0),
+(4, 'SilverStripe\\Security\\LoginAttempt', '2019-01-13 10:26:51', '2019-01-13 10:26:51', NULL, 'f8c9f19b77dbf2bea79c404fd26faa846cffc812', 'Failure', '86.56.201.25', 0),
+(5, 'SilverStripe\\Security\\LoginAttempt', '2019-01-13 10:27:39', '2019-01-13 10:27:39', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '86.56.201.25', 1);
 
 -- --------------------------------------------------------
 
@@ -2774,7 +2777,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`ID`, `ClassName`, `LastEdited`, `Created`, `FirstName`, `Surname`, `Email`, `TempIDHash`, `TempIDExpired`, `Password`, `AutoLoginHash`, `AutoLoginExpired`, `PasswordEncryption`, `Salt`, `PasswordExpiry`, `LockedOutUntil`, `Locale`, `FailedLoginCount`) VALUES
-(1, 'SilverStripe\\Security\\Member', '2018-10-29 14:01:49', NULL, 'Gernot', 'Raudner', 'streunerkatzen_silverstripe@gernotraudner.at', '3b1d8d427b2a06032303afb75c811203c3feef1c', '2018-11-01 14:01:49', '$2y$10$696a5429ae50f3314602buZYQF6iLl6iYxFOkA5geumXdBDTNZkGC', NULL, NULL, 'blowfish', '10$696a5429ae50f3314602b6', NULL, NULL, NULL, 0);
+(1, 'SilverStripe\\Security\\Member', '2019-01-13 10:27:39', NULL, 'Gernot', 'Raudner', 'streunerkatzen_silverstripe@gernotraudner.at', '0bb9767949cd5580d1fdc7a5d41ca30fbac1836a', '2019-01-16 10:27:39', '$2y$10$696a5429ae50f3314602buZYQF6iLl6iYxFOkA5geumXdBDTNZkGC', NULL, NULL, 'blowfish', '10$696a5429ae50f3314602b6', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -2922,7 +2925,8 @@ CREATE TABLE `rememberloginhash` (
 
 INSERT INTO `rememberloginhash` (`ID`, `ClassName`, `LastEdited`, `Created`, `DeviceID`, `Hash`, `ExpiryDate`, `MemberID`) VALUES
 (1, 'SilverStripe\\Security\\RememberLoginHash', '2018-10-15 22:11:58', '2018-09-09 11:48:11', 'd3adac75b49c9d99fd43ce2fe2b6da4857674d9c', '$2y$10$696a5429ae50f3314602buvt6AzLf5tZcrvy/4lpRHVlJ2PBv2yoG', '2018-12-08 11:48:11', 1),
-(2, 'SilverStripe\\Security\\RememberLoginHash', '2018-11-20 19:29:22', '2018-10-29 14:01:49', 'bb5dbd26b03642dbba35bd57a025828acba35b2f', '$2y$10$696a5429ae50f3314602buCpl7gOigzJ2AZGQz6bbq4MkfiAIJwIu', '2019-01-27 14:01:49', 1);
+(2, 'SilverStripe\\Security\\RememberLoginHash', '2018-11-20 19:29:22', '2018-10-29 14:01:49', 'bb5dbd26b03642dbba35bd57a025828acba35b2f', '$2y$10$696a5429ae50f3314602buCpl7gOigzJ2AZGQz6bbq4MkfiAIJwIu', '2019-01-27 14:01:49', 1),
+(3, 'SilverStripe\\Security\\RememberLoginHash', '2019-01-14 19:26:44', '2019-01-13 10:27:39', '1dc4ae5988c65f37df3476a4034aaf0c3ba87c36', '$2y$10$696a5429ae50f3314602bu5Lhgls.KH6iArd9FVJlC86.xVPTqGu.', '2019-04-13 10:27:39', 1);
 
 -- --------------------------------------------------------
 
@@ -3792,7 +3796,7 @@ ALTER TABLE `group_roles`
 -- AUTO_INCREMENT for table `loginattempt`
 --
 ALTER TABLE `loginattempt`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -3846,7 +3850,7 @@ ALTER TABLE `redirectorpage_versions`
 -- AUTO_INCREMENT for table `rememberloginhash`
 --
 ALTER TABLE `rememberloginhash`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `siteconfig`
