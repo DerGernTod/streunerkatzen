@@ -1,6 +1,7 @@
 <?php
 
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\Security\Member;
 use Streunerkatzen\Cat;
 use Streunerkatzen\LostFoundTime;
 use Streunerkatzen\CatExporter;
@@ -20,7 +21,7 @@ class CatImportTask extends BuildTask {
         $exportResult = $catExporter->getEntries();
         echo "<h2>importing cats</h2>";
         echo "<ul>";
-        for ($i = 0; $i < count($exportResult["cats"]); $i++) {
+        for ($i = 0; $i < 10 /*count($exportResult["cats"]) */; $i++) {
             echo "<li>";
             $catEntry = $exportResult["cats"][$i];
             $fields = $catEntry["fields"];
@@ -142,15 +143,27 @@ function assignIfDate($newCat, $index, $value) {
  * creates a user for the reporter
  */
 function createUser($importedCatFields) {
-    $user = User::create();
-    $user->FirstName = $importedCatFields["Vorname"];
-    $user->LastName = $importedCatFields["Nachname"];
-    $user->PhoneNumber = $importedCatFields["Kontakt"];
+    $firstName = $importedCatFields["Vorname"];
+    $lastName = $importedCatFields["Nachname"];
+    $matchingMembers = Member::get()->filter(array(
+        "FirstName" => $firstName,
+        "Surname" => $lastName
+    ));
+    if (count($matchingMembers) == 0) {
+        $member = Member::create();
+        $member->FirstName = $firstName;
+        $member->Surname = $lastName;
+    } else {
+        $member = $matchingMembers[0];
+    }
+
+    // $user = User::create();
+    // $user->PhoneNumber = $importedCatFields["Kontakt"];
     // i'll just assume the reporter lives in the same country
     // as they found/are missing the cat...
-    $user->Country = $importedCatFields["bundesland"];
+    // $user->Country = $importedCatFields["bundesland"];
 
-    return $user;
+    return $member;
 }
 
 /**
