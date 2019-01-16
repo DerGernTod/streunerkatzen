@@ -119,14 +119,13 @@ class Cat extends DataObject {
             TextField::create(
                 'ReporterID',
                 'Meldende Person',
-                $this->ReporterID
+                $this->ReporterID ? $this->ReporterID : -1
             ),
             TextField::create(
-                'Owner',
+                'OwnerID',
                 'Besitzer',
-                $this->OwnerID
+                $this->OwnerID ? $this->OwnerID : -1
             )
-
         );
         return $fields;
     }

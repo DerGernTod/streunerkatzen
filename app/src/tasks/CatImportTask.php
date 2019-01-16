@@ -47,8 +47,7 @@ class CatImportTask extends BuildTask {
             $cat->HairLengthID = $this->mapHairLength($fields["haarlnge"]);
             $cat->LostFoundTimeID = $this->mapLostFoundTime($fields["tageszeit"]);
             $cat->Attachments = createAttachments($catEntry["resources"], $catEntry["images"]);
-            $user = createUser($fields);
-            $userId = $user->write();
+            $userId = createUser($fields);
             if ($lostFoundStatus == "vermisst") {
                 $cat->OwnerID = $userId;
             } else {
@@ -149,12 +148,14 @@ function createUser($importedCatFields) {
         "FirstName" => $firstName,
         "Surname" => $lastName
     ));
+    $id = -1;
     if (count($matchingMembers) == 0) {
         $member = Member::create();
         $member->FirstName = $firstName;
         $member->Surname = $lastName;
+        $id = $member->write();
     } else {
-        $member = $matchingMembers[0];
+        $id = $matchingMembers[0]->ID;
     }
 
     // $user = User::create();
@@ -163,7 +164,7 @@ function createUser($importedCatFields) {
     // as they found/are missing the cat...
     // $user->Country = $importedCatFields["bundesland"];
 
-    return $member;
+    return $id;
 }
 
 /**
