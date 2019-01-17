@@ -21,7 +21,7 @@ class CatImportTask extends BuildTask {
         $exportResult = $catExporter->getEntries();
         echo "<h2>importing cats</h2>";
         echo "<ul>";
-        for ($i = 0; $i < 10 /*count($exportResult["cats"]) */; $i++) {
+        for ($i = 0; $i < count($exportResult["cats"]); $i++) {
             echo "<li>";
             $catEntry = $exportResult["cats"][$i];
             $fields = $catEntry["fields"];
@@ -153,16 +153,15 @@ function createUser($importedCatFields) {
         $member = Member::create();
         $member->FirstName = $firstName;
         $member->Surname = $lastName;
+        $member->PhoneNumber = $importedCatFields["Kontakt"];
+        // i'll just assume the reporter lives in the same country
+        // as they found/are missing the cat...
+        $member->Country = $importedCatFields["bundesland"];
         $id = $member->write();
     } else {
         $id = $matchingMembers[0]->ID;
     }
 
-    // $user = User::create();
-    // $user->PhoneNumber = $importedCatFields["Kontakt"];
-    // i'll just assume the reporter lives in the same country
-    // as they found/are missing the cat...
-    // $user->Country = $importedCatFields["bundesland"];
 
     return $id;
 }
