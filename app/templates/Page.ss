@@ -1,44 +1,53 @@
-<!DOCTYPE html>
-<!--
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Simple. by Sara (saratusar.com, @saratusar) for Innovatif - an awesome Slovenia-based digital agency (innovatif.com/en)
-Change it, enhance it and most importantly enjoy it!
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--->
+<!doctype html>
 
-<!--[if !IE]><!-->
-<html lang="$ContentLocale">
-<!--<![endif]-->
-<!--[if IE 6 ]><html lang="$ContentLocale" class="ie ie6"><![endif]-->
-<!--[if IE 7 ]><html lang="$ContentLocale" class="ie ie7"><![endif]-->
-<!--[if IE 8 ]><html lang="$ContentLocale" class="ie ie8"><![endif]-->
+<html lang="de">
+
 <head>
-	<% base_tag %>
-	<title><% if $MetaTitle %>$MetaTitle<% else %>$Title<% end_if %> &raquo; $SiteConfig.Title</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	$MetaTags(false)
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<% require themedCSS('reset') %>
-	<% require themedCSS('typography') %>
-	<% require themedCSS('form') %>
-	<% require themedCSS('layout') %>
-	<link rel="shortcut icon" href="themes/simple/images/favicon.ico" />
+    <meta charset="utf-8">
+
+    <% base_tag %>
+
+    <title>Streunerkatzen - $Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Streunerkatzen">
+    <meta name="description" content="$MetaDescription">
+    <meta name="keywords" content="$Keywords">
+    <meta name="robots" content="index,follow">
+
+    <!-- Open Graph Meta tags (Facebook, Xing, Linked In) -->
+    <meta property="og:url" content="$CurrentAbsoluteURL">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="$Title">
+    <meta property="og:description" content="$MetaDescription">
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Streunerkatzen">
+    <!-- End Open Graph Meta tags -->
+
+    <!-- Twitter Meta tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="$Title">
+    <meta name="twitter:description" content="$MetaDescription">
+    <meta name="twitter:image" content="">
+    <!-- End Twitter Meta tags -->
+
+    <!-- Google+ Meta tags -->
+    <meta itemprop="name" content="$Title">
+    <meta itemprop="description" content="$MetaDescription">
+    <meta itemprop="image" content="">
+    <!-- End Google+ Meta tags -->
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
-<body class="$ClassName.ShortName<% if not $Menu(2) %> no-sidebar<% end_if %>" <% if $i18nScriptDirection %>dir="$i18nScriptDirection"<% end_if %>>
-<% include Header %>
-<div class="main" role="main">
-	<div class="inner typography line">
-		$Layout
-	</div>
-</div>
-<% include Footer %>
 
-<% require javascript('//code.jquery.com/jquery-3.3.1.min.js') %>
-<% require themedJavascript('script') %>
+<body>
+    $Form
 
+    $Layout
 </body>
+
 </html>
