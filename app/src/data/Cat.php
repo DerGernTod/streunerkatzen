@@ -10,6 +10,9 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Security\Member;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -58,8 +61,8 @@ class Cat extends DataObject {
         'LostFoundStatus' => LostFoundStatus::class,
         'HairLength' => HairLength::class,
         'HairColor' => HairColor::class,
-        'Reporter' => User::class,
-        'Owner' => User::class
+        'Reporter' => Member::class,
+        'Owner' => Member::class
     ];
 
     private static $many_many = [
@@ -112,7 +115,17 @@ class Cat extends DataObject {
             TextField::create('Country', 'Land'),
             TextField::create('LostFoundDescription', 'Beschreibung der Situation'),
             TextField::create('MoreInfo', 'Details'),
-            UploadField::create('Attachments', 'Anhänge')
+            UploadField::create('Attachments', 'Anhänge'),
+            DropdownField::create(
+                'ReporterID',
+                'Meldende Person',
+                Member::get()->map('ID', 'FullName')
+            )->setEmptyString('Auswählen...'),
+            DropdownField::create(
+                'OwnerID',
+                'Besitzer',
+                Member::get()->map('ID', 'FullName')
+            )->setEmptyString('Auswählen...')
         );
         return $fields;
     }
