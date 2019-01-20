@@ -116,16 +116,16 @@ class Cat extends DataObject {
             TextField::create('LostFoundDescription', 'Beschreibung der Situation'),
             TextField::create('MoreInfo', 'Details'),
             UploadField::create('Attachments', 'Anhänge'),
-            TextField::create(
+            DropdownField::create(
                 'ReporterID',
                 'Meldende Person',
-                $this->ReporterID ? $this->ReporterID : -1
-            ),
-            TextField::create(
+                Member::get()->map('ID', 'FullName')
+            )->setEmptyString('Auswählen...'),
+            DropdownField::create(
                 'OwnerID',
                 'Besitzer',
-                $this->OwnerID ? $this->OwnerID : -1
-            )
+                Member::get()->map('ID', 'FullName')
+            )->setEmptyString('Auswählen...')
         );
         return $fields;
     }

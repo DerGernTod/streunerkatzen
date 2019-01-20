@@ -61,4 +61,8 @@ class CatMemberExtension extends DataExtension {
             TextField::create('PhoneNumber', 'Telefonnummer')
         ), 'Email');
     }
+
+    public function getFullName() {
+        return $this->owner->FirstName." ".$this->owner->Surname;
+    }
 }
