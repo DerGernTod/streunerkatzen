@@ -10,7 +10,9 @@
         "symbiote/silverstripe-gridfieldextensions": "^3",
         "heyday/silverstripe-menumanager": "^3.0",
         "squizlabs/php_codesniffer": "^3.4",
-        "symbiote/silverstripe-memberprofiles": "~4.0"
+        "symbiote/silverstripe-memberprofiles": "~4.0",
+        "leafo/lessphp": "^0.5.0",
+        "jasonlewis/resource-watcher": "^1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
@@ -35,5 +37,13 @@
         "process-timeout": 600
     },
     "prefer-stable": true,
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "scripts": {
+        "compile-less": [
+            "@php scripts/less-compile.php"
+        ],
+        "watch-less": [
+            "@php scripts/watch-less.php"
+        ]
+    }
 }
