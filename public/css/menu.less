@@ -1,0 +1,45 @@
+// main: main.less
+@import "colors.less";
+
+.menu {
+    background-color: @secondaryBGColor;
+
+    &, & * {
+        color: @secondaryFontColor;
+    }
+
+    .main-items > .item {
+        padding: 10px 20px;
+        display: inline-block;
+        position: relative;
+
+        &:hover .sub-items {
+            display: block;
+        }
+    }
+
+    .sub-items {
+        position: absolute;
+        background-color: @secondaryBGColor;
+        top: 100%;
+        left: 0px;
+        display: none;
+        z-index: 1;
+
+        & > .item {
+            padding: 10px 20px;
+
+            a {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .item.current {
+        background-color: lighten(@secondaryBGColor, 10%);
+    }
+}
+
+#footer .main-items {
+    text-align: center;
+}

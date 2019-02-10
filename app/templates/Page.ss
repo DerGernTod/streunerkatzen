@@ -45,9 +45,13 @@
 </head>
 
 <body>
+    <header>
+        <% include Nav %>
+    </header>
     $Form
-
     $Layout
+
+    <% include Footer %>
 </body>
 
 </html>
