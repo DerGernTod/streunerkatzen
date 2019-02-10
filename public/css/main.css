@@ -307,6 +307,7 @@ p {
   top: 100%;
   left: 0px;
   display: none;
+  z-index: 1;
 }
 .menu .sub-items > .item {
   padding: 10px 20px;
