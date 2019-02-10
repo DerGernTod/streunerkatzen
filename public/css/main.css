@@ -1,0 +1,283 @@
+.container {
+  border: 5px solid red;
+}
+.row {
+  border: 5px solid orange;
+}
+*[class^='size-'] {
+  border: 5px solid blue;
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+.container .row {
+  margin: 0 -0.5rem;
+}
+.container .row:after {
+  content: " ";
+  display: table;
+  clear: both;
+  font-size: 0;
+}
+@media (min-width: 48rem) and (max-width: 61.999rem) {
+  .container {
+    width: 48rem;
+  }
+}
+@media (min-width: 62rem) and (max-width: 74.999rem) {
+  .container {
+    width: 62rem;
+  }
+}
+@media (min-width: 75rem) {
+  .container {
+    width: 75rem;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-12 {
+    width: 100%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-11 {
+    width: 91.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-10 {
+    width: 83.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-9 {
+    width: 75%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-8 {
+    width: 66.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-7 {
+    width: 58.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-6 {
+    width: 50%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-5 {
+    width: 41.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-4 {
+    width: 33.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-3 {
+    width: 25%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-2 {
+    width: 16.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .size-s-1 {
+    width: 8.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-12 {
+    width: 100%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-11 {
+    width: 91.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-10 {
+    width: 83.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-9 {
+    width: 75%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-8 {
+    width: 66.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-7 {
+    width: 58.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-6 {
+    width: 50%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-5 {
+    width: 41.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-4 {
+    width: 33.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-3 {
+    width: 25%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-2 {
+    width: 16.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 62rem) {
+  .size-m-1 {
+    width: 8.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-12 {
+    width: 100%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-11 {
+    width: 91.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-10 {
+    width: 83.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-9 {
+    width: 75%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-8 {
+    width: 66.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-7 {
+    width: 58.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-6 {
+    width: 50%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-5 {
+    width: 41.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-4 {
+    width: 33.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-3 {
+    width: 25%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-2 {
+    width: 16.66666667%;
+    float: left;
+  }
+}
+@media (min-width: 75rem) {
+  .size-l-1 {
+    width: 8.33333333%;
+    float: left;
+  }
+}
+@media (min-width: 48rem) {
+  .visible-small {
+    display: inline;
+  }
+  .hidden-small {
+    display: none;
+  }
+}
+@media (min-width: 62rem) {
+  .visible-medium {
+    display: inline;
+  }
+  .hidden-medium {
+    display: none;
+  }
+}
+@media (min-width: 75rem) {
+  .visible-large {
+    display: inline;
+  }
+  .hidden-large {
+    display: none;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

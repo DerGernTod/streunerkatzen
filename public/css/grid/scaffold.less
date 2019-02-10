@@ -1,0 +1,124 @@
+// main: ../main.less
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 (@grid-spacing / 2);
+
+    .row {
+		margin: 0 (@grid-spacing / -2);
+
+		&:after {
+			content: " ";
+			display: table;
+			clear: both;
+			font-size: 0;
+		}
+    }
+
+    // small width
+    @media (min-width: @small-width-min) and (max-width: @small-width-max) {
+      	width: @small-width;
+    }
+
+    // medium width
+    @media (min-width: @medium-width-min) and (max-width: @medium-width-max) {
+     	width: @medium-width;
+    }
+
+    // large width
+    @media (min-width: @large-width-min) {
+      	width: @large-width;
+    }
+}
+
+
+// column class for each window size
+
+.make-large-columns() {
+	.col(@column) when (@column > 0) {
+		@media (min-width: @large-width-min) {
+			.size-l-@{column} {
+				width: percentage(@column / @number-of-columns);
+				float: left;
+			}
+		}
+
+		.col(@column - 1);
+	}
+
+	.col(@number-of-columns);
+}
+
+.make-medium-columns() {
+	.col(@column) when (@column > 0) {
+		@media (min-width: @medium-width-min) {
+			.size-m-@{column} {
+				width: percentage(@column / @number-of-columns);
+				float: left;
+			}
+		}
+
+		.col(@column - 1);
+	}
+
+	.col(@number-of-columns);
+}
+
+.make-small-columns() {
+	.col(@column) when (@column > 0) {
+		@media (min-width: @small-width-min) {
+			.size-s-@{column} {
+				width: percentage(@column / @number-of-columns);
+				float: left;
+			}
+		}
+
+		.col(@column - 1);
+	}
+
+	.col(@number-of-columns);
+}
+
+.make-small-columns();
+.make-medium-columns();
+.make-large-columns();
+
+// visibility classes for each window size
+
+.make-large-visibility() {
+	@media (min-width: @large-width-min) {
+		.visible-large {
+			display: inline;
+		}
+		.hidden-large {
+			display: none;
+		}
+	}
+}
+
+.make-medium-visibility() {
+	@media (min-width: @medium-width-min) {
+		.visible-medium {
+			display: inline;
+		}
+		.hidden-medium {
+			display: none;
+		}
+	}
+}
+
+.make-small-visibility() {
+	@media (min-width: @small-width-min) {
+		.visible-small {
+			display: inline;
+		}
+		.hidden-small {
+			display: none;
+		}
+	}
+}
+
+.make-small-visibility();
+.make-medium-visibility();
+.make-large-visibility();
