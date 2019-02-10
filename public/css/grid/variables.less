@@ -1,0 +1,17 @@
+// main: ../main.less
+
+@grid-spacing: 1rem;
+@number-of-columns: 12;
+
+@threshold: 0.001rem;
+
+@large-width: 75rem;  // 1200 / 16 (default font size)
+@large-width-min: @large-width;
+
+@medium-width: 62rem;
+@medium-width-max: (@large-width-min - @threshold);
+@medium-width-min: @medium-width;
+
+@small-width: 48rem;
+@small-width-max: (@medium-width-min - @threshold);
+@small-width-min: @small-width;

@@ -3,9 +3,9 @@
 namespace {
 
     use SilverStripe\CMS\Controllers\ContentController;
+    use SilverStripe\View\Requirements;
 
-    class PageController extends ContentController
-    {
+    class PageController extends ContentController {
         /**
          * An array of actions that can be accessed via a request. Each array element should be an action name, and the
          * permissions or conditions required to allow the user to access it.
@@ -23,11 +23,9 @@ namespace {
          */
         private static $allowed_actions = [];
 
-        protected function init()
-        {
+        protected function init() {
             parent::init();
-            // You can include any CSS or JS required by your project here.
-            // See: https://docs.silverstripe.org/en/developer_guides/templates/requirements/
+            Requirements::themedCSS("main.css");
         }
     }
 }
