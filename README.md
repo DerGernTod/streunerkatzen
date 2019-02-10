@@ -12,6 +12,9 @@
 * verein page
 * kastration page
 * menu
+* components:
+ * button: link (entweder intern page verlinken oder externer link), öffnen in neuem tab oder nicht, label
+ * textcomponent umbenennen (auch bildinhalt möglich)
 
 ### Dev Environment:
 * install composer
