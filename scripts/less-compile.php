@@ -8,10 +8,12 @@ function compileLess() {
     foreach ($lessFiles as $filename) {
         try {
             $targetName = str_replace('.less', '.css', $filename);
+            unlink($targetName);
             echo 'compiling '.$filename.' => '.$targetName."\n";
-            $less->checkedCompile($filename, $targetName);
+            $less->compileFile($filename, $targetName);
         } catch (Exception $e) {
-            die($e);
+            echo 'Error during less compilation: '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine();
+            return;
         }
     }
     echo 'successfully compiled '.count($lessFiles)." less files\n";
