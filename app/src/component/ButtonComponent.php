@@ -21,28 +21,26 @@ class ButtonComponent extends Component {
 
     private static $db = [
         'Label' => 'Varchar(250)',
-        'PageID' => 'Int',
         'Link' => 'Text',
         'IsNewWindow' => 'Boolean'
     ];
 
+    private static $has_one = [
+        'Page' => SiteTree::class,
+    ];
+
     public function getCMSfields() {
         $fields = parent::getCMSFields();
-
-        $fields->push(
-            TextField::create('Label', 'Buttontext')
-        );
-
-        $fields->push(
+        $fields->addFieldsToTab('Root.Main', [
+            TextField::create('Label', 'Buttontext'),
             TreeDropdownField::create(
                 'PageID',
                 'Interne Seite',
                 SiteTree::class
-            )->setDescription('Leer lassen falls eine externe URL verwendet werden soll.')
-        );
-
-        $fields->push(TextField::create('Link', 'Externe URL'));
-        $fields->push(CheckboxField::create('IsNewWindow', 'In neuem Fenster öffnen?'));
+            )->setDescription('Leer lassen falls eine externe URL verwendet werden soll.'),
+            TextField::create('Link', 'Externe URL'),
+            CheckboxField::create('IsNewWindow', 'In neuem Fenster öffnen?')
+        ]);
 
         return $fields;
     }
@@ -50,15 +48,8 @@ class ButtonComponent extends Component {
     public function onBeforeWrite() {
         parent::onBeforeWrite();
 
-        if ($this->PageID != 0) {
+        if ($this->Page != null) {
             $this->Link = null;
         }
-    }
-
-    public function getResultUrl() {
-        if ($this->PageID != 0) {
-            return DataObject::get_by_id(SiteTree::class, $this->PageID)->Link();
-        }
-        return $this->Link;
     }
 }
