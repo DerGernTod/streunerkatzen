@@ -1,5 +1,6 @@
 // main: main.less
 @import "colors.less";
+@import "grid/variables.less";
 
 .menu {
     background-color: @secondaryBGColor;
@@ -12,10 +13,6 @@
         padding: 10px 20px;
         display: inline-block;
         position: relative;
-
-        &:hover .sub-items {
-            display: block;
-        }
     }
 
     .sub-items {
@@ -42,4 +39,96 @@
 
 #footer .main-items {
     text-align: center;
+}
+
+@media (min-width: (@small-width + 1)) {
+    .menu {
+        .main-items > .item {
+            &:hover .sub-items {
+                display: block;
+            }
+        }
+    }
+}
+
+@media (max-width: @small-width) {
+    .menu {
+        #open-mobile-menu {
+            position: absolute;
+            right: 15px;
+            top: 13px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+
+            .lines {
+                position: relative;
+                margin-top: 10px;
+
+                &::before, &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                }
+
+                &, &::before, &::after {
+                    height: 3px;
+                    width: 25px;
+                    border-radius: 10px;
+                    background-color: @secondaryFontColor;
+                }
+
+                &::before {
+                    top: -9px;
+                }
+
+                &::after {
+                    bottom: -9px;
+                }
+            }
+        }
+
+        .container {
+            min-height: 50px;
+
+            .main-items {
+                padding-top: 50px;
+                display: none;
+                background-color: @secondaryBGColor;
+                z-index: 10;
+
+                .item {
+                    display: block;
+
+                    .show-sub-items {
+                        width: 10px;
+                        height: 10px;
+                        border-right: 2px solid @secondaryFontColor;
+                        border-bottom: 2px solid @secondaryFontColor;
+                        position: absolute;
+                        right: 15px;
+                        top: 13px;
+                        transform: rotate(45deg);
+                        cursor: pointer;
+                    }
+                }
+            }
+            .sub-items {
+                position: relative;
+                top: 0;
+
+                &.open {
+                    display: block;
+                }
+            }
+        }
+
+        &.open {
+            .container {
+                .main-items {
+                    display: block;
+                }
+            }
+        }
+    }
 }

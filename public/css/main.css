@@ -298,9 +298,6 @@ p {
   display: inline-block;
   position: relative;
 }
-.menu .main-items > .item:hover .sub-items {
-  display: block;
-}
 .menu .sub-items {
   position: absolute;
   background-color: #334273;
@@ -320,4 +317,76 @@ p {
 }
 #footer .main-items {
   text-align: center;
+}
+@media (min-width: 49rem) {
+  .menu .main-items > .item:hover .sub-items {
+    display: block;
+  }
+}
+@media (max-width: 48rem) {
+  .menu #open-mobile-menu {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  .menu #open-mobile-menu .lines {
+    position: relative;
+    margin-top: 10px;
+  }
+  .menu #open-mobile-menu .lines::before,
+  .menu #open-mobile-menu .lines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+  .menu #open-mobile-menu .lines,
+  .menu #open-mobile-menu .lines::before,
+  .menu #open-mobile-menu .lines::after {
+    height: 3px;
+    width: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  .menu #open-mobile-menu .lines::before {
+    top: -9px;
+  }
+  .menu #open-mobile-menu .lines::after {
+    bottom: -9px;
+  }
+  .menu .container {
+    min-height: 50px;
+  }
+  .menu .container .main-items {
+    padding-top: 50px;
+    display: none;
+    background-color: #334273;
+    z-index: 10;
+  }
+  .menu .container .main-items .item {
+    display: block;
+  }
+  .menu .container .main-items .item .show-sub-items {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+  .menu .container .sub-items {
+    position: relative;
+    top: 0;
+  }
+  .menu .container .sub-items.open {
+    display: block;
+  }
+  .menu.open .container .main-items {
+    display: block;
+  }
 }
