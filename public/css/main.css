@@ -9,6 +9,15 @@ body {
 .clear {
   clear: both;
 }
+.captionImage.left {
+  float: left;
+}
+.captionImage.right {
+  float: right;
+}
+.captionImage.center {
+  margin: 0 auto;
+}
 h1,
 h2,
 h3,
