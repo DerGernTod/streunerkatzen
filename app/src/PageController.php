@@ -26,6 +26,7 @@ namespace {
         protected function init() {
             parent::init();
             Requirements::themedCSS("main.css");
+            Requirements::themedJavascript("scripts.js");
         }
     }
 }
