@@ -8,6 +8,39 @@
 
 body {
     background-color: @mainBGColor;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: @footerBGColor;
+
+    text-transform: uppercase;
+    a {
+        text-decoration: none;
+        font-size: 9pt;
+        &:hover {
+            color: @menuHighlightColor;
+        }
+    }
+}
+
+header {
+    & a {
+        text-decoration: none;
+        &:hover {
+            color: @menuHighlightColor;
+        }
+    }
+    &::before {
+        height: 213px;
+        width: 100%;
+        display: block;
+        background-image: url('/streunerkatzen-silverstripe/test.png');
+        content: '';
+    }
 }
 
 .clear {

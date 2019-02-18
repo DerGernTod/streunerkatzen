@@ -4,7 +4,35 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #fffcdc;
+  background-color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  text-transform: uppercase;
+}
+#footer a {
+  text-decoration: none;
+  font-size: 9pt;
+}
+#footer a:hover {
+  color: #eee;
+}
+header a {
+  text-decoration: none;
+}
+header a:hover {
+  color: #eee;
+}
+header::before {
+  height: 213px;
+  width: 100%;
+  display: block;
+  background-image: url('/streunerkatzen-silverstripe/test.png');
+  content: '';
 }
 .clear {
   clear: both;
@@ -24,16 +52,11 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 p {
   margin-bottom: 7px;
-}
-.container {
-  border: 5px solid red;
-}
-*[class^='size-'] {
-  border: 5px solid blue;
 }
 .container {
   margin: 0 auto;
