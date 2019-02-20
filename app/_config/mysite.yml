@@ -6,3 +6,9 @@ SilverStripe\Core\Manifest\ModuleManifest:
 SilverStripe\Security\Member:
   extensions:
     - Streunerkatzen\CatMemberExtension
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Streunerkatzen\FotoCollageExtension
+SilverStripe\Assets\Image:
+  extensions:
+    - Streunerkatzen\GalleryImageExtension

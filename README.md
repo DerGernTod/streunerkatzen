@@ -8,15 +8,7 @@
 * zeitraum
 
 ### TODO:
-* basic html structure + grid layout
-* verein page
-* kastration page
-* menu
-* components:
-  * button: link (entweder intern page verlinken oder externer link), öffnen in neuem tab oder nicht, label
-  * textcomponent umbenennen (auch bildinhalt möglich)
 * footer: partnerprogramme raus, jetzt spenden rauf (extra eintrag, kontrast, spezialmenüeintrag) und raus aus helfen, vermisst gefunden rauf, footer unten fixieren
-* schrift serifenlos (arial)
 * oben catollage https://www.pexels.com/photo/cat-whiskers-kitty-tabby-20787/
 * emblem in der collage immer drin
 * main menu oben sticky

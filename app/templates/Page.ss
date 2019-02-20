@@ -45,6 +45,15 @@
 </head>
 
 <body>
+    <% with $SiteConfig %>
+        <% if $LogoImage %>
+            <div class="collage">
+                <% loop $ShuffledCollage %>
+                    <img src="$ScaleMaxHeight(200).URL">
+                <% end_loop %>
+            </div>
+        <% end_if %>
+    <% end_with %>
     <header>
         <% include Nav %>
     </header>
