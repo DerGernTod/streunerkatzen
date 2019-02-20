@@ -47,16 +47,6 @@ class FotoCollageExtension extends DataExtension {
     }
 
     public function getShuffledCollage() {
-        $newArray = $this->owner->CollageImages()->sort("RAND()");
-        $result = ArrayList::create();
-        $hasLogo = false;
-        foreach ($newArray as $image) {
-            $result->push($image);
-            if (!$hasLogo) {
-                $hasLogo = true;
-                $result->push($this->owner->LogoImage());
-            }
-        }
-        return $result;
+        return $this->owner->CollageImages()->sort("RAND()");
     }
 }
