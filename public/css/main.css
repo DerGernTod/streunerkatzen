@@ -21,18 +21,20 @@ body {
 #footer a:hover {
   color: #eee;
 }
+.collage {
+  height: 204px;
+  width: 99999px;
+  overflow: hidden;
+}
+.collage img {
+  margin: 2px;
+  float: left;
+}
 header a {
   text-decoration: none;
 }
 header a:hover {
   color: #eee;
-}
-header::before {
-  height: 213px;
-  width: 100%;
-  display: block;
-  background-image: url('/streunerkatzen-silverstripe/test.png');
-  content: '';
 }
 .clear {
   clear: both;
