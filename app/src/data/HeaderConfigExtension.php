@@ -9,17 +9,16 @@ use SilverStripe\ORM\DataExtension;
 use Streunerkatzen\FotoCollageExtension;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
-class FotoCollageExtension extends DataExtension {
+class HeaderConfigExtension extends DataExtension {
     private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif'];
-    private static $singular_name = 'Fotocollage';
-    private static $plural_name = 'Fotocollagen';
-    private static $table_name = 'Streunerkatzen_FotoCollage';
+    private static $singular_name = 'Header Einstellungen';
+    private static $table_name = 'Streunerkatzen_HeaderConfig';
 
     private static $has_one = [
         "LogoImage" => Image::class
     ];
 
-    private static $many_many = [
+    private static $has_many = [
         "CollageImages" => Image::class
     ];
 
@@ -37,16 +36,16 @@ class FotoCollageExtension extends DataExtension {
         $logo
             ->setFolderName('CollageImages')
             ->getValidator()
-            ->setAllowedExtensions(FotoCollageExtension::ALLOWED_FILE_ENDINGS);
+            ->setAllowedExtensions(HeaderConfigExtension::ALLOWED_FILE_ENDINGS);
         $collageImages
             ->setFolderName('CollageImages')
             ->getValidator()
-            ->setAllowedExtensions(FotoCollageExtension::ALLOWED_FILE_ENDINGS);
+            ->setAllowedExtensions(HeaderConfigExtension::ALLOWED_FILE_ENDINGS);
 
         return $fields;
     }
 
     public function getShuffledCollage() {
-        return $this->owner->CollageImages()->sort("RAND()");
+        return $this->owner->CollageImages()->sort("RAND()")->limit(10);
     }
 }
