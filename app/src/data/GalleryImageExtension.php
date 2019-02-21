@@ -3,10 +3,10 @@
 namespace Streunerkatzen;
 
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\SiteConfig\SiteConfig;
 
 class GalleryImageExtension extends DataExtension {
-    private static $has_many = [
-        "LogoImageFotoCollage" => "Streunerkatzen\\FotoCollageExtension.LogoImage",
-        "CollageImagesFotoCollage" => "Streunerkatzen\\FotoCollageExtension.CollageImages"
+    private static $has_one = [
+        "GalleryImage" => SiteConfig::class
     ];
 }

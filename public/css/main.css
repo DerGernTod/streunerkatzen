@@ -23,7 +23,8 @@ body {
 }
 .collage {
   height: 204px;
-  width: 99999px;
+  width: calc(100% + 204px);
+  /* min-width: 1024px; */
   overflow: hidden;
 }
 .collage img {
