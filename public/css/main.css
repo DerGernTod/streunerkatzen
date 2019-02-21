@@ -322,6 +322,7 @@ p {
 }
 .menu {
   background-color: #334273;
+  font-size: 12pt;
 }
 .menu,
 .menu * {
@@ -331,6 +332,10 @@ p {
   padding: 10px 20px;
   display: inline-block;
   position: relative;
+}
+.menu .main-items > .item.call-to-action {
+  padding: 6px 20px;
+  float: right;
 }
 .menu .sub-items {
   position: absolute;
@@ -348,6 +353,19 @@ p {
 }
 .menu .item.current {
   background-color: #435696;
+}
+.call-to-action {
+  clear: both;
+  margin: 5px;
+  font-size: 10pt;
+  border-radius: 5px;
+  background-color: #435696;
+}
+.call-to-action:hover {
+  background-color: #4b60a8;
+}
+.call-to-action:active {
+  background-color: #3b4c85;
 }
 #footer .main-items {
   text-align: center;

@@ -18,6 +18,9 @@
                         <% end_if %>
                     </div>
                 <% end_loop %>
+                <% with $Page('Spenden') %>
+                <a class="call-to-action btn item" href="$Link">Jetzt Spenden!</a>
+                <% end_with %>
             </div>
         </div>
     </div>
