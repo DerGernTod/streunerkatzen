@@ -6,17 +6,17 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     background-color: @mainBGColor;
     font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
 }
 
 #footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
+    height: @footer-height;
     background-color: @footerBGColor;
-
     text-transform: uppercase;
     a {
         text-decoration: none;
@@ -28,7 +28,7 @@ body {
 }
 
 .collage {
-    height: 204px;
+    height: @collage-height;
     width: 100%;
     & img {
         margin: 2px;
