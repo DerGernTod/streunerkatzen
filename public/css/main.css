@@ -359,6 +359,13 @@ p {
 .menu .item.current {
   background-color: #435696;
 }
+@media (min-height: 300px) {
+  header.sticky-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+}
 .call-to-action {
   clear: both;
   margin: 5px;
