@@ -27,19 +27,22 @@ body {
     }
 }
 
+.collage {
+    height: 204px;
+    width: 100%;
+    & img {
+        margin: 2px;
+        float: left;
+    }
+    overflow: hidden;
+}
+
 header {
     & a {
         text-decoration: none;
         &:hover {
             color: @menuHighlightColor;
         }
-    }
-    &::before {
-        height: 213px;
-        width: 100%;
-        display: block;
-        background-image: url('/streunerkatzen-silverstripe/test.png');
-        content: '';
     }
 }
 
