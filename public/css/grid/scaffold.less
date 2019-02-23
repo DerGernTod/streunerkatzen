@@ -1,12 +1,18 @@
 // main: ../main.less
 .wrapper {
+    min-height: 80vh;
     min-height: ~"calc(100vh - "@footer-height ~")";
+    width: 100%;
+    overflow: hidden;
 }
 .container {
     margin: 0 auto;
     width: 100%;
     padding: 0 (@grid-spacing / 2);
 
+    &.main {
+        padding: 30px 0;
+    }
     // small width
     @media (min-width: @small-width-min) and (max-width: @small-width-max) {
       	width: @small-width;
