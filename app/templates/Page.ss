@@ -46,13 +46,14 @@
 
 <body>
     <div class="wrapper">
+        <a id="anchor-top" class="hidden"></a>
         <% include Header %>
         <div class="container main">
             $Form
             $Layout
         </div>
     </div>
-
+    <% include BackToTop %>
     <% include Footer %>
 </body>
 

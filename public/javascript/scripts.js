@@ -9,6 +9,7 @@ function find(selector) {
     }
     return result;
 }
+
 /**
  * shorthand for getBoundingClientRect
  * @param {HTMLElement} element
@@ -17,19 +18,29 @@ function rect(element) {
     return element.getBoundingClientRect();
 }
 
+/**
+ * shorthand for addEventListener
+ * @param {Node} element
+ * @param {string} event
+ * @param {function} listener
+ */
+function on(element, event, listener) {
+    element.addEventListener(event, listener);
+}
+
 (function mobileMenuFunctions() {
     var openMenuButton = find('#open-mobile-menu');
     var menu = find('#main-menu');
 
     if (openMenuButton && menu) {
-        openMenuButton.addEventListener('click', function() {
+        on(openMenuButton, 'click', function() {
             menu.classList.toggle('open');
         });
     }
 
     var subMenuButtons = find('.show-sub-items');
     subMenuButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
+        on(button, 'click', function() {
             button.nextElementSibling.classList.toggle('open');
         });
     });
@@ -61,7 +72,7 @@ function rect(element) {
     }
     // run once on startup
     extendHeader();
-    window.addEventListener('resize', extendHeader);
+    on(window, 'resize', extendHeader);
 })();
 (function stickyMenu() {
     var navBar = find('header');
@@ -70,7 +81,7 @@ function rect(element) {
     var collageStyle = window.getComputedStyle(find('.collage'));
     var defaultCollageMargin = collageStyle.marginBottom;
     var defaultCollagePadding = collageStyle.paddingBottom;
-    window.addEventListener('scroll', function () {
+    on(window, 'scroll', function () {
         var collage = find('.collage');
         var collageHeight = rect(collage).height;
         var navHeight = rect(nav).height;
@@ -84,4 +95,14 @@ function rect(element) {
             collage.style.marginBottom = defaultCollageMargin;
         }
     });
+})();
+(function backToTopButton() {
+    var backToTopButton = find('.back-to-top');
+    on(window, 'scroll', function () {
+        if (window.scrollY > window.innerHeight / 2) {
+            backToTopButton.classList.add('revealed');
+        } else {
+            backToTopButton.classList.remove('revealed');
+        }
+    })
 })();
