@@ -1,4 +1,5 @@
 <div id="footer" class="menu">
+    <% include SleepingCat %>
     <div class="container">
         <div class="main-items">
             <% loop $MenuSet('Footer').MenuItems %>
