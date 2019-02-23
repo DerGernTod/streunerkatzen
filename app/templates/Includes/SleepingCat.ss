@@ -1,3 +1,7 @@
+<!--
+many thanks to Linn Fritz at dribbble:
+https://dribbble.com/shots/2090988-Sleeping-Beauty
+-->
 <div class="sleeping-cat">
     <div class="main">
         <div class="cat">
