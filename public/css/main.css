@@ -25,7 +25,7 @@ body {
 }
 .collage {
   height: 204px;
-  width: 100%;
+  width: calc(100% + 204px);
   overflow: hidden;
 }
 .collage img {
