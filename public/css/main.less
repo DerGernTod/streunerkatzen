@@ -30,7 +30,8 @@ html, body {
 
 .collage {
     height: @collage-height;
-    width: 100%;
+    width: 105%;
+    width: ~"calc(100% + " @collage-height ~")";
     & img {
         margin: 2px;
         float: left;

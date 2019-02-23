@@ -26,7 +26,8 @@ body {
 }
 .collage {
   height: 204px;
-  width: 100%;
+  width: 105%;
+  width: calc(100% +  204px );
   overflow: hidden;
 }
 .collage img {
@@ -86,6 +87,8 @@ p {
 .wrapper {
   min-height: 80vh;
   min-height: calc(100vh -  120px );
+  width: 100%;
+  overflow: hidden;
 }
 .container {
   margin: 0 auto;
