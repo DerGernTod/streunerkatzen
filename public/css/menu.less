@@ -4,7 +4,7 @@
 
 .menu {
     background-color: @secondaryBGColor;
-
+    font-size: 12pt;
     &, & * {
         color: @secondaryFontColor;
     }
@@ -13,6 +13,11 @@
         padding: 10px 20px;
         display: inline-block;
         position: relative;
+        &.call-to-action {
+            padding: 6px 20px;
+            float: right;
+
+        }
     }
 
     .sub-items {
@@ -25,7 +30,6 @@
 
         & > .item {
             padding: 10px 20px;
-
             a {
                 white-space: nowrap;
             }
@@ -34,6 +38,20 @@
 
     .item.current {
         background-color: lighten(@secondaryBGColor, 10%);
+    }
+}
+
+.call-to-action {
+    clear: both;
+    margin: 5px;
+    font-size: 10pt;
+    border-radius: 5px;
+    background-color: lighten(@secondaryBGColor, 10%);
+    &:hover {
+        background-color: lighten(@secondaryBGColor, 15%);
+    }
+    &:active {
+        background-color: lighten(@secondaryBGColor, 5%);
     }
 }
 
