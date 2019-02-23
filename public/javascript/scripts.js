@@ -65,17 +65,22 @@ function rect(element) {
 })();
 (function stickyMenu() {
     var navBar = find('header');
+    var nav = find('.navbar');
     var stickyNavClass = 'sticky-nav';
-    var defaultCollageMargin = window.getComputedStyle(find('.collage')).marginBottom;
+    var collageStyle = window.getComputedStyle(find('.collage'));
+    var defaultCollageMargin = collageStyle.marginBottom;
+    var defaultCollagePadding = collageStyle.paddingBottom;
     window.addEventListener('scroll', function () {
         var collage = find('.collage');
         var collageHeight = rect(collage).height;
-        var navBarHeight = rect(navBar).height;
+        var navHeight = rect(nav).height;
         if (window.scrollY > collageHeight) {
             navBar.classList.add(stickyNavClass);
-            collage.style.marginBottom = navBarHeight + 'px';
+            collage.style.paddingBottom = 0;
+            collage.style.marginBottom = navHeight + 'px';
         } else {
             navBar.classList.remove(stickyNavClass);
+            collage.style.paddingBottom = defaultCollagePadding;
             collage.style.marginBottom = defaultCollageMargin;
         }
     });

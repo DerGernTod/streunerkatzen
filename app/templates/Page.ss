@@ -47,8 +47,10 @@
 <body>
     <div class="wrapper">
         <% include Header %>
-        $Form
-        $Layout
+        <div class="container main">
+            $Form
+            $Layout
+        </div>
     </div>
 
     <% include Footer %>

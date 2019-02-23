@@ -70,6 +70,9 @@ p {
   width: 100%;
   padding: 0 0.5rem;
 }
+.container.main {
+  padding-top: 30px;
+}
 @media (min-width: 48rem) and (max-width: 61.999rem) {
   .container {
     width: 48rem;
