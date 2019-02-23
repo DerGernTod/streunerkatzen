@@ -8,13 +8,7 @@
 * zeitraum
 
 ### TODO:
-* footer: partnerprogramme raus, jetzt spenden rauf (extra eintrag, kontrast, spezialmenüeintrag) und raus aus helfen, vermisst gefunden rauf, footer unten fixieren
-* oben catollage https://www.pexels.com/photo/cat-whiskers-kitty-tabby-20787/
-* emblem in der collage immer drin
-* main menu oben sticky
-* back to top button
 * loading spinner https://codepen.io/tkain/pen/dNQzYb
-* menüverzierung https://codepen.io/agoodwin/pen/ypeWYE
 
 ### Dev Environment:
 * install composer
