@@ -57,7 +57,7 @@ function on(element, event, listener) {
 
     function extendHeader() {
         curWidth = rect(collage).width;
-        while (curWidth >= collageImages.length * singleImageWidth) {
+        while (curWidth > 0 && singleImageWidth > 0 && curWidth >= collageImages.length * singleImageWidth) {
             var newImg = document.createElement('img');
             var imgId = counter++ % collageImages.length;
             // don't re-render the logo
