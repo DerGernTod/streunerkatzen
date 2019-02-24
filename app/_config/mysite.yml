@@ -4,8 +4,6 @@ Name: myproject
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
 SilverStripe\UserForms\Model\Submission\SubmittedForm:
-  includes:
-    - SilverStripe\ORM\FieldType\DBEnum
   extensions:
     - Streunerkatzen\CatUserFormSubmissionExtension
 SilverStripe\Security\Member:

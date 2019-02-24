@@ -4,15 +4,16 @@ namespace Streunerkatzen;
 use Psr\Log\LoggerInterface;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\HasManyList;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Security\Member;
 use SilverStripe\Forms\GridField\GridField;
-use Streunerkatzen\GridFieldStatusChangeButton;
 use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
-use SilverStripe\ORM\HasManyList;
 use SilverStripe\UserForms\Model\Submission\SubmittedFormField;
+use SilverStripe\Control\Controller;
 
 class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_ActionProvider, GridField_URLHandler {
 
@@ -24,15 +25,15 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
     private $targetStatus;
     private $buttonTitle;
     private $actionName;
-    private $data;
+    private $sourceData;
     private $buttonStyleClass = "btn";
 
     //TargetFragment is just for positioning control of the HTML fragment
-    public function __construct(string $targetFragment = "after", string $targetStatus, DataObject $data) {
+    public function __construct(string $targetFragment = "after", string $targetStatus, DataObject $sourceData) {
         $this->targetFragment = $targetFragment;
         $this->targetStatus = $targetStatus;
         $this->actionName = 'state-transition-' . strtolower($targetStatus);
-        $this->data = $data;
+        $this->sourceData = $sourceData;
         switch ($targetStatus) {
             case Constants::CAT_STATUS_APPROVED:
                 $this->buttonTitle = GridFieldStatusChangeButton::ACCEPT;
@@ -83,21 +84,60 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         );
     }
 
-    public function handleValues(HasManyList $values) {
-        $values->each(function (SubmittedFormField $item) {
-            Injector::inst()->get(LoggerInterface::class)->warning('got value: ',
-                [
-                    $item->Title,
-                    $item->Value
-                ]);
-        });
-
+    public function createCat($fields) {
+        $cat = Cat::create();
+        $cat->Title = $fields["Name"];
+        $cat->PublishTime = date("Y-m-d H:i:s");
+        // TODO: uncomment this when date input validation is fixed
+        // $cat->LostFoundDate = $fields["Datum"];
+        $cat->Gender = $fields["Geschlecht"];
+        $cat->IsCastrated = $fields["Kastriert?"];
+        $cat->isHouseCat = $fields["Hauskatze?"];
+        $cat->Breed = $fields["Rasse"];
+        $cat->EyeColor = $fields["Augenfarbe"];
+        $cat->BehaviourOwner = $fields["Verhalten gegenüber Besitzer"];
+        $cat->BehaviourStranger = $fields["Verhalten gegenüber Fremden"];
+        $cat->Street = $fields["Straße"];
+        $cat->Country = $fields["Bundesland"];
+        $cat->IsChipped = $fields["Gechippt?"];
+        $cat->HasPetCollar = $fields["Halsband?"];
+        $cat->LostFoundStatus = $fields["Status"];
+        $cat->HairColor = $fields["Fellfarbe"];
+        $cat->HairLength = $fields["Haarlänge"];
+        $cat->LostFoundTime = $fields["Zeit"];
+        $cat->Attachments = $fields["Anhänge"];
+        $contact = $fields["Kontakt"];
+        // search user email
+        $matchingMembers = Member::get()->filter(array('Email' => $contact));
+        if (count($matchingMembers) === 1) {
+            $userId = $matchingMembers[0]->ID;
+            if ($fields["Status"] == "Vermisst") {
+                $cat->OwnerID = $userId;
+            } else {
+                $cat->ReporterID = $userId;
+            }
+        }
+        $cat->write();
     }
 
-    public function handleValue(SubmittedFormField $value) {
-    }
     //Handle the custom action, for both the action button and the URL
     public function handleButtonAction() {
-        $this->handleValues($this->data->Values());
+        $values = $this->sourceData->Values();
+        if ($this->targetStatus == Constants::CAT_STATUS_APPROVED) {
+            try {
+                $fields = [];
+                foreach ($values as $id => $field) {
+                    $fields[$field->Title] = $field->Value;
+                }
+                $this->createCat($fields);
+            } catch (Exception $e) {
+                die("Katze konnte nicht eingetragen werden: " . $e->message);
+            }
+            // this only deletes the content of the grid field, not the submission entry. weird
+            // $this->sourceData->delete();
+        }
+        $this->sourceData->ActivationStatus = $this->targetStatus;
+        $this->sourceData->write();
+        Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'"));
     }
 }

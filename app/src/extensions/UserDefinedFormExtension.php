@@ -15,26 +15,14 @@ class UserDefinedFormExtension extends DataExtension {
     public function updateCMSFields(FieldList $fields) {
         $fields->addFieldsToTab('Root.FormOptions', CheckboxField::create('IsCatEntryForm', 'Nutze dieses Formular um Katzen einzutragen'));
         if ($this->owner->IsCatEntryForm) {
-            $this->updateSubmissionGridField($fields->findOrMakeTab('Root.Submissions', 'Einreichungen')->children->items[0]);
-            /*
-            $submissions = GridField::create(
-                'Submissions',
-                '',
-                $this->Submissions()->sort('Created', 'DESC'),
-                $config
-            );
-            $fields->addFieldToTab('Root.Submissions', $submissions);
-            */
+            $summaryarray = [
+                'ID' => 'ID',
+                'Created' => 'Erstellt',
+                'LastEdited' => 'Zuletzt bearbeitet',
+                'ActivationStatus' => 'Status'
+            ];
+            $gridField = $fields->findOrMakeTab('Root.Submissions', 'Einreichungen')->children->items[0];
+            $gridField->getConfig()->getComponentByType(GridFieldDataColumns::class)->setDisplayFields($summaryarray);
         }
-    }
-    public function updateSubmissionGridField(GridField $gridField) {
-        $cfg = $gridField->getConfig();
-        $summaryarray = [
-            'ID' => 'ID',
-            'Created' => 'Erstellt',
-            'LastEdited' => 'Zuletzt bearbeitet',
-            'ActivationStatus' => 'Status'
-        ];
-        $cfg->getComponentByType(GridFieldDataColumns::class)->setDisplayFields($summaryarray);
     }
 }
