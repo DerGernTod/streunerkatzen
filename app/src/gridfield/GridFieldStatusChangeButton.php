@@ -100,6 +100,8 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         $cat->Street = $fields["Straße"];
         $cat->Country = $fields["Bundesland"];
         $cat->IsChipped = $fields["Gechippt?"];
+        $cat->ChipNumber = $fields["Chipnummer"];
+        $cat->Characteristics = $fields["Besonderheiten"];
         $cat->HasPetCollar = $fields["Halsband?"];
         $cat->LostFoundStatus = $fields["Status"];
         $cat->HairColor = $fields["Fellfarbe"];

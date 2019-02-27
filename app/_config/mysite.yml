@@ -15,6 +15,6 @@ SilverStripe\SiteConfig\SiteConfig:
 SilverStripe\Assets\Image:
   extensions:
     - Streunerkatzen\GalleryImageExtension
-SilverStripe\UserForms\UserForm:
+SilverStripe\UserForms\Model\UserDefinedForm:
   extensions:
     - Streunerkatzen\UserDefinedFormExtension
