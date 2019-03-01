@@ -86,34 +86,21 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
 
     public function createCat($fields) {
         $cat = Cat::create();
-        $cat->Title = $fields["Name"];
         $cat->PublishTime = date("Y-m-d H:i:s");
+        foreach ($fields as $key => $value) {
+            // strip away "CatField_"
+            $catKey = substr($key, 9);
+            $cat->$catKey = $value;
+        }
         // TODO: uncomment this when date input validation is fixed
         // $cat->LostFoundDate = $fields["Datum"];
-        $cat->Gender = $fields["Geschlecht"];
-        $cat->IsCastrated = $fields["Kastriert?"];
-        $cat->isHouseCat = $fields["Hauskatze?"];
-        $cat->Breed = $fields["Rasse"];
-        $cat->EyeColor = $fields["Augenfarbe"];
-        $cat->BehaviourOwner = $fields["Verhalten gegenüber Besitzer"];
-        $cat->BehaviourStranger = $fields["Verhalten gegenüber Fremden"];
-        $cat->Street = $fields["Straße"];
-        $cat->Country = $fields["Bundesland"];
-        $cat->IsChipped = $fields["Gechippt?"];
-        $cat->ChipNumber = $fields["Chipnummer"];
-        $cat->Characteristics = $fields["Besonderheiten"];
-        $cat->HasPetCollar = $fields["Halsband?"];
-        $cat->LostFoundStatus = $fields["Status"];
-        $cat->HairColor = $fields["Fellfarbe"];
-        $cat->HairLength = $fields["Haarlänge"];
-        $cat->LostFoundTime = $fields["Zeit"];
-        $cat->Attachments = $fields["Anhänge"];
-        $contact = $fields["Kontakt"];
+        $cat->LostFoundDate = date("Y-m-d H:i:s");
+        $contact = $fields["CatField_Contact"];
         // search user email
         $matchingMembers = Member::get()->filter(array('Email' => $contact));
         if (count($matchingMembers) === 1) {
             $userId = $matchingMembers[0]->ID;
-            if ($fields["Status"] == "Vermisst") {
+            if ($fields["CatField_Status"] == "Vermisst") {
                 $cat->OwnerID = $userId;
             } else {
                 $cat->ReporterID = $userId;
@@ -129,7 +116,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             try {
                 $fields = [];
                 foreach ($values as $id => $field) {
-                    $fields[$field->Title] = $field->Value;
+                    $fields[$field->Name] = $field->Value;
                 }
                 $this->createCat($fields);
             } catch (Exception $e) {
