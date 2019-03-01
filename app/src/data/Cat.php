@@ -1,18 +1,22 @@
 <?php
 namespace Streunerkatzen;
 
+use SilverStripe\ORM\DB;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Security\Member;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
-use SilverStripe\Assets\Image;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Assets\File;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Security\Member;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\UserForms\Model\EditableFormField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
+use SilverStripe\UserForms\Model\EditableFormField\EditableDropdown;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -48,7 +52,12 @@ class Cat extends DataObject {
         'Country' => 'Varchar(250)',
         'LostFoundDescription' => 'Varchar(1000)',
 
-        'MoreInfo' => 'Varchar(1000)'
+        'MoreInfo' => 'Varchar(1000)',
+
+        'LostFoundTime' => 'Varchar(250)',
+        'LostFoundStatus' => 'Varchar(250)',
+        'HairLength' => 'Varchar(250)',
+        'HairColor' => 'Varchar(250)',
     ];
         // owner/finder/contact
         // 'PublishStatus' => 'Varchar(20)',
@@ -57,10 +66,6 @@ class Cat extends DataObject {
         // attachments
         // creator
     private static $has_one = [
-        'LostFoundTime' => LostFoundTime::class,
-        'LostFoundStatus' => LostFoundStatus::class,
-        'HairLength' => HairLength::class,
-        'HairColor' => HairColor::class,
         'Reporter' => Member::class,
         'Owner' => Member::class
     ];
@@ -69,7 +74,41 @@ class Cat extends DataObject {
         'Attachments' => File::class
     ];
 
+    public static function getCatDropdownsWithOptions() {
+        $results = DB::Query("
+            SELECT
+                options.ID,
+                options.ParentID,
+                options.Title AS optionname,
+                options.Sort,
+                dropdownnames.Title,
+                dropdownnames.Name AS dropdownname
+            FROM
+                editableoption AS options
+            LEFT JOIN
+                editabledropdown AS dropdowns
+            ON
+                options.ParentID = dropdowns.ID
+            LEFT JOIN
+                editableformfield AS dropdownnames
+            ON
+                dropdowns.ID = dropdownnames.ID
+            ORDER BY
+                dropdownnames.Name, options.Sort ASC
+        ");
+        $result = [];
+        foreach ($results as $item) {
+            $dropdownname = $item['dropdownname'];
+            if (!$result[$dropdownname]) {
+                $result[$dropdownname] = [];
+            }
+            array_push($result[$dropdownname], $item['optionname']);
+        }
+        return $result;
+    }
+
     public function getCMSFields() {
+        $result = Cat::getCatDropdownsWithOptions();
         $fields = FieldList::create(
             DateField::create('PublishTime', 'Datum der Veröffentlichung'),
             TextField::create('Title', 'Name der Katze'),
@@ -78,10 +117,10 @@ class Cat extends DataObject {
             DropdownField::create(
                 'Gender',
                 'Geschlecht',
-                singleton(Cat::class)->dbObject('Gender')->enumValues()
+                $result['CatField_Gender']
             ),
-            DropdownField::create('HairColorID', 'Fellfarbe', HairColor::get()->map('ID', 'Name')),
-            DropdownField::create('HairLengthID', 'Haarlänge', HairLength::get()->map('ID', 'Name')),
+            DropdownField::create('HairColor', 'Fellfarbe', $result['CatField_HairColor']),
+            DropdownField::create('HairLength', 'Haarlänge', $result['CatField_HairLength']),
             TextField::create('Characteristics', 'Besonderheiten'),
             TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
             TextField::create('EyeColor', 'Augenfarbe'),
@@ -91,24 +130,24 @@ class Cat extends DataObject {
             DropdownField::create(
                 'IsCastrated',
                 'Kastriert?',
-                singleton(Cat::class)->dbObject('IsCastrated')->enumValues()
+                $result['CatField_IsCastrated']
             ),
             DropdownField::create(
                 'IsHouseCat',
                 'Hauskatze?',
-                singleton(Cat::class)->dbObject('IsHouseCat')->enumValues()
+                $result['CatField_IsHouseCat']
             ),
             DropdownField::create(
                 'IsChipped',
                 'Gechippt?',
-                singleton(Cat::class)->dbObject('IsChipped')->enumValues()
+                $result['CatField_IsChipped']
             ),
             TextField::create('ChipNumber', 'Chipnummer'),
             TextField::create('BehaviourOwner', 'Verhalten gegenüber Besitzer'),
             TextField::create('BehaviourStranger', 'Verhalten gegenüber Fremden'),
             DateField::create('LostFoundDate', 'Datum'),
-            DropdownField::create('LostFoundTimeID', 'Zeitpunkt', LostFoundTime::get()->map('ID', 'Name')),
-            DropdownField::create('LostFoundStatusID', 'Status', LostFoundStatus::get()->map('ID', 'Name')),
+            DropdownField::create('LostFoundTime', 'Zeitpunkt', $result['CatField_LostFoundTime']),
+            DropdownField::create('LostFoundStatus', 'Status', $result['CatField_LostFoundStatus']),
             TextField::create('Street', 'Straße'),
             TextField::create('Town', 'Ort'),
             TextField::create('ZipCode', 'PLZ'),
