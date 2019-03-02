@@ -3,6 +3,9 @@ Name: myproject
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
+SilverStripe\UserForms\Model\Submission\SubmittedForm:
+  extensions:
+    - Streunerkatzen\CatUserFormSubmissionExtension
 SilverStripe\Security\Member:
   extensions:
     - Streunerkatzen\CatMemberExtension
@@ -12,3 +15,6 @@ SilverStripe\SiteConfig\SiteConfig:
 SilverStripe\Assets\Image:
   extensions:
     - Streunerkatzen\GalleryImageExtension
+SilverStripe\UserForms\Model\UserDefinedForm:
+  extensions:
+    - Streunerkatzen\UserDefinedFormExtension
