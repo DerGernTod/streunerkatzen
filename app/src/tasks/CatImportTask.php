@@ -11,10 +11,6 @@ use Streunerkatzen\HairLength;
 use Streunerkatzen\LostFoundStatus;
 
 class CatImportTask extends BuildTask {
-    private $hairColors;
-    private $hairLengths;
-    private $lostFoundTimes;
-    private $lostFoundStates;
 
     public function run($request) {
         $catExporter = new CatExporter();
@@ -45,7 +41,7 @@ class CatImportTask extends BuildTask {
             $cat->LostFoundStatusID = $this->mapLostFoundStatus($lostFoundStatus);
             $cat->HairColorID = $this->mapHairColor($catEntry["categories"]["name"]);
             $cat->HairLengthID = $this->mapHairLength($fields["haarlnge"]);
-            $cat->LostFoundTimeID = $this->mapLostFoundTime($fields["tageszeit"]);
+            $cat->LostFoundTimeID = $fields["tageszeit"];
             $cat->Attachments = createAttachments($catEntry["resources"], $catEntry["images"]);
             $userId = createUser($fields);
             if ($lostFoundStatus == "vermisst") {
@@ -64,17 +60,12 @@ class CatImportTask extends BuildTask {
      * translates imported hair colors to dropdown fields
      */
     private function mapHairColor($importedHairColor) {
-        if (!$this->hairColors) {
-            $this->hairColors = HairColor::get();
-        }
+
         if (strpos($importedHairColor, "zur Farbauswahl") !== false) {
             $importedHairColor = "schwarz";
         }
-        $id = $this->hairColors->find('Name', str_ireplace("m. ", "mit ", $importedHairColor))->ID;
-        if (!$id) {
-            echo "<div>no dropdown entry found for hairColor: ".$importedHairColor."!</div>";
-        }
-        return $id;
+        $importedHairColor = str_ireplace("m. ", "mit ", $importedHairColor);
+        return $importedHairColor;
     }
 
     /**
@@ -84,52 +75,18 @@ class CatImportTask extends BuildTask {
         if (!$importedHairLength) {
             $importedHairLength = "sonstiges";
         }
-        if (!$this->hairLengths) {
-            $this->hairLengths = HairLength::get();
-        }
-        $id = $this->hairLengths->find('Name', $importedHairLength)->ID;
-        if (!$id) {
-            echo "<div>no dropdown entry found for hairLength: ".$importedHairLength."!</div>";
-        }
-        return $id;
-    }
-
-    /**
-     * translates imported lostfoundtime to dropdown fields
-     */
-    private function mapLostFoundTime($importedLostFoundTime) {
-        if (!$importedLostFoundTime) {
-            $importedLostFoundTime = "nicht bekannt";
-        }
-        if (!$this->lostFoundTimes) {
-            $this->lostFoundTimes = LostFoundTime::get();
-        }
-        $id = $this->lostFoundTimes->find('Name', $importedLostFoundTime)->ID;
-        if (!$id) {
-            echo "<div>no dropdown entry found for lostFoundTime: ".$importedLostFoundTime."!</div>";
-        }
-        return $id;
+        return $importedHairLength;
     }
 
     /**
      * translates imported lostfoundstatus to dropdown fields
      */
     private function mapLostFoundStatus($importedLostFoundStatus) {
-        if (!$this->lostFoundStates) {
-            $this->lostFoundStates = LostFoundStatus::get();
-        }
-        $id = $this->lostFoundStates->find(
-            'Name',
-            str_ireplace(
-                "tot aufgefunden",
-                "Tot gefunden",
-                ucFirst($importedLostFoundStatus)
-            )
-        )->ID;
-        if (!$id) {
-            echo "<div>no dropdown entry found for lostFoundState: ".$importedLostFoundStatus."!</div>";
-        }
-        return $id;
+        return str_ireplace(
+            "tot aufgefunden",
+            "Tot gefunden",
+            ucFirst($importedLostFoundStatus)
+        );
     }
 }
 
