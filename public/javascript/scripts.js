@@ -106,3 +106,53 @@ function on(element, event, listener) {
         }
     })
 })();
+(function asyncPagination() {
+    function addAjaxPagination() {
+        $pageLinks = find('.pagination a');
+        if (!$pageLinks.length) {
+            return;
+        }
+        $pageLinks.forEach(function (link) {
+            on(link, 'click', function (e) {
+                e.preventDefault();
+                var url = this.getAttribute('href');
+                paginate(url, true);
+            });
+        });
+    }
+    function paginate(url, doPushState) {
+        var xhr = new XMLHttpRequest();
+        if (url.indexOf('ajax=1') < 0) {
+            url += (url.indexOf('?') >= 0 ? '&' : '?') + 'ajax=1';
+        }
+        xhr.open('GET', url);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    find('.search-results').outerHTML = xhr.response;
+                    if (doPushState) {
+                        window.history.pushState(
+                            { url: url },
+                            document.title,
+                            url
+                        );
+                    }
+                    window.scrollTo({top: 0});
+                    addAjaxPagination();
+                } else {
+                    alert('Fehler: ' + xhr.responseText);
+                }
+            }
+        }
+        xhr.send();
+    }
+
+    $paginationElements = find('.pagination');
+    if (!$paginationElements.length && !$paginationElements.nodeName) {
+        return;
+    }
+    addAjaxPagination();
+    on(window, 'popstate', function(e) {
+        paginate(location.href);
+    });
+})()

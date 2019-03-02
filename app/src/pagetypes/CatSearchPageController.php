@@ -23,11 +23,17 @@ class CatSearchPageController extends PageController {
         $paginatedCats = PaginatedList::create(
             $cats,
             $request
-        );
-        return [
+        )->setPageLength(25);
+        $result = [
             'Results' => $paginatedCats,
             'SearchDone' => isset($search)
         ];
+        if ($request->isAjax()) {
+            return $this
+                ->customise($result)
+                ->renderWith('Streunerkatzen/Includes/CatSearchResults');
+        }
+        return $result;
     }
 
     public function CatSearchForm() {
