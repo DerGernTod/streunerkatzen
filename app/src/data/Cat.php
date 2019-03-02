@@ -77,11 +77,7 @@ class Cat extends DataObject {
     public static function getCatDropdownsWithOptions() {
         $results = DB::Query("
             SELECT
-                options.ID,
-                options.ParentID,
                 options.Title AS optionname,
-                options.Sort,
-                dropdownnames.Title,
                 dropdownnames.Name AS dropdownname
             FROM
                 editableoption AS options
@@ -93,6 +89,8 @@ class Cat extends DataObject {
                 editableformfield AS dropdownnames
             ON
                 dropdowns.ID = dropdownnames.ID
+            WHERE
+                dropdownnames.Name LIKE 'CatField_%'
             ORDER BY
                 dropdownnames.Name, options.Sort ASC
         ");
