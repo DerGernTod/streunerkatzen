@@ -1,7 +1,9 @@
 <div class='search-results'>
 <ul>
 <% loop $Results %>
-    <li><a href="$Link">$Title: $Breed</a></li>
+    <li>
+        <% include Streunerkatzen/CatSummary %>
+    </li>
 <% end_loop %>
 </ul>
 <% if $Results.MoreThanOnePage %>

@@ -1,3 +1,4 @@
-<div>cat search</div>
+$Content
 $CatSearchForm
+<% include Streunerkatzen/CatSpinner %>
 <% include Streunerkatzen/CatSearchResults %>

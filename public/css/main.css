@@ -43,6 +43,16 @@ header a:hover {
 .clear {
   clear: both;
 }
+.container.main a {
+  color: #334273;
+  text-decoration: dotted underline #c8c8c8;
+}
+.container.main a:visited {
+  color: #334273;
+}
+.container.main a:hover {
+  text-decoration: underline;
+}
 .captionImage.left {
   float: left;
 }
@@ -71,6 +81,10 @@ header a:hover {
   visibility: visible;
   opacity: 1;
   cursor: pointer;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 h1,
 h2,
@@ -811,4 +825,26 @@ p {
 .sleeping-cat .whisker:last-child {
   top: 0;
   transform: rotate(-20deg);
+}
+.pagination {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 10pt;
+}
+.pagination span {
+  font-weight: bolder;
+}
+.search-results ul {
+  list-style: none;
+}
+.search-results ul li {
+  display: block;
+  width: 100%;
+  height: 3em;
+  border: 1px solid #c8c8c8;
+  border-collapse: collapse;
+  margin: .2em 0;
+  padding: .5em;
+  min-height: 100px;
 }

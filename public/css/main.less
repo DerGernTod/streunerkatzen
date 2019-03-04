@@ -52,6 +52,19 @@ header {
     clear: both;
 }
 
+.container.main {
+    a {
+        color: @mainLinkColor;
+        text-decoration: dotted underline darken(@mainBGColor, 15);
+        &:visited {
+            color: @mainLinkColor;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 .captionImage {
     &.left {
         float: left;
@@ -85,7 +98,14 @@ header {
     }
 }
 
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
 @import "fonts.less";
 @import "grid/grid.less";
 @import "menu.less";
 @import "cat.less";
+@import "search.less";

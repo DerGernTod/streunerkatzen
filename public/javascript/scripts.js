@@ -28,6 +28,104 @@ function on(element, event, listener) {
     element.addEventListener(event, listener);
 }
 
+var pushStateListeners = [];
+function addPushStateEventListener(listener) {
+    pushStateListeners.push(listener);
+}
+
+/**
+ * triggers a history push state and fires registered push state listeners
+ * @param {{}} pushStateOptions
+ * @param {string} title
+ * @param {string} url
+ */
+function triggerPushState(pushStateOptions, title, url) {
+    window.history.pushState(pushStateOptions, title, url);
+    pushStateListeners.forEach(function (cb) { cb(url); });
+}
+
+/**
+ * executes ajax requests, invokes onFinished in case of status 200, otherwise on error, always onProgress
+ * @param {string} url
+ * @param {string} method
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onFinished
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onError
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onProgress
+ */
+function ajax(url, method, onFinished, onError, onProgress) {
+    var x = new XMLHttpRequest();
+    x.open(method, url);
+    x.onreadystatechange = function () {
+        onProgress && onProgress.apply(x, [].concat([x], arguments));
+        if (x.readyState === 4) {
+            if (x.status === 200 && onFinished) {
+                onFinished.apply(x, [].concat([x], arguments));
+            } else if (x.status !== 200) {
+                if (onError) {
+                    onError.apply(x, [].concat([x], arguments));
+                } else {
+                    console.error('Error during ajax request: ', { status: x.status, readyState: x.readyState, url: url, method: method })
+                }
+            }
+        }
+    }
+    x.send();
+}
+
+/**
+ * updates the html upon receiving a search result (e.g. through a search query or a page change)
+ * @param {string} url
+ * @param {boolean} doPushState
+ * @param {string} content
+ */
+function handleSearchUpdate(url, doPushState, content) {
+    find('.search-results').outerHTML = content;
+    if (doPushState) {
+        url = url.replace(/[\?&]ajax=1/g, '');
+        triggerPushState(
+            { url: url },
+            document.title,
+            url
+        );
+    }
+    window.scrollTo({top: 0});
+    addAjaxPagination();
+}
+/**
+ * adds ajax pagination functionality to current pagination anchor tags
+ */
+function addAjaxPagination() {
+    var pageLinks = find('.pagination a');
+    if (!pageLinks.length) {
+        return;
+    }
+    pageLinks.forEach(function (link) {
+        on(link, 'click', function (e) {
+            e.preventDefault();
+            var url = this.getAttribute('href');
+            paginate(url, true);
+        });
+    });
+}
+/**
+ * sends an ajax request to load the next page of this list
+ * @param {string} url
+ * @param {boolean} doPushState
+ * @param {function()} onComplete
+ */
+function paginate(url, doPushState, onComplete) {
+    if (url.indexOf('ajax=1') < 0) {
+        url += (url.indexOf('?') >= 0 ? '&' : '?') + 'ajax=1';
+    }
+    ajax(url, 'GET', function (x) {
+        handleSearchUpdate(url, doPushState, x.response);
+        onComplete && onComplete();
+    }, function (x) {
+        alert('Fehler: ' + x.responseText);
+        onComplete && onComplete();
+    });
+}
+
 (function mobileMenuFunctions() {
     var openMenuButton = find('#open-mobile-menu');
     var menu = find('#main-menu');
@@ -104,55 +202,41 @@ function on(element, event, listener) {
         } else {
             backToTopButton.classList.remove('revealed');
         }
+    });
+    addPushStateEventListener(function () {
+        var link = location.href;
+        if (link.indexOf('#anchor-top') === -1) {
+            link += '#anchor-top';
+        }
+        backToTopButton.setAttribute('href', link);
     })
 })();
 (function asyncPagination() {
-    function addAjaxPagination() {
-        $pageLinks = find('.pagination a');
-        if (!$pageLinks.length) {
-            return;
-        }
-        $pageLinks.forEach(function (link) {
-            on(link, 'click', function (e) {
-                e.preventDefault();
-                var url = this.getAttribute('href');
-                paginate(url, true);
-            });
-        });
-    }
-    function paginate(url, doPushState) {
-        var xhr = new XMLHttpRequest();
-        if (url.indexOf('ajax=1') < 0) {
-            url += (url.indexOf('?') >= 0 ? '&' : '?') + 'ajax=1';
-        }
-        xhr.open('GET', url);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    find('.search-results').outerHTML = xhr.response;
-                    if (doPushState) {
-                        window.history.pushState(
-                            { url: url },
-                            document.title,
-                            url
-                        );
-                    }
-                    window.scrollTo({top: 0});
-                    addAjaxPagination();
-                } else {
-                    alert('Fehler: ' + xhr.responseText);
-                }
-            }
-        }
-        xhr.send();
-    }
-
-    $paginationElements = find('.pagination');
-    if (!$paginationElements.length && !$paginationElements.nodeName) {
+    var paginationElements = find('.pagination');
+    if (!paginationElements.length && !paginationElements.nodeName) {
         return;
     }
     addAjaxPagination();
     on(window, 'popstate', function(e) {
-        paginate(location.href);
+        if (e.state && e.state.url) {
+            paginate(e.state.url);
+        }
     });
-})()
+})();
+(function asyncSearch() {
+    var form = find('#Form_CatSearchForm');
+    on(form, 'submit', function (e) {
+        e.preventDefault();
+        form.querySelectorAll('input').forEach(function (input) { input.setAttribute('disabled', 'disabled'); } );
+        paginate(
+            location.pathname
+            + '?SearchValue='
+            + find('#Form_CatSearchForm_SearchValue').value,
+            true,
+            function () {
+                form.querySelectorAll('input').forEach(function (input) {
+                    input.removeAttribute('disabled', 'disabled');
+                });
+            });
+    });
+})();

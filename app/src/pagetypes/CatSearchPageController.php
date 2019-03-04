@@ -53,9 +53,4 @@ class CatSearchPageController extends PageController {
         ->disableSecurityToken()
         ->loadDataFrom($this->request->getVars());
     }
-
-    public function sendSearch($data, $form) {
-        $searchValue = $data['SearchValue'];
-        //Cat::get()->filter()->
-    }
 }
