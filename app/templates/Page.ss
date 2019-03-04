@@ -45,6 +45,9 @@
 </head>
 
 <body>
+<div>
+    <!--<% include Streunerkatzen/CatLoadingSpinner %> -->
+    </div>
     <div class="wrapper">
         <a id="anchor-top" class="hidden"></a>
         <% include Header %>

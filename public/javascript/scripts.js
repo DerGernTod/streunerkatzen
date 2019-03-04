@@ -149,11 +149,13 @@ function ajax(url, method, onFinished, onError, onProgress) {
             backToTopButton.classList.remove('revealed');
         }
     });
-    addPushStateEventListener(function () {
+    function updateBackToTopButton() {
         var link = location.href;
         if (link.indexOf('#anchor-top') === -1) {
             link += '#anchor-top';
         }
         backToTopButton.setAttribute('href', link);
-    })
+    }
+    addPushStateEventListener(updateBackToTopButton);
+    on(window, 'popstate', updateBackToTopButton);
 })();
