@@ -38,10 +38,10 @@ class CatImportTask extends BuildTask {
             $cat->IsChipped = $fields["gechipt"];
             $cat->HasPetCollar = $fields["halsband"];
             $lostFoundStatus = $fields["gesuchtgefunden"];
-            $cat->LostFoundStatusID = $this->mapLostFoundStatus($lostFoundStatus);
-            $cat->HairColorID = $this->mapHairColor($catEntry["categories"]["name"]);
-            $cat->HairLengthID = $this->mapHairLength($fields["haarlnge"]);
-            $cat->LostFoundTimeID = $fields["tageszeit"];
+            $cat->LostFoundStatus = $this->mapLostFoundStatus($lostFoundStatus);
+            $cat->HairColor = $this->mapHairColor($catEntry["categories"]["name"]);
+            $cat->HairLength = $this->mapHairLength($fields["haarlnge"]);
+            $cat->LostFoundTime = $fields["tageszeit"];
             $cat->Attachments = createAttachments($catEntry["resources"], $catEntry["images"]);
             $userId = createUser($fields);
             if ($lostFoundStatus == "vermisst") {
