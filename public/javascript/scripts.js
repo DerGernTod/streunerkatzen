@@ -72,60 +72,6 @@ function ajax(url, method, onFinished, onError, onProgress) {
     x.send();
 }
 
-/**
- * updates the html upon receiving a search result (e.g. through a search query or a page change)
- * @param {string} url
- * @param {boolean} doPushState
- * @param {string} content
- */
-function handleSearchUpdate(url, doPushState, content) {
-    find('.search-results').outerHTML = content;
-    if (doPushState) {
-        url = url.replace(/[\?&]ajax=1/g, '');
-        triggerPushState(
-            { url: url },
-            document.title,
-            url
-        );
-    }
-    window.scrollTo({top: 0});
-    addAjaxPagination();
-}
-/**
- * adds ajax pagination functionality to current pagination anchor tags
- */
-function addAjaxPagination() {
-    var pageLinks = find('.pagination a');
-    if (!pageLinks.length) {
-        return;
-    }
-    pageLinks.forEach(function (link) {
-        on(link, 'click', function (e) {
-            e.preventDefault();
-            var url = this.getAttribute('href');
-            paginate(url, true);
-        });
-    });
-}
-/**
- * sends an ajax request to load the next page of this list
- * @param {string} url
- * @param {boolean} doPushState
- * @param {function()} onComplete
- */
-function paginate(url, doPushState, onComplete) {
-    if (url.indexOf('ajax=1') < 0) {
-        url += (url.indexOf('?') >= 0 ? '&' : '?') + 'ajax=1';
-    }
-    ajax(url, 'GET', function (x) {
-        handleSearchUpdate(url, doPushState, x.response);
-        onComplete && onComplete();
-    }, function (x) {
-        alert('Fehler: ' + x.responseText);
-        onComplete && onComplete();
-    });
-}
-
 (function mobileMenuFunctions() {
     var openMenuButton = find('#open-mobile-menu');
     var menu = find('#main-menu');
@@ -210,33 +156,4 @@ function paginate(url, doPushState, onComplete) {
         }
         backToTopButton.setAttribute('href', link);
     })
-})();
-(function asyncPagination() {
-    var paginationElements = find('.pagination');
-    if (!paginationElements.length && !paginationElements.nodeName) {
-        return;
-    }
-    addAjaxPagination();
-    on(window, 'popstate', function(e) {
-        if (e.state && e.state.url) {
-            paginate(e.state.url);
-        }
-    });
-})();
-(function asyncSearch() {
-    var form = find('#Form_CatSearchForm');
-    on(form, 'submit', function (e) {
-        e.preventDefault();
-        form.querySelectorAll('input').forEach(function (input) { input.setAttribute('disabled', 'disabled'); } );
-        paginate(
-            location.pathname
-            + '?SearchValue='
-            + find('#Form_CatSearchForm_SearchValue').value,
-            true,
-            function () {
-                form.querySelectorAll('input').forEach(function (input) {
-                    input.removeAttribute('disabled', 'disabled');
-                });
-            });
-    });
 })();

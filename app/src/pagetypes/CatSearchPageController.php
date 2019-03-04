@@ -6,11 +6,17 @@ use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\PaginatedList;
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Forms\RequiredFields;
 
 class CatSearchPageController extends PageController {
+
+    protected function init() {
+        parent::init();
+        Requirements::themedJavascript("search.js");
+    }
 
     public function index(HTTPRequest $request) {
         $cats = Cat::get();
