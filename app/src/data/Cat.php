@@ -3,26 +3,22 @@ namespace Streunerkatzen;
 
 use SilverStripe\ORM\DB;
 use SilverStripe\Assets\File;
-use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
-use SilverStripe\Forms\GridField\GridField;
+use Streunerkatzen\CatSearchPageController;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\UserForms\Model\EditableFormField;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
-use SilverStripe\UserForms\Model\EditableFormField\EditableDropdown;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
     private static $plural_name = 'Katzen';
     private static $table_name = 'Streunerkatzen_Cats';
-
+    private $searchPage;
     private static $db = [
         'Title' => 'Varchar(250)',
         'PublishTime' => 'Datetime',
@@ -72,6 +68,10 @@ class Cat extends DataObject {
 
     private static $many_many = [
         'Attachments' => File::class
+    ];
+
+    private static $owns = [
+        'Attachments'
     ];
 
     public static function getCatDropdownsWithOptions() {
@@ -165,5 +165,35 @@ class Cat extends DataObject {
             )->setEmptyString('Auswählen...')
         );
         return $fields;
+    }
+
+    public function setSearchPageController(CatSearchPageController $page) {
+        $this->searchPage = $page;
+    }
+
+    public function Link() {
+        return Controller::curr()->Link('view/'.$this->ID);
+    }
+
+    /**
+     * used to normalize unknown fields
+     */
+    public function Normalized(string $field) {
+        if ($this->$field) {
+            return $this->$field;
+        }
+        return 'k. A.';
+    }
+
+    /**
+     * used to normalize simple yes/no/unknown dropdowns
+     */
+    public function Check(string $field) {
+        if ($this->$field === 'nicht bekannt') {
+            return '?';
+        } else if ($this->field === 'ja') {
+            return '✔';
+        }
+        return '✗';
     }
 }

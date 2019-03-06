@@ -13,6 +13,10 @@ use SilverStripe\Forms\RequiredFields;
 
 class CatSearchPageController extends PageController {
 
+    private static $allowed_actions = [
+        'view'
+    ];
+
     protected function init() {
         parent::init();
         Requirements::themedJavascript("search.js");
@@ -30,6 +34,9 @@ class CatSearchPageController extends PageController {
             $cats,
             $request
         )->setPageLength(25);
+        foreach ($paginatedCats as $cat) {
+            $cat->setSearchPageController($this);
+        }
         $result = [
             'Results' => $paginatedCats,
             'SearchDone' => isset($search)
@@ -37,7 +44,7 @@ class CatSearchPageController extends PageController {
         if ($request->isAjax()) {
             return $this
                 ->customise($result)
-                ->renderWith('Streunerkatzen/Includes/CatSearchResults');
+                ->renderWith('Streunerkatzen/Includes/CatSearchResult');
         }
         return $result;
     }
@@ -58,5 +65,17 @@ class CatSearchPageController extends PageController {
         ->setFormAction($this->Link())
         ->disableSecurityToken()
         ->loadDataFrom($this->request->getVars());
+    }
+
+    public function view(HTTPRequest $request) {
+        $cat = Cat::get()->byID($request->param('ID'));
+        if (!$cat) {
+            return $this->httpError(404, 'Diese Katze hat sich versteckt!');
+        }
+        if ($request->isAjax()) {
+            return $cat->renderWith('Streunerkatzen/Includes/CatPage');
+        } else {
+            return [ 'Cat' => $cat ];
+        }
     }
 }
