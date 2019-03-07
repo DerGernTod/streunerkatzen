@@ -37,6 +37,22 @@
         margin: .2em 0;
         padding: .5em;
         min-height: 100px;
+        overflow: hidden;
+        .cat-summary {
+            & > div {
+                float: left;
+                width: 70%;
+                &:nth-child(2) {
+                    float: right;
+                    width: 30%;
+                    margin: -.5em;
+                    & > * {
+                        float: right;
+                    }
+                }
+            }
+
+        }
     }
 }
 ul.cat-details {
