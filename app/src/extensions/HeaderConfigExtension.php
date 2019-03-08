@@ -3,10 +3,8 @@
 namespace Streunerkatzen;
 
 use SilverStripe\Assets\Image;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
-use Streunerkatzen\FotoCollageExtension;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class HeaderConfigExtension extends DataExtension {
