@@ -28,6 +28,50 @@ function on(element, event, listener) {
     element.addEventListener(event, listener);
 }
 
+var pushStateListeners = [];
+function addPushStateEventListener(listener) {
+    pushStateListeners.push(listener);
+}
+
+/**
+ * triggers a history push state and fires registered push state listeners
+ * @param {{}} pushStateOptions
+ * @param {string} title
+ * @param {string} url
+ */
+function triggerPushState(pushStateOptions, title, url) {
+    window.history.pushState(pushStateOptions, title, url);
+    pushStateListeners.forEach(function (cb) { cb(url); });
+}
+
+/**
+ * executes ajax requests, invokes onFinished in case of status 200, otherwise on error, always onProgress
+ * @param {string} url
+ * @param {string} method
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onFinished
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onError
+ * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onProgress
+ */
+function ajax(url, method, onFinished, onError, onProgress) {
+    var x = new XMLHttpRequest();
+    x.open(method, url);
+    x.onreadystatechange = function () {
+        onProgress && onProgress.apply(x, [].concat([x], arguments));
+        if (x.readyState === 4) {
+            if (x.status === 200 && onFinished) {
+                onFinished.apply(x, [].concat([x], arguments));
+            } else if (x.status !== 200) {
+                if (onError) {
+                    onError.apply(x, [].concat([x], arguments));
+                } else {
+                    console.error('Error during ajax request: ', { status: x.status, readyState: x.readyState, url: url, method: method })
+                }
+            }
+        }
+    }
+    x.send();
+}
+
 (function mobileMenuFunctions() {
     var openMenuButton = find('#open-mobile-menu');
     var menu = find('#main-menu');
@@ -104,5 +148,14 @@ function on(element, event, listener) {
         } else {
             backToTopButton.classList.remove('revealed');
         }
-    })
+    });
+    function updateBackToTopButton() {
+        var link = location.href;
+        if (link.indexOf('#anchor-top') === -1) {
+            link += '#anchor-top';
+        }
+        backToTopButton.setAttribute('href', link);
+    }
+    addPushStateEventListener(updateBackToTopButton);
+    on(window, 'popstate', updateBackToTopButton);
 })();

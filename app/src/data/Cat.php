@@ -21,7 +21,7 @@ use SilverStripe\UserForms\Model\EditableFormField\EditableDropdown;
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
     private static $plural_name = 'Katzen';
-    private static $table_name = 'data_Cats';
+    private static $table_name = 'Streunerkatzen_Cats';
 
     private static $db = [
         'Title' => 'Varchar(250)',
@@ -100,7 +100,7 @@ class Cat extends DataObject {
             if (!$result[$dropdownname]) {
                 $result[$dropdownname] = [];
             }
-            array_push($result[$dropdownname], $item['optionname']);
+            $result[$dropdownname][$item['optionname']] = $item['optionname'];
         }
         return $result;
     }
