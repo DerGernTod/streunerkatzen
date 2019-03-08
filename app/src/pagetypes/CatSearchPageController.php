@@ -24,10 +24,10 @@ class CatSearchPageController extends PageController {
 
     public function index(HTTPRequest $request) {
         $cats = Cat::get();
-        $search = $request->getVar('SearchValue');
-        if ($search) {
+        $searchTitle = $request->getVar('SearchTitle');
+        if ($searchTitle) {
             $cats = $cats->filter([
-                'Title:PartialMatch' => $search,
+                'Title:PartialMatch' => $searchTitle,
             ]);
         }
         $paginatedCats = PaginatedList::create(
@@ -39,7 +39,7 @@ class CatSearchPageController extends PageController {
         }
         $result = [
             'Results' => $paginatedCats,
-            'SearchDone' => isset($search)
+            'SearchDone' => isset($searchTitle)
         ];
         if ($request->isAjax()) {
             return $this
@@ -54,12 +54,12 @@ class CatSearchPageController extends PageController {
             $this,
             __FUNCTION__,
             FieldList::create(
-                TextField::create('SearchValue', 'Suche')
+                TextField::create('SearchTitle', 'Suche')
             ),
             FieldList::create(
                 FormAction::create('sendSearch', 'Suchen')
             ),
-            RequiredFields::create('SearchValue')
+            RequiredFields::create('SearchTitle')
         )
         ->setFormMethod('GET')
         ->setFormAction($this->Link())

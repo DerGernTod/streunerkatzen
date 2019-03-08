@@ -69,8 +69,8 @@ function ajaxifyPagination() {
         e.preventDefault();
         setInputEnabled(false);
         var targetUrl = location.pathname
-            + '?SearchValue='
-            + find('#Form_CatSearchForm_SearchValue').value;
+            + '?SearchTitle='
+            + find('#Form_CatSearchForm_SearchTitle').value;
         executeSearch(targetUrl);
     });
 
