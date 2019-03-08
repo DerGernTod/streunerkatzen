@@ -11,14 +11,12 @@ use SilverStripe\Security\Member;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
-use Streunerkatzen\CatSearchPageController;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
     private static $plural_name = 'Katzen';
     private static $table_name = 'Streunerkatzen_Cats';
-    private $searchPage;
     private static $db = [
         'Title' => 'Varchar(250)',
         'PublishTime' => 'Datetime',
@@ -165,10 +163,6 @@ class Cat extends DataObject {
             )->setEmptyString('Auswählen...')
         );
         return $fields;
-    }
-
-    public function setSearchPageController(CatSearchPageController $page) {
-        $this->searchPage = $page;
     }
 
     public function Link() {

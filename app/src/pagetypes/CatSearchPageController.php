@@ -34,9 +34,6 @@ class CatSearchPageController extends PageController {
             $cats,
             $request
         )->setPageLength(25);
-        foreach ($paginatedCats as $cat) {
-            $cat->setSearchPageController($this);
-        }
         $result = [
             'Results' => $paginatedCats,
             'SearchDone' => isset($searchTitle)
