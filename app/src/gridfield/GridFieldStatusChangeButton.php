@@ -102,9 +102,8 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             $userId = $matchingMembers[0]->ID;
             if ($fields["CatField_Status"] == "Vermisst") {
                 $cat->OwnerID = $userId;
-            } else {
-                $cat->ReporterID = $userId;
             }
+            $cat->ReporterID = $userId;
         }
         $cat->write();
     }

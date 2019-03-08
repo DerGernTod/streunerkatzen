@@ -13,6 +13,10 @@ use SilverStripe\Forms\RequiredFields;
 
 class CatSearchPageController extends PageController {
 
+    private static $allowed_actions = [
+        'view'
+    ];
+
     protected function init() {
         parent::init();
         Requirements::themedJavascript("search.js");
@@ -20,10 +24,10 @@ class CatSearchPageController extends PageController {
 
     public function index(HTTPRequest $request) {
         $cats = Cat::get();
-        $search = $request->getVar('SearchValue');
-        if ($search) {
+        $searchTitle = $request->getVar('SearchTitle');
+        if ($searchTitle) {
             $cats = $cats->filter([
-                'Title:PartialMatch' => $search,
+                'Title:PartialMatch' => $searchTitle,
             ]);
         }
         $paginatedCats = PaginatedList::create(
@@ -32,12 +36,12 @@ class CatSearchPageController extends PageController {
         )->setPageLength(25);
         $result = [
             'Results' => $paginatedCats,
-            'SearchDone' => isset($search)
+            'SearchDone' => isset($searchTitle)
         ];
         if ($request->isAjax()) {
             return $this
                 ->customise($result)
-                ->renderWith('Streunerkatzen/Includes/CatSearchResults');
+                ->renderWith('Streunerkatzen/Includes/CatSearchResult');
         }
         return $result;
     }
@@ -47,16 +51,28 @@ class CatSearchPageController extends PageController {
             $this,
             __FUNCTION__,
             FieldList::create(
-                TextField::create('SearchValue', 'Suche')
+                TextField::create('SearchTitle', 'Suche')
             ),
             FieldList::create(
                 FormAction::create('sendSearch', 'Suchen')
             ),
-            RequiredFields::create('SearchValue')
+            RequiredFields::create('SearchTitle')
         )
         ->setFormMethod('GET')
         ->setFormAction($this->Link())
         ->disableSecurityToken()
         ->loadDataFrom($this->request->getVars());
+    }
+
+    public function view(HTTPRequest $request) {
+        $cat = Cat::get()->byID($request->param('ID'));
+        if (!$cat) {
+            return $this->httpError(404, 'Diese Katze hat sich versteckt!');
+        }
+        if ($request->isAjax()) {
+            return $cat->renderWith('Streunerkatzen/Includes/CatPage');
+        } else {
+            return [ 'Cat' => $cat ];
+        }
     }
 }

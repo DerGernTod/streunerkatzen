@@ -7,6 +7,9 @@ function find(selector) {
     if (result.length === 1) {
         return result[0];
     }
+    if (result.length === 0) {
+        return false;
+    }
     return result;
 }
 

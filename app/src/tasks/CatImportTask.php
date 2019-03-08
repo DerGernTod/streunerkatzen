@@ -46,9 +46,8 @@ class CatImportTask extends BuildTask {
             $userId = createUser($fields);
             if ($lostFoundStatus == "vermisst") {
                 $cat->OwnerID = $userId;
-            } else {
-                $cat->ReporterID = $userId;
             }
+            $cat->ReporterID = $userId;
             $newCatID = $cat->write();
             echo "</li>";
         }

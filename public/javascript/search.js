@@ -42,7 +42,11 @@ function executeSearch(targetUrl) {
  * registers a click event on all pagination anchors that triggers a search xhr to it's href attribute
  */
 function ajaxifyPagination() {
-    find('.pagination a').forEach(function (anchor) {
+    var pagination = find('.pagination a');
+    if (!pagination) {
+        return;
+    }
+    pagination.forEach(function (anchor) {
         on(anchor, 'click', function (e) {
             e.preventDefault();
             window.scrollTo({top: 0});
@@ -54,15 +58,19 @@ function ajaxifyPagination() {
 }
 
 (function asyncSearch() {
-    var initContent = find('.search-results').outerHTML;
+    var searchResults = find('.search-results');
+    if (!searchResults) {
+        return;
+    }
+    var initContent = searchResults.outerHTML;
 
     // ajaxify form submit
     on(find('#Form_CatSearchForm'), 'submit', function (e) {
         e.preventDefault();
         setInputEnabled(false);
         var targetUrl = location.pathname
-            + '?SearchValue='
-            + find('#Form_CatSearchForm_SearchValue').value;
+            + '?SearchTitle='
+            + find('#Form_CatSearchForm_SearchTitle').value;
         executeSearch(targetUrl);
     });
 
