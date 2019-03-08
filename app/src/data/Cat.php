@@ -183,9 +183,9 @@ class Cat extends DataObject {
      * used to normalize simple yes/no/unknown dropdowns
      */
     public function Check(string $field) {
-        if ($this->$field === 'nicht bekannt') {
+        if (strcmp($this->$field, 'nicht bekannt') === 0) {
             return '?';
-        } else if ($this->field === 'ja') {
+        } else if (strcmp($this->field, 'ja') === 0) {
             return '✔';
         }
         return '✗';
