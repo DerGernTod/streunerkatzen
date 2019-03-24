@@ -8,7 +8,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class HeaderConfigExtension extends DataExtension {
-    private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif'];
+    private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
     private static $singular_name = 'Header Einstellungen';
     private static $table_name = 'Streunerkatzen_HeaderConfig';
 

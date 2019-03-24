@@ -8,7 +8,15 @@
 * zeitraum
 
 ### TODO:
-* loading spinner https://codepen.io/tkain/pen/dNQzYb
+* neue submissions: neuer account? änderungen? wie verbinden? zB "willst du account erstellen? wenn nein, achtung keine änderungen möglich!" oder unique id email mit änderungstoken - oder falls requested changes: owner email mit änderungstoken
+* blogartikel? kategorien?
+
+### Review:
+* mitglied werden: adresse nur optional (falls xx checkbox angehakt wird)
+* katzenemail mit update token (einmal updaten bei link click), custom email text bei "update anfordern"
+* blog: katzen verbinden
+* farben: multiselektion (max 3)
+* katzensuche: ab/bis datum
 
 ### Dev Environment:
 * install composer
