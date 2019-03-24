@@ -75,6 +75,36 @@ function ajax(url, method, onFinished, onError, onProgress) {
     x.send();
 }
 
+var jQueryListeners = [];
+/**
+ * adds a listener to be called as soon as jquery is initialized,
+ * or immediately if initialization is already done
+ * @param {function} listener
+ */
+function addJQueryListener(listener) {
+    if (window.jQuery) {
+        listener(window.jQuery);
+    } else {
+        jQueryListeners.push(listener);
+    }
+}
+
+(function initJqueryAvailability() {
+    var jq;
+    // wait for jquery to be defined
+    Object.defineProperty(window, 'jQuery', {
+        set: function (jQuery) {
+            jq = jQuery;
+            jQueryListeners.forEach(function (listener) {
+                listener(jQuery);
+            });
+        },
+        get: function () {
+            return jq;
+        }
+    });
+})();
+
 (function mobileMenuFunctions() {
     var openMenuButton = find('#open-mobile-menu');
     var menu = find('#main-menu');
@@ -92,9 +122,12 @@ function ajax(url, method, onFinished, onError, onProgress) {
         });
     });
 })();
+
 (function infinityHeader() {
     var collageImages = find('.collage img');
-
+    if (!collageImages) {
+        return;
+    }
     var firstCollageImageX = rect(collageImages[0]).x;
     var secondCollageImageX = rect(collageImages[1]).x;
     var singleImageWidth = secondCollageImageX - firstCollageImageX;
@@ -121,11 +154,16 @@ function ajax(url, method, onFinished, onError, onProgress) {
     extendHeader();
     on(window, 'resize', extendHeader);
 })();
+
 (function stickyMenu() {
     var navBar = find('header');
     var nav = find('.navbar');
+    var collage = find('.collage');
+    if (!collage || !nav || !navBar) {
+        return;
+    }
     var stickyNavClass = 'sticky-nav';
-    var collageStyle = window.getComputedStyle(find('.collage'));
+    var collageStyle = window.getComputedStyle(collage);
     var defaultCollageMargin = collageStyle.marginBottom;
     var defaultCollagePadding = collageStyle.paddingBottom;
     on(window, 'scroll', function () {
@@ -143,6 +181,7 @@ function ajax(url, method, onFinished, onError, onProgress) {
         }
     });
 })();
+
 (function backToTopButton() {
     var backToTopButton = find('.back-to-top');
     on(window, 'scroll', function () {
@@ -161,4 +200,16 @@ function ajax(url, method, onFinished, onError, onProgress) {
     }
     addPushStateEventListener(updateBackToTopButton);
     on(window, 'popstate', updateBackToTopButton);
+})();
+
+(function dateLocalizationFix() {
+    addJQueryListener(function (jQuery) {
+        jQuery(function () {
+            jQuery.extend(jQuery.validator.methods, {
+                date: function(a, b) {
+                    return this.optional(b) || /^\d\d?\d?\d?[.\-/]\d\d?[.\-/]\d\d\d?\d?$/.test(a)
+                }
+            });
+        });
+    })
 })();
