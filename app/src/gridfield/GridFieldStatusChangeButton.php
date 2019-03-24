@@ -92,9 +92,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             $catKey = substr($key, 9);
             $cat->$catKey = $value;
         }
-        // TODO: uncomment this when date input validation is fixed
-        // $cat->LostFoundDate = $fields["Datum"];
-        $cat->LostFoundDate = date("Y-m-d H:i:s");
+        $cat->LostFoundDate = date('Y-m-d H:i:s', strtotime($fields["CatField_LostFoundDate"]));
         $contact = $fields["CatField_Contact"];
         // search user email
         $matchingMembers = Member::get()->filter(array('Email' => $contact));
