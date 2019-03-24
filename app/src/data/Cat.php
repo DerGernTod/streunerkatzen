@@ -185,7 +185,7 @@ class Cat extends DataObject {
     public function Check(string $field) {
         if (strcmp($this->$field, 'nicht bekannt') === 0) {
             return '?';
-        } else if (strcmp($this->field, 'ja') === 0) {
+        } else if (strcmp($this->$field, 'ja') === 0) {
             return '✔';
         }
         return '✗';

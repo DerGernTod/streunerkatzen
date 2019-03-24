@@ -3,14 +3,12 @@
 namespace Streunerkatzen;
 
 use SilverStripe\Assets\Image;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
-use Streunerkatzen\FotoCollageExtension;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class HeaderConfigExtension extends DataExtension {
-    private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif'];
+    private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
     private static $singular_name = 'Header Einstellungen';
     private static $table_name = 'Streunerkatzen_HeaderConfig';
 
