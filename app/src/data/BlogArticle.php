@@ -10,7 +10,6 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
@@ -28,7 +27,6 @@ class BlogArticle extends DataObject {
     );
 
     private static $has_one = array(
-        "Author" => Member::class,
         "PostImage" => Image::class
     );
 
