@@ -1,18 +1,14 @@
 <?php
 namespace Streunerkatzen;
 
-use Psr\Log\LoggerInterface;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\HasManyList;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Security\Member;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
-use SilverStripe\UserForms\Model\Submission\SubmittedFormField;
 use SilverStripe\Control\Controller;
 
 class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_ActionProvider, GridField_URLHandler {
@@ -108,6 +104,13 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                     $colorDataObject->Cat()->Add($cat);
                 }
             }
+            if (str_contains($catKey, 'Attachment')) {
+                // if it's an attachment field, the value should be a file or empty
+                if ($value) {
+                    $cat->Attachments()->add($value);
+                    $value->publishSingle();
+                }
+            }
             $cat->$catKey = $value;
         }
         $cat->LostFoundDate = date('Y-m-d H:i:s', strtotime($fields["CatField_LostFoundDate"]));
@@ -116,7 +119,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         $matchingMembers = Member::get()->filter(array('Email' => $contact));
         if (count($matchingMembers) === 1) {
             $userId = $matchingMembers[0]->ID;
-            if ($fields["CatField_Status"] == "Vermisst") {
+            if ($fields["CatField_LostFoundStatus"] == "Vermisst") {
                 $cat->OwnerID = $userId;
             }
             $cat->ReporterID = $userId;
@@ -130,8 +133,12 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         if ($this->targetStatus == Constants::CAT_STATUS_APPROVED) {
             try {
                 $fields = [];
-                foreach ($values as $id => $field) {
-                    $fields[$field->Name] = $field->Value;
+                foreach ($values as $field) {
+                    if (str_contains($field->Name, 'Attachment')) {
+                        $fields[$field->Name] = $field->UploadedFile();
+                    } else {
+                        $fields[$field->Name] = $field->Value;
+                    }
                 }
                 $this->createCat($fields);
             } catch (Exception $e) {
