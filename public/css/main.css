@@ -908,6 +908,56 @@ ul.cat-details li:after {
   clear: both;
   display: block;
 }
+.filter-search-form input[type='radio'] {
+  display: none;
+}
+.filter-search-form input[type='radio'] + label {
+  display: block;
+  padding: 1em;
+  float: left;
+  border: 1px solid #334273;
+  background-color: white;
+  border-right: none;
+}
+.filter-search-form input[type='radio'] + label:nth-child(3) {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.filter-search-form input[type='radio'] + label:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-right: 1px solid #334273;
+}
+.filter-search-form input[type='radio']:checked + label,
+.filter-search-form input[type='radio']:checked + label:active {
+  background-color: #334273;
+  color: #fff;
+}
+.filter-search-form .filter-group {
+  margin: 2em 0;
+}
+.filter-search-form .filter-group:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+.filter-search-form select {
+  display: block;
+  background: transparent;
+  border: none;
+  overflow: auto;
+  -webkit-appearance: unset;
+  border-image-width: 0;
+}
+.filter-search-form select option {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 1em;
+  border-radius: 5px;
+}
 .loading-cat {
   position: relative;
   display: inline-block;

@@ -10,6 +10,11 @@ use SilverStripe\ORM\PaginatedList;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Core\Injector\Injector;
+use Psr\Log\LoggerInterface;
+use SilverStripe\ORM\DataList;
+use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\ArrayList;
 
 class CatSearchPageController extends PageController {
 
@@ -17,8 +22,11 @@ class CatSearchPageController extends PageController {
         'view'
     ];
 
+    private $dropdowns;
+
     protected function init() {
         parent::init();
+        $this->dropdowns = Cat::getCatDropdownsWithOptions();
         Requirements::themedJavascript("search.js");
     }
 
@@ -74,5 +82,13 @@ class CatSearchPageController extends PageController {
         } else {
             return [ 'Cat' => $cat ];
         }
+    }
+
+    public function getDropdownOptions($dropdown) {
+        $arrListData = [];
+        foreach ($this->dropdowns['CatField_'.$dropdown] as $value) {
+            $arrListData[] = ArrayData::create(["Text" => $value]);
+        }
+        return ArrayList::create($arrListData);
     }
 }
