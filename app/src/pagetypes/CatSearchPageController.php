@@ -42,14 +42,18 @@ class CatSearchPageController extends PageController {
                     if ($value != '') {
                         $filter['Title:PartialMatch'] = $value;
                     }
-                } else if ($key == 'ajax') {
+                } else if ($key == 'ajax' || $key == 'start') {
                     continue;
                 } else {
                     $filteredResult = array_filter($value, function ($curVal) {
                         return $curVal != 'nicht bekannt';
-                    });;
+                    });
                     if (count($filteredResult) > 0) {
-                        $filter[$key] = $filteredResult;
+                        if ($key == 'HairColor') {
+                            $filter['HairColors.Title'] = $filteredResult;
+                        } else {
+                            $filter[$key] = $filteredResult;
+                        }
                     }
                 }
             }

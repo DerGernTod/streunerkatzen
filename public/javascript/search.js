@@ -72,7 +72,7 @@ function preSelectInputs() {
         if (match && match.length > 1) {
             var key = match[1];
             var val = decodeURIComponent(keyValPair[1]);
-            var inputElem = find('#filter-field-' + key + '-' + val);
+            var inputElem = find('#filter-field-' + key + '-' + val.replace(/ /g, '\\ '));
             if (inputElem) {
                 inputElem.setAttribute('checked', 'checked');
             }
