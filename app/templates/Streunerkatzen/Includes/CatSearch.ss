@@ -1,20 +1,19 @@
 $Content
-<form class="filter-search-form">
-    <div id="filter-is-castrated" class="filter-group">
-        <h2>Kastriert?</h2>
-        <% loop getDropdownOptions('IsCastrated') %>
-            <input type="radio" name="is-castrated" id="is-castrated-$Text"></input>
-            <label for="is-castrated-$Text">$Text</label>
-        <% end_loop %>
-    </div>
-    <div id="filter-hair-color" class="filter-group">
-        <h2>Fellfarben</h2>
-        <% loop getDropdownOptions('IsCastrated') %>
-            <input type="checkbox" name="hair-color" id="hair-color-$Text"></input>
-            <label for="hair-color-$Text">$Text</label>
-        <% end_loop %>
-    </div>
-</form>#is-castrated-nicht\20 bekannt
 $CatSearchForm
+<form class="filter-search-form">
+    <% loop getFilters() %>
+        <div id="filter-$Title" class="filter-group">
+            <h2>$Label</h2>
+            <div class="filter-group-content-container">
+                <div class="filter-group-content">
+                    <% loop $Values %>
+                        <input type="$Up.InputType" class="filter-field" name="filter-field-$Up.Title" id="filter-field-$Up.Title-$Text"></input>
+                        <label for="filter-field-$Up.Title-$Text">$Text</label>
+                    <% end_loop %>
+                </div>
+            </div>
+        </div>
+    <% end_loop %>
+</form>
 
 <% include Streunerkatzen/CatSearchResult %>

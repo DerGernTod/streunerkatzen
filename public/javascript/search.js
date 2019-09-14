@@ -1,3 +1,4 @@
+var curAjax;
 /**
  * replaces the current content of the search result, and enables the newly created pagination
  * @param {string} newContent
@@ -27,9 +28,13 @@ function setInputEnabled(enabled) {
  * @param {string} targetUrl
  */
 function executeSearch(targetUrl) {
-    ajax(targetUrl + '&ajax=1', 'GET', function (xhr) {
+    if (curAjax) {
+        curAjax.abort();
+    }
+    curAjax = ajax(targetUrl + '&ajax=1', 'GET', function (xhr) {
         replaceSearchContent(xhr.response);
-        window.scrollTo({top: 0});
+
+        window.scrollTo({top: find('.search-results').offsetTop});
         triggerPushState({ searchResult: xhr.response }, document.title, targetUrl);
         setInputEnabled(true);
     }, function () {
@@ -51,10 +56,63 @@ function ajaxifyPagination() {
             e.preventDefault();
             window.scrollTo({top: 0});
             setInputEnabled(false);
-            var targetUrl = e.target.getAttribute('href').replace(/ajax=1/, '');
+            var targetUrl = e.target.getAttribute('href').replace(/[?&]?ajax=1/, '');
             executeSearch(targetUrl);
         });
     });
+}
+
+function preSelectInputs() {
+    location.search.substr(1).split('&')
+    .map(function (elem) {
+        return elem.split('=');
+    })
+    .forEach(function (keyValPair) {
+        var match = /(.*)\[[0-9].*\]/.exec(keyValPair[0]);
+        if (match && match.length > 1) {
+            var key = match[1];
+            var val = decodeURIComponent(keyValPair[1]);
+            var inputElem = find('#filter-field-' + key + '-' + val);
+            if (inputElem) {
+                inputElem.setAttribute('checked', 'checked');
+            }
+        }
+    });
+
+}
+
+function buildUrlAndSearch() {
+    setInputEnabled(false);
+    var filters = {};
+    var filteredElems = find('.filter-field:checked');
+    function pushFilter(input) {
+        var match = /filter-field-([A-Za-z]*)-(.*)/g.exec(input.id);
+        if (match.length != 3) {
+            return;
+        }
+        if (!filters[match[1]]) {
+            filters[match[1]] = [];
+        }
+        filters[match[1]].push(match[2]);
+    }
+    if (filteredElems.forEach) {
+        filteredElems.forEach(pushFilter);
+    } else if (filteredElems) {
+        pushFilter(filteredElems);
+    }
+    var filterParams = [];
+    for (var key in filters) {
+        filters[key].forEach(function(item, index) {
+            filterParams.push(key + '[' + index + ']=' + encodeURIComponent(item));
+        });
+    }
+
+    var targetUrl = location.pathname
+        + '?SearchTitle='
+        + find('#Form_CatSearchForm_SearchTitle').value
+        + '&'
+        + filterParams.join('&');
+    executeSearch(targetUrl);
 }
 
 (function asyncSearch() {
@@ -67,11 +125,12 @@ function ajaxifyPagination() {
     // ajaxify form submit
     on(find('#Form_CatSearchForm'), 'submit', function (e) {
         e.preventDefault();
-        setInputEnabled(false);
-        var targetUrl = location.pathname
-            + '?SearchTitle='
-            + find('#Form_CatSearchForm_SearchTitle').value;
-        executeSearch(targetUrl);
+        buildUrlAndSearch();
+    });
+    find('input[type="checkbox"],input[type="radio"]').forEach(function (filterElem) {
+        on(filterElem, 'change', function (e) {
+            buildUrlAndSearch();
+        });
     });
 
     on(window, 'popstate', function(e) {
@@ -83,4 +142,5 @@ function ajaxifyPagination() {
     });
 
     ajaxifyPagination();
+    preSelectInputs();
 })();

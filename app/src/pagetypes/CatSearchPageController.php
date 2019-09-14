@@ -32,11 +32,31 @@ class CatSearchPageController extends PageController {
 
     public function index(HTTPRequest $request) {
         $cats = Cat::get();
-        $searchTitle = $request->getVar('SearchTitle');
-        if ($searchTitle) {
-            $cats = $cats->filter([
-                'Title:PartialMatch' => $searchTitle,
-            ]);
+        $searchDone = false;
+
+        $params = $request->getVars();
+        $filter = [];
+        if ($params) {
+            foreach($params as $key => $value) {
+                if ($key == 'SearchTitle') {
+                    if ($value != '') {
+                        $filter['Title:PartialMatch'] = $value;
+                    }
+                } else if ($key == 'ajax') {
+                    continue;
+                } else {
+                    $filteredResult = array_filter($value, function ($curVal) {
+                        return $curVal != 'nicht bekannt';
+                    });;
+                    if (count($filteredResult) > 0) {
+                        $filter[$key] = $filteredResult;
+                    }
+                }
+            }
+        }
+        if (count($filter) > 0) {
+            $searchDone = true;
+            $cats = $cats->filter($filter);
         }
         $paginatedCats = PaginatedList::create(
             $cats,
@@ -44,7 +64,8 @@ class CatSearchPageController extends PageController {
         )->setPageLength(25);
         $result = [
             'Results' => $paginatedCats,
-            'SearchDone' => isset($searchTitle)
+            'SearchDone' => $searchDone,
+            'Filters' => $filter
         ];
         if ($request->isAjax()) {
             return $this
@@ -63,8 +84,7 @@ class CatSearchPageController extends PageController {
             ),
             FieldList::create(
                 FormAction::create('sendSearch', 'Suchen')
-            ),
-            RequiredFields::create('SearchTitle')
+            )
         )
         ->setFormMethod('GET')
         ->setFormAction($this->Link())
@@ -82,6 +102,29 @@ class CatSearchPageController extends PageController {
         } else {
             return [ 'Cat' => $cat ];
         }
+    }
+
+    public function getFilters() {
+        return ArrayList::create([
+            ArrayData::create([
+                "Title" => "Gender",
+                "Label" => "Geschlecht",
+                "InputType" => "radio",
+                "Values" => $this->getDropdownOptions("Gender")
+            ]),
+            ArrayData::create([
+                "Title" => "IsCastrated",
+                "Label" => "Kastriert?",
+                "InputType" => "radio",
+                "Values" => $this->getDropdownOptions("IsCastrated")
+            ]),
+            ArrayData::create([
+                "Title" => "HairColor",
+                "Label" => "Fellfarben",
+                "InputType" => "checkbox",
+                "Values" => $this->getDropdownOptions("HairColor")
+            ])
+        ]);
     }
 
     public function getDropdownOptions($dropdown) {

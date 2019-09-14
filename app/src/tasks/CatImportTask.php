@@ -3,12 +3,7 @@
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Security\Member;
 use Streunerkatzen\Cat;
-use Streunerkatzen\LostFoundTime;
 use Streunerkatzen\CatExporter;
-use Streunerkatzen\User;
-use Streunerkatzen\HairColor;
-use Streunerkatzen\HairLength;
-use Streunerkatzen\LostFoundStatus;
 
 class CatImportTask extends BuildTask {
 

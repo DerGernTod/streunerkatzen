@@ -41,7 +41,6 @@ class BlogArticle extends DataObject {
     public function getCMSFields() {
         $fields = FieldList::create(
             TextField::create('Title', 'Titel'),
-            DropdownField::create('AuthorID', 'Autor', Member::get()->map('ID', 'FullName')),
             DateField::create('PublishTime', 'Datum der Veröffentlichung'),
             TextareaField::create('Abstract', 'Kurzfassung'),
             HtmlEditorField::create('Content', 'Inhalt'),
@@ -53,13 +52,5 @@ class BlogArticle extends DataObject {
             ->getValidator()
             ->setAllowedExtensions(BlogArticle::ALLOWED_FILE_ENDINGS);
         return $fields;
-    }
-
-    public function onBeforeWrite()
-    {
-        if(!$this->isInDb()) {
-            $this->AuthorID = Security::getCurrentUser()->ID;
-        }
-        parent::onBeforeWrite();
     }
 }
