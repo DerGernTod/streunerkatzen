@@ -87,9 +87,27 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
     public function createCat($fields) {
         $cat = Cat::create();
         $cat->PublishTime = date("Y-m-d H:i:s");
+        $catHairColors = [];
         foreach ($fields as $key => $value) {
             // strip away "CatField_"
             $catKey = substr($key, 9);
+            if (str_contains($catKey, 'HairColor')) {
+                $colors = preg_split('/;/', $value);
+                foreach ($colors as $color) {
+                    $colorDataObject = HairColor::get()->filter("Title", $color)->first();
+                    if (!$colorDataObject) {
+                        $colorDataObject = HairColor::create();
+                        $colorDataObject->Title = $color;
+                        $colorDataObject->write();
+                    }
+                    ob_start();
+                    var_dump($colorDataObject);
+
+                    Injector::inst()->get(LoggerInterface::class)->warning('color data object is '.ob_get_clean());
+                    $cat->HairColors()->Add($colorDataObject);
+                    $colorDataObject->Cat()->Add($cat);
+                }
+            }
             $cat->$catKey = $value;
         }
         $cat->LostFoundDate = date('Y-m-d H:i:s', strtotime($fields["CatField_LostFoundDate"]));

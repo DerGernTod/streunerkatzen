@@ -12,6 +12,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Forms\ListboxField;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -50,8 +51,7 @@ class Cat extends DataObject {
 
         'LostFoundTime' => 'Varchar(250)',
         'LostFoundStatus' => 'Varchar(250)',
-        'HairLength' => 'Varchar(250)',
-        'HairColor' => 'Varchar(250)',
+        'HairLength' => 'Varchar(250)'
     ];
         // owner/finder/contact
         // 'PublishStatus' => 'Varchar(20)',
@@ -65,7 +65,8 @@ class Cat extends DataObject {
     ];
 
     private static $many_many = [
-        'Attachments' => File::class
+        'Attachments' => File::class,
+        'HairColors' => HairColor::class
     ];
 
     private static $owns = [
@@ -115,7 +116,7 @@ class Cat extends DataObject {
                 'Geschlecht',
                 $result['CatField_Gender']
             ),
-            DropdownField::create('HairColor', 'Fellfarbe', $result['CatField_HairColor']),
+            ListboxField::create('HairColors', 'Fellfarben', HairColor::get()->map('ID', 'Title')),
             DropdownField::create('HairLength', 'Haarlänge', $result['CatField_HairLength']),
             TextField::create('Characteristics', 'Besonderheiten'),
             TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
