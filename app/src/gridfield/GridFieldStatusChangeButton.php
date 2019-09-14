@@ -94,9 +94,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                 $colors = preg_split('/;/', $value);
                 $colorOptions = EditableOption::get()->filter(array('Title' => $colors));
                 foreach ($colorOptions as $colorOption) {
-                    Injector::inst()->get(LoggerInterface::class)->warning('color data object is '.ob_get_clean());
                     $cat->HairColors()->Add($colorOption);
-                    //$colorOption->Cats()->Add($cat);
                 }
             }
             if (str_contains($catKey, 'Attachment')) {
