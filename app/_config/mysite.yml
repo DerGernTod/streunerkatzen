@@ -18,3 +18,6 @@ SilverStripe\Assets\Image:
 SilverStripe\UserForms\Model\UserDefinedForm:
   extensions:
     - Streunerkatzen\UserDefinedFormExtension
+SilverStripe\UserForms\Model\EditableFormField\EditableOption:
+  extension:
+    - Streunerkatzen\EditableOptionExtension

@@ -2,13 +2,9 @@
 
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Security\Member;
+use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 use Streunerkatzen\Cat;
-use Streunerkatzen\LostFoundTime;
 use Streunerkatzen\CatExporter;
-use Streunerkatzen\User;
-use Streunerkatzen\HairColor;
-use Streunerkatzen\HairLength;
-use Streunerkatzen\LostFoundStatus;
 
 class CatImportTask extends BuildTask {
 
@@ -39,7 +35,11 @@ class CatImportTask extends BuildTask {
             $cat->HasPetCollar = $fields["halsband"];
             $lostFoundStatus = $fields["gesuchtgefunden"];
             $cat->LostFoundStatus = $this->mapLostFoundStatus($lostFoundStatus);
-            $cat->HairColor = $this->mapHairColor($catEntry["categories"]["name"]);
+            $hairColor = $this->mapHairColor($catEntry["categories"]["name"]);
+            $mappedColor = EditableOption::get()->filter(array('Title' => $hairColor))->first();
+            if ($mappedColor) {
+                $cat->HairColors()->Add($mappedColor);
+            }
             $cat->HairLength = $this->mapHairLength($fields["haarlnge"]);
             $cat->LostFoundTime = $fields["tageszeit"];
             $cat->Attachments = createAttachments($catEntry["resources"], $catEntry["images"]);

@@ -3,7 +3,7 @@
  * @param {string} selector
  */
 function find(selector) {
-    var result = document.querySelectorAll(selector);
+    var result = document.querySelectorAll(selector.replace(/\//g, '\\/'));
     if (result.length === 1) {
         return result[0];
     }

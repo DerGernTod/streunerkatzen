@@ -13,6 +13,8 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\ListboxField;
+use SilverStripe\UserForms\Model\EditableFormField;
+use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -66,7 +68,7 @@ class Cat extends DataObject {
 
     private static $many_many = [
         'Attachments' => File::class,
-        'HairColors' => HairColor::class
+        'HairColors' => EditableOption::class
     ];
 
     private static $owns = [
@@ -116,7 +118,11 @@ class Cat extends DataObject {
                 'Geschlecht',
                 $result['CatField_Gender']
             ),
-            ListboxField::create('HairColors', 'Fellfarben', HairColor::get()->map('ID', 'Title')),
+            ListboxField::create('HairColors', 'Fellfarben',
+                EditableOption::get()
+                ->leftJoin(DataObject::getSchema()->tableName(EditableFormField::class), 'formField.ID = EditableOption.ParentID', 'formField')
+                ->where('"formField"."Name" = \'CatField_HairColor\'')
+                ->map('ID', 'Title')),
             DropdownField::create('HairLength', 'Haarlänge', $result['CatField_HairLength']),
             TextField::create('Characteristics', 'Besonderheiten'),
             TextField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),

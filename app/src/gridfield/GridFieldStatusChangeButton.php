@@ -1,6 +1,7 @@
 <?php
 namespace Streunerkatzen;
 
+use Psr\Log\LoggerInterface;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Member;
@@ -10,6 +11,8 @@ use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 
 class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_ActionProvider, GridField_URLHandler {
 
@@ -89,19 +92,9 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             $catKey = substr($key, 9);
             if (str_contains($catKey, 'HairColor')) {
                 $colors = preg_split('/;/', $value);
-                foreach ($colors as $color) {
-                    $colorDataObject = HairColor::get()->filter("Title", $color)->first();
-                    if (!$colorDataObject) {
-                        $colorDataObject = HairColor::create();
-                        $colorDataObject->Title = $color;
-                        $colorDataObject->write();
-                    }
-                    ob_start();
-                    var_dump($colorDataObject);
-
-                    Injector::inst()->get(LoggerInterface::class)->warning('color data object is '.ob_get_clean());
-                    $cat->HairColors()->Add($colorDataObject);
-                    $colorDataObject->Cat()->Add($cat);
+                $colorOptions = EditableOption::get()->filter(array('Title' => $colors));
+                foreach ($colorOptions as $colorOption) {
+                    $cat->HairColors()->Add($colorOption);
                 }
             }
             if (str_contains($catKey, 'Attachment')) {
