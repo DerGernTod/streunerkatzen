@@ -1,6 +1,7 @@
 <?php
 namespace Streunerkatzen;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
@@ -11,7 +12,10 @@ use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Email\Email;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Security\RandomGenerator;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 
 class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_ActionProvider, GridField_URLHandler {
@@ -26,13 +30,15 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
     private $actionName;
     private $sourceData;
     private $buttonStyleClass = "btn";
+    private $textArea;
 
     //TargetFragment is just for positioning control of the HTML fragment
-    public function __construct(string $targetFragment = "after", string $targetStatus, DataObject $sourceData) {
+    public function __construct(string $targetFragment = "after", string $targetStatus, DataObject $sourceData, TextareaField $textArea = null) {
         $this->targetFragment = $targetFragment;
         $this->targetStatus = $targetStatus;
         $this->actionName = 'state-transition-' . strtolower($targetStatus);
         $this->sourceData = $sourceData;
+        $this->textArea = $textArea;
         switch ($targetStatus) {
             case Constants::CAT_STATUS_APPROVED:
                 $this->buttonTitle = GridFieldStatusChangeButton::ACCEPT;
@@ -72,7 +78,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
 
     public function handleAction(GridField $gridField, $actionName, $arguments, $data) {
         if($actionName == $this->actionName) {
-            return $this->handleButtonAction();
+            return $this->handleButtonAction($data);
         }
     }
 
@@ -121,7 +127,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
     }
 
     //Handle the custom action, for both the action button and the URL
-    public function handleButtonAction() {
+    public function handleButtonAction($submittedData) {
         $values = $this->sourceData->Values();
         if ($this->targetStatus == Constants::CAT_STATUS_APPROVED) {
             try {
@@ -141,7 +147,46 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             // $this->sourceData->delete();
         }
         $this->sourceData->ActivationStatus = $this->targetStatus;
+        $this->sourceData->ReviewMessage = $submittedData["ReviewMessage"];
+        $token = (new RandomGenerator())->randomToken();
+        $this->sourceData->EditToken = $token;
         $this->sourceData->write();
+        if ($this->targetStatus == Constants::CAT_STATUS_IN_REVIEW) {
+            try {
+                $mailFields = $values->filter(array('Name' => ['CatField_Contact', 'CatField_Title']));
+                foreach($mailFields as $field) {
+                    switch($field->Name) {
+                        case 'CatField_Contact':
+                        $address = $field->Value;
+                        break;
+                        case 'CatField_Title':
+                        $catName = $field->Value;
+                        break;
+                    }
+                }
+                $address = 'admin@localhost';
+                $reviewMessage = $submittedData["ReviewMessage"];
+
+                $link = $this->sourceData->Parent()->AbsoluteLink()."?token=".$token;
+                $tokenLink = "<a href='$link'>$link</a>";
+
+                $template = str_replace('$CatName', $catName, $this->sourceData->Parent()->CatReviewTemplate);
+                $template = str_replace('$ReviewComment', $reviewMessage, $template);
+                $template = str_replace('$EntryLink', $tokenLink, $template);
+
+                $email = new Email('noreply@streunerkatzen.org', $address, 'Überarbeite Deinen Eintrag', $template);
+                echo "$address<br />$template";
+                $result = $email->send();
+                if (!$result) {
+                    throw new Exception("Error sending email.");
+                }
+            } catch (Exception $e) {
+                var_dump($e);
+                Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'. Beachte, dass keine Email versandt wurde!"));
+                return;
+            }
+        }
         Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'"));
     }
 }
+

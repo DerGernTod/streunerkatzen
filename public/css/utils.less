@@ -1,0 +1,11 @@
+// main: main.less
+
+.heightClearfix() {
+    &:after {
+        content: ".";
+        height: 0;
+        visibility: hidden;
+        clear: both;
+        display: block;
+    }
+}
