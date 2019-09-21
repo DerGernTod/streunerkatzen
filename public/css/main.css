@@ -36,6 +36,23 @@
   justify-content: space-between;
   align-items: baseline;
 }
+.userform .field.text input,
+.userform .field.dropdown input,
+.userform .field.listbox input,
+.userform .field.textarea input,
+.userform .field.file input,
+.userform .field.text select,
+.userform .field.dropdown select,
+.userform .field.listbox select,
+.userform .field.textarea select,
+.userform .field.file select,
+.userform .field.text textarea,
+.userform .field.dropdown textarea,
+.userform .field.listbox textarea,
+.userform .field.textarea textarea,
+.userform .field.file textarea {
+  width: 14em;
+}
 .userform .field.checkbox .middleColumn {
   flex-direction: row-reverse;
 }
