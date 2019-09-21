@@ -1,3 +1,31 @@
+#Form_CatSearchForm {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 300px;
+  clear: both;
+}
+#Form_CatSearchForm .field {
+  float: left;
+}
+#Form_CatSearchForm .field label {
+  display: none;
+}
+#Form_CatSearchForm .field input {
+  width: 14em;
+  padding: .4em;
+}
+#Form_CatSearchForm input[type="submit"] {
+  padding: .5em;
+  min-width: 6em;
+}
+#Form_CatSearchForm:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
 .user-form-container {
   max-width: 500px;
   margin-left: auto;

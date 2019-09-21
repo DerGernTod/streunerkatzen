@@ -1,5 +1,27 @@
 // main: main.less
 @import "utils.less";
+#Form_CatSearchForm {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 300px;
+    .field {
+        float: left;
+        label {
+            display: none;
+        }
+        input {
+            width: 14em;
+            padding: .4em;
+        }
+    }
+    input[type="submit"] {
+        padding: .5em;
+        min-width: 6em;
+    }
+    clear: both;
+    .heightClearfix();
+}
 .user-form-container {
     max-width: 500px;
     margin-left: auto;
