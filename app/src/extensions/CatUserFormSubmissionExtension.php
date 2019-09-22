@@ -2,12 +2,16 @@
 namespace Streunerkatzen;
 
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldButtonRow;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\GridField\GridFieldPrintButton;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\TextField;
 
 class CatUserFormSubmissionExtension extends DataExtension {
     private static $db = [
@@ -16,7 +20,9 @@ class CatUserFormSubmissionExtension extends DataExtension {
             .Constants::CAT_STATUS_IN_REVIEW.','
             .Constants::CAT_STATUS_EDITED.','
             .Constants::CAT_STATUS_REJECTED.','
-            .Constants::CAT_STATUS_APPROVED.'")'
+            .Constants::CAT_STATUS_APPROVED.'")',
+        'ReviewMessage' => 'Varchar(1000)',
+        'EditToken' => 'Varchar(128)'
     ];
 
     public function updateCMSFields(FieldList $fields) {
@@ -24,15 +30,12 @@ class CatUserFormSubmissionExtension extends DataExtension {
             $activationStatus = $this->owner->ActivationStatus;
             $fields->replaceField('ActivationStatus',
                 ReadonlyField::create('ActivationStatus', 'Status', $activationStatus));
-            // unfortunately we can't get the values field because apparently if you remove
-            // a field and add it afterwards, it doesn't get an id, and the userforms
-            // guys forgot to add it...
-            // roottab->main->Values
-            $values = $fields->items[0]->children->items[0]->children->items[2];
+            $fields->removeByName('ReviewMessage');
+            $targetFieldForButtons = $fields->dataFieldByName('Values');
             $config = GridFieldConfig::create();
             $config->addComponent(new GridFieldDataColumns());
             $config->addComponent(new GridFieldButtonRow('after'));
-            $addRequestReviewButton = false;
+            $addRequestReviewButton = true;
             $addRejectButton = false;
             $addAcceptButton = false;
             switch ($activationStatus) {
@@ -55,12 +58,17 @@ class CatUserFormSubmissionExtension extends DataExtension {
                 $config->addComponent(new GridFieldStatusChangeButton('after', Constants::CAT_STATUS_APPROVED, $this->owner));
             }
             if ($addRequestReviewButton) {
-                $config->addComponent(new GridFieldStatusChangeButton('after', Constants::CAT_STATUS_IN_REVIEW, $this->owner));
+                $textArea = TextareaField::create(
+                    'ReviewMessage',
+                    'Nachricht an Verfasser',
+                    'Bitte die folgenden Punkte ergänzen:');
+                $fields->insertAfter('Values', $textArea);
+                $config->addComponent(new GridFieldStatusChangeButton('after', Constants::CAT_STATUS_IN_REVIEW, $this->owner, $textArea));
             }
             if ($addRejectButton) {
                 $config->addComponent(new GridFieldStatusChangeButton('after', Constants::CAT_STATUS_REJECTED, $this->owner));
             }
-            $values->setConfig($config);
+            $targetFieldForButtons->setConfig($config);
         }
     }
 }

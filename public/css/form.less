@@ -1,0 +1,92 @@
+// main: main.less
+@import "utils.less";
+.buttonStyle() {
+    padding: .5em;
+    min-width: 6em;
+}
+#Form_CatSearchForm {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 300px;
+    .field {
+        float: left;
+        label {
+            display: none;
+        }
+        input {
+            width: 14em;
+            padding: .4em;
+        }
+    }
+    input[type="submit"] {
+        .buttonStyle();
+    }
+    clear: both;
+    .heightClearfix();
+}
+.user-form-container {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.userform {
+    .userform-progress {
+        & > p {
+            display: none;
+        }
+        .step-button-jump {
+            position: inherit;
+        }
+        .step-button-wrapper {
+            display: block;
+            &.current button {
+                color: lightgray;
+                border-color: rgba(0, 0, 0, 0);
+            }
+        }
+    }
+    nav {
+        margin: .5em 0;
+    }
+    button {
+        .buttonStyle();
+    }
+    .field {
+        &.text, &.dropdown, &.listbox, &.textarea, &.checkbox .middleColumn, &.file {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        &.text, &.dropdown, &.listbox, &.textarea, &.file {
+            input, select, textarea {
+                width: 14em;
+            }
+        }
+        // input[type="file"].file {
+        //     display: none;
+        // }
+        &.checkbox .middleColumn {
+            flex-direction: row-reverse;
+        }
+        margin: .5em;
+        label {
+            font-weight: 100;
+            float: left;
+        }
+    }
+    input, select, textarea {
+        padding: .4em;
+        margin: .25em 0;
+    }
+    .step-navigation, .userform-progress {
+        margin: .5em;
+        .step-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .step-button-wrapper {
+        display: flex;
+    }
+}

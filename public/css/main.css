@@ -1,3 +1,111 @@
+#Form_CatSearchForm {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 300px;
+  clear: both;
+}
+#Form_CatSearchForm .field {
+  float: left;
+}
+#Form_CatSearchForm .field label {
+  display: none;
+}
+#Form_CatSearchForm .field input {
+  width: 14em;
+  padding: .4em;
+}
+#Form_CatSearchForm input[type="submit"] {
+  padding: .5em;
+  min-width: 6em;
+}
+#Form_CatSearchForm:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+.user-form-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.userform .userform-progress > p {
+  display: none;
+}
+.userform .userform-progress .step-button-jump {
+  position: inherit;
+}
+.userform .userform-progress .step-button-wrapper {
+  display: block;
+}
+.userform .userform-progress .step-button-wrapper.current button {
+  color: lightgray;
+  border-color: rgba(0, 0, 0, 0);
+}
+.userform nav {
+  margin: .5em 0;
+}
+.userform button {
+  padding: .5em;
+  min-width: 6em;
+}
+.userform .field {
+  margin: .5em;
+}
+.userform .field.text,
+.userform .field.dropdown,
+.userform .field.listbox,
+.userform .field.textarea,
+.userform .field.checkbox .middleColumn,
+.userform .field.file {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.userform .field.text input,
+.userform .field.dropdown input,
+.userform .field.listbox input,
+.userform .field.textarea input,
+.userform .field.file input,
+.userform .field.text select,
+.userform .field.dropdown select,
+.userform .field.listbox select,
+.userform .field.textarea select,
+.userform .field.file select,
+.userform .field.text textarea,
+.userform .field.dropdown textarea,
+.userform .field.listbox textarea,
+.userform .field.textarea textarea,
+.userform .field.file textarea {
+  width: 14em;
+}
+.userform .field.checkbox .middleColumn {
+  flex-direction: row-reverse;
+}
+.userform .field label {
+  font-weight: 100;
+  float: left;
+}
+.userform input,
+.userform select,
+.userform textarea {
+  padding: .4em;
+  margin: .25em 0;
+}
+.userform .step-navigation,
+.userform .userform-progress {
+  margin: .5em;
+}
+.userform .step-navigation .step-buttons,
+.userform .userform-progress .step-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.userform .step-button-wrapper {
+  display: flex;
+}
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +141,9 @@ body {
 .collage img {
   margin: 2px;
   float: left;
+}
+header {
+  z-index: 9000;
 }
 header a {
   text-decoration: none;
