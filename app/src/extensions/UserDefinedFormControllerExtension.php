@@ -8,6 +8,7 @@ use SilverStripe\View\Requirements;
 
 class UserDefinedFormControllerExtension extends DataExtension {
     public function onAfterInit() {
+        Requirements::themedJavascript("form.js");
         $token = $this->owner->getRequest()->getVar('token');
         if (!$token) {
             return;
@@ -30,7 +31,6 @@ class UserDefinedFormControllerExtension extends DataExtension {
             }
         }
 
-        Requirements::themedJavascript("form.js");
     }
     public function Form() {
         echo 'fooo';

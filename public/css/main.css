@@ -103,6 +103,9 @@
   display: flex;
   justify-content: space-between;
 }
+.userform .step-button-wrapper {
+  display: flex;
+}
 * {
   margin: 0;
   padding: 0;

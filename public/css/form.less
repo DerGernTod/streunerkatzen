@@ -1,5 +1,9 @@
 // main: main.less
 @import "utils.less";
+.buttonStyle() {
+    padding: .5em;
+    min-width: 6em;
+}
 #Form_CatSearchForm {
     display: flex;
     align-items: baseline;
@@ -16,8 +20,7 @@
         }
     }
     input[type="submit"] {
-        padding: .5em;
-        min-width: 6em;
+        .buttonStyle();
     }
     clear: both;
     .heightClearfix();
@@ -47,8 +50,7 @@
         margin: .5em 0;
     }
     button {
-        padding: .5em;
-        min-width: 6em;
+        .buttonStyle();
     }
     .field {
         &.text, &.dropdown, &.listbox, &.textarea, &.checkbox .middleColumn, &.file {
@@ -83,5 +85,8 @@
             display: flex;
             justify-content: space-between;
         }
+    }
+    .step-button-wrapper {
+        display: flex;
     }
 }
