@@ -13,6 +13,16 @@ function find(selector) {
     return result;
 }
 
+function forEach(array, callback) {
+    if (array.forEach) {
+        array.forEach(callback);
+    } else {
+        for (var i = 0; i < array.length; i++) {
+            callback(array[i], i, array);
+        }
+    }
+}
+
 /**
  * shorthand for getBoundingClientRect
  * @param {HTMLElement} element
@@ -28,7 +38,13 @@ function rect(element) {
  * @param {function} listener
  */
 function on(element, event, listener) {
-    element.addEventListener(event, listener);
+    if (element.addEventListener) {
+        element.addEventListener(event, listener);
+    } else {
+        forEach(element, function(elem) {
+            elem.addEventListener(event, listener);
+        });
+    }
 }
 
 var pushStateListeners = [];
@@ -44,7 +60,7 @@ function addPushStateEventListener(listener) {
  */
 function triggerPushState(pushStateOptions, title, url) {
     window.history.pushState(pushStateOptions, title, url);
-    pushStateListeners.forEach(function (cb) { cb(url); });
+    forEach(pushStateListeners, function (cb) { cb(url); });
 }
 
 /**
@@ -95,7 +111,7 @@ function addJQueryListener(listener) {
     Object.defineProperty(window, 'jQuery', {
         set: function (jQuery) {
             jq = jQuery;
-            jQueryListeners.forEach(function (listener) {
+            forEach(jQueryListeners, function (listener) {
                 listener(jQuery);
             });
         },
@@ -116,7 +132,7 @@ function addJQueryListener(listener) {
     }
 
     var subMenuButtons = find('.show-sub-items');
-    subMenuButtons.forEach(function(button) {
+    forEach(subMenuButtons, function(button) {
         on(button, 'click', function() {
             button.nextElementSibling.classList.toggle('open');
         });

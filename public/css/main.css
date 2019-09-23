@@ -88,12 +88,6 @@
   font-weight: 100;
   float: left;
 }
-.userform input,
-.userform select,
-.userform textarea {
-  padding: .4em;
-  margin: .25em 0;
-}
 .userform .step-navigation,
 .userform .userform-progress {
   margin: .5em;
@@ -105,6 +99,12 @@
 }
 .userform .step-button-wrapper {
   display: flex;
+}
+input,
+select,
+textarea {
+  padding: .4em;
+  margin: .25em 0;
 }
 * {
   margin: 0;
@@ -131,6 +131,9 @@ body {
 }
 #footer a:hover {
   color: #eee;
+}
+.hidden {
+  display: none;
 }
 .collage {
   height: 204px;
@@ -1038,6 +1041,7 @@ ul.cat-details li:after {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   margin: -1px;
 }
 .filter-search-form input[type='radio'],

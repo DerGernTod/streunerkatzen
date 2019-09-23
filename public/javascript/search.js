@@ -13,7 +13,7 @@ function replaceSearchContent(newContent) {
  * @param {boolean} enabled
  */
 function setInputEnabled(enabled) {
-    find('#Form_CatSearchForm').querySelectorAll('input').forEach(function (input) {
+    forEach(find('#Form_CatSearchForm').querySelectorAll('input'), function (input) {
         if (enabled) {
             input.removeAttribute('disabled', 'disabled');
         } else {
@@ -28,6 +28,7 @@ function setInputEnabled(enabled) {
  * @param {string} targetUrl
  */
 function executeSearch(targetUrl) {
+    setInputEnabled(false);
     if (curAjax) {
         curAjax.abort();
     }
@@ -51,7 +52,7 @@ function ajaxifyPagination() {
     if (!pagination) {
         return;
     }
-    pagination.forEach(function (anchor) {
+    forEach(pagination, function (anchor) {
         on(anchor, 'click', function (e) {
             e.preventDefault();
             window.scrollTo({top: 0});
@@ -82,8 +83,8 @@ function preSelectInputs() {
 }
 
 function buildUrlAndSearch() {
-    setInputEnabled(false);
     var filters = {};
+    // filter on checkboxes and radios
     var filteredElems = find('.filter-field:checked');
     function pushFilter(input) {
         var match = /filter-field-([A-Za-z]*)-(.*)/g.exec(input.id);
@@ -95,16 +96,35 @@ function buildUrlAndSearch() {
         }
         filters[match[1]].push(match[2]);
     }
-    if (filteredElems.forEach) {
-        filteredElems.forEach(pushFilter);
+    if (filteredElems.length) {
+        forEach(filteredElems, pushFilter);
     } else if (filteredElems) {
         pushFilter(filteredElems);
     }
+
     var filterParams = [];
     for (var key in filters) {
-        filters[key].forEach(function(item, index) {
+        forEach(filters[key], function(item, index) {
             filterParams.push(key + '[' + index + ']=' + encodeURIComponent(item));
         });
+    }
+    // filter on date
+    var from = find('#filter-field-LostFoundDate-from').value;
+    var to = find('#filter-field-LostFoundDate-to').value;
+    var dateRegex = /([0-9]{2}-){2}[0-9]{4}/;
+    var gotInvalidDate = false;
+    if (from) {
+        gotInvalidDate = !dateRegex.exec(from);
+        filterParams.push('LostFoundDate-from=' + encodeURIComponent(from));
+    }
+    if (to) {
+        gotInvalidDate = gotInvalidDate || !dateRegex.exec(to);
+        filterParams.push('LostFoundDate-to=' + encodeURIComponent(to));
+    }
+
+    if (gotInvalidDate) {
+        find('#date-error-message').classList.remove('hidden');
+        return;
     }
 
     var targetUrl = location.pathname
@@ -127,7 +147,7 @@ function buildUrlAndSearch() {
         e.preventDefault();
         buildUrlAndSearch();
     });
-    find('input[type="checkbox"],input[type="radio"]').forEach(function (filterElem) {
+    forEach(find('input'), function (filterElem) {
         on(filterElem, 'change', function (e) {
             buildUrlAndSearch();
         });
@@ -143,4 +163,8 @@ function buildUrlAndSearch() {
 
     ajaxifyPagination();
     preSelectInputs();
+
+    on(find('#filter-field-LostFoundDate-from, #filter-field-LostFoundDate-to'), 'focus', function (e) {
+        find('#date-error-message').classList.add('hidden');
+    });
 })();
