@@ -36,6 +36,7 @@ class CatSearchPageController extends PageController {
 
         $params = $request->getVars();
         $filter = [];
+
         if ($params) {
             foreach($params as $key => $value) {
                 if ($key == 'SearchTitle') {
@@ -44,6 +45,12 @@ class CatSearchPageController extends PageController {
                     }
                 } else if ($key == 'ajax' || $key == 'start') {
                     continue;
+                } else if(str_contains($key, 'LostFoundDate')) {
+                    if (str_contains($key, 'from')) {
+                        $filter['LostFoundDate:GreaterThanOrEqual'] = $value;
+                    } else {
+                        $filter['LostFoundDate:LessThanOrEqual'] = $value;
+                    }
                 } else {
                     $filteredResult = array_filter($value, function ($curVal) {
                         return $curVal != 'nicht bekannt';
