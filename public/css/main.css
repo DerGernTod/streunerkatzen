@@ -199,6 +199,22 @@ header a:hover {
   background-color: white;
   margin: 1em;
 }
+.hint {
+  border-radius: 1em;
+  border: 1px solid #c8c8c8;
+  background-color: white;
+  padding: 0.5em;
+  font-size: 8pt;
+  cursor: pointer;
+  width: 2em;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.2s;
+  margin-left: 1em;
+}
+.hint:hover {
+  background-color: lightgray;
+}
 .captionImage.left {
   float: left;
 }

@@ -2,7 +2,7 @@ $Content
 $CatSearchForm
 <form class="filter-search-form">
     <div class='filter-group' class='hidden'>
-        <a id='search-agent'>🔔 Benachrichtigung aktivieren</a>
+        <a id='search-agent'>🔔 Benachrichtigung aktivieren</a> <span class='hint' title='$StrippedNotificationTemplate'>?</span>
     </div>
     <div id="filter-LostFoundDate" class="filter-group">
         <h2>Zeitpunkt</h2>

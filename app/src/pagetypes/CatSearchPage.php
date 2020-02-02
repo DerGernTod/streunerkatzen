@@ -21,4 +21,8 @@ class CatSearchPage extends Page {
         $fields->add(HTMLEditorField::create('NotificationEmailTemplate', 'Vorlage für Suchagent E-Mail'));
         return $fields;
     }
+
+    public function getStrippedNotificationTemplate() {
+        return strip_tags($this->NotificationTemplate);
+    }
 }

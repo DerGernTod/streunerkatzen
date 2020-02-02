@@ -89,7 +89,22 @@ header {
         margin: 1em;
     }
 }
-
+.hint {
+    border-radius: 1em;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: white;
+    padding: .5em;
+    font-size: 8pt;
+    cursor: pointer;
+    width: 2em;
+    text-align: center;
+    display: inline-block;
+    transition: background-color .2s;
+    margin-left: 1em;
+    &:hover {
+        background-color: lightgray;
+    }
+}
 .captionImage {
     &.left {
         float: left;
