@@ -70,8 +70,9 @@ function triggerPushState(pushStateOptions, title, url) {
  * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onFinished
  * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onError
  * @param {function(x: XMLHttpRequest, e: ReadyStateChangeEvent)} onProgress
+ * @param {*} data
  */
-function ajax(url, method, onFinished, onError, onProgress) {
+function ajax(url, method, onFinished, onError, onProgress, data) {
     var x = new XMLHttpRequest();
     x.open(method, url);
     x.onreadystatechange = function () {
@@ -88,7 +89,7 @@ function ajax(url, method, onFinished, onError, onProgress) {
             }
         }
     }
-    x.send();
+    x.send(data);
 }
 
 var jQueryListeners = [];

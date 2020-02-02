@@ -69,6 +69,26 @@ header {
         }
     }
 }
+.popup {
+    position: fixed;
+    display:flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(200, 200, 200, .8);
+    & > * {
+        max-width: 550px;
+        padding: 1em;
+        border-radius: .25em;
+        background-color: white;
+        margin: 1em;
+    }
+}
 
 .captionImage {
     &.left {
