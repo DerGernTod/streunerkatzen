@@ -2,7 +2,6 @@
 namespace Streunerkatzen;
 
 use Exception;
-use Psr\Log\LoggerInterface;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Member;
@@ -12,8 +11,6 @@ use SilverStripe\Forms\GridField\GridField_URLHandler;
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
 use SilverStripe\Control\Controller;
-use SilverStripe\Control\Email\Email;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Security\RandomGenerator;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
@@ -124,6 +121,18 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             $cat->ReporterID = $userId;
         }
         $cat->write();
+        $searchAgents = SearchAgent::get();
+        foreach($searchAgents as $searchAgent) {
+            $filter = json_decode($searchAgent->Filter, true);
+            $filter["ID"] = $cat->ID;
+            $filteredCats = Cat::get()->filter($filter);
+            // the filter matches, so we send a notification!
+            if (count($filteredCats) == 1) {
+                // TODO: create url for unsubscribe (see CatSearchPageController.unsubscribe)
+                // TODO: find correct absolute url: /vermisst-und-gefunden/katzensuche/view/ID
+                EmailHelper::sendSearchAgentNotificationMail($searchAgent->Email, $cat, "the url to the cat", "the url to the unsubscribe token");
+            }
+        }
     }
 
     //Handle the custom action, for both the action button and the URL
@@ -165,21 +174,12 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                     }
                 }
                 $address = 'admin@localhost';
-                $reviewMessage = $submittedData["ReviewMessage"];
-
-                $link = $this->sourceData->Parent()->AbsoluteLink()."?token=".$token;
-                $tokenLink = "<a href='$link'>$link</a>";
-
-                $template = str_replace('$CatName', $catName, $this->sourceData->Parent()->CatReviewTemplate);
-                $template = str_replace('$ReviewComment', $reviewMessage, $template);
-                $template = str_replace('$EntryLink', $tokenLink, $template);
-
-                $email = new Email('noreply@streunerkatzen.org', $address, 'Überarbeite Deinen Eintrag', $template);
-                echo "$address<br />$template";
-                $result = $email->send();
-                if (!$result) {
-                    throw new Exception("Error sending email.");
-                }
+                EmailHelper::sendReviewMail(
+                    $this->sourceData->Parent()->AbsoluteLink()."?token=".$token,
+                    $catName,
+                    $this->sourceData->Parent()->CatReviewTemplate,
+                    $$submittedData["ReviewMessage"],
+                    $address);
             } catch (Exception $e) {
                 var_dump($e);
                 Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'. Beachte, dass keine Email versandt wurde!"));

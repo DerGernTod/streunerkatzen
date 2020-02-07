@@ -156,8 +156,10 @@ class CatSearchPageController extends PageController {
             ."Falls das nicht du warst, oder du die Benachrichtigungen doch nicht erhalten "
             ."willst, klicke bitte auf <a href='$link'>abbestellen</a>."
             ."</p>";
+
         $searchAgent->write();
         // TODO send an email including a link with the token where they can unsubscribe
+        EmailHelper::sendAgentRegisteredMail();
         return $searchAgent->renderWith('Streunerkatzen/Includes/Search/AgentPopup');
     }
 
