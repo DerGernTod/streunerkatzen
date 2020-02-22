@@ -2,6 +2,7 @@
 namespace Streunerkatzen;
 
 use Exception;
+use SilverStripe\Dev\Debug;
 use Streunerkatzen\Constants;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Member;
@@ -161,6 +162,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         $this->sourceData->EditToken = $token;
         $this->sourceData->write();
         if ($this->targetStatus == Constants::CAT_STATUS_IN_REVIEW) {
+
             try {
                 $mailFields = $values->filter(array('Name' => ['CatField_Contact', 'CatField_Title']));
                 foreach($mailFields as $field) {
@@ -173,15 +175,15 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                         break;
                     }
                 }
-                $address = 'admin@localhost';
+                // $address = 'admin@localhost';
                 EmailHelper::sendReviewMail(
                     $this->sourceData->Parent()->AbsoluteLink()."?token=".$token,
                     $catName,
                     $this->sourceData->Parent()->CatReviewTemplate,
-                    $$submittedData["ReviewMessage"],
+                    $submittedData["ReviewMessage"],
                     $address);
             } catch (Exception $e) {
-                var_dump($e);
+                Debug::message($e->getMessage());
                 Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'. Beachte, dass keine Email versandt wurde!"));
                 return;
             }
