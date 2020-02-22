@@ -14,7 +14,7 @@ class EmailHelper {
         $template = str_replace('$ReviewComment', $reviewMessage, $template);
         $template = str_replace('$EntryLink', $tokenLink, $template);
 
-        $email = new Email('noreply@streunerkatzen.org', $address, 'Überarbeite Deinen Eintrag', $template);
+        $email = new Email('admin@gernotraudner.at', $address, 'Überarbeite Deinen Eintrag', $template);
         echo "$address<br />$template";
         $result = $email->send();
         if (!$result) {
@@ -23,10 +23,8 @@ class EmailHelper {
     }
 
     public static function sendSearchAgentNotificationMail($email, $cat, $tokenUrl) {
-
     }
 
     public static function sendAgentRegisteredMail() {
-
     }
 }
