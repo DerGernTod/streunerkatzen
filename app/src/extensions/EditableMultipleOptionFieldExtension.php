@@ -2,17 +2,13 @@
 
 namespace Streunerkatzen;
 
-use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\Tab;
-use SilverStripe\Assets\File;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\ListboxField;
+use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Dev\Backtrace;
 use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverStripe\UserForms\Model\EditableFormField;
 use SilverStripe\Forms\GridField\GridFieldButtonRow;
 use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
@@ -20,43 +16,17 @@ use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
-use SilverStripe\UserForms\Model\EditableFormField\EditableMultipleOptionField;
 
-class EditableMultiSelectField extends EditableMultipleOptionField {
+class EditableMultipleOptionFieldExtension extends DataExtension
+{
 
-    private static $singular_name = 'Mehrfachauswahlfeld';
-
-    private static $plural_name = 'Mehrfachauswahlfelder';
-
-    private static $table_name = 'Streunerkatzen_EditableMultiSelectField';
-
-     /**
-     * @return ListboxField
-     */
-    public function getFormField() {
-        $field = ListboxField::create($this->Name, $this->Title ?: false, $this->getOptionsMap())
-            ->setFieldHolderTemplate(EditableFormField::class . '_holder')
-            ->setTemplate(__CLASS__);
-
-        if ($this->UseEmptyString) {
-            $field->setEmptyString(($this->EmptyString) ? $this->EmptyString : '');
-        }
-
-        $defaultOption = $this->getDefaultOptions()->first();
-        if ($defaultOption) {
-            $field->setValue($defaultOption->Value);
-        }
-        $this->doUpdateFormField($field);
-        return $field;
+    public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
+    {
+        echo 'update fields';
     }
-
-    public function getValueFromData($data) {
-        return join(';',$data[$this->Name]);
-    }
-
-    public function getCMSFields() {
-
-        $this->beforeUpdateCMSFields(function (\SilverStripe\Forms\FieldList $fields) {
+    public function getCMSFields()
+    {
+            $this->owner->beforeUpdateCMSFields(function ($fields) {
             $editableColumns = new GridFieldEditableColumns();
             $editableColumns->setDisplayFields([
                 'Title' => [
@@ -78,7 +48,10 @@ class EditableMultiSelectField extends EditableMultipleOptionField {
                     }
                 ],
                 'Examples' => [
-                    'field' => UploadField::class
+                    'title' => 'Beispielbilder',
+                    'callback' => function ($record, $column, $grid) {
+                        return UploadField::create($column);
+                    }
                 ]
             ]);
 
@@ -96,13 +69,15 @@ class EditableMultiSelectField extends EditableMultipleOptionField {
             $optionsGrid = GridField::create(
                 'Options',
                 'Optionen',
-                $this->Options(),
+                $this->owner->Options(),
                 $optionsConfig
             );
-            $fields->removeByName('Options');
+
             $fields->insertAfter(Tab::create('Options', 'Optionen'), 'Main');
             $fields->addFieldToTab('Root.Options', $optionsGrid);
         });
-        return parent::getCMSFields();
+        $fields = $this->owner->parent::getCMSFields();
+
+        return $fields;
     }
 }
