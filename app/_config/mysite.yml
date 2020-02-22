@@ -24,5 +24,3 @@ SilverStripe\UserForms\Control\UserDefinedFormController:
 SilverStripe\Control\Email\Email:
   admin_email:
     noreply@streunerkatzen.org: 'Streunerkatzen Team'
-SilverStripe\Core\Injector\Injector:
-  Swift_Transport: Swift_SendmailTransport
