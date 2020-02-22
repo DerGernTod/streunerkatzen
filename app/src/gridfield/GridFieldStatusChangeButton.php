@@ -75,7 +75,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
     }
 
     public function handleAction(GridField $gridField, $actionName, $arguments, $data) {
-        if($actionName == $this->actionName) {
+        if ($actionName == $this->actionName) {
             return $this->handleButtonAction($data);
         }
     }
@@ -123,7 +123,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         }
         $cat->write();
         $searchAgents = SearchAgent::get();
-        foreach($searchAgents as $searchAgent) {
+        foreach ($searchAgents as $searchAgent) {
             $filter = json_decode($searchAgent->Filter, true);
             $filter["ID"] = $cat->ID;
             $filteredCats = Cat::get()->filter($filter);
@@ -162,17 +162,16 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         $this->sourceData->EditToken = $token;
         $this->sourceData->write();
         if ($this->targetStatus == Constants::CAT_STATUS_IN_REVIEW) {
-
             try {
                 $mailFields = $values->filter(array('Name' => ['CatField_Contact', 'CatField_Title']));
-                foreach($mailFields as $field) {
-                    switch($field->Name) {
+                foreach ($mailFields as $field) {
+                    switch ($field->Name) {
                         case 'CatField_Contact':
-                        $address = $field->Value;
-                        break;
+                            $address = $field->Value;
+                            break;
                         case 'CatField_Title':
-                        $catName = $field->Value;
-                        break;
+                            $catName = $field->Value;
+                            break;
                     }
                 }
                 // $address = 'admin@localhost';
@@ -181,7 +180,8 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                     $catName,
                     $this->sourceData->Parent()->CatReviewTemplate,
                     $submittedData["ReviewMessage"],
-                    $address);
+                    $address
+                );
             } catch (Exception $e) {
                 Debug::message($e->getMessage());
                 Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'. Beachte, dass keine Email versandt wurde!"));
@@ -191,4 +191,3 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         Controller::curr()->getResponse()->setStatusCode(200, utf8_decode("Status geändert auf '$this->targetStatus'"));
     }
 }
-
