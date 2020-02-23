@@ -98,7 +98,7 @@ class Cat extends DataObject {
         $result = [];
         foreach ($results as $item) {
             $dropdownname = $item['dropdownname'];
-            if (!$result[$dropdownname]) {
+            if (!array_has($result, $dropdownname)) {
                 $result[$dropdownname] = [];
             }
             $result[$dropdownname][$item['optionname']] = $item['optionname'];

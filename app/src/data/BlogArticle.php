@@ -2,6 +2,7 @@
 
 namespace Streunerkatzen;
 
+use Streunerkatzen\Cat;
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\DateField;
@@ -10,8 +11,11 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextareaField;
+use Streunerkatzen\BlogArticleCategory;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\ListboxField;
 
 class BlogArticle extends DataObject {
     private const ALLOWED_FILE_ENDINGS = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
@@ -52,5 +56,13 @@ class BlogArticle extends DataObject {
             ->getValidator()
             ->setAllowedExtensions(BlogArticle::ALLOWED_FILE_ENDINGS);
         return $fields;
+    }
+
+    public function forTemplate() {
+        return "foobar";
+    }
+
+    public static function CatShortcode($arguments, $content = null, $parser = null, $tagName) {
+        return "<foo></foo>";
     }
 }
