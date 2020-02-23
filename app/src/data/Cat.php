@@ -173,6 +173,7 @@ class Cat extends DataObject {
     }
 
     public function Link() {
+        //TODO: get absolute url for catsearchpagecontroller
         return Controller::curr()->Link('view/'.$this->ID);
     }
 
@@ -196,5 +197,9 @@ class Cat extends DataObject {
             return '✔';
         }
         return '✗';
+    }
+
+    public function getShortcodeView() {
+        return $this->renderWith('Streunerkatzen/Includes/CatShortcodeView');
     }
 }

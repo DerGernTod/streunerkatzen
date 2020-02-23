@@ -1,3 +1,3 @@
 <% loop $BlogArticleList %>
-    $Me.Content
+    $Me.ListView
 <% end_loop %>

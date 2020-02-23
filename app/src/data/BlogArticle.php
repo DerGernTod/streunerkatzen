@@ -58,11 +58,15 @@ class BlogArticle extends DataObject {
         return $fields;
     }
 
-    public function forTemplate() {
-        return "foobar";
+    public function getListView() {
+        return $this->renderWith('Streunerkatzen/Includes/BlogArticleListView');
     }
 
-    public static function CatShortcode($arguments, $content = null, $parser = null, $tagName) {
-        return "<foo></foo>";
+    public static function CatShortcode($arguments) {
+        $cat = Cat::get_by_id($arguments['id']);
+        if (!$cat) {
+            return "Katze mit der ID ".$arguments['id']." nicht gefunden!";
+        }
+        return $cat->getShortcodeView();
     }
 }

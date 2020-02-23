@@ -20,6 +20,6 @@ class BlogArticleListComponent extends Component {
     }
 
     public function getBlogArticleList() {
-        return BlogArticle::get();
+        return BlogArticle::get()->sort('PublishTime DESC');
     }
 }
