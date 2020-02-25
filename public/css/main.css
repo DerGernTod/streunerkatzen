@@ -140,6 +140,10 @@ article .read-more {
   margin: 1em 0;
   font-size: 14px;
 }
+.article-category-header {
+  text-align: center;
+  color: #232e50;
+}
 * {
   margin: 0;
   padding: 0;

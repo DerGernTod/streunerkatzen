@@ -14,6 +14,7 @@ use SilverStripe\Forms\TextareaField;
 use Streunerkatzen\BlogArticleCategory;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\ListboxField;
 
@@ -60,6 +61,10 @@ class BlogArticle extends DataObject {
 
     public function getListView() {
         return $this->renderWith('Streunerkatzen/Includes/BlogArticleListView');
+    }
+
+    public function CategoryLink() {
+        return Controller::curr()->Link('blogtag');
     }
 
     public static function CatShortcode($arguments) {

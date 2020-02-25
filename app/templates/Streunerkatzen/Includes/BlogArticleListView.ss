@@ -3,7 +3,7 @@
         <h5>
             <% loop $Categories %>
                 <% if not First %> / <% end_if %>
-                $Title
+                <a href='$Up.CategoryLink/$ID'>$Title</a>
             <% end_loop %>
         </h5>
         <h2>$Title</h2>
