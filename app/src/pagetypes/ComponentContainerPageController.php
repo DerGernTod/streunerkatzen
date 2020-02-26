@@ -20,10 +20,17 @@ class ComponentContainerPageController extends PageController {
         }
         $filterCatName = BlogArticleCategory::get_by_id($request->param('ID'))->Title;
         return [
-            'FilteredArticles' => $articles,
+            'BlogArticleList' => $articles,
             'FilterCategory' => $filterCatName
         ];
     }
+
+    public function index() {
+        return [
+            'BlogArticleList' => BlogArticle::get()->sort('PublishTime DESC')
+        ];
+    }
+
     public function view(HTTPRequest $request) {
         $blog = BlogArticle::get_by_id($request->param('ID'));
         if (!$blog) {

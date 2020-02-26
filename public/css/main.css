@@ -118,27 +118,32 @@ textarea {
   padding: 0.4em;
   margin: 0.25em 0;
 }
-article {
+.blog-article {
+  display: flex;
   margin: 5em 0;
 }
-article h5 {
+.blog-article.single {
+  display: block;
+}
+.blog-article h5 {
   text-align: center;
   color: #435696;
   text-transform: uppercase;
   font-family: monospace;
   letter-spacing: 0.1em;
 }
-article h2 {
+.blog-article h2 {
   text-align: center;
 }
-article .head {
+.blog-article .head {
   text-align: center;
   font-size: 14px;
   margin: 1.25em;
 }
-article .read-more {
-  margin: 1em 0;
+.blog-article .read-more {
+  margin: 1em 0.5em 0;
   font-size: 14px;
+  display: block;
 }
 .article-category-header {
   text-align: center;

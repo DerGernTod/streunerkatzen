@@ -18,8 +18,4 @@ class BlogArticleListComponent extends Component {
         $fields = parent::getCMSFields();
         return $fields;
     }
-
-    public function getBlogArticleList() {
-        return BlogArticle::get()->sort('PublishTime DESC');
-    }
 }

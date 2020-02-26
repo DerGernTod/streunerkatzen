@@ -1,6 +1,11 @@
 // main: main.less
 @import "colors.less";
-article {
+@import "utils.less";
+.blog-article {
+    display: flex;
+    &.single {
+        display: block;
+    }
     margin: 5em 0;
     h5 {
         text-align: center;
@@ -18,8 +23,9 @@ article {
         margin: 1.25em;
     }
     .read-more {
-        margin: 1em 0;
+        margin: 1em .5em 0;
         font-size: 14px;
+        display: block;
     }
 }
 .article-category-header {

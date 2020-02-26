@@ -1,4 +1,4 @@
-<article id='post-$ID' class='blog-article'>
+<article id='post-$ID' class='blog-article single'>
     <div>
         <h5>
             <% loop $Categories %>
@@ -9,7 +9,6 @@
         <h2>$Title</h2>
         <div class='head'> am $PublishTime.Format('dd.MM.yyyy')</div>
     </div>
-
-    <div>$Abstract</div>
+    <div class='captionImage right'>$PostImage.Fill(150,150)</div>
     <div>$Content</div>
 </article>
