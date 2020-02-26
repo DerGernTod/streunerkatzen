@@ -11,5 +11,5 @@
     </div>
 
     <div>$Abstract</div>
-    <a class="read-more" href="$Link/$ID">Weiterlesen...</a>
+    <div>$Content</div>
 </article>

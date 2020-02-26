@@ -10,7 +10,7 @@ use SilverStripe\Dev\Debug;
 class ComponentContainerPageController extends PageController {
     private static $allowed_actions = [
         'blogtag',
-        'blog'
+        'view'
     ];
 
     public function blogtag(HTTPRequest $request) {
@@ -22,6 +22,15 @@ class ComponentContainerPageController extends PageController {
         return [
             'FilteredArticles' => $articles,
             'FilterCategory' => $filterCatName
+        ];
+    }
+    public function view(HTTPRequest $request) {
+        $blog = BlogArticle::get_by_id($request->param('ID'));
+        if (!$blog) {
+            return $this->httpError(404, 'Blogeintrag nicht gefunden!');
+        }
+        return [
+            'SingleArticle' => $blog
         ];
     }
 }

@@ -15,6 +15,7 @@ use Streunerkatzen\BlogArticleCategory;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\ListboxField;
 
@@ -63,8 +64,16 @@ class BlogArticle extends DataObject {
         return $this->renderWith('Streunerkatzen/Includes/BlogArticleListView');
     }
 
+    public function getFullView() {
+        return $this->renderWith('Streunerkatzen/Includes/BlogArticleFullView');
+    }
+
     public function CategoryLink() {
-        return Controller::curr()->Link('blogtag');
+        return Director::baseURL().'blog/blogtag';
+    }
+
+    public function Link() {
+        return Director::baseURL().'blog/view';
     }
 
     public static function CatShortcode($arguments) {
@@ -72,6 +81,6 @@ class BlogArticle extends DataObject {
         if (!$cat) {
             return "Katze mit der ID ".$arguments['id']." nicht gefunden!";
         }
-        return $cat->getShortcodeView();
+        return $cat->getShortcodeView($arguments);
     }
 }

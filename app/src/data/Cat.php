@@ -12,6 +12,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\UserForms\Model\EditableFormField;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
@@ -173,8 +174,7 @@ class Cat extends DataObject {
     }
 
     public function Link() {
-        //TODO: get absolute url for catsearchpagecontroller
-        return Controller::curr()->Link('view/'.$this->ID);
+        return Director::baseURL().'vermisst-und-gefunden/katzensuche/view/'.$this->ID;
     }
 
     /**
