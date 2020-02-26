@@ -13,7 +13,9 @@
                 <% include Streunerkatzen/SingleCatComponent %>
             <% end_if %>
             <% if $ClassName == "Streunerkatzen\BlogArticleListComponent" %>
-                <% include Streunerkatzen/BlogArticleListComponent SingleArticle=$Up.SingleArticle,FilterCategory=$Up.FilterCategory,BlogArticleList=$Up.BlogArticleList %>
+                <% with $Up %>
+                    <% include Streunerkatzen/BlogArticleListComponent %>
+                <% end_with %>
             <% end_if %>
         </div>
     <% end_if %>

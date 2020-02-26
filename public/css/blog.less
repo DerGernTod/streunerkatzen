@@ -3,6 +3,7 @@
 @import "utils.less";
 .blog-article {
     display: flex;
+    justify-content: space-around;
     &.single {
         display: block;
     }
@@ -27,6 +28,9 @@
         font-size: 14px;
         display: block;
     }
+    .text {
+        flex-basis: 80%;
+    }
 }
 .article-category-header {
     text-align: center;
@@ -39,4 +43,9 @@
     align-items: center;
     text-transform: uppercase;
     font-family: cursive;
+}
+.load-more-btn {
+    text-align: center;
+    width: 100%;
+    display: block;
 }
