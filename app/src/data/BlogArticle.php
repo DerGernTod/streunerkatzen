@@ -16,6 +16,7 @@ use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
+use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\ListboxField;
 
@@ -77,6 +78,9 @@ class BlogArticle extends DataObject {
     }
 
     public static function CatShortcode($arguments) {
+        if (!isset($arguments['id'])) {
+            return '';
+        }
         $cat = Cat::get_by_id($arguments['id']);
         if (!$cat) {
             return "Katze mit der ID ".$arguments['id']." nicht gefunden!";
