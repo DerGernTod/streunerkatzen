@@ -64,7 +64,7 @@ class CatImportTask extends BuildTask {
             echo "</li>";
         }
         echo "</ul>";
-        echo "wrote ".count($exportResult["cats"])." cats into db!";
+        echo "wrote $entryCount cats into db!";
     }
 
     /**
@@ -142,45 +142,74 @@ function createUser($importedCatFields) {
 function createAttachments($importedAttachments, $importedImages, $cat) {
     $files = [];
     if ($importedImages) {
-        /** @var AssetStore $assetStore */
-        $assetStore = singleton(AssetStore::class);
         foreach ($importedImages as $image) {
             // real url is images/com_sobi2/gallery/74/74_image_1.jpg
             // but stored as images/com_sobi2/gallery/74_image_1.jpg
-
             $origFileName = $image["filename"];
             $url = "http://katzensuche.streunerkatzen.org/".preg_replace('/\/([0-9]*)_i/', '/$1/$1_i', $origFileName);
             $title = $image["title"];
             $added = $image["added"];
-            // Use basename() function to return the base name of file
-            $filename = "assets/imported/".basename($url);
-            // Use file_get_contents() function to get the file
-            // from url and use file_put_contents() function to
-            // save the file by using base name
-            if(file_put_contents($filename, file_get_contents($url))) {
-                echo "$url downloaded successfully to $filename";
-            } else {
-                echo "$url downloading failed.";
-            }
-            $file = File::create($title);
-            $file->setFromLocalFile($filename, 'imported/managed/'.basename($url), null, null, ['visibility' => AssetStore::VISIBILITY_PUBLIC]);
-            $file->write();
+
+            $file = createFile($title, $url);
+
             $cat->Attachments()->Add($file);
-            $assetStore->publish('imported/managed/'.basename($url), $file->getHash());
-            array_push($files, $file);
+            $file->publishRecursive();
         }
     }
     if ($importedAttachments) {
         foreach ($importedAttachments as $attachment) {
+            // it's a bit weird but that's what it is...
+            $url = "http://katzensuche.streunerkatzen.org/index2.php?option=com_sobi2&sobi2Task=dd_download&format=html&Itemid=53&fid=".$attachment['fid'];
+            $title = $attachment["title"];
             $filename = $attachment["filename"];
             $filetype = $attachment["filetype"];
             $extension = $attachment["extension"];
             $size = $attachment["size"];
             $title = $attachment["title"];
             $added = $attachment["added"];
-            Debug::message("got attachment: $filename $filetype $extension $size $title $added");
-            // TODO ...write, return list?
+            $fid = $attachment["fid"];
+            Debug::message("got attachment: $filename $filetype $extension $size $title $added $fid");
+
+            $file = createFile($title, $url, basename($filename));
+            $cat->Attachments()->Add($file);
+            $file->publishRecursive();
         }
     }
     return $files;
+}
+
+/**
+ * @return File
+ */
+function createFile(string $title, string $url, string $realFile = null) {
+
+    // Use basename() function to return the base name of file
+    $baseName = basename($realFile ?? $url);
+    $filename = "assets/imported/$baseName";
+    // Use file_get_contents() function to get the file
+    // from url and use file_put_contents() function to
+    // save the file by using base name
+    if(file_put_contents($filename, file_get_contents($url))) {
+        echo "$url downloaded successfully to $filename";
+    } else {
+        echo "$url downloading failed.";
+    }
+    // this here is mostly copied from SilverStripe\AssetAdmin\Controller\AssetAdmin
+    // it basically reads the extension and finds the correct file-type class (get_class_for_file_extension)
+    $file = File::create($title);
+    $file->setFromLocalFile($filename, "imported/managed/$baseName", null, null, ['visibility' => AssetStore::VISIBILITY_PUBLIC]);
+    $extension = File::get_file_extension($baseName);
+    $currentClass = $file->getClassName();
+    $newClass = File::get_class_for_file_extension($extension);
+    if (!is_a($currentClass, $newClass, true) || ($currentClass !== $newClass && $newClass === File::class)) {
+        $file = $file->newClassInstance($newClass);
+
+        // update the allowed category for the new file extension
+        $category = File::get_app_category($extension);
+        $file->File->setAllowedCategories($category);
+        $file->grantFile();
+    }
+
+    $file->write();
+    return $file;
 }

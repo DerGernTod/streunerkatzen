@@ -70,7 +70,7 @@
     <ul class="cat-details">
         <% if $Attachments %>
             <% loop $Attachments %>
-                <li><a href="$Me.AbsoluteLink" target="_blank">$Me.Fill(300,300)</a></li>
+                <li><a href="$Me.AbsoluteLink" target="_blank"><% if $Me.IsImage %>$Me.Fill(300,300)<% else %>$Me.Title<% end_if %></a></li>
             <% end_loop %>
         <% else %>
             <li><span>Keine</span></li>
