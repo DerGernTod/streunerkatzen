@@ -1,0 +1,51 @@
+// main: main.less
+@import "colors.less";
+@import "utils.less";
+.blog-article {
+    display: flex;
+    justify-content: space-around;
+    &.single {
+        display: block;
+    }
+    margin: 5em 0;
+    h5 {
+        text-align: center;
+        color: lighten(@secondaryBGColor, 10);
+        text-transform: uppercase;
+        font-family: monospace;
+        letter-spacing: .1em;
+    }
+    h2 {
+        text-align: center;
+    }
+    .head {
+        text-align: center;
+        font-size: 14px;
+        margin: 1.25em;
+    }
+    .read-more {
+        margin: 1em .5em 0;
+        font-size: 14px;
+        display: block;
+    }
+    .text {
+        flex-basis: 80%;
+    }
+}
+.article-category-header {
+    text-align: center;
+    color: darken(@secondaryBGColor, 10);
+}
+.cat-shortcode {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: cursive;
+}
+.load-more-btn {
+    text-align: center;
+    width: 100%;
+    display: block;
+}

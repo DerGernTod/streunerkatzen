@@ -217,6 +217,12 @@ function addJQueryListener(listener) {
     }
     addPushStateEventListener(updateBackToTopButton);
     on(window, 'popstate', updateBackToTopButton);
+    on(backToTopButton, 'click', function () {
+        window.scrollTo({
+            behavior: "smooth",
+            top: 0
+        });
+    });
 })();
 
 (function dateLocalizationFix() {
