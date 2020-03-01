@@ -1,19 +1,31 @@
 <?php
 
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Storage\AssetStore;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\Dev\Debug;
 use SilverStripe\Security\Member;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 use Streunerkatzen\Cat;
 use Streunerkatzen\CatExporter;
 
+function param(Array $arr, string $prop) {
+    if (array_has($arr, $prop)) {
+        return $arr[$prop];
+    }
+    return null;
+}
+
 class CatImportTask extends BuildTask {
+
 
     public function run($request) {
         $catExporter = new CatExporter();
         $exportResult = $catExporter->getEntries();
+        $entryCount = 10; //count($exportResult["cats"]);
         echo "<h2>importing cats</h2>";
         echo "<ul>";
-        for ($i = 0; $i < count($exportResult["cats"]); $i++) {
+        for ($i = 0; $i < $entryCount; $i++) {
             echo "<li>";
             $catEntry = $exportResult["cats"][$i];
             $fields = $catEntry["fields"];
@@ -22,27 +34,27 @@ class CatImportTask extends BuildTask {
             echo "<div>".$cat->Title."</div>";
             assignIfDate($cat, 'PublishTime', $catEntry["publish_up"]);
             assignIfDate($cat, 'LostFoundDate', $fields["Datum"]);
-            $cat->Gender = $fields["geschlecht"];
-            $cat->IsCastrated = $fields["kastriert"];
-            $cat->isHouseCat = $fields["hauskatze"];
-            $cat->Breed = $fields["Rasse"];
-            $cat->EyeColor = $fields["augenfarbe"];
-            $cat->BehaviourOwner = $fields["Besitzer"];
-            $cat->BehaviourStranger = $fields["Fremden"];
-            $cat->Street = $fields['Straße'];
-            $cat->Country = $fields["bundesland"];
-            $cat->IsChipped = $fields["gechipt"];
-            $cat->HasPetCollar = $fields["halsband"];
-            $lostFoundStatus = $fields["gesuchtgefunden"];
+            $cat->Gender = param($fields, "geschlecht");
+            $cat->IsCastrated = param($fields, "kastriert");
+            $cat->isHouseCat = param($fields, "hauskatze");
+            $cat->Breed = param($fields, "Rasse");
+            $cat->EyeColor = param($fields, "augenfarbe");
+            $cat->BehaviourOwner = param($fields, "Besitzer");
+            $cat->BehaviourStranger = param($fields, "Fremden");
+            $cat->Street = param($fields, 'Straße');
+            $cat->Country = param($fields, "bundesland");
+            $cat->IsChipped = param($fields, "gechipt");
+            $cat->HasPetCollar = param($fields, "halsband");
+            $lostFoundStatus = param($fields, "gesuchtgefunden");
             $cat->LostFoundStatus = $this->mapLostFoundStatus($lostFoundStatus);
             $hairColor = $this->mapHairColor($catEntry["categories"]["name"]);
-            $mappedColor = EditableOption::get()->filter(array('Title' => $hairColor))->first();
+            $mappedColor = EditableOption::get()->filter(['Title' => $hairColor])->first();
             if ($mappedColor) {
                 $cat->HairColors()->Add($mappedColor);
             }
-            $cat->HairLength = $this->mapHairLength($fields["haarlnge"]);
-            $cat->LostFoundTime = $fields["tageszeit"];
-            $cat->Attachments = createAttachments($catEntry["resources"], $catEntry["images"]);
+            $cat->HairLength = $this->mapHairLength(param($fields, "haarlnge"));
+            $cat->LostFoundTime = param($fields, "tageszeit");
+            createAttachments(param($catEntry, "resources"), param($catEntry, "images"), $cat);
             $userId = createUser($fields);
             if ($lostFoundStatus == "vermisst") {
                 $cat->OwnerID = $userId;
@@ -98,8 +110,8 @@ function assignIfDate($newCat, $index, $value) {
  * creates a user for the reporter
  */
 function createUser($importedCatFields) {
-    $firstName = $importedCatFields["Vorname"];
-    $lastName = $importedCatFields["Nachname"];
+    $firstName = param($importedCatFields, "Vorname");
+    $lastName = param($importedCatFields, "Nachname");
     $matchingMembers = Member::get()->filter(array(
         "FirstName" => $firstName,
         "Surname" => $lastName
@@ -125,14 +137,37 @@ function createUser($importedCatFields) {
 /**
  * TODO
  * translates imported attachments to a list of silverstripe files
+ * @return File[]
  */
-function createAttachments($importedAttachments, $importedImages) {
+function createAttachments($importedAttachments, $importedImages, $cat) {
+    $files = [];
     if ($importedImages) {
+        /** @var AssetStore $assetStore */
+        $assetStore = singleton(AssetStore::class);
         foreach ($importedImages as $image) {
-            $filename = $image["filename"];
-            $thumb = $image["thumb"];
+            // real url is images/com_sobi2/gallery/74/74_image_1.jpg
+            // but stored as images/com_sobi2/gallery/74_image_1.jpg
+
+            $origFileName = $image["filename"];
+            $url = "http://katzensuche.streunerkatzen.org/".preg_replace('/\/([0-9]*)_i/', '/$1/$1_i', $origFileName);
             $title = $image["title"];
             $added = $image["added"];
+            // Use basename() function to return the base name of file
+            $filename = "assets/imported/".basename($url);
+            // Use file_get_contents() function to get the file
+            // from url and use file_put_contents() function to
+            // save the file by using base name
+            if(file_put_contents($filename, file_get_contents($url))) {
+                echo "$url downloaded successfully to $filename";
+            } else {
+                echo "$url downloading failed.";
+            }
+            $file = File::create($title);
+            $file->setFromLocalFile($filename, 'imported/managed/'.basename($url), null, null, ['visibility' => AssetStore::VISIBILITY_PUBLIC]);
+            $file->write();
+            $cat->Attachments()->Add($file);
+            $assetStore->publish('imported/managed/'.basename($url), $file->getHash());
+            array_push($files, $file);
         }
     }
     if ($importedAttachments) {
@@ -143,7 +178,9 @@ function createAttachments($importedAttachments, $importedImages) {
             $size = $attachment["size"];
             $title = $attachment["title"];
             $added = $attachment["added"];
+            Debug::message("got attachment: $filename $filetype $extension $size $title $added");
             // TODO ...write, return list?
         }
     }
+    return $files;
 }
