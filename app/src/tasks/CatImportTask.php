@@ -182,9 +182,14 @@ function createAttachments($importedAttachments, $importedImages, $cat) {
  * @return File
  */
 function createFile(string $title, string $url, string $realFile = null) {
-
+    $tempDelimiter = "%dot%";
     // Use basename() function to return the base name of file
-    $baseName = basename($realFile ?? $url);
+    // replace dots, silverstripe is retarded...
+    $baseName = preg_replace("/\./", $tempDelimiter, basename($realFile ?? $url));
+    $lastDotPos = strrpos($baseName, $tempDelimiter);
+    $baseName = substr_replace($baseName, ".", $lastDotPos, strlen($tempDelimiter));
+    $baseName = preg_replace("/$tempDelimiter/", "_", $baseName);
+
     $filename = "assets/imported/$baseName";
     // Use file_get_contents() function to get the file
     // from url and use file_put_contents() function to
