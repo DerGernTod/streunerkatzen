@@ -202,4 +202,14 @@ class Cat extends DataObject {
     public function getShortcodeView() {
         return $this->renderWith('Streunerkatzen/Includes/CatShortcodeView');
     }
+
+    public function getFirstImage() {
+        $attachments = $this->Attachments();
+        foreach ($attachments as $file) {
+            if ($file->IsImage) {
+                return $file;
+            }
+        }
+        return null;
+    }
 }

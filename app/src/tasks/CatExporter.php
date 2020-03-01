@@ -188,7 +188,7 @@ class CatExporter
     }
 
     private function getResources($itemid) {
-        $sql = "SELECT filename, filetype, fileext, filesize, title, added
+        $sql = "SELECT filename, filetype, fileext, filesize, title, added, fid
             FROM jos_sobi2_plugin_download
             WHERE itemid = {$itemid}";
         $resources = $this->query($sql)->fetchAll();
@@ -201,7 +201,8 @@ class CatExporter
                 "extension" => $cur->fileext,
                 "size" => $cur->filesize,
                 "title" => $cur->title,
-                "added" => $cur->added
+                "added" => $cur->added,
+                "fid" => $cur->fid
             ];
             array_push($result, $resource);
         }

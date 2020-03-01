@@ -8,8 +8,8 @@
         <% end_loop %></div>
     </div>
     <div>
-        <% if $Attachments %>
-            <a href="$Attachments.First.AbsoluteURL" target="_blank">$Attachments.First.Fill(100,100)</a>
+        <% if $FirstImage %>
+            <a href="$FirstImage.AbsoluteURL" target="_blank">$FirstImage.Fill(100,100)</a>
         <% end_if %>
     </div>
 </div>
