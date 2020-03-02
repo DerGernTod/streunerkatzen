@@ -23,8 +23,7 @@ class ComponentContainerPage extends Page {
 
     public function getCMSfields() {
         $fields = parent::getCMSFields();
-        $fields->removeFieldFromTab("Root.Content.Main", "Content");
-
+        $fields->removeByName("Content");
         $fields->addFieldsToTab('Root.Main', [
             $gridField = GridField::create(
                 'PageComponents',
