@@ -57,6 +57,9 @@ class Cat extends DataObject {
         'HairLength' => 'Varchar(250)',
         'Contact' => 'Varchar(250)'
     ];
+    private static $has_one = [
+        'Notifier' => Notifier::class
+    ];
 
     private static $many_many = [
         'Attachments' => File::class,
