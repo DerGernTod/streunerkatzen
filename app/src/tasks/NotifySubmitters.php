@@ -11,11 +11,17 @@ class NotifySubmitters extends BuildTask {
         foreach($triggerNotifiers as $notifier) {
             $contact = $notifier->Cat->Contact;
             if (!filter_var($contact, FILTER_VALIDATE_EMAIL)) {
-                echo "person didn't use email address as contact reminder: $contact";
+                echo "Person hat keine Emailadresse hinterlassen: $contact";
             } else {
+                $nextReminder = date('Y-m-d H:i:s', strtotime("+2 week"));
+                $notifier->NextReminder = $nextReminder;
+                $notifier->write();
+                // TODO: send email here
                 echo "TODO: send email to $contact ".Director::absoluteBaseURL();
             }
         }
-
+        if ($triggerNotifiers->count()) {
+            echo 'Keine Erinnerungen zu senden.';
+        }
     }
 }
