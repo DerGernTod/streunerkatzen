@@ -1,6 +1,7 @@
 /**
  * shorthand for query selector
  * @param {string} selector
+ * @returns {NodeList | Node | Element}
  */
 function find(selector) {
     var result = document.querySelectorAll(selector.replace(/\//g, '\\/'));
@@ -26,6 +27,17 @@ function forEach(array, callback) {
             callback(array[i], i, array);
         }
     }
+}
+
+function stringRepeat(string, count) {
+    if (string.repeat) {
+        return string.repeat(count);
+    }
+    var str = '';
+    for (var i = 0; i < count; i++) {
+        str += string;
+    }
+    return str;
 }
 
 /**

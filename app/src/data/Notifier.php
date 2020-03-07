@@ -6,7 +6,8 @@ use SilverStripe\ORM\DB;
 
 class Notifier extends DataObject {
     private static $db = [
-        'NextReminder' => 'Date'
+        'NextReminder' => 'Date',
+        'EditToken' => 'Varchar'
     ];
     private static $has_one = [
         'Cat' => Cat::class

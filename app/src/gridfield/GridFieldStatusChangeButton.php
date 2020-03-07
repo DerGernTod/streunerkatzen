@@ -117,6 +117,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         $notifier = Notifier::create();
         $notifier->Cat = $cat;
         $notifier->NextReminder = date('Y-m-d H:i:s', strtotime("+7 day"));
+        $notifier->Token = (new RandomGenerator())->randomToken();
         $notifier->write();
         $cat->Notifier = $notifier;
         $cat->write();
