@@ -54,7 +54,8 @@ class Cat extends DataObject {
 
         'LostFoundTime' => 'Varchar(250)',
         'LostFoundStatus' => 'Varchar(250)',
-        'HairLength' => 'Varchar(250)'
+        'HairLength' => 'Varchar(250)',
+        'Contact' => 'Varchar(250)'
     ];
         // owner/finder/contact
         // 'PublishStatus' => 'Varchar(20)',
@@ -197,6 +198,10 @@ class Cat extends DataObject {
             return '✔';
         }
         return '✗';
+    }
+
+    public function Controller() {
+        return Controller::curr();
     }
 
     public function getShortcodeView() {

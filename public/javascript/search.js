@@ -248,6 +248,34 @@ function buildUrlAndSearch() {
     });
 })();
 
+(function catMessageSending() {
+    var msgForm = find('#Form_SendMessageForm');
+    var sendBtn = find('#Form_SendMessageForm_action_sendMessage');
+    var area = find('#Form_SendMessageForm_cat-msg');
+    var secId = find('#Form_SendMessageForm_SecurityID');
+    var catId = find('#Form_SendMessageForm_cat-id');
+    on(msgForm, 'submit', function (e) {
+        e.preventDefault();
+        // todo: captcha
+        sendBtn.setAttribute('disabled', 'disabled');
+        area.setAttribute('disabled', 'disabled');
+        var data = new FormData();
+        data.set('catId', catId.value);
+        data.set('text', area.value);
+        data.set('SecurityID', secId.value);
+        ajax(this.action, 'POST', function () {
+            sendBtn.removeAttribute('disabled');
+            area.removeAttribute('disabled');
+            area.value = '';
+            alert('Nachricht gesendet!');
+        }, function () {
+            sendBtn.removeAttribute('disabled');
+            area.removeAttribute('disabled');
+            alert('Fehler beim Senden der Nachricht!');
+        }, void 0, data);
+    });
+})();
+
 /**
  * creates a div element with a message to be attached to any parent
  * @param {string} message

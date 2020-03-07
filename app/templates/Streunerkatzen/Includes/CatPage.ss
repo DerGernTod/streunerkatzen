@@ -57,15 +57,11 @@
         <li><span>Bundesland</span><span>$Country</span></li>
         <li><span>Beschreibung der Situation</span><span>$LostFoundDescription</span></li>
         <li><span>Details</span><span>$MoreInfo</span></li>
-        <% if $Reporter %>
-            <li><span>Gemeldet von </span><span>$Reporter.FirstName</span></li>
-        <% end_if %>
-        <% if $Owner %>
-            <li><span>Besitzer</span><span>$Reporter.FirstName</span></li>
-        <% end_if %>
     </ul>
 </div>
 <div class="cat-attachments">
+    <h2>Nachricht an Ersteller</h2>
+    $Controller.SendMessageForm($ID)
     <h2>Anhänge</h2>
     <ul class="cat-details">
         <% if $Attachments %>
