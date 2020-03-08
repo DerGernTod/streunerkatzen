@@ -13,6 +13,11 @@ function find(selector) {
     return result;
 }
 
+/**
+ * @template T
+ * @param {Array.<T>} array
+ * @param {function(v: T, i: number, a: Array.<T>)} callback
+ */
 function forEach(array, callback) {
     if (array.forEach) {
         array.forEach(callback);
@@ -29,6 +34,27 @@ function forEach(array, callback) {
  */
 function rect(element) {
     return element.getBoundingClientRect();
+}
+
+/**
+ * creates an element with the given attributes and classnames
+ * appends it to parent if provided
+ * @param {string} tag
+ * @param {Array.<{key: string, value: string}>} attributes
+ * @param {string=} classNames
+ * @param {Element=} parent
+ * @returns {HTMLElement}
+ */
+function createElement(tag, attributes, classNames, parent) {
+    var elem = document.createElement(tag);
+    forEach(attributes, function (attr) {
+        elem.setAttribute(attr.key, attr.value);
+    });
+    elem.className = classNames || '';
+    if (parent) {
+        parent.appendChild(elem);
+    }
+    return elem;
 }
 
 /**
