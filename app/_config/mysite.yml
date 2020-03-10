@@ -27,3 +27,6 @@ SilverStripe\UserForms\Model\EditableFormField\EditableOption:
 SilverStripe\Control\Email\Email:
   admin_email:
     noreply@streunerkatzen.org: 'Streunerkatzen Team'
+SilverStripe\UserForms\Form\UserForm:
+  extensions:
+    - Streunerkatzen\UserFormExtension
