@@ -25,6 +25,84 @@
     clear: both;
     .heightClearfix();
 }
+.chosen {
+    ul {
+        list-style: none;
+    }
+    .chosen-choices {
+        display: flex;
+        justify-content: space-between;
+        width: 11.65em;
+        padding: .2em;
+        margin: .24em 0;
+        flex-wrap: wrap;
+        border: 1px solid #aaa;
+        background-color: #fff;
+        background-image: linear-gradient(#eee 1%, #fff 15%);
+        cursor: text;
+        li {
+            //flex-basis: 25%;
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        li:last-child {
+            width: 25px;
+        }
+        li:not(:last-child) {
+            font-size: .7em;
+            height: 2em;
+            margin: .25em;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            background-color: darken(white, 10%);
+            padding: 0 .3em;
+            a {
+                display: inline-block;
+                &:hover {
+                    border-radius: 3px;
+                    text-decoration: none;
+                    background-color: white;
+                }
+            }
+        }
+        input {
+            margin: 0;
+            // padding: 0;
+            //height: 2em;
+            outline: 0;
+            border: 0 !important;
+            background: transparent !important;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100% !important;
+            font-size: 10pt;
+            overflow: hidden;
+        }
+    }
+    .chosen-drop {
+        ul {
+            // padding: .2em;
+            border: 1px solid lightgray;
+            background-color: darken(white, 10%);
+            li {
+                margin: 0;
+                padding: .35em;
+                background-color: darken(white, 20%);
+                &.selectable {
+                    background-color: darken(white, 10%);
+                    &:hover {
+                        cursor: pointer;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+    }
+}
 .user-form-container {
     max-width: 500px;
     margin-left: auto;
