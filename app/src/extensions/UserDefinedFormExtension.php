@@ -22,31 +22,7 @@ class UserDefinedFormExtension extends DataExtension {
         'IsCatEntryForm' => 'Boolean',
         'CatReviewTemplate' => 'HTMLText'
     ];
-    public function populateDefaults() {
-        $token = Controller::curr()->getRequest()->getVar('token');
-        if (!$token) {
-            return;
-        }
-        $submittedForm = SubmittedForm::get()->filter(array('EditToken' => $token))->first();
-        $submittedFormFields = SubmittedFormField::get()->filter(array('ParentID' => $submittedForm->ID))->map('Name', 'Value')->toArray();
-        /** @var \SilverStripe\UserForms\Model\UserDefinedForm */
-        $form = Controller::curr()->data();
-        /** @var \SilverStripe\Forms\FieldList */
-        $formFields = $form->Fields();
-        /** @var \SilverStripe\UserForms\Model\EditableFormField $field */
-        foreach ($formFields as $field) {
-            if (array_key_exists($field->Name, $submittedFormFields)) {
-                Debug::message('Setting Form field '.($field->Name).' to '.$submittedFormFields[$field->Name]);
-                // TODO: setting the value doesn't work
-                $field
-                    ->getFormField()
-                    ->setValue($submittedFormFields[$field->Name]);
-            } else {
-                Debug::message('Not setting Form field '.($field->Name));
-            }
-        }
-        parent::populateDefaults();
-    }
+
     public function updateCMSFields(FieldList $fields) {
         $fields->addFieldsToTab('Root.FormOptions', CheckboxField::create('IsCatEntryForm', 'Nutze dieses Formular um Katzen einzutragen'));
         if ($this->owner->IsCatEntryForm) {
