@@ -26,3 +26,6 @@ SilverStripe\Control\Email\Email:
     noreply@streunerkatzen.org: 'Streunerkatzen Team'
 SilverStripe\Core\Injector\Injector:
   Swift_Transport: Swift_SendmailTransport
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Streunerkatzen\CustomLeftAndMainExtension
