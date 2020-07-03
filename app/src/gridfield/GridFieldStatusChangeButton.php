@@ -113,16 +113,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
             $cat->$catKey = $value;
         }
         $cat->LostFoundDate = date('Y-m-d H:i:s', strtotime($fields["CatField_LostFoundDate"]));
-        $contact = $fields["CatField_Contact"];
-        // search user email
-        $matchingMembers = Member::get()->filter(array('Email' => $contact));
-        if (count($matchingMembers) === 1) {
-            $userId = $matchingMembers[0]->ID;
-            if ($fields["CatField_LostFoundStatus"] == "Vermisst") {
-                $cat->OwnerID = $userId;
-            }
-            $cat->ReporterID = $userId;
-        }
+        $cat->Contact = $fields["CatField_Contact"];
         $cat->write();
     }
 

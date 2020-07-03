@@ -55,12 +55,7 @@ class CatImportTask extends BuildTask {
             $cat->HairLength = $this->mapHairLength(param($fields, "haarlnge"));
             $cat->LostFoundTime = param($fields, "tageszeit");
             createAttachments(param($catEntry, "resources"), param($catEntry, "images"), $cat);
-            $userId = createUser($fields);
-            if ($lostFoundStatus == "vermisst") {
-                $cat->OwnerID = $userId;
-            }
-            $cat->ReporterID = $userId;
-            $newCatID = $cat->write();
+            $cat->write();
             echo "</li>";
         }
         echo "</ul>";
@@ -105,33 +100,6 @@ function assignIfDate($newCat, $index, $value) {
     if (DateTime::createFromFormat('Y-m-d', $value) !== false) {
         $newCat->{$index} = $value;
     }
-}
-/**
- * creates a user for the reporter
- */
-function createUser($importedCatFields) {
-    $firstName = param($importedCatFields, "Vorname");
-    $lastName = param($importedCatFields, "Nachname");
-    $matchingMembers = Member::get()->filter(array(
-        "FirstName" => $firstName,
-        "Surname" => $lastName
-    ));
-    $id = -1;
-    if (count($matchingMembers) == 0) {
-        $member = Member::create();
-        $member->FirstName = $firstName;
-        $member->Surname = $lastName;
-        $member->PhoneNumber = $importedCatFields["Kontakt"];
-        // i'll just assume the reporter lives in the same country
-        // as they found/are missing the cat...
-        $member->Country = $importedCatFields["bundesland"];
-        $id = $member->write();
-    } else {
-        $id = $matchingMembers[0]->ID;
-    }
-
-
-    return $id;
 }
 
 /**

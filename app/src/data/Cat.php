@@ -57,16 +57,6 @@ class Cat extends DataObject {
         'HairLength' => 'Varchar(250)',
         'Contact' => 'Varchar(250)'
     ];
-        // owner/finder/contact
-        // 'PublishStatus' => 'Varchar(20)',
-        // icon
-        // images
-        // attachments
-        // creator
-    private static $has_one = [
-        'Reporter' => Member::class,
-        'Owner' => Member::class
-    ];
 
     private static $many_many = [
         'Attachments' => File::class,
@@ -160,16 +150,7 @@ class Cat extends DataObject {
             TextField::create('LostFoundDescription', 'Beschreibung der Situation'),
             TextField::create('MoreInfo', 'Details'),
             UploadField::create('Attachments', 'Anhänge'),
-            DropdownField::create(
-                'ReporterID',
-                'Meldende Person',
-                Member::get()->map('ID', 'FullName')
-            )->setEmptyString('Auswählen...'),
-            DropdownField::create(
-                'OwnerID',
-                'Besitzer',
-                Member::get()->map('ID', 'FullName')
-            )->setEmptyString('Auswählen...')
+            TextField::create('Contact', 'Kontakt')
         );
         return $fields;
     }
