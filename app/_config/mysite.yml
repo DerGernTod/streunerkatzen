@@ -6,9 +6,6 @@ SilverStripe\Core\Manifest\ModuleManifest:
 SilverStripe\UserForms\Model\Submission\SubmittedForm:
   extensions:
     - Streunerkatzen\CatUserFormSubmissionExtension
-SilverStripe\Security\Member:
-  extensions:
-    - Streunerkatzen\CatMemberExtension
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Streunerkatzen\HeaderConfigExtension
