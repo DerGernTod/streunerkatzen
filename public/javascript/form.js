@@ -25,6 +25,8 @@
     var closeDisabled = false;
     var removeQueue = [];
 
+    var demoDiv = createElement('div', [], 'demo-div hidden', document.body);
+    var demoOffset = { x: 50, y: 0 };
     setDropdownVisible(false);
 
     on(chosen, 'click', function () {
@@ -68,6 +70,11 @@
             input.value = '';
             setDropdownVisible(false);
         }
+    });
+
+    on(document, 'mousemove', function (e) {
+        demoDiv.style.left = (e.clientX + demoOffset.x) + "px";
+        demoDiv.style.top = (e.clientY + demoOffset.y) + "px";
     });
 
     function setDropdownVisible(visible) {
@@ -124,6 +131,23 @@
     forEach(options, function(option) {
         var optionEl = createElement('li', [{ key: 'data-li', value: option.value }], 'chosen-option selectable', chosenOptions);
         optionEl.innerText = option.value;
+        var optionAttrs = option.getAttributeNames();
+        var urls = [];
+        forEach(optionAttrs, function (attrName) {
+            if (attrName.indexOf("data-ex") === 0) {
+                urls.push(option.getAttribute(attrName));
+            }
+        });
+        on(optionEl, 'mouseenter', function (e) {
+            demoDiv.textContent = '';
+            forEach(urls, function (url) {
+                createElement('img', [{ key: 'src', value: url }], 'demo-img', demoDiv);
+            });
+            demoDiv.classList.remove("hidden");
+        });
+        on(optionEl, 'mouseleave', function (e) {
+            demoDiv.classList.add("hidden");
+        });
         on(optionEl, 'click', function (e) {
             e.stopPropagation();
             if (optionEl.classList.contains('selectable')) {

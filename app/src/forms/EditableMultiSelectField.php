@@ -2,15 +2,18 @@
 
 namespace Streunerkatzen;
 
+use SilverStripe\ORM\Map;
 use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Assets\File;
+use SilverStripe\Dev\Backtrace;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Dev\Backtrace;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\UserForms\Model\EditableFormField;
 use SilverStripe\Forms\GridField\GridFieldButtonRow;
@@ -52,6 +55,24 @@ class EditableMultiSelectField extends EditableMultipleOptionField {
 
     public function getValueFromData($data) {
         return join(';',$data[$this->Name]);
+    }
+
+    /**
+     * Gets map of field options suitable for use in a form
+     *
+     * @return array
+     */
+    protected function getOptionsMap() {
+        $optionSet = $this->Options();
+        $options = [];
+        foreach ($optionSet as $option) {
+            $options[] = new ArrayData(array(
+                "Value" => $option->Value,
+                "Title" => $option->Title,
+                "Examples" => $option->Examples()
+            ));
+        }
+        return $options;
     }
 
     public function getCMSFields() {

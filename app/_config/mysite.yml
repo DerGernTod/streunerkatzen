@@ -21,6 +21,9 @@ SilverStripe\UserForms\Control\UserDefinedFormController:
 SilverStripe\UserForms\Model\EditableFormField\EditableOption:
   extensions:
     - Streunerkatzen\EditableOptionExtension
+SilverStripe\Forms\ListboxField:
+  extensions:
+    - Streunerkatzen\ListboxFieldExtension
 SilverStripe\Control\Email\Email:
   admin_email:
     noreply@streunerkatzen.org: 'Streunerkatzen Team'
