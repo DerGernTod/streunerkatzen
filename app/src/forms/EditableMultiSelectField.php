@@ -78,7 +78,16 @@ class EditableMultiSelectField extends EditableMultipleOptionField {
                     }
                 ],
                 'Examples' => [
-                    'field' => UploadField::class
+                    'title' => 'Beispielbild',
+                    'callback' => function ($record, $column, $grid) use ($editableColumns) {
+                        $field = UploadField::create($column);
+                        $form = $field->getForm();
+                        if (!isset($form)) {
+                            $form = $grid->getForm($grid, $record);
+                        }
+                        $field->setForm($form);
+                        return $field;
+                    }
                 ]
             ]);
 
