@@ -7,7 +7,8 @@ use SilverStripe\Dev\BuildTask;
 class NotifySubmitters extends BuildTask {
     public function run($request) {
         $triggerNotifiers = Notifier::get()
-            ->filter(['NextReminder:LessThanOrEqual' => date('Y-m-d H:i:s')]);
+        ->filter(['NextReminder:LessThanOrEqual' => date('Y-m-d H:i:s')]);
+        echo ($triggerNotifiers->count())." Katzen zum Benachrichtigen gefunden.";
         foreach($triggerNotifiers as $notifier) {
             $contact = $notifier->Cat->Contact;
             if (!filter_var($contact, FILTER_VALIDATE_EMAIL)) {
@@ -19,9 +20,6 @@ class NotifySubmitters extends BuildTask {
                 // TODO: send email here
                 echo "TODO: send email to $contact ".Director::absoluteBaseURL();
             }
-        }
-        if ($triggerNotifiers->count()) {
-            echo 'Keine Erinnerungen zu senden.';
         }
     }
 }
