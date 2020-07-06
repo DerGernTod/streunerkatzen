@@ -9,6 +9,7 @@ class NotifySubmitters extends BuildTask {
         $triggerNotifiers = Notifier::get()
         ->filter(['NextReminder:LessThanOrEqual' => date('Y-m-d H:i:s')]);
         echo ($triggerNotifiers->count())." Katzen zum Benachrichtigen gefunden.";
+        $notifiersPerEmail = [];
         foreach($triggerNotifiers as $notifier) {
             $contact = $notifier->Cat->Contact;
             if (!filter_var($contact, FILTER_VALIDATE_EMAIL)) {
@@ -17,9 +18,16 @@ class NotifySubmitters extends BuildTask {
                 $nextReminder = date('Y-m-d H:i:s', strtotime("+2 week"));
                 $notifier->NextReminder = $nextReminder;
                 $notifier->write();
-                // TODO: send email here
-                echo "TODO: send email to $contact ".Director::absoluteBaseURL();
+
+                if (!isset($notifiersPerEmail[$contact])) {
+                    $notifiersPerEmail[$contact] = [];
+                }
+                $notifiersPerEmail[$contact][] = $notifier;
             }
+        }
+
+        foreach($notifiersPerEmail as $email => $notifiers) {
+            EmailHelper::sendCatEntryReminderMail($notifiers, $email);
         }
     }
 }

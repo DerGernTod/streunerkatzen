@@ -162,6 +162,9 @@ class Cat extends DataObject {
         return Director::baseURL().'vermisst-und-gefunden/katzensuche/view/'.$this->ID;
     }
 
+    public function AbsoluteLink() {
+        return Director::absoluteBaseURL().'vermisst-und-gefunden/katzensuche/view/'.$this->ID;
+    }
     /**
      * used to normalize unknown fields
      */
