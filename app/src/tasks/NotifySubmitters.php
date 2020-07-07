@@ -1,6 +1,7 @@
 <?php
 namespace Streunerkatzen;
 
+use Exception;
 use SilverStripe\Control\Director;
 use SilverStripe\Dev\BuildTask;
 
@@ -17,7 +18,6 @@ class NotifySubmitters extends BuildTask {
             } else {
                 $nextReminder = date('Y-m-d H:i:s', strtotime("+2 week"));
                 $notifier->NextReminder = $nextReminder;
-                $notifier->write();
 
                 if (!isset($notifiersPerEmail[$contact])) {
                     $notifiersPerEmail[$contact] = [];
@@ -27,9 +27,13 @@ class NotifySubmitters extends BuildTask {
         }
 
         foreach ($notifiersPerEmail as $email => $notifiers) {
-            EmailHelper::sendCatEntryReminderMail($notifiers, $email);
-            foreach ($notifiers as $notifier) {
-                $notifier->write();
+            try {
+                EmailHelper::sendCatEntryReminderMail($notifiers, $email);
+                foreach ($notifiers as $notifier) {
+                    $notifier->write();
+                }
+            } catch (Exception $e) {
+                echo "Fehler beim Senden: $e";
             }
         }
     }
