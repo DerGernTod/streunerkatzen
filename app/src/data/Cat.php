@@ -57,6 +57,9 @@ class Cat extends DataObject {
         'HairLength' => 'Varchar(250)',
         'Contact' => 'Varchar(250)'
     ];
+    private static $has_one = [
+        'Notifier' => Notifier::class
+    ];
 
     private static $many_many = [
         'Attachments' => File::class,
@@ -159,6 +162,9 @@ class Cat extends DataObject {
         return Director::baseURL().'vermisst-und-gefunden/katzensuche/view/'.$this->ID;
     }
 
+    public function AbsoluteLink() {
+        return Director::absoluteBaseURL().'vermisst-und-gefunden/katzensuche/view/'.$this->ID;
+    }
     /**
      * used to normalize unknown fields
      */

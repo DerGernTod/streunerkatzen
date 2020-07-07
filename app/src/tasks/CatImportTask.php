@@ -1,10 +1,9 @@
 <?php
-
+namespace Streunerkatzen;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Storage\AssetStore;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
-use SilverStripe\Security\Member;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
 use Streunerkatzen\Cat;
 use Streunerkatzen\CatExporter;

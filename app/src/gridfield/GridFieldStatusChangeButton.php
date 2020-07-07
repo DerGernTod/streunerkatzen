@@ -114,7 +114,14 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
         }
         $cat->LostFoundDate = date('Y-m-d H:i:s', strtotime($fields["CatField_LostFoundDate"]));
         $cat->Contact = $fields["CatField_Contact"];
+        $notifier = Notifier::create();
+        $notifier->Cat = $cat;
+        $notifier->NextReminder = date('Y-m-d H:i:s', strtotime("+7 day"));
+        $notifier->Token = (new RandomGenerator())->randomToken();
+        $notifier->write();
+        $cat->Notifier = $notifier;
         $cat->write();
+
     }
 
     //Handle the custom action, for both the action button and the URL
@@ -132,7 +139,7 @@ class GridFieldStatusChangeButton implements GridField_HTMLProvider, GridField_A
                 }
                 $this->createCat($fields);
             } catch (Exception $e) {
-                die("Katze konnte nicht eingetragen werden: " . $e->message);
+                die("Katze konnte nicht eingetragen werden: " . $e);
             }
             // this only deletes the content of the grid field, not the submission entry. weird
             // $this->sourceData->delete();

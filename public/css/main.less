@@ -31,6 +31,12 @@ html, body {
 
 .hidden {
     display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.block {
+    display: block;
 }
 
 .collage {
@@ -139,11 +145,13 @@ header {
     }
 }
 
-.hidden {
-    visibility: hidden;
-    opacity: 0;
+.noti-controls {
+    margin: 1em 0;
+    list-style-type: none;
+    li {
+        margin: .5em 0;
+    }
 }
-
 
 @import "fonts.less";
 @import "grid/grid.less";
