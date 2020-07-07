@@ -11,8 +11,8 @@ class Notifier extends DataObject {
         'NextReminder' => 'Date',
         'EditToken' => 'Varchar'
     ];
-    private static $has_one = [
-        'Cat' => Cat::class
+    private static $belongs_to = [
+        'Cat' => Cat::class.".Notifier"
     ];
 
     private static $singular_name = 'Notifier';
