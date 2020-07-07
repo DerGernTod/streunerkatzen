@@ -37,7 +37,7 @@ class EmailHelper {
      */
     public static function sendCatEntryReminderMail($notifiers, $address) {
         $template = (new ArrayList($notifiers))->renderWith("Streunerkatzen/Includes/Mail/CatEntryReminderMail");
-        $email = new Email('noreply@streunerkatzen.org', $address, 'Überarbeite Deinen Eintrag', $template);
+        $email = new Email('admin@gernotraudner.at', $address, 'Überarbeite Deinen Eintrag', $template);
         $result = $email->send();
         if (!$result) {
             throw new Exception("Error sending email.");
