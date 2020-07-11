@@ -31,47 +31,4 @@ class ListboxFieldExtension extends DataExtension {
         $this->owner->extend('updateGetOptions', $options);
         return $options;
     }
-
-
-    /**
-     * Validate this field
-     *
-     * @param Validator $validator
-     * @return bool
-     */
-    public function validate($validator)
-    {
-        $values = $this->owner->getValueArray();
-        $validValues = $this->owner->getValidValues();
-
-        // Filter out selected values not in the data source
-        $self = $this;
-        $invalidValues = array_filter(
-            $values,
-            function ($userValue) use ($self, $validValues) {
-                foreach ($validValues as $formValue) {
-                    if ($self->owner->isSelectedValue($formValue, $userValue)) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        );
-        if (empty($invalidValues)) {
-            return true;
-        }
-
-        // List invalid items
-        $validator->owner->validationError(
-            $this->owner->getName(),
-            "Validierungsfehler: valide werte: ".join(", ", $validValues)." <br />gegebene werte: ".join(", ", $values)
-            /*_t(
-                'SilverStripe\\Forms\\MultiSelectField.SOURCE_VALIDATION',
-                "Please select values within the list provided. Invalid option(s) {value} given",
-                array('value' => implode(',', $invalidValues))
-            )*/,
-            "validation"
-        );
-        return false;
-    }
 }
