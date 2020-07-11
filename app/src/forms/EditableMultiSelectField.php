@@ -66,7 +66,7 @@ class EditableMultiSelectField extends EditableMultipleOptionField {
         $optionSet = $this->Options();
         $options = [];
         foreach ($optionSet as $option) {
-            $options[] = new ArrayData(array(
+            $options[$option->Value] = new ArrayData(array(
                 "Value" => $option->Value,
                 "Title" => $option->Title,
                 "Examples" => $option->Examples()
