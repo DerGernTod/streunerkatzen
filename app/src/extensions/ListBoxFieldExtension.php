@@ -11,6 +11,9 @@ class ListboxFieldExtension extends DataExtension {
         $options = array();
         $selectedValue = $this->owner->getValueArray();
         foreach ($this->owner->getSource() as $item) {
+            if (!is_object($item)) {
+                return $this->owner->getOptions();
+            }
             $value = $item->Value;
             $title = $item->Title;
             $itemSelected = in_array($value, $selectedValue)
