@@ -65,6 +65,13 @@ class BlogArticle extends DataObject {
         return $this->renderWith('Streunerkatzen/Includes/BlogArticleListView');
     }
 
+    public static function getNewestBlogArticles($count) {
+        if ($count <= 0) {
+            return null;
+        }
+        return BlogArticle::get()->sort("PublishTime", "DESC")->limit($count);
+    }
+
     public function getFullView() {
         return $this->renderWith('Streunerkatzen/Includes/BlogArticleFullView');
     }
