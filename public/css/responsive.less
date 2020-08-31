@@ -1,0 +1,125 @@
+// main: main.less
+main {
+    display: flex;
+    margin: auto;
+    max-width:120rem;
+    padding: 4rem 3rem;
+    box-sizing:border-box;
+}
+
+.site-header-inner {
+    max-width:120rem;
+    margin:auto;
+    box-sizing:border-box;
+    padding-left: 11rem;
+    padding-right:2rem;
+    padding-bottom:1rem;
+    padding-top:1rem;
+    margin-left:3rem;
+    display:flex;
+}
+
+.site-header-inner-text {
+    flex:1;
+}
+
+.content-wrapper {
+    flex:1;
+    padding-right:3rem;
+    margin-right:3rem;
+    border-right:1px solid var(--bg);
+}
+
+nav.main-menu a:first-child {
+    /*margin-left:3rem;*/
+}
+
+aside.cta {
+    width: 30rem;
+}
+
+.mobile-menu {
+    display:none;
+    padding-left:5rem;
+}
+
+@media(max-width: 999px) {
+    main {
+        flex-direction:column;
+    }
+
+    .startpage main {
+        flex-direction:column-reverse;
+    }
+
+    .content-wrapper {
+        flex:auto;
+        padding-right:0;
+        margin-right:0;
+        border-right:none;
+        border-bottom: 1px solid var(--bg);
+    }
+
+    .startpage .content-wrapper {
+        border-bottom:none;
+        border-top:1px solid var(--bg);
+    }
+
+    aside.cta {
+        width:auto;
+    }
+    h1, .site-title {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media(max-width: 799px) {
+
+    .site-header {
+        padding-top:1rem;
+        padding-bottom:1rem;
+    }
+
+    .site-header-inner {
+        padding-top:4rem;
+        padding-bottom:4rem;
+        padding-left:12rem;
+    }
+    .site-subtitle, .site-header nav {
+        display:none;
+    }
+
+    .mobile-menu {
+        display:block;
+    }
+}
+
+/*
+@media(max-width: 599px) {
+    .site-header-inner {
+        padding-top:8rem;
+        padding-bottom:0;
+    }
+}*/
+
+@media(max-width: 599px) {
+
+    .site-header {
+        padding-top:1rem;
+    }
+    .site-header-inner {
+        padding-top:2rem;
+        padding-bottom:2rem;
+        padding-left:6rem;
+    }
+    .site-title {
+        font-size:1.6rem;
+    }
+    .mobile-menu {
+        padding-left:1rem;
+    }
+}

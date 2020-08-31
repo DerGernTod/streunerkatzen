@@ -45,17 +45,16 @@
 </head>
 
 <body>
-<div>
-    <!--<% include Streunerkatzen/CatLoadingSpinner %> -->
-    </div>
-    <div class="wrapper">
-        <a id="anchor-top" class="hidden"></a>
-        <% include Header %>
-        <div class="container main">
+    <% include Header %>
+    <a id="anchor-top" class="hidden"></a>
+    <main>
+        <div class="content-wrapper">
             $Form
             $Layout
         </div>
-    </div>
+        <% include Sidebar %>
+    </main>
+
     <% include BackToTop %>
     <% include Footer %>
 </body>
