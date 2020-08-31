@@ -10,7 +10,7 @@
             <h2><a href="$Link/$ID">$Title</a></h2>
             <div class='head'> am $PublishTime.Format('dd.MM.yyyy')</div>
         </div>
-        <div>$Abstract</div>
+        <p>$Abstract</p>
         <a class="read-more" href="$Link/$ID">Weiterlesen...</a>
     </div>
     <div class='image'>

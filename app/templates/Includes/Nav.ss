@@ -1,4 +1,4 @@
-<nav class="main-menu">
+<nav id="main-menu" class="main-menu">
     <% loop $Menu(1) %>
         <div class="item $LinkingMode">
             <a href="$Link">$MenuTitle</a>

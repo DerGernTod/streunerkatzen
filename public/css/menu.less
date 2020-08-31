@@ -20,8 +20,12 @@
         left: 0px;
         display: none;
         z-index: 1;
+        background-color: @secondaryBGColor;
+        padding: 0.6em;
 
         & > .item {
+            padding: 2px 0;
+
             a {
                 white-space: nowrap;
             }
@@ -29,7 +33,8 @@
     }
 
     .item.current {
-        background-color: lighten(@secondaryBGColor, 10%);
+        // TODO: highlight somehow
+        // background-color: lighten(@secondaryBGColor, 10%);
     }
 }
 
@@ -92,47 +97,40 @@
             }
         }
 
-        .container {
-            min-height: 50px;
+        min-height: 50px;
 
-            .main-items {
-                padding-top: 50px;
-                display: none;
-                background-color: @secondaryBGColor;
-                z-index: 10;
+        padding-top: 50px;
+        display: none;
+        background-color: @secondaryBGColor;
+        z-index: 10;
 
-                .item {
-                    display: block;
+        .item {
+            display: block;
+            margin: .5em 0;
 
-                    .show-sub-items {
-                        width: 10px;
-                        height: 10px;
-                        border-right: 2px solid @secondaryFontColor;
-                        border-bottom: 2px solid @secondaryFontColor;
-                        position: absolute;
-                        right: 15px;
-                        top: 13px;
-                        transform: rotate(45deg);
-                        cursor: pointer;
-                    }
-                }
+            .show-sub-items {
+                width: 10px;
+                height: 10px;
+                border-right: 2px solid @secondaryFontColor;
+                border-bottom: 2px solid @secondaryFontColor;
+                position: absolute;
+                right: 1em;
+                top: .2em;
+                transform: rotate(45deg);
+                cursor: pointer;
             }
-            .sub-items {
-                position: relative;
-                top: 0;
+        }
+        .sub-items {
+            position: relative;
+            top: 0;
 
-                &.open {
-                    display: block;
-                }
+            &.open {
+                display: block;
             }
         }
 
         &.open {
-            .container {
-                .main-items {
-                    display: block;
-                }
-            }
+            display: block;
         }
     }
 }

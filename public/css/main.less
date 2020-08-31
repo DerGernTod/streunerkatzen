@@ -1,14 +1,35 @@
 @import "responsive.less";
 @import "menu.less";
 @import "search.less";
-@font-face {
-    font-family: "Open Sans";
-    src: url(../fonts/open-sans-v17-latin/open-sans-v17-latin-regular.woff);
-}
 
 @font-face {
     font-family: "Handlee";
-    src: url(../fonts/handlee/Handlee-Regular.ttf);
+    src: url(../fonts/Handlee-Regular.ttf);
+}
+@font-face {
+    font-family:"Handlee";
+    font-style:normal;
+    font-weight:400;
+    font-display:auto;
+    src:url(../fonts/Handlee-Regular.eot);
+    src:url(../fonts/Handlee-Regular.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/Handlee-Regular.woff2) format("woff2"),
+    url(../fonts/Handlee-Regular.woff) format("woff"),
+    url(../fonts/Handlee-Regular.ttf) format("truetype"),
+    url(../fonts/Handlee-Regular.svg) format("svg")
+}
+
+@font-face {
+    font-family:"Open Sans";
+    font-style:normal;
+    font-weight:400;
+    font-display:auto;
+    src:url(../fonts/OpenSans-Regular.eot);
+    src:url(../fonts/OpenSans-Regular.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/OpenSans-Regular.woff2) format("woff2"),
+    url(../fonts/OpenSans-Regular.woff) format("woff"),
+    url(../fonts/OpenSans-Regular.ttf) format("truetype"),
+    url(../fonts/OpenSans-Regular.svg) format("svg")
 }
 
 :root {
@@ -16,6 +37,10 @@
     --bg:#4e559a;
     --light-bg:rgba(255,255,255,0.7);
     --cta:#e4cd2a;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -147,4 +172,31 @@ footer {
 
 footer a {
     color:white;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.popup {
+    position: fixed;
+    display:flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(200, 200, 200, .8);
+    & > * {
+        max-width: 550px;
+        padding: 1em;
+        border-radius: .25em;
+        background-color: white;
+        margin: 1em;
+    }
 }

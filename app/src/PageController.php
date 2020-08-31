@@ -4,8 +4,9 @@ namespace {
 
     use SilverStripe\CMS\Controllers\ContentController;
     use SilverStripe\View\Requirements;
+    use Streunerkatzen\BlogArticle;
 
-    class PageController extends ContentController {
+class PageController extends ContentController {
         /**
          * An array of actions that can be accessed via a request. Each array element should be an action name, and the
          * permissions or conditions required to allow the user to access it.
@@ -27,6 +28,10 @@ namespace {
             parent::init();
             Requirements::themedCSS("main.css");
             Requirements::themedJavascript("scripts.js");
+        }
+
+        public function getNewestBlogArticles($count) {
+            return BlogArticle::getNewestBlogArticles($count);
         }
     }
 }

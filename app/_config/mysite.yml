@@ -9,6 +9,7 @@ SilverStripe\UserForms\Model\Submission\SubmittedForm:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Streunerkatzen\HeaderConfigExtension
+    - Streunerkatzen\SidebarConfigExtension
 SilverStripe\Assets\Image:
   extensions:
     - Streunerkatzen\GalleryImageExtension

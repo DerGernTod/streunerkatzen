@@ -24,42 +24,28 @@ class HeaderConfigExtension extends DataExtension {
         "HeaderImage" => Image::class
     ];
 
-    private static $has_many = [
-        "CollageImages" => Image::class
-    ];
-
     private static $owns = [
         "LogoImage",
-        "HeaderImage",
-        "CollageImages"
+        "HeaderImage"
     ];
 
     public function updateCMSFields(FieldList $fields) {
 
-        $fields->addFieldsToTab('Root.Streunerkatzen', [
+        $fields->addFieldsToTab('Root.Header', [
             TextField::create('MainText', 'Seitentitel'),
             TextareaField::create('SubText', 'Untertitel'),
             $logo = UploadField::create('LogoImage', 'Logo'),
-            $header = UploadField::create('HeaderImage', 'Headerbild'),
-            $collageImages = UploadField::create('CollageImages', 'Collage Fotos')
+            $header = UploadField::create('HeaderImage', 'Headerbild')
         ]);
         $logo
-            ->setFolderName('CollageImages')
+            ->setFolderName('HeaderImages')
             ->getValidator()
             ->setAllowedExtensions(HeaderConfigExtension::ALLOWED_FILE_ENDINGS);
         $header
-            ->setFolderName('CollageImages')
-            ->getValidator()
-            ->setAllowedExtensions(HeaderConfigExtension::ALLOWED_FILE_ENDINGS);
-        $collageImages
-            ->setFolderName('CollageImages')
+            ->setFolderName('HeaderImages')
             ->getValidator()
             ->setAllowedExtensions(HeaderConfigExtension::ALLOWED_FILE_ENDINGS);
 
         return $fields;
-    }
-
-    public function getShuffledCollage() {
-        return $this->owner->CollageImages()->sort("RAND()")->limit(10);
     }
 }
