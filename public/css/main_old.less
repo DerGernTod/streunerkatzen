@@ -1,0 +1,161 @@
+@import "colors.less";
+@import "form.less";
+@import "blog.less";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: @mainBGColor;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+    height: @footer-height;
+    background-color: @footerBGColor;
+    text-transform: uppercase;
+    a {
+        text-decoration: none;
+        font-size: 9pt;
+        &:hover {
+            color: @menuHighlightColor;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.block {
+    display: block;
+}
+
+.collage {
+    height: @collage-height;
+    width: 105%;
+    width: ~"calc(100% + " @collage-height ~")";
+    & img {
+        margin: 2px;
+        float: left;
+    }
+    overflow: hidden;
+}
+
+header {
+    & a {
+        text-decoration: none;
+        &:hover {
+            color: @menuHighlightColor;
+        }
+    }
+    z-index: 9000;
+}
+
+.clear {
+    clear: both;
+}
+
+.container.main {
+    a {
+        color: @mainLinkColor;
+        text-decoration: dotted underline darken(@mainBGColor, 15);
+        &:visited {
+            color: @mainLinkColor;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.popup {
+    position: fixed;
+    display:flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(200, 200, 200, .8);
+    & > * {
+        max-width: 550px;
+        padding: 1em;
+        border-radius: .25em;
+        background-color: white;
+        margin: 1em;
+    }
+}
+.hint {
+    border-radius: 1em;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: white;
+    padding: .5em;
+    font-size: 8pt;
+    cursor: pointer;
+    width: 2em;
+    text-align: center;
+    display: inline-block;
+    transition: background-color .2s;
+    margin-left: 1em;
+    &:hover {
+        background-color: lightgray;
+    }
+}
+.captionImage {
+    &.left {
+        float: left;
+    }
+    &.right {
+        float: right;
+    }
+    &.center {
+        margin: 0 auto;
+    }
+}
+
+.back-to-top {
+    background-image: url(../images/back-to-top-icon.png);
+    background-size: 3em;
+    width: 3em;
+    height: 3em;
+    position: fixed;
+    bottom: 1.5em;
+    bottom: ~"calc(1.5em + "@footer-height~")";
+    right: 1.5em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s;
+    display: block;
+    cursor: default;
+    &.revealed {
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+
+.noti-controls {
+    margin: 1em 0;
+    list-style-type: none;
+    li {
+        margin: .5em 0;
+    }
+}
+
+@import "fonts.less";
+@import "grid/grid.less";
+@import "menu.less";
+@import "cat.less";
+@import "search.less";
+@import "loading-cat.less";

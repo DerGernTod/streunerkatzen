@@ -1,15 +1,16 @@
-<% with $SiteConfig %>
-    <% if $LogoImage %>
-        <div class="collage">
-            <% loop $ShuffledCollage %>
-            <% if $Pos == 2 %>
-                <img src="$SiteConfig.LogoImage.Fill(200,200).URL">
-            <% end_if %>
-                <img src="$Fill(200,200).URL">
-            <% end_loop %>
+<header class="site-header" style="background-image: url($SiteConfig.HeaderImage.URL)">
+    <div class="site-header-inner" style="background-image: url($SiteConfig.LogoImage.Fill(500,686).URL)">
+        <div class="site-header-inner-text">
+            <a class="site-title" href="#">
+                $SiteConfig.MainText
+            </a>
+            <p class="site-subtitle">
+                $SiteConfig.SubText
+            </p>
         </div>
-    <% end_if %>
-<% end_with %>
-<header>
+        <div class="mobile-menu">
+            MENÜ
+        </div>
+    </div>
     <% include Nav %>
 </header>
