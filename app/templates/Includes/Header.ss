@@ -8,9 +8,7 @@
                 $SiteConfig.SubText
             </p>
         </div>
-        <div id="open-mobile-menu" class="mobile-menu">
-            MENÜ
-        </div>
+        <div id="open-mobile-menu" class="mobile-menu"><div class="lines"></div></div>
     </div>
     <% include Nav %>
 </header>

@@ -31,10 +31,6 @@ nav.main-menu a:first-child {
 aside.cta {
   width: 30rem;
 }
-.mobile-menu {
-  display: none;
-  padding-left: 5rem;
-}
 @media (max-width: 999px) {
   main {
     flex-direction: column;
@@ -78,9 +74,6 @@ aside.cta {
   .site-header nav {
     display: none;
   }
-  .mobile-menu {
-    display: block;
-  }
 }
 /*
 @media(max-width: 599px) {
@@ -100,9 +93,6 @@ aside.cta {
   }
   .site-title {
     font-size: 1.6rem;
-  }
-  .mobile-menu {
-    padding-left: 1rem;
   }
 }
 .main-menu {
@@ -148,14 +138,7 @@ aside.cta {
   }
 }
 @media (max-width: 48rem) {
-  .main-menu {
-    min-height: 50px;
-    padding-top: 50px;
-    display: none;
-    background-color: #334273;
-    z-index: 10;
-  }
-  .main-menu #open-mobile-menu {
+  #open-mobile-menu {
     position: absolute;
     right: 15px;
     top: 13px;
@@ -163,29 +146,36 @@ aside.cta {
     height: 25px;
     cursor: pointer;
   }
-  .main-menu #open-mobile-menu .lines {
+  #open-mobile-menu .lines {
     position: relative;
     margin-top: 10px;
   }
-  .main-menu #open-mobile-menu .lines::before,
-  .main-menu #open-mobile-menu .lines::after {
+  #open-mobile-menu .lines::before,
+  #open-mobile-menu .lines::after {
     content: "";
     position: absolute;
     left: 0;
   }
-  .main-menu #open-mobile-menu .lines,
-  .main-menu #open-mobile-menu .lines::before,
-  .main-menu #open-mobile-menu .lines::after {
+  #open-mobile-menu .lines,
+  #open-mobile-menu .lines::before,
+  #open-mobile-menu .lines::after {
     height: 3px;
     width: 25px;
     border-radius: 10px;
     background-color: #fff;
   }
-  .main-menu #open-mobile-menu .lines::before {
+  #open-mobile-menu .lines::before {
     top: -9px;
   }
-  .main-menu #open-mobile-menu .lines::after {
+  #open-mobile-menu .lines::after {
     bottom: -9px;
+  }
+  .main-menu {
+    min-height: 50px;
+    padding-top: 50px;
+    display: none;
+    background-color: #334273;
+    z-index: 10;
   }
   .main-menu .item {
     display: block;

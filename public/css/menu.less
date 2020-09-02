@@ -61,41 +61,41 @@
 }
 
 @media (max-width: @small-width) {
-    .main-menu {
-        #open-mobile-menu {
-            position: absolute;
-            right: 15px;
-            top: 13px;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
+    #open-mobile-menu {
+        position: absolute;
+        right: 15px;
+        top: 13px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
 
-            .lines {
-                position: relative;
-                margin-top: 10px;
+        .lines {
+            position: relative;
+            margin-top: 10px;
 
-                &::before, &::after {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                }
+            &::before, &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+            }
 
-                &, &::before, &::after {
-                    height: 3px;
-                    width: 25px;
-                    border-radius: 10px;
-                    background-color: @secondaryFontColor;
-                }
+            &, &::before, &::after {
+                height: 3px;
+                width: 25px;
+                border-radius: 10px;
+                background-color: @secondaryFontColor;
+            }
 
-                &::before {
-                    top: -9px;
-                }
+            &::before {
+                top: -9px;
+            }
 
-                &::after {
-                    bottom: -9px;
-                }
+            &::after {
+                bottom: -9px;
             }
         }
+    }
+    .main-menu {
 
         min-height: 50px;
 
