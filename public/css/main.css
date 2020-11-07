@@ -489,25 +489,31 @@ a:hover {
   color: var(--light-bg);
   text-shadow: 0.1rem 0.1rem 0.1rem var(--bg);
 }
-.components img {
+img {
   width: 20rem;
-  box-shadow: 0 0 0.1rem var(--bg);
+  box-shadow: 0 0 0.2rem 0.1rem var(--cta);
   border-radius: 0.3rem;
 }
-.components input {
+.components input,
+.userform input {
   border: 0.1rem solid var(--bg);
   border-radius: 0.3rem;
   background: var(--light-bg);
   padding: 0.5rem 1rem;
 }
 .components button {
-  background: #e4cd2a;
+  background: var(--cta);
   border: 1px solid #867818;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+.components button:hover {
+  border-color: var(--cta);
 }
 header.site-header {
   padding-top: 2rem;
