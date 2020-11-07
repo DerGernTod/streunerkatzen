@@ -96,8 +96,11 @@ aside.cta {
   }
 }
 .main-menu {
-  background-color: #334273;
   font-size: 12pt;
+  padding: 0 3rem;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), transparent);
+  margin-top: 1rem;
+  vertical-align: baseline;
 }
 .main-menu,
 .main-menu * {
@@ -106,6 +109,22 @@ aside.cta {
 .main-menu > .item {
   display: inline-block;
   position: relative;
+  height: 100%;
+  color: white;
+  font-size: 1.8rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+}
+.main-menu > .item a {
+  text-decoration: none;
+  display: inline-block;
+}
+.main-menu > .item:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.main-menu .current > a {
+  font-weight: 600 !important;
 }
 .main-menu .sub-items {
   position: absolute;
@@ -113,14 +132,22 @@ aside.cta {
   left: 0px;
   display: none;
   z-index: 1;
-  background-color: #334273;
+  background-color: var(--light-blue);
   padding: 0.6em;
-}
-.main-menu .sub-items > .item {
-  padding: 2px 0;
+  margin-top: 0.3em;
+  min-width: 100%;
 }
 .main-menu .sub-items > .item a {
+  padding: 0.3rem;
   white-space: nowrap;
+  color: white;
+  text-shadow: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  width: 100%;
+}
+.main-menu .sub-items > .item a:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 @media (min-height: 300px) {
   header.sticky-nav {
@@ -135,6 +162,21 @@ aside.cta {
 @media (min-width: 49rem) {
   .main-menu > .item:hover .sub-items {
     display: block;
+  }
+  .main-menu > .item.has-sub-items {
+    display: inline-flex;
+    align-items: center;
+  }
+  .main-menu > .item.has-sub-items:after {
+    content: '';
+    height: 0.5rem;
+    width: 0.5rem;
+    display: inline-block;
+    margin-left: 1rem;
+    border: solid white;
+    border-width: 0 0.2rem 0.2rem 0;
+    transform: rotate(45deg);
+    box-shadow: 0.1rem 0.1rem 0.2rem black;
   }
 }
 @media (max-width: 48rem) {
@@ -188,7 +230,7 @@ aside.cta {
     border-bottom: 2px solid #fff;
     position: absolute;
     right: 1em;
-    top: 0.2em;
+    top: 0.8em;
     transform: rotate(45deg);
     cursor: pointer;
   }
@@ -484,23 +526,6 @@ header.site-header {
   margin-top: 0;
   color: white;
   text-shadow: 0.1rem 0 0.2rem black;
-}
-nav.main-menu {
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), transparent);
-  margin-top: 1rem;
-  padding: 1rem 3rem;
-}
-nav.main-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.8rem;
-  padding-right: 1.5rem;
-  text-transform: uppercase;
-  display: inline-block;
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-}
-.has-submenu {
-  /* arrow-down-icon */
 }
 footer {
   color: white;
