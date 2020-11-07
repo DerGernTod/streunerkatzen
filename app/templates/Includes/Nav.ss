@@ -1,6 +1,6 @@
 <nav id="main-menu" class="main-menu">
     <% loop $Menu(1) %>
-        <div class="item $LinkingMode">
+        <div class="item $LinkingMode <% if $Children %> has-sub-items<% end_if %>">
             <a href="$Link">$MenuTitle</a>
             <% if $Children %>
                 <div class="show-sub-items"></div>

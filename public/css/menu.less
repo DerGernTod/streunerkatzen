@@ -3,8 +3,11 @@
 @import "grid/variables.less";
 
 .main-menu {
-    background-color: @secondaryBGColor;
     font-size: 12pt;
+    padding: 0 3rem;
+    background:linear-gradient(45deg, rgba(255,255,255,0.5),transparent);
+    margin-top:1rem;
+    vertical-align: baseline;
     &, & * {
         color: @secondaryFontColor;
     }
@@ -12,29 +15,47 @@
     & > .item {
         display: inline-block;
         position: relative;
-    }
+        height: 100%;
 
+        color:white;
+        font-size: 1.8rem;
+        padding: 1rem;
+        text-transform:uppercase;
+        text-shadow: 0.1rem 0.1rem 0.2rem black;
+        a {
+            text-decoration:none;
+            display:inline-block;
+
+        }
+        &:hover {
+            background: rgba(255, 255, 255, .5);
+        }
+    }
+    .current > a {
+        font-weight: 600 !important;
+    }
     .sub-items {
         position: absolute;
         top: 100%;
         left: 0px;
         display: none;
         z-index: 1;
-        background-color: @secondaryBGColor;
+        background-color: var(--light-blue);
         padding: 0.6em;
-
-        & > .item {
-            padding: 2px 0;
-
-            a {
-                white-space: nowrap;
+        margin-top: .3em;
+        min-width: 100%;
+        & > .item a {
+            padding: .3rem;
+            white-space: nowrap;
+            color: white;
+            text-shadow: none;
+            font-weight: 500;
+            font-size: 1.6rem;
+            width: 100%;
+            &:hover {
+                background: rgba(255, 255, 255, .5);
             }
         }
-    }
-
-    .item.current {
-        // TODO: highlight somehow
-        // background-color: lighten(@secondaryBGColor, 10%);
     }
 }
 
@@ -55,6 +76,21 @@
         & > .item {
             &:hover .sub-items {
                 display: block;
+            }
+            &.has-sub-items{
+                display: inline-flex;
+                align-items: center;
+                &:after {
+                    content: '';
+                    height: 0.5rem;
+                    width: 0.5rem;
+                    display: inline-block;
+                    margin-left: 1rem;
+                    border: solid white;
+                    border-width: 0 0.2rem 0.2rem 0;
+                    transform: rotate(45deg);
+                    box-shadow: 0.1rem 0.1rem 0.2rem black;
+                }
             }
         }
     }
@@ -115,7 +151,7 @@
                 border-bottom: 2px solid @secondaryFontColor;
                 position: absolute;
                 right: 1em;
-                top: .2em;
+                top: .8em;
                 transform: rotate(45deg);
                 cursor: pointer;
             }
