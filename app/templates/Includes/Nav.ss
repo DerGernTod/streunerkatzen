@@ -5,11 +5,13 @@
             <% if $Children %>
                 <div class="show-sub-items"></div>
                 <div class="sub-items">
-                    <% loop $Children %>
-                        <div class="item $LinkingMode">
-                            <a href="$Link">$MenuTitle</a>
-                        </div>
-                    <% end_loop %>
+                    <div class="sub-items-wrapper">
+                        <% loop $Children %>
+                            <div class="item $LinkingMode">
+                                <a href="$Link">$MenuTitle</a>
+                            </div>
+                        <% end_loop %>
+                    </div>
                 </div>
             <% end_if %>
         </div>

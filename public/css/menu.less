@@ -40,20 +40,23 @@
         left: 0px;
         display: none;
         z-index: 1;
-        background-color: var(--light-blue);
-        padding: 0.6em;
-        margin-top: .3em;
         min-width: 100%;
-        & > .item a {
-            padding: .3rem;
-            white-space: nowrap;
-            color: white;
-            text-shadow: none;
-            font-weight: 500;
-            font-size: 1.6rem;
-            width: 100%;
-            &:hover {
-                background: rgba(255, 255, 255, .5);
+
+        .sub-items-wrapper{
+            padding: 1rem;
+            margin-top: .6rem;
+            background-color: var(--light-blue);
+            & > .item a {
+                padding: .3rem;
+                white-space: nowrap;
+                color: white;
+                text-shadow: none;
+                font-weight: 500;
+                font-size: 1.6rem;
+                width: 100%;
+                &:hover {
+                    background: rgba(255, 255, 255, .5);
+                }
             }
         }
     }
