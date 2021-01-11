@@ -1,4 +1,5 @@
 // main: main.less
+@import "grid/variables.less";
 main {
     display: flex;
     margin: auto;
@@ -37,6 +38,16 @@ nav.main-menu a:first-child {
 aside.cta {
     width: 30rem;
 }
+@media (min-width: (@small-width + 1)) {
+    .site-title {
+        font-size: 3rem;
+    }
+}
+@media (max-width: @small-width) {
+    .site-title {
+        font-size: 2.1rem;
+    }
+}
 @media(max-width: 999px) {
     main {
         flex-direction:column;
@@ -62,7 +73,7 @@ aside.cta {
     aside.cta {
         width:auto;
     }
-    h1, .site-title {
+    h1 {
         font-size: 2.5rem;
     }
 
@@ -105,8 +116,5 @@ aside.cta {
         padding-top:2rem;
         padding-bottom:2rem;
         padding-left:6rem;
-    }
-    .site-title {
-        font-size:1.6rem;
     }
 }

@@ -9,6 +9,6 @@
         <h2>$Title</h2>
         <div class='head'> am $PublishTime.Format('dd.MM.yyyy')</div>
     </div>
-    <div class='captionImage right'>$PostImage.Fill(150,150)</div>
+    <div class='captionImage right'>$PostImage.FitMax(800,800)</div>
     <div>$Content</div>
 </article>
