@@ -27,9 +27,6 @@
             display:inline-block;
 
         }
-        &:hover {
-            background: rgba(255, 255, 255, .5);
-        }
     }
     .current > a {
         font-weight: 600 !important;
@@ -42,21 +39,17 @@
         z-index: 1;
         min-width: 100%;
 
-        .sub-items-wrapper{
-            padding: 1rem;
-            margin-top: .6rem;
-            background-color: var(--light-blue);
-            & > .item a {
-                padding: .3rem;
-                white-space: nowrap;
-                color: white;
-                text-shadow: none;
-                font-weight: 500;
-                font-size: 1.6rem;
-                width: 100%;
-                &:hover {
-                    background: rgba(255, 255, 255, .5);
-                }
+        & > .item a {
+            padding: 1.3rem;
+            //margin-top: .6rem;
+            white-space: nowrap;
+            color: white;
+            text-shadow: none;
+            font-weight: 500;
+            font-size: 1.6rem;
+            width: 100%;
+            &:hover {
+                background: rgba(255, 255, 255, .5);
             }
         }
     }
@@ -77,8 +70,17 @@
 @media (min-width: (@small-width + 1)) {
     .main-menu {
         & > .item {
-            &:hover .sub-items {
-                display: block;
+            &:hover {
+                background: rgba(255, 255, 255, .5);
+                & .sub-items {
+                    display: block;
+                    & > .item a {
+                        background-color: var(--light-blue);
+                        &:hover {
+                            background: rgba(255, 255, 255, .5);
+                        }
+                    }
+                }
             }
             &.has-sub-items{
                 display: inline-flex;
@@ -137,8 +139,7 @@
     .main-menu {
 
         min-height: 50px;
-
-        padding-top: 50px;
+        padding-top: .5em;
         display: none;
         background-color: @secondaryBGColor;
         z-index: 10;
@@ -160,9 +161,12 @@
             }
         }
         .sub-items {
+            margin-top: .7rem;
             position: relative;
             top: 0;
-
+            & > .item {
+                margin: 0;
+            }
             &.open {
                 display: block;
             }

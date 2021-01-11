@@ -31,6 +31,16 @@ nav.main-menu a:first-child {
 aside.cta {
   width: 30rem;
 }
+@media (min-width: 49rem) {
+  .site-title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 48rem) {
+  .site-title {
+    font-size: 2.1rem;
+  }
+}
 @media (max-width: 999px) {
   main {
     flex-direction: column;
@@ -52,8 +62,7 @@ aside.cta {
   aside.cta {
     width: auto;
   }
-  h1,
-  .site-title {
+  h1 {
     font-size: 2.5rem;
   }
   h2 {
@@ -91,9 +100,6 @@ aside.cta {
     padding-bottom: 2rem;
     padding-left: 6rem;
   }
-  .site-title {
-    font-size: 1.6rem;
-  }
 }
 .main-menu {
   font-size: 12pt;
@@ -120,9 +126,6 @@ aside.cta {
   text-decoration: none;
   display: inline-block;
 }
-.main-menu > .item:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
 .main-menu .current > a {
   font-weight: 600 !important;
 }
@@ -134,13 +137,8 @@ aside.cta {
   z-index: 1;
   min-width: 100%;
 }
-.main-menu .sub-items .sub-items-wrapper {
-  padding: 1rem;
-  margin-top: 0.6rem;
-  background-color: var(--light-blue);
-}
-.main-menu .sub-items .sub-items-wrapper > .item a {
-  padding: 0.3rem;
+.main-menu .sub-items > .item a {
+  padding: 1.3rem;
   white-space: nowrap;
   color: white;
   text-shadow: none;
@@ -148,7 +146,7 @@ aside.cta {
   font-size: 1.6rem;
   width: 100%;
 }
-.main-menu .sub-items .sub-items-wrapper > .item a:hover {
+.main-menu .sub-items > .item a:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 @media (min-height: 300px) {
@@ -162,8 +160,17 @@ aside.cta {
   text-align: center;
 }
 @media (min-width: 49rem) {
+  .main-menu > .item:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
   .main-menu > .item:hover .sub-items {
     display: block;
+  }
+  .main-menu > .item:hover .sub-items > .item a {
+    background-color: var(--light-blue);
+  }
+  .main-menu > .item:hover .sub-items > .item a:hover {
+    background: rgba(255, 255, 255, 0.5);
   }
   .main-menu > .item.has-sub-items {
     display: inline-flex;
@@ -216,7 +223,7 @@ aside.cta {
   }
   .main-menu {
     min-height: 50px;
-    padding-top: 50px;
+    padding-top: 0.5em;
     display: none;
     background-color: #334273;
     z-index: 10;
@@ -237,8 +244,12 @@ aside.cta {
     cursor: pointer;
   }
   .main-menu .sub-items {
+    margin-top: 0.7rem;
     position: relative;
     top: 0;
+  }
+  .main-menu .sub-items > .item {
+    margin: 0;
   }
   .main-menu .sub-items.open {
     display: block;
@@ -412,6 +423,202 @@ ul.cat-details li:after {
   padding: 1em;
   border-radius: 5px;
 }
+.demo-div {
+  position: fixed;
+}
+.demo-img {
+  max-width: 200px;
+  max-height: 200px;
+}
+#Form_CatSearchForm {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 300px;
+  clear: both;
+}
+#Form_CatSearchForm .field {
+  float: left;
+}
+#Form_CatSearchForm .field label {
+  display: none;
+}
+#Form_CatSearchForm .field input {
+  width: 14em;
+  padding: 0.4em;
+}
+#Form_CatSearchForm input[type="submit"] {
+  padding: 0.5em;
+  min-width: 6em;
+}
+#Form_CatSearchForm:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+.chosen ul {
+  list-style: none;
+}
+.chosen .chosen-choices {
+  display: flex;
+  justify-content: space-between;
+  width: 11.65em;
+  padding: 0.2em;
+  margin: 0.24em 0;
+  flex-wrap: wrap;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  background-image: linear-gradient(#eee 1%, #fff 15%);
+  cursor: text;
+}
+.chosen .chosen-choices li {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.chosen .chosen-choices li:last-child {
+  width: 25px;
+}
+.chosen .chosen-choices li:not(:last-child) {
+  font-size: 0.7em;
+  height: 2em;
+  margin: 0.25em;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  padding: 0 0.3em;
+}
+.chosen .chosen-choices li:not(:last-child) a {
+  display: inline-block;
+}
+.chosen .chosen-choices li:not(:last-child) a:hover {
+  border-radius: 3px;
+  text-decoration: none;
+  background-color: white;
+}
+.chosen .chosen-choices input {
+  margin: 0;
+  outline: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100% !important;
+  font-size: 10pt;
+  overflow: hidden;
+}
+.chosen .chosen-drop ul {
+  border: 1px solid lightgray;
+  background-color: #e6e6e6;
+}
+.chosen .chosen-drop ul li {
+  margin: 0;
+  padding: 0.35em;
+  background-color: #cccccc;
+}
+.chosen .chosen-drop ul li.selectable {
+  background-color: #e6e6e6;
+}
+.chosen .chosen-drop ul li.selectable:hover {
+  cursor: pointer;
+  background-color: white;
+}
+.user-form-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#search-agent {
+  cursor: pointer;
+}
+.error.message {
+  position: absolute;
+  border: 1px solid red;
+  padding: 0.5em;
+  background-color: white;
+  border-radius: 0.15em;
+  margin: 0.4em;
+  font-size: 9pt;
+}
+.userform .userform-progress > p {
+  display: none;
+}
+.userform .userform-progress .step-button-jump {
+  position: inherit;
+}
+.userform .userform-progress .step-button-wrapper {
+  display: block;
+}
+.userform .userform-progress .step-button-wrapper.current button {
+  color: lightgray;
+  border-color: rgba(0, 0, 0, 0);
+}
+.userform nav {
+  margin: 0.5em 0;
+}
+.userform button {
+  padding: 0.5em;
+  min-width: 6em;
+}
+.userform .field {
+  margin: 0.5em;
+}
+.userform .field.text,
+.userform .field.dropdown,
+.userform .field.listbox,
+.userform .field.textarea,
+.userform .field.checkbox .middleColumn,
+.userform .field.file {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.userform .field.text input,
+.userform .field.dropdown input,
+.userform .field.listbox input,
+.userform .field.textarea input,
+.userform .field.file input,
+.userform .field.text select,
+.userform .field.dropdown select,
+.userform .field.listbox select,
+.userform .field.textarea select,
+.userform .field.file select,
+.userform .field.text textarea,
+.userform .field.dropdown textarea,
+.userform .field.listbox textarea,
+.userform .field.textarea textarea,
+.userform .field.file textarea {
+  width: 14em;
+}
+.userform .field.checkbox .middleColumn {
+  flex-direction: row-reverse;
+}
+.userform .field label {
+  font-weight: 100;
+  float: left;
+}
+.userform .step-navigation,
+.userform .userform-progress {
+  margin: 0.5em;
+}
+.userform .step-navigation .step-buttons,
+.userform .userform-progress .step-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.userform .step-button-wrapper {
+  display: flex;
+}
+input,
+select,
+textarea {
+  padding: 0.4em;
+  margin: 0.25em 0;
+}
 @font-face {
   font-family: "Handlee";
   src: url(../fonts/Handlee-Regular.ttf);
@@ -470,8 +677,7 @@ h3,
   text-transform: uppercase;
   font-weight: 700;
 }
-h1,
-.site-title {
+h1 {
   font-size: 3rem;
 }
 h2 {
@@ -495,13 +701,17 @@ img {
   border-radius: 0.3rem;
 }
 .components input,
-.userform input {
+.userform input,
+.userform select,
+.userform textarea,
+.chosen-choices {
   border: 0.1rem solid var(--bg);
   border-radius: 0.3rem;
   background: var(--light-bg);
   padding: 0.5rem 1rem;
 }
-.components button {
+.components button,
+.userform button {
   background: var(--cta);
   border: 1px solid #867818;
   border-radius: 0.3rem;
@@ -512,7 +722,8 @@ img {
   text-decoration: none;
   color: black;
 }
-.components button:hover {
+.components button:hover,
+.userform button:hover {
   border-color: var(--cta);
 }
 header.site-header {

@@ -1,6 +1,7 @@
 @import "responsive.less";
 @import "menu.less";
 @import "search.less";
+@import "form.less";
 
 @font-face {
     font-family: "Handlee";
@@ -73,7 +74,7 @@ h1, h2, h3, .site-title {
     font-weight:700;
 }
 
-h1, .site-title {
+h1 {
     font-size: 3rem;
 }
 
@@ -102,14 +103,14 @@ img {
     border-radius: .3rem;
 }
 
-.components input, .userform input {
+.components input, .userform input, .userform select, .userform textarea, .chosen-choices {
     border:0.1rem solid var(--bg);
     border-radius:0.3rem;
     background:var(--light-bg);
     padding:0.5rem 1rem;
 }
 
-.components button {
+.components button, .userform button {
     background: var(--cta);
     border: 1px solid #867818;
     border-radius: 0.3rem;

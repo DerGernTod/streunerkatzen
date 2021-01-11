@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2020 at 10:49 AM
+-- Generation Time: Jan 11, 2021 at 06:49 PM
 -- Server version: 5.7.32-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.7
 
@@ -794,7 +794,11 @@ INSERT INTO `changeset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`, `St
 (807, 'SilverStripe\\Versioned\\ChangeSet', '2020-10-03 09:45:38', '2020-10-03 09:45:38', 'Generiert durch Veröffentlichung von \'Ich möchte mich aktiv an der Vereinsarbeit beteiligen\' am 03.10.2020, 09:45', 'published', 1, NULL, '2020-10-03 09:45:38', '2020-10-03 09:45:38', 0, 1),
 (808, 'SilverStripe\\Versioned\\ChangeSet', '2020-10-03 09:45:39', '2020-10-03 09:45:38', 'Generiert durch Veröffentlichung von \'Ich möchte mithelfen, eine Jugendgruppe zu gründen\' am 03.10.2020, 09:45', 'published', 1, NULL, '2020-10-03 09:45:39', '2020-10-03 09:45:38', 0, 1),
 (809, 'SilverStripe\\Versioned\\ChangeSet', '2020-10-03 09:45:39', '2020-10-03 09:45:39', 'Generiert durch Veröffentlichung von \'Freiwillige Spende an den Verein\' am 03.10.2020, 09:45', 'published', 1, NULL, '2020-10-03 09:45:39', '2020-10-03 09:45:39', 0, 1),
-(810, 'SilverStripe\\Versioned\\ChangeSet', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 'Generiert durch Veröffentlichung von \'Startseite\' am 03.10.2020, 13:39', 'published', 1, NULL, '2020-10-03 13:39:01', '2020-10-03 13:39:01', 0, 1);
+(810, 'SilverStripe\\Versioned\\ChangeSet', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 'Generiert durch Veröffentlichung von \'Startseite\' am 03.10.2020, 13:39', 'published', 1, NULL, '2020-10-03 13:39:01', '2020-10-03 13:39:01', 0, 1),
+(811, 'SilverStripe\\Versioned\\ChangeSet', '2020-12-20 12:56:01', '2020-12-20 12:56:01', 'Generiert durch Veröffentlichung von \'Petition\' am 20.12.2020, 12:56', 'published', 1, NULL, '2020-12-20 12:56:01', '2020-12-20 12:56:01', 0, 1),
+(812, 'SilverStripe\\Versioned\\ChangeSet', '2020-12-20 12:56:43', '2020-12-20 12:56:43', 'Generiert durch Veröffentlichung von \'Petition\' am 20.12.2020, 12:56', 'published', 1, NULL, '2020-12-20 12:56:43', '2020-12-20 12:56:43', 0, 1),
+(813, 'SilverStripe\\Versioned\\ChangeSet', '2020-12-20 18:47:31', '2020-12-20 18:47:31', 'Generiert durch Veröffentlichung von \'Testeintrag\' am 20.12.2020, 18:47', 'published', 1, NULL, '2020-12-20 18:47:31', '2020-12-20 18:47:31', 0, 1),
+(814, 'SilverStripe\\Versioned\\ChangeSet', '2020-12-21 12:53:36', '2020-12-21 12:53:35', 'Generiert durch Veröffentlichung von \'Petition\' am 21.12.2020, 12:53', 'published', 1, NULL, '2020-12-21 12:53:36', '2020-12-21 12:53:36', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -3831,7 +3835,15 @@ INSERT INTO `changesetitem` (`ID`, `ClassName`, `LastEdited`, `Created`, `Versio
 (3188, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-10-03 09:45:39', '2020-10-03 09:45:39', 33, 36, 'explicitly', 809, 18, 'SilverStripe\\UserForms\\Model\\EditableFormField'),
 (3189, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 10, 12, 'explicitly', 810, 1, 'SilverStripe\\CMS\\Model\\SiteTree'),
 (3190, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 3, 3, 'implicitly', 810, 70, 'SilverStripe\\Assets\\File'),
-(3191, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 0, 0, 'implicitly', 810, 4, 'SilverStripe\\Assets\\Shortcodes\\FileLink');
+(3191, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-10-03 13:39:01', '2020-10-03 13:39:01', 0, 0, 'implicitly', 810, 4, 'SilverStripe\\Assets\\Shortcodes\\FileLink'),
+(3192, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 12:56:01', '2020-12-20 12:56:01', 0, 0, 'explicitly', 811, 1, 'Streunerkatzen\\BlogArticle'),
+(3193, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 12:56:01', '2020-12-20 12:56:01', 0, 2, 'implicitly', 811, 83, 'SilverStripe\\Assets\\File'),
+(3194, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 12:56:43', '2020-12-20 12:56:43', 0, 0, 'explicitly', 812, 1, 'Streunerkatzen\\BlogArticle'),
+(3195, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 12:56:43', '2020-12-20 12:56:43', 2, 2, 'implicitly', 812, 83, 'SilverStripe\\Assets\\File'),
+(3196, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 18:47:31', '2020-12-20 18:47:31', 0, 0, 'explicitly', 813, 2, 'Streunerkatzen\\BlogArticle'),
+(3197, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-20 18:47:31', '2020-12-20 18:47:31', 0, 2, 'implicitly', 813, 85, 'SilverStripe\\Assets\\File'),
+(3198, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-21 12:53:35', '2020-12-21 12:53:35', 0, 0, 'explicitly', 814, 1, 'Streunerkatzen\\BlogArticle'),
+(3199, 'SilverStripe\\Versioned\\ChangeSetItem', '2020-12-21 12:53:36', '2020-12-21 12:53:36', 0, 2, 'implicitly', 814, 86, 'SilverStripe\\Assets\\File');
 
 -- --------------------------------------------------------
 
@@ -6127,7 +6139,11 @@ INSERT INTO `changesetitem_referencedby` (`ID`, `ChangeSetItemID`, `ChildID`) VA
 (2379, 3172, 3158),
 (2380, 3173, 3158),
 (2381, 3190, 3189),
-(2382, 3191, 3189);
+(2382, 3191, 3189),
+(2383, 3193, 3192),
+(2384, 3195, 3194),
+(2385, 3197, 3196),
+(2386, 3199, 3198);
 
 -- --------------------------------------------------------
 
@@ -13967,7 +13983,11 @@ INSERT INTO `file` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `CanV
 (79, 'SilverStripe\\Assets\\Image', '2020-09-10 14:12:26', '2020-09-10 14:12:09', 2, 'Inherit', 'Inherit', '20200730_193102.jpg', '20200730 193102', 1, 1, 1, 'f83acb3bce2b4200339d60e5726ae252ae43ec2b', 'Uploads/20200730_193102.jpg', NULL),
 (80, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:10', 2, 'Inherit', 'Inherit', '20200730_193102-v2.jpg', '20200730 193102 v2', 1, 1, 1, 'dfc9b4aca87f81c2d8235227f325b6d9c06b73dd', 'Uploads/20200730_193102-v2.jpg', NULL),
 (81, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:13', 2, 'Inherit', 'Inherit', '20200730_193046.jpg', '20200730 193046', 1, 1, 1, 'fbc7f1c220798f99908ddf62a14c97c3a525a5c8', 'Uploads/20200730_193046.jpg', NULL),
-(82, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 2, 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL);
+(82, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 2, 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL),
+(83, 'SilverStripe\\Assets\\Image', '2020-12-20 12:56:01', '2020-12-20 12:55:56', 2, 'Inherit', 'Inherit', 'petition_urfahr-v2.JPG', 'petition urfahr v2', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v2.JPG', NULL),
+(84, 'SilverStripe\\Assets\\Image', '2020-12-20 12:59:47', '2020-12-20 12:59:47', 1, 'Inherit', 'Inherit', 'petition_urfahr-v3.JPG', 'petition urfahr v3', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v3.JPG', NULL),
+(85, 'SilverStripe\\Assets\\Image', '2020-12-20 18:47:31', '2020-12-20 18:47:27', 2, 'Inherit', 'Inherit', 'Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', 'Anno 1800 TechnicalTest2018 11 30 12 59 44', 1, 29, 1, '5e543ba9f0204c17cd1ee24cc50bdbeabb4d17bb', 'Blog/Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', NULL),
+(86, 'SilverStripe\\Assets\\Image', '2020-12-21 12:53:36', '2020-12-21 12:53:31', 2, 'Inherit', 'Inherit', 'petition_urfahr-v4.JPG', 'petition urfahr v4', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v4.JPG', NULL);
 
 -- --------------------------------------------------------
 
@@ -14094,7 +14114,10 @@ INSERT INTO `file_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, 
 (79, 'SilverStripe\\Assets\\Image', '2020-09-10 14:12:26', '2020-09-10 14:12:09', 2, 'Inherit', 'Inherit', '20200730_193102.jpg', '20200730 193102', 1, 1, 1, 'f83acb3bce2b4200339d60e5726ae252ae43ec2b', 'Uploads/20200730_193102.jpg', NULL),
 (80, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:10', 2, 'Inherit', 'Inherit', '20200730_193102-v2.jpg', '20200730 193102 v2', 1, 1, 1, 'dfc9b4aca87f81c2d8235227f325b6d9c06b73dd', 'Uploads/20200730_193102-v2.jpg', NULL),
 (81, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:13', 2, 'Inherit', 'Inherit', '20200730_193046.jpg', '20200730 193046', 1, 1, 1, 'fbc7f1c220798f99908ddf62a14c97c3a525a5c8', 'Uploads/20200730_193046.jpg', NULL),
-(82, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 2, 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL);
+(82, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 2, 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL),
+(83, 'SilverStripe\\Assets\\Image', '2020-12-20 12:56:01', '2020-12-20 12:55:56', 2, 'Inherit', 'Inherit', 'petition_urfahr-v2.JPG', 'petition urfahr v2', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v2.JPG', NULL),
+(85, 'SilverStripe\\Assets\\Image', '2020-12-20 18:47:31', '2020-12-20 18:47:27', 2, 'Inherit', 'Inherit', 'Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', 'Anno 1800 TechnicalTest2018 11 30 12 59 44', 1, 29, 1, '5e543ba9f0204c17cd1ee24cc50bdbeabb4d17bb', 'Blog/Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', NULL),
+(86, 'SilverStripe\\Assets\\Image', '2020-12-21 12:53:36', '2020-12-21 12:53:31', 2, 'Inherit', 'Inherit', 'petition_urfahr-v4.JPG', 'petition urfahr v4', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v4.JPG', NULL);
 
 -- --------------------------------------------------------
 
@@ -14357,7 +14380,14 @@ INSERT INTO `file_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDe
 (223, 82, 1, 0, 0, 1, 1, 0, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:17', '2020-09-10 14:14:17', 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL),
 (224, 81, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:13', 'Inherit', 'Inherit', '20200730_193046.jpg', '20200730 193046', 1, 1, 1, 'fbc7f1c220798f99908ddf62a14c97c3a525a5c8', 'Uploads/20200730_193046.jpg', NULL),
 (225, 80, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:10', 'Inherit', 'Inherit', '20200730_193102-v2.jpg', '20200730 193102 v2', 1, 1, 1, 'dfc9b4aca87f81c2d8235227f325b6d9c06b73dd', 'Uploads/20200730_193102-v2.jpg', NULL),
-(226, 82, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL);
+(226, 82, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-09-10 14:14:22', '2020-09-10 14:14:17', 'Inherit', 'Inherit', '20200801_154318.jpg', '20200801 154318', 1, 1, 1, '8592c854fecf89a8ca2837ce2494d1669cbc796f', 'Uploads/20200801_154318.jpg', NULL),
+(227, 83, 1, 0, 0, 1, 1, 0, 'SilverStripe\\Assets\\Image', '2020-12-20 12:55:56', '2020-12-20 12:55:56', 'Inherit', 'Inherit', 'petition_urfahr-v2.JPG', 'petition urfahr v2', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v2.JPG', NULL),
+(228, 83, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-12-20 12:56:01', '2020-12-20 12:55:56', 'Inherit', 'Inherit', 'petition_urfahr-v2.JPG', 'petition urfahr v2', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v2.JPG', NULL),
+(229, 84, 1, 0, 0, 1, 1, 0, 'SilverStripe\\Assets\\Image', '2020-12-20 12:59:47', '2020-12-20 12:59:47', 'Inherit', 'Inherit', 'petition_urfahr-v3.JPG', 'petition urfahr v3', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v3.JPG', NULL),
+(230, 85, 1, 0, 0, 1, 1, 0, 'SilverStripe\\Assets\\Image', '2020-12-20 18:47:27', '2020-12-20 18:47:27', 'Inherit', 'Inherit', 'Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', 'Anno 1800 TechnicalTest2018 11 30 12 59 44', 1, 29, 1, '5e543ba9f0204c17cd1ee24cc50bdbeabb4d17bb', 'Blog/Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', NULL),
+(231, 85, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-12-20 18:47:31', '2020-12-20 18:47:27', 'Inherit', 'Inherit', 'Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', 'Anno 1800 TechnicalTest2018 11 30 12 59 44', 1, 29, 1, '5e543ba9f0204c17cd1ee24cc50bdbeabb4d17bb', 'Blog/Anno-1800-TechnicalTest2018-11-30-12-59-44.jpg', NULL),
+(232, 86, 1, 0, 0, 1, 1, 0, 'SilverStripe\\Assets\\Image', '2020-12-21 12:53:31', '2020-12-21 12:53:31', 'Inherit', 'Inherit', 'petition_urfahr-v4.JPG', 'petition urfahr v4', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v4.JPG', NULL),
+(233, 86, 2, 1, 0, 1, 1, 1, 'SilverStripe\\Assets\\Image', '2020-12-21 12:53:36', '2020-12-21 12:53:31', 'Inherit', 'Inherit', 'petition_urfahr-v4.JPG', 'petition urfahr v4', 1, 29, 1, 'a0e1ff716e87f7caa3126ea8390e37731b419c27', 'Blog/petition_urfahr-v4.JPG', NULL);
 
 -- --------------------------------------------------------
 
@@ -14483,6 +14513,10 @@ INSERT INTO `image` (`ID`, `GalleryImageID`) VALUES
 (80, 0),
 (81, 0),
 (82, 0),
+(83, 0),
+(84, 0),
+(85, 0),
+(86, 0),
 (13, 1),
 (14, 1),
 (15, 1),
@@ -14548,6 +14582,9 @@ INSERT INTO `image_live` (`ID`, `GalleryImageID`) VALUES
 (80, 0),
 (81, 0),
 (82, 0),
+(83, 0),
+(85, 0),
+(86, 0),
 (13, 1),
 (14, 1),
 (15, 1),
@@ -14684,7 +14721,14 @@ INSERT INTO `image_versions` (`ID`, `RecordID`, `Version`, `GalleryImageID`) VAL
 (102, 82, 1, 0),
 (103, 81, 2, 0),
 (104, 80, 2, 0),
-(105, 82, 2, 0);
+(105, 82, 2, 0),
+(106, 83, 1, 0),
+(107, 83, 2, 0),
+(108, 84, 1, 0),
+(109, 85, 1, 0),
+(110, 85, 2, 0),
+(111, 86, 1, 0),
+(112, 86, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -14738,7 +14782,12 @@ INSERT INTO `loginattempt` (`ID`, `ClassName`, `LastEdited`, `Created`, `Email`,
 (27, 'SilverStripe\\Security\\LoginAttempt', '2020-10-19 08:10:10', '2020-10-19 08:10:10', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '83.164.160.102', 1),
 (28, 'SilverStripe\\Security\\LoginAttempt', '2020-11-01 17:57:02', '2020-11-01 17:57:02', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '217.149.162.30', 1),
 (29, 'SilverStripe\\Security\\LoginAttempt', '2020-11-02 16:49:24', '2020-11-02 16:49:24', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '81.10.141.71', 1),
-(30, 'SilverStripe\\Security\\LoginAttempt', '2020-11-02 16:50:19', '2020-11-02 16:50:19', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '81.10.141.71', 1);
+(30, 'SilverStripe\\Security\\LoginAttempt', '2020-11-02 16:50:19', '2020-11-02 16:50:19', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '81.10.141.71', 1),
+(31, 'SilverStripe\\Security\\LoginAttempt', '2020-12-12 14:30:57', '2020-12-12 14:30:57', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '217.149.169.90', 1),
+(32, 'SilverStripe\\Security\\LoginAttempt', '2020-12-20 12:54:19', '2020-12-20 12:54:19', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '217.149.169.156', 1),
+(33, 'SilverStripe\\Security\\LoginAttempt', '2020-12-20 18:46:41', '2020-12-20 18:46:41', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '139.178.102.83', 1),
+(34, 'SilverStripe\\Security\\LoginAttempt', '2020-12-21 12:53:07', '2020-12-21 12:53:07', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '217.149.168.213', 1),
+(35, 'SilverStripe\\Security\\LoginAttempt', '2021-01-11 17:47:41', '2021-01-11 17:47:41', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Success', '139.178.102.83', 1);
 
 -- --------------------------------------------------------
 
@@ -14783,7 +14832,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`ID`, `ClassName`, `LastEdited`, `Created`, `FirstName`, `Surname`, `Email`, `TempIDHash`, `TempIDExpired`, `Password`, `AutoLoginHash`, `AutoLoginExpired`, `PasswordEncryption`, `Salt`, `PasswordExpiry`, `LockedOutUntil`, `Locale`, `FailedLoginCount`, `ValidationKey`, `NeedsValidation`, `NeedsApproval`, `PublicFieldsRaw`, `ProfilePageID`, `Street`, `HouseNumber`, `Town`, `Zipcode`, `Country`, `PhoneNumber`) VALUES
-(1, 'SilverStripe\\Security\\Member', '2020-11-02 16:50:19', NULL, 'Gernot', 'Raudner', 'streunerkatzen_silverstripe@gernotraudner.at', 'bcbbae21be7630a5c9c013479daecda03225faac', '2020-11-05 16:50:19', '$2y$10$696a5429ae50f3314602buZYQF6iLl6iYxFOkA5geumXdBDTNZkGC', NULL, NULL, 'blowfish', '10$696a5429ae50f3314602b6', NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL),
+(1, 'SilverStripe\\Security\\Member', '2021-01-11 17:47:41', NULL, 'Gernot', 'Raudner', 'streunerkatzen_silverstripe@gernotraudner.at', '04661de51474fb3ba65541de30bfbf0d1d7487ac', '2021-01-14 17:47:41', '$2y$10$696a5429ae50f3314602buZYQF6iLl6iYxFOkA5geumXdBDTNZkGC', NULL, NULL, 'blowfish', '10$696a5429ae50f3314602b6', NULL, NULL, NULL, 0, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL),
 (987, 'SilverStripe\\Security\\Member', '2019-02-10 20:49:27', '2019-02-10 19:26:38', 'Eva', 'Brucker', 'e@b.at', NULL, NULL, '$2y$10$f82368c4b18bf1435aa14O7nlvESA9GPUqJVLAVCNXsybkUa.4zn6', NULL, NULL, 'blowfish', '10$f82368c4b18bf1435aa14d', NULL, NULL, 'de_DE', 0, '30735d2cd7cfb932288f7b5df716bb1c01c59c72', 0, 0, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -17882,8 +17931,8 @@ CREATE TABLE `streunerkatzen_blogarticles` (
 --
 
 INSERT INTO `streunerkatzen_blogarticles` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`, `Content`, `Abstract`, `PublishDate`, `AuthorID`, `PostImageID`, `PublishTime`) VALUES
-(1, 'Streunerkatzen\\BlogArticle', '2020-08-30 18:02:23', '2019-03-23 15:26:18', 'Petition', '<div data-contents=\"true\">\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"abu2d-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"abu2d-0-0\"><span data-offset-key=\"abu2d-0-0\">Die Streunertante hat gemeint, wir sollen uns auch mal melden. Dürfen wir uns vorstellen? Wir sind 2 der jüngsten aus dem aktuellen Fall in Urfahr-Umgebung.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"8k8i8-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"8k8i8-0-0\"><span data-offset-key=\"8k8i8-0-0\">Ja das ist der Fall mit dem Bauern, der eine Zucht gemeldet hat </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"31qra-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"31qra-0-0\"><span data-offset-key=\"31qra-0-0\">Der Bauer, der anstatt seiner gemeldeten 4 \"Zucht\"katzen über 40 Onkel, Tanten, Geschwister von uns herumlaufen hat - in einem sehr erbärmlichen Zustand. Praktisch alle sind abgemagert und mangelernährt, alle haben total kaputte Zähne und viele von uns Schnupfen :-( </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a5hnn-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a5hnn-0-0\"><span data-offset-key=\"a5hnn-0-0\">Der, der seit Jahren ganz viele von uns Zwergen \"beiseite geschafft\" hat - hat er selber der Streunertante erzählt.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"8rpb9-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"8rpb9-0-0\"><span data-offset-key=\"8rpb9-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"45sjj-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"45sjj-0-0\"><span data-offset-key=\"45sjj-0-0\">Wir sind eigentlich schon ca. 4 Wochen alt, sehen aber immer noch aus wie 2 Wochen und nach unserem Gewicht nach, sind wir noch nicht einmal 2 Wochen alt :-( </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"2fikc-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"2fikc-0-0\"><span data-offset-key=\"2fikc-0-0\">Die Streunertante und die nette Tante Frau M. die mit ihr mit war, haben uns gefunden. Ich (rechts im Bild) bin die Miniminimietz mit den 60 g, ich war mehr tot als lebendig - aber ich kämpfe - jeden Tag, mit all meiner Kraft.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"6ok1v-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"6ok1v-0-0\"><span data-offset-key=\"6ok1v-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"e6etl-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"e6etl-0-0\"><span data-offset-key=\"e6etl-0-0\">Seit 4 Wochen kämpfen sie nun schon um unser Überleben, nun hat die Frau Doktor auch noch festgestellt, dass wir nicht nur Schnupfen sondern auch noch Chlamydien haben. Das heißt noch mehr Augenputzen und Augentropfen :-( Wir hassen das!</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"75j0r-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"75j0r-0-0\"><span data-offset-key=\"75j0r-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"csgnh-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"csgnh-0-0\"><span data-offset-key=\"csgnh-0-0\">Bitte unterschreibt die Petition:</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"qm6h-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"qm6h-0-0\"><span data-offset-key=\"qm6h-0-0\">https://www.openpetition.de/petition/online/aufhebung-der-zucht-mit-freigaengerkatzen</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"aenj1-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"aenj1-0-0\"><span data-offset-key=\"aenj1-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a39rg-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a39rg-0-0\"><span data-offset-key=\"a39rg-0-0\">Wir sind nur eine winzigkleine Spitze auf dem Eisberg - in Wahrheit sind wir ganz ganz viele, die dank dieser unsinnigen Regelung mit der \"Zucht\" krank auf die Welt kommen. Der Großteil überlebt die ersten Wochen nicht (entweder wegen Krankheiten oder weil wir getötet werden)</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"cqbri-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"cqbri-0-0\"><span data-offset-key=\"cqbri-0-0\">Keiner kümmert sich um uns, wir gehen zu Grunde - hinter Holzstößen, auf dem Heuboden (wenn die nächste Heulieferung kommt und einfach über uns geschüttet wird), wenn wir in die Jauchegrube fallen, wenn unsere Mütter uns verlieren, weil sie in Panik einen sicheren Ort für uns suchen.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a3to8-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a3to8-0-0\"><span data-offset-key=\"a3to8-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"9ug2d-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"9ug2d-0-0\"><span data-offset-key=\"9ug2d-0-0\">und warum haben diese Menschen eine Zucht angemeldet? Damit sie sich die Kastrationskosten sparen! </span></div>\n</div>\n</div>', 'Online-Petition: Aufhebung der Zucht mit Freigängerkatzen\r\nDerzeit können Kastrationsverweigerer ganz einfach die Kastrationspflicht umgehen, in dem sie eine Zucht anmelden\r\nhttps://openpetition.de/!katzenzucht\r\n', NULL, 1066, 68, '2020-08-16 00:00:00'),
-(2, 'Streunerkatzen\\BlogArticle', '2020-06-30 06:29:41', '2020-06-30 06:29:41', 'Testeintrag', '<p>[cat,id=26]</p><p>folgende Katzen wurden kastriert</p><table width=\"699\" height=\"24\"><tbody><tr><td style=\"width: 225.667px;\">Datum</td>\n<td style=\"width: 225.667px;\">Ort</td>\n<td style=\"width: 225.667px;\">Farbe</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>28.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">St. Thomas am Blasenstein</td>\n<td style=\"width: 225.667px;\">rot m. weiß</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>28.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">St. Thomas am Blasenstein</td>\n<td style=\"width: 225.667px;\">braun-weiß</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>29.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">Linz</td>\n<td style=\"width: 225.667px;\">dreifärbig</td>\n</tr></tbody></table>[embed url=\"https://www.youtube.com/watch?v=sdFCd4DgjDM\" thumbnail=\"https://i.ytimg.com/vi/sdFCd4DgjDM/hqdefault.jpg\" class=\"center ss-htmleditorfield-file embed\" width=\"480\" height=\"270\" caption=\"&nbsp;&nbsp;&nbsp;testvideo hätte ich gern in der Mitte&nbsp;&nbsp;&nbsp;&nbsp;\"]https://www.youtube.com/watch?v=sdFCd4DgjDM[/embed]', 'teste mich mal ein bissl durch :-) ', NULL, 0, 35, '2020-06-30 00:00:00'),
+(1, 'Streunerkatzen\\BlogArticle', '2020-12-21 12:53:35', '2019-03-23 15:26:18', 'Petition', '<div data-contents=\"true\">\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"abu2d-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"abu2d-0-0\"><span data-offset-key=\"abu2d-0-0\">Die Streunertante hat gemeint, wir sollen uns auch mal melden. Dürfen wir uns vorstellen? Wir sind 2 der jüngsten aus dem aktuellen Fall in Urfahr-Umgebung.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"8k8i8-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"8k8i8-0-0\"><span data-offset-key=\"8k8i8-0-0\">Ja das ist der Fall mit dem Bauern, der eine Zucht gemeldet hat </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"31qra-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"31qra-0-0\"><span data-offset-key=\"31qra-0-0\">Der Bauer, der anstatt seiner gemeldeten 4 \"Zucht\"katzen über 40 Onkel, Tanten, Geschwister von uns herumlaufen hat - in einem sehr erbärmlichen Zustand. Praktisch alle sind abgemagert und mangelernährt, alle haben total kaputte Zähne und viele von uns Schnupfen :-( </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a5hnn-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a5hnn-0-0\"><span data-offset-key=\"a5hnn-0-0\">Der, der seit Jahren ganz viele von uns Zwergen \"beiseite geschafft\" hat - hat er selber der Streunertante erzählt.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"8rpb9-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"8rpb9-0-0\"><span data-offset-key=\"8rpb9-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"45sjj-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"45sjj-0-0\"><span data-offset-key=\"45sjj-0-0\">Wir sind eigentlich schon ca. 4 Wochen alt, sehen aber immer noch aus wie 2 Wochen und nach unserem Gewicht nach, sind wir noch nicht einmal 2 Wochen alt :-( </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"2fikc-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"2fikc-0-0\"><span data-offset-key=\"2fikc-0-0\">Die Streunertante und die nette Tante Frau M. die mit ihr mit war, haben uns gefunden. Ich (rechts im Bild) bin die Miniminimietz mit den 60 g, ich war mehr tot als lebendig - aber ich kämpfe - jeden Tag, mit all meiner Kraft.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"6ok1v-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"6ok1v-0-0\"><span data-offset-key=\"6ok1v-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"e6etl-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"e6etl-0-0\"><span data-offset-key=\"e6etl-0-0\">Seit 4 Wochen kämpfen sie nun schon um unser Überleben, nun hat die Frau Doktor auch noch festgestellt, dass wir nicht nur Schnupfen sondern auch noch Chlamydien haben. Das heißt noch mehr Augenputzen und Augentropfen :-( Wir hassen das!</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"75j0r-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"75j0r-0-0\"><span data-offset-key=\"75j0r-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"csgnh-0-0\">\n<div class=\"_1mf _1mj center\" data-offset-key=\"csgnh-0-0\"><strong>Bitte unterschreibt die Petition:</strong></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"qm6h-0-0\">\n<div class=\"_1mf _1mj center\" data-offset-key=\"qm6h-0-0\"><strong>https://www.openpetition.de/petition/online/aufhebung-der-zucht-mit-freigaengerkatzen</strong></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"aenj1-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"aenj1-0-0\"><span data-offset-key=\"aenj1-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a39rg-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a39rg-0-0\"><span data-offset-key=\"a39rg-0-0\">Wir sind nur eine winzigkleine Spitze auf dem Eisberg - in Wahrheit sind wir ganz ganz viele, die dank dieser unsinnigen Regelung mit der \"Zucht\" krank auf die Welt kommen. Der Großteil überlebt die ersten Wochen nicht (entweder wegen Krankheiten oder weil wir getötet werden)</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"cqbri-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"cqbri-0-0\"><span data-offset-key=\"cqbri-0-0\">Keiner kümmert sich um uns, wir gehen zu Grunde - hinter Holzstößen, auf dem Heuboden (wenn die nächste Heulieferung kommt und einfach über uns geschüttet wird), wenn wir in die Jauchegrube fallen, wenn unsere Mütter uns verlieren, weil sie in Panik einen sicheren Ort für uns suchen.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"a3to8-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a3to8-0-0\"><span data-offset-key=\"a3to8-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"a9s4j\" data-offset-key=\"9ug2d-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"9ug2d-0-0\"><span data-offset-key=\"9ug2d-0-0\">und warum haben diese Menschen eine Zucht angemeldet? Damit sie sich die Kastrationskosten sparen! </span></div>\n</div>\n</div>', 'Online-Petition: Aufhebung der Zucht mit Freigängerkatzen\r\nDerzeit können Kastrationsverweigerer ganz einfach die Kastrationspflicht umgehen, in dem sie eine Zucht anmelden\r\nhttps://openpetition.de/!katzenzucht\r\n', NULL, 1066, 86, '2020-08-16 00:00:00'),
+(2, 'Streunerkatzen\\BlogArticle', '2020-12-20 18:47:31', '2020-06-30 06:29:41', 'Testeintrag', '<p>[cat,id=26]</p><p>folgende Katzen wurden kastriert</p><table width=\"699\" height=\"24\"><tbody><tr><td style=\"width: 225.667px;\">Datum</td>\n<td style=\"width: 225.667px;\">Ort</td>\n<td style=\"width: 225.667px;\">Farbe</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>28.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">St. Thomas am Blasenstein</td>\n<td style=\"width: 225.667px;\">rot m. weiß</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>28.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">St. Thomas am Blasenstein</td>\n<td style=\"width: 225.667px;\">braun-weiß</td>\n</tr><tr><td style=\"width: 225.667px;\">\n<p>29.06.2020</p>\n</td>\n<td style=\"width: 225.667px;\">Linz</td>\n<td style=\"width: 225.667px;\">dreifärbig</td>\n</tr></tbody></table>[embed url=\"https://www.youtube.com/watch?v=sdFCd4DgjDM\" thumbnail=\"https://i.ytimg.com/vi/sdFCd4DgjDM/hqdefault.jpg\" class=\"center ss-htmleditorfield-file embed\" width=\"480\" height=\"270\" caption=\"&amp;nbsp;&amp;nbsp;&amp;nbsp;testvideo hätte ich gern in der Mitte&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\"]https://www.youtube.com/watch?v=sdFCd4DgjDM[/embed]', 'teste mich mal ein bissl durch :-) ', NULL, 0, 85, '2020-06-30 00:00:00'),
 (3, 'Streunerkatzen\\BlogArticle', '2020-08-30 17:59:48', '2020-08-16 09:22:40', 'Vermittlungskatzen', '<div data-contents=\"true\">\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"3d35o-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"3d35o-0-0\"><span data-offset-key=\"3d35o-0-0\">Wir haben derzeit fast 30 Katzen (!) bei uns in Pflege!</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"87r5n-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"87r5n-0-0\"><span data-offset-key=\"87r5n-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"e2stg-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"e2stg-0-0\"><span data-offset-key=\"e2stg-0-0\">Manche davon müssen noch gepäppelt werden und werden erst in ein paar Wochen ausziehen können, manche könnten relativ rasch ausziehen.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"erjru-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"erjru-0-0\"><span data-offset-key=\"erjru-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"eae2e-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"eae2e-0-0\"><span data-offset-key=\"eae2e-0-0\">Wir haben sowohl Babies, Jungkatzen, als auch etwas ältere Katzen.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"dgfak-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"dgfak-0-0\"><span data-offset-key=\"dgfak-0-0\">Total zutrauliche, als auch welche, die etwas schüchterner sind. </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"fngu8-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"fngu8-0-0\"><span class=\"_44bj\">Einige werden nur in Wohnungshaltung bzw. in gesicherten Freigang vermittelt. Ein paar jedoch wären auch für Freigang bzw. eine Futterstelle geeignet.<br><br></span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"ai4i1-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"ai4i1-0-0\"><span data-offset-key=\"ai4i1-0-0\">wir haben sogar welche, die an einen Hund und Kinder gewöhnt sind ;-) </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"53h40-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"53h40-0-0\"><span data-offset-key=\"53h40-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"9c50h-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"9c50h-0-0\"><span data-offset-key=\"9c50h-0-0\">Aufgrund der gesetzlichen Bestimmungen dürfen wir die Katzen nicht öffentlich vorstellen um Plätze für sie zu finden.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"4r1dp-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"4r1dp-0-0\"><span data-offset-key=\"4r1dp-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"3k30f-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"3k30f-0-0\"><span data-offset-key=\"3k30f-0-0\">Falls ihr also grad nach einer oder zwei Katzen sucht, schreibt uns eine Nachricht oder Mail (info@streunerkatzen.org) </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"bfjks-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"bfjks-0-0\"><span data-offset-key=\"bfjks-0-0\">Schildert kurz welche Katze ihr sucht ((jung, älter, ruhig, aufgeweckt, Zweitkatze, oder 2 Katzen, für Futterstelle oder Wohnung...) und beschreibt uns auch kurz eure Lebensumstände (welche Personen leben bei euch im Haushalt) und ob und welche Tiere bereits bei euch leben.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"a1kb5-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a1kb5-0-0\"><span data-offset-key=\"a1kb5-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"a1hrj-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"a1hrj-0-0\"><span data-offset-key=\"a1hrj-0-0\">Wir schauen dann anhand eures Suchprofils, ob wir eine passende Katze für euch haben und melden uns bei euch. Wir würden uns auch vorbehalten - falls wir keine passende Katze bei uns haben, eure Anfrage auch an andere Vereine weiterzuleiten. Falls ihr das nicht möchtet, schreibt das bitte dazu.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"6pq0c-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"6pq0c-0-0\"><span data-offset-key=\"6pq0c-0-0\">Bitte vergesst aus diesem Grund nicht eure Kontaktdaten anzugeben (Telefon, Mail)</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"d7hrc-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"d7hrc-0-0\"><span data-offset-key=\"d7hrc-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"87oov-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"87oov-0-0\"><span data-offset-key=\"87oov-0-0\">Falls wir einen oder mehrere passende Kandidaten für euch haben, melden wir uns bei euch und klären letzte Details ab. Und ihr dürft die potentiellen Kandidaten natürlich gerne kennenlernen. </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"88jaq-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"88jaq-0-0\"><span data-offset-key=\"88jaq-0-0\">Vor einer Vermittlung schauen wir uns aber die Plätze immer an, auch um eventuelle Unklarheiten, Fragen etc.. klären zu können.</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"7lihm-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"7lihm-0-0\"><span data-offset-key=\"7lihm-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"fumpn-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"fumpn-0-0\"><span data-offset-key=\"fumpn-0-0\">Vergeben werden unsere Katzen grundsätzlich: in Oberösterreich, mit Schutzvertrag und Schutzgebühr, kastriert, tätowiert, gechipt, entwurmt, entfloht, entmilbt und in der Regel auch 2fach geimpft </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"365ku-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"365ku-0-0\"><span data-offset-key=\"365ku-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"vg8u-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"vg8u-0-0\"><span data-offset-key=\"vg8u-0-0\">Wir freuen uns schon auf eure aussagekräftigen Bewerbungen :-) </span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"8hqhe-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"8hqhe-0-0\"><span data-offset-key=\"8hqhe-0-0\">&nbsp;</span></div>\n</div>\n<div class=\"\" data-block=\"true\" data-editor=\"fnbdk\" data-offset-key=\"5ou9l-0-0\">\n<div class=\"_1mf _1mj\" data-offset-key=\"5ou9l-0-0\"><span data-offset-key=\"5ou9l-0-0\">Eure Streunertante Sabine + Pflegestellen :-)</span></div>\n</div>\n</div>', 'Aufgrund der gesetzlichen Bestimmungen dürfen wir die Katzen nicht öffentlich vorstellen um Plätze für sie zu finden.\r\nWir haben derzeit fast 30 Katzen (!) bei uns in Pflege!', NULL, 0, 0, '2020-08-15 00:00:00');
 
 -- --------------------------------------------------------
@@ -20055,19 +20104,19 @@ ALTER TABLE `_obsolete_image_versions`
 -- AUTO_INCREMENT for table `changeset`
 --
 ALTER TABLE `changeset`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=811;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=815;
 
 --
 -- AUTO_INCREMENT for table `changesetitem`
 --
 ALTER TABLE `changesetitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3192;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3200;
 
 --
 -- AUTO_INCREMENT for table `changesetitem_referencedby`
 --
 ALTER TABLE `changesetitem_referencedby`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2383;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2387;
 
 --
 -- AUTO_INCREMENT for table `editablecheckbox`
@@ -20355,7 +20404,7 @@ ALTER TABLE `errorpage_versions`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `filelink`
@@ -20373,13 +20422,13 @@ ALTER TABLE `file_editorgroups`
 -- AUTO_INCREMENT for table `file_live`
 --
 ALTER TABLE `file_live`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `file_versions`
 --
 ALTER TABLE `file_versions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
 
 --
 -- AUTO_INCREMENT for table `file_viewergroups`
@@ -20409,25 +20458,25 @@ ALTER TABLE `group_roles`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `image_live`
 --
 ALTER TABLE `image_live`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `image_versions`
 --
 ALTER TABLE `image_versions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `loginattempt`
 --
 ALTER TABLE `loginattempt`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `member`
