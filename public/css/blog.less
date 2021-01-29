@@ -1,13 +1,53 @@
 // main: main.less
 @import "colors.less";
 @import "utils.less";
+@import "grid/variables.less";
+@media (max-width: @small-width) {
+    .article-list {
+        .blog-article {
+            flex-direction: column;
+            div {
+                width: 100%;
+            }
+            .image, img {
+                width: inherit;
+                max-height: 200px;
+                overflow: hidden;
+                text-align: center;
+            }
+        }
+    }
+}
+@media (min-width: (@small-width + 1)) {
+    .article-list {
+        .blog-article {
+            .image {
+                width: 200px;
+                margin-right: 3rem;
+            }
+            .text {
+                // rest - img - margins
+                width: ~"calc(100% - 200px - 3rem)";
+            }
+        }
+    }
+}
+.article-list {
+    .blog-article {
+        align-items: center;
+        .image {
+            background-size: cover;
+        }
+        clear:both;
+    }
+}
 .blog-article {
     display: flex;
     justify-content: space-around;
     &.single {
         display: block;
     }
-    margin: 5em 0;
+    margin: 3rem 0;
     h5 {
         text-align: center;
         color: lighten(@secondaryBGColor, 10);
@@ -27,9 +67,6 @@
         margin: 1em .5em 0;
         font-size: 14px;
         display: block;
-    }
-    .text {
-        flex-basis: 80%;
     }
 }
 .article-category-header {

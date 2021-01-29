@@ -147,7 +147,7 @@ aside.cta {
   width: 100%;
 }
 .main-menu .sub-items > .item a:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: #8b90c7;
 }
 @media (min-height: 300px) {
   header.sticky-nav {
@@ -170,7 +170,7 @@ aside.cta {
     background-color: var(--light-blue);
   }
   .main-menu > .item:hover .sub-items > .item a:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: #8b90c7;
   }
   .main-menu > .item.has-sub-items {
     display: inline-flex;
@@ -618,6 +618,83 @@ select,
 textarea {
   padding: 0.4em;
   margin: 0.25em 0;
+}
+@media (max-width: 48rem) {
+  .article-list .blog-article {
+    flex-direction: column;
+  }
+  .article-list .blog-article div {
+    width: 100%;
+  }
+  .article-list .blog-article .image,
+  .article-list .blog-article img {
+    width: inherit;
+    max-height: 200px;
+    overflow: hidden;
+    text-align: center;
+  }
+}
+@media (min-width: 49rem) {
+  .article-list .blog-article .image {
+    width: 200px;
+    margin-right: 3rem;
+  }
+  .article-list .blog-article .text {
+    width: calc(100% - 200px - 3rem);
+  }
+}
+.article-list .blog-article {
+  align-items: center;
+  clear: both;
+}
+.article-list .blog-article .image {
+  background-size: cover;
+}
+.blog-article {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem 0;
+}
+.blog-article.single {
+  display: block;
+}
+.blog-article h5 {
+  text-align: center;
+  color: #435696;
+  text-transform: uppercase;
+  font-family: monospace;
+  letter-spacing: 0.1em;
+}
+.blog-article h2 {
+  text-align: center;
+}
+.blog-article .head {
+  text-align: center;
+  font-size: 14px;
+  margin: 1.25em;
+}
+.blog-article .read-more {
+  margin: 1em 0.5em 0;
+  font-size: 14px;
+  display: block;
+}
+.article-category-header {
+  text-align: center;
+  color: #232e50;
+}
+.cat-shortcode {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: cursive;
+  margin: 2em 0;
+}
+.load-more-btn {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 @font-face {
   font-family: "Handlee";
