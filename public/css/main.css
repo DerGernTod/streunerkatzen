@@ -643,6 +643,16 @@ textarea {
     width: calc(100% - 200px - 3rem);
   }
 }
+aside article {
+  border-bottom: 1px solid var(--bg);
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aside article h4 {
+  text-align: center;
+}
 .article-list .blog-article {
   align-items: center;
   clear: both;
@@ -788,7 +798,8 @@ img {
   padding: 0.5rem 1rem;
 }
 .components button,
-.userform button {
+.userform button,
+a.button {
   background: var(--cta);
   border: 1px solid #867818;
   border-radius: 0.3rem;
@@ -798,9 +809,12 @@ img {
   cursor: pointer;
   text-decoration: none;
   color: black;
+  font-weight: 100;
 }
 .components button:hover,
-.userform button:hover {
+.userform button:hover,
+a.button:hover {
+  text-shadow: none;
   border-color: var(--cta);
 }
 header.site-header {
