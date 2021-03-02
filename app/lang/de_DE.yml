@@ -1,0 +1,166 @@
+de_DE:
+  DNADesign\Elemental\Forms\TextCheckboxGroupField:
+    Title: 'Titel'
+    DISPLAYED: 'Angezeigt'
+    NOT_DISPLAYED: 'Nicht angezeigt'
+  SilverStripe\Versioned\VersionedGridFieldState\VersionedGridFieldState:
+    ADDEDTODRAFTHELP: 'Element wurde noch nicht veröffentlicht'
+    MODIFIEDONDRAFTHELP: 'Es gibt unveröffentlichte Änderungen'
+  Dynamic\Elements\Accordion\Elements\ElementAccordion:
+    ContentLabel: 'Einleitung'
+    PanelsLabel: 'Akkordion-Elemente'
+    ContentDescription: 'Optionaler Text, der über den Akkordion-Elementen angezeigt wird.'
+    BlockType: 'Akkordion'
+  Dynamic\Elements\Accordion\Model\AccordionPanel:
+    PLURALS:
+      one: '{count} Akkordion Element'
+      other: '{count} Akkordion Elemente'
+  Dynamic\BaseObject\Model\BaseElementObject:
+    TitleLabel: 'Titel'
+    LinkLabel: 'Link'
+    ImageLabel: 'Bild'
+    ContentLabel: 'Inhalt'
+    LinkDescription: 'Optionale Verlinkung - wird unterhalb des Inhalts angezeigt'
+    ImageDescription: ''
+  Dynamic\Elements\Embedded\Elements\ElementEmbeddedCode:
+    BlockType: 'HTML Code'
+  Dynamic\Elements\FileList\Elements\ElementFileList:
+    FilesLabel: 'Dateien'
+    BlockType: 'Dateiliste'
+  Dynamic\Elements\FileList\Model\FileListObject:
+    TitleLabel: 'Titel'
+    FileNameLabel: 'Dateiname'
+    FileLabel: 'Datei'
+  Dynamic\Elements\Flexslider\Elements\ElementSlideshow:
+    ContentLabel: 'Beschreibung'
+    ContentDescription: 'Optionaler Einleitungstext, der vor der Slideshow angezeigt wird'
+    BlockType: 'Slideshow'
+  Dynamic\FlexSlider\Model\SlideImage:
+    PLURALS:
+      one: '{count} Slide'
+      other: '{count} Slides'
+    NAME: 'Name'
+    HEADLINE: 'Headline'
+    DESCRIPTION: 'Beschreibung'
+    PAGE_LINK: 'Verlinkung'
+    IMAGE: 'Bild'
+    SlideType: 'Bild, Text oder Video'
+    VideoLabel: 'Video URL'
+    INTERNAL_USE: 'nur als interne Referenz - wird nicht auf der Seite angezeigt'
+    USED_IN_TEMPLATE: 'verpflichtend wenn Slide-Typ Text ausgewählt wurde'
+    VideoDescription: 'unterstützte Links: Youtube, Vimeo'
+    NAME_REQUIRED: 'Es muss ein Name eingegeben werden, um speichern zu können'
+    VIDEO_REQUIRED: 'Es muss ein Videolink eingegeben werden, um speichern zu können'
+    IMAGE_REQUIRED: 'Es muss ein Bild ausgewählt werden, um speichern zu können'
+    DESCRIPTION_REQUIRED: 'Es muss eine Beschreibung eingegeben werden, um speichern zu können'
+  Dynamic\FlexSlider\ORM\FlexSlider:
+    SLIDES: 'Slides'
+    slide: 'slide'
+    fade: 'fade'
+    SettingsLabel: 'Slider Einstellungen'
+    ANIMATION_OPTION: 'Animations-Effekt'
+    ANIMATE: 'Animation automatisch abspielen'
+    LOOP: 'Slider loopen'
+    CONTROL_NAV: 'Slider-Navigation für alle Slides anzeigen (Punkte-Navigation unterhalbe des Sliders)'
+    DIRECTION_NAV: 'Slider-Navigation für nächste/vorherige Slide anzeigen (Pfeile rechts/links)'
+    THUMBNAIL_NAV: 'Vorschau-Navigation anzeigen (funktioniert nur für Bilder, kleine Vorschau-Bilder-Navigation unterhalb des Sliders)'
+    CAROUSEL_CONTROL_NAV: 'Bei der Vorschau-Navigation eine Punkte-Navigation anzeigen (Vorschau-Navigation anzeigen muss ausgewählt sein)'
+    CAROUSEL_DIRECTION_NAV: 'Bei der Vorschau-Navigation Pfeile links/rechts anzeigen (Vorschau-Navigation anzeigen muss ausgewählt sein)'
+    CAROUSEL_THUMBNAIL_COUNT: 'Anzahl Vorschau-Bilder'
+    SLIDER_SPEED: 'Slider Geschwindigkeit'
+  Dynamic\Elements\Gallery\Elements\ElementPhotoGallery:
+    ContentLabel: 'Einleitung'
+    ImagesLabel: 'Bilder'
+    BlockType: 'Bildergalerie'
+  Dynamic\Elements\Image\Elements\ElementImage:
+    BlockType: 'Bild'
+  Dynamic\Elements\Oembed\Elements\ElementOembed:
+    EmbeddedObjectLabel: 'Inhalt, der mittels oEmbed-URL eingebunden werden soll (z.B. Youtube-Video, Vimeo-Video, Soundcloud)'
+    BlockType: 'Medien-Inhalt'
+  Dynamic\Elements\Tabset\Element\ElementTabSet:
+    BlockType: 'Tabs'
+  Dynamic\Elements\Tabset\Element\TabElement:
+    BlockType: 'Tab'
+  Linkable:
+    ANCHOR: 'Link/Suchbegriff'
+    ANCHORINFO: 'Fügen Sie # am Beginn des Link-Namens ein oder ? am Beginn des Suchbegriffs'
+    DELETEDWARNING: 'Achtung: Die ausgewählte Seite wurde anscheinend gelöscht oder unveröffentlicht. Dieser Link scheint auf der Website vielleicht nicht auf oder funktioniert nicht.'
+    EMAILADDRESS: 'E-Mail Adresse'
+    PHONENUMBER: 'Telefonnummer'
+    VALIDATIONERROR_VALIDURL: "Bitte geben Sie eine gültige URL ein. Für externe URLs beginnend mit http:// oder für interne URLs beginnend mit /"
+    VALIDATIONERROR_VALIDEMAIL: 'Bitte geben Sie eine gültige E-Mail Adresse ein'
+    VALIDATIONERROR_VALIDPHONE: 'Bitte geben Sie eine gültige Telefonnummer ein'
+    INSPECT: Inhalt laden
+  EmbeddedObjectField:
+    ERROR: 'Die angegebene URL konnte nicht verarbeitet werden'
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: 'Formular'
+    CONFIGURATION: 'Formulareinstellungen'
+    RECIPIENTS: 'Empfänger'
+    SUBMISSIONS: 'Einsendungen'
+    ONCOMPLETELABEL: 'Wird nach Absenden des Formulars angezeigt:'
+    ADDEMAILRECIPIENT: 'E-Mail Empfänger hinzufügen'
+    SAVESUBMISSIONS: 'Speichern von Einsendungen auf dem Server deaktivieren'
+    NORECIPIENTS: 'Warnung: Sie haben keine E-Mail Empfänger konfiguriert. Einsendungen gehen möglicherweise verloren.'
+    SUBMITBUTTON: 'Absenden'
+    CLEARBUTTON: 'Formular leeren'
+    TEXTONSUBMIT: 'Text auf dem ''Absenden'' Button:'
+    TEXTONCLEAR: 'Text auf dem ''Formular leeren'' Button:'
+    SHOWCLEARFORM: 'Den ''Formular leeren'' Button anzeigen'
+    ENABLELIVEVALIDATION: 'Formular während des Ausfüllens validieren'
+    DISPLAYERRORMESSAGESATTOP: 'Fehlermeldungen über dem Formular anzeigen'
+    DISABLECSRFSECURITYTOKEN: 'CSRF-Token deaktivieren (nicht empfohlen)'
+    DISABLEAUTHENICATEDFINISHACTION: 'Authentifizierung nach erfolgreichem Absenden des Formulars deaktivieren'
+  SilverStripe\UserForms\Control\UserDefinedFormAdmin:
+    INVALID_REQUEST: 'Ungültiger Request'
+    CONFIRM_FOLDER_LABEL_A: 'Vom User hochgeladene Dateien sollten sorgfältig gehandhabt werden. Um das Risiko eines Datenlecks zu verringern wählen Sie bitte einen Ordner aus, welcher nur von den entsprechenden Benutzern eingesehen werden kann. Ordner Berechtigungen können unter dem Punkt ''Dateien'' bearbeitet werden.'
+    CONFIRM_FOLDER_LABEL_B: 'Der ausgewählte Ordern wird als Standard-Ordner für dieses Formular festgelegt. Diese Einstellung kann jedoch für jedes Datei-Upload Feld extra geändert werden.'
+    FOLDER_OPTIONS_TITLE: 'Formular Ordner Optionen'
+    FOLDER_OPTIONS_NEW: 'Neuen Ordner erstellen (empfohlen)'
+    FOLDER_OPTIONS_EXISTING: 'Einen bestehenden Ordner verwenden'
+    CANCEL: 'Abbrechen'
+  SilverStripe\UserForms\Extension\UserFormValidator:
+    UNEXPECTED_BREAK: 'Unerwartete Seite ''{name}'' im Feld ''{group}'''
+    NO_PAGE: 'Feld ''{name}'' vor den Seiten gefunden'
+    UNEXPECTED_GROUP_END: '''{name}'' ohne passende Gruppe gefunden'
+    WRONG_GROUP_END: '''{name}'' schließt die falsche Gruppe ''{group}'' ab'
+    CONDITIONAL_REQUIRED: 'Pflichtfeld ''{name}'' kann nicht in einer Seite mit Sichtbarkeitsregeln eingefügt werden'
+  SilverStripe\Forms\GridField\GridField:
+    Add: '{name} hinzufügen'
+  SilverStripe\UserForms\Model\UserDefinedForm:
+    CLEARBUTTON: Leeren
+    UnrestrictedFileUploadWarning: 'Der Zugriff auf den aktuellen Uploadordner ''{path}'' ist nicht eingeschränkt. Die hochgeladenen Dateien sind für jeden öffentlich zugänglich, wenn die URL bekannt ist.'
+    PREVIEW_EMAIL_DESCRIPTION: 'Hinweis: Ungespeicherte Änderungen werden nicht in der Vorschau angezeigt.'
+    EMAILBODYHTML: 'Inhalt'
+    RulesDescription: 'E-Mails werden nur an den Empfänger gesendet, wenn die eigenen Regeln erfüllt wurden. Wenn keine eigenen Regeln definiert wurden, wird dieser Empfänger Benachrichtigungen für jeden Formulareintrag erhalten.'
+    EMAIL_RECIPIENT_UNSAVED_FORM: 'Sie können aus Formularfeldern auswählen nachdem sie diesen Eintrag gespeichert haben.'
+  SilverStripe\UserForms\Form\UserFormsGridFieldFilterHeader:
+    FROM: 'Von'
+    TILL: 'Bis'
+  SilverStripe\Forms\Form:
+    FIELDISREQUIRED: '{name} ist ein Pflichtfeld'
+  SilverStripe\UserForms\Model\EditableFormField:
+    SHOWINSUMMARY: 'In der Zusammenfassung anzeigen'
+    MERGEFIELDNAME: 'Merge-Feld'
+    INITIALVISIBILITY: 'Sichtbarkeit zu Beginn'
+    REQUIRED: 'Ist dieses Feld ein Pflichtfeld?'
+    REQUIRED_DESCRIPTION: 'Bitte beachten Sie, dass Felder mit Sichtbarkeitsregeln keine Pflichtfelder sein können'
+    DEFAULTTOTODAY: 'Standardmäßig heutiges Datum einfügen'
+    RIGHTTITLE: 'Hinweistext'
+  SilverStripe\UserForms\Model\EditableFormField\EditableCountryDropdownField:
+    USE_EMPTY_STRING: 'Eigenen Standardwert verwenden, wenn noch nichts ausgewählt wurde'
+    EMPTY_STRING: 'Eigener Standardwert:'
+  SilverStripe\UserForms\Model\EditableFormField\EditableFieldGroupEnd:
+    FIELD_GROUP_END: '{group} Ende'
+  SilverStripe\UserForms\Model\EditableFormField\EditableFileField:
+    INHERIT: 'Die Sichtbarkeit dieses Ordners wird von seinem Überordner übernommen'
+    ANYONE: 'Uneingeschränkter Zugriff, Uploads sind für jeden sichtbar'
+    LOGGED_IN: 'Eingeschränkter Zugriff, nur eingeloggte Benutzer können auf Uploads zugreifen'
+    ONLY_GROUPS: 'Eingeschränkter Zugriff, Uploads sind für die folgenden Gruppen sichtbar:'
+  SilverStripe\UserForms\Model\EditableFormField\EditableNumericField:
+    RANGE: 'Erlaubter Zahlenbereich'
+    RANGE_TO: 'bis'
+  SilverStripe\UserForms\Model\EditableFormField\EditableTextField:
+    AUTOCOMPLETE_DESCRIPTION: 'Manche Browser können Felder automatisch mit Informationen des Benutzers befüllen, wenn diese im Browser gespeichert wurden. Wählen Sie im Dropdown die Information aus, die automatisch eingefügt werden soll.'
+    TEXTLENGTH: 'Erlaubte Textlänge'
+    RANGE_TO: 'bis'

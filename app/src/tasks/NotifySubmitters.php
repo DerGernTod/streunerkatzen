@@ -1,9 +1,10 @@
 <?php
-namespace Streunerkatzen;
+namespace Streunerkatzen\Tasks;
 
 use Exception;
-use SilverStripe\Control\Director;
 use SilverStripe\Dev\BuildTask;
+use Streunerkatzen\Cats\Notifier;
+use Streunerkatzen\Utils\EmailHelper;
 
 class NotifySubmitters extends BuildTask {
     public function run($request) {

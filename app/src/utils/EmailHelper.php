@@ -1,8 +1,7 @@
 <?php
-namespace Streunerkatzen;
+namespace Streunerkatzen\Utils;
 
 use Exception;
-use SilverStripe\View\ArrayData;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\ORM\ArrayList;
 

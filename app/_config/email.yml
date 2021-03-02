@@ -7,9 +7,11 @@ SilverStripe\Core\Injector\Injector:
   Swift_Transport:
     class: Swift_SmtpTransport
     properties:
-      Host: localhost
+      Host: smtp.world4you.com
       Port: 25
     calls:
-      Username: [ setUsername, ['testuser@localhost'] ]
-      Password: [ setPassword, ['testpass'] ]
+      Username: [ setUsername, ['streunerkatzen@gernotraudner.at'] ]
+      Password: [ setPassword, ['qXgR8At6e82b'] ]
       AuthMode: [ setAuthMode, ['login'] ]
+SilverStripe\Control\Email\Email:
+  admin_email: streunerkatzen@gernotraudner.at

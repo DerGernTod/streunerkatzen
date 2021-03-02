@@ -4,7 +4,6 @@ namespace {
 
     use SilverStripe\CMS\Controllers\ContentController;
     use SilverStripe\View\Requirements;
-    use Streunerkatzen\BlogArticle;
 
 class PageController extends ContentController {
         /**
@@ -24,14 +23,11 @@ class PageController extends ContentController {
          */
         private static $allowed_actions = [];
 
-        protected function init() {
+        protected function init()
+        {
             parent::init();
             Requirements::themedCSS("main.css");
             Requirements::themedJavascript("scripts.js");
-        }
-
-        public function getNewestBlogArticles($count) {
-            return BlogArticle::getNewestBlogArticles($count);
         }
     }
 }

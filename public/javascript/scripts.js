@@ -79,7 +79,7 @@ function on(element, event, listener) {
     if (element.addEventListener) {
         element.addEventListener(event, listener);
     } else {
-        forEach(element, function(elem) {
+        forEach(element, function (elem) {
             elem.addEventListener(event, listener);
         });
     }
@@ -165,14 +165,14 @@ function addJQueryListener(listener) {
     var menu = find('#main-menu');
 
     if (openMenuButton && menu) {
-        on(openMenuButton, 'click', function() {
+        on(openMenuButton, 'click', function () {
             menu.classList.toggle('open');
         });
     }
 
     var subMenuButtons = find('.show-sub-items');
-    forEach(subMenuButtons, function(button) {
-        on(button, 'click', function() {
+    forEach(subMenuButtons, function (button) {
+        on(button, 'click', function () {
             button.nextElementSibling.classList.toggle('open');
         });
     });
@@ -239,6 +239,9 @@ function addJQueryListener(listener) {
 
 (function backToTopButton() {
     var backToTopButton = find('.back-to-top');
+    if (!backToTopButton) {
+        return;
+    }
     on(window, 'scroll', function () {
         if (window.scrollY > window.innerHeight / 2) {
             backToTopButton.classList.add('revealed');
@@ -246,6 +249,7 @@ function addJQueryListener(listener) {
             backToTopButton.classList.remove('revealed');
         }
     });
+
     function updateBackToTopButton() {
         var link = location.href;
         if (link.indexOf('#anchor-top') === -1) {
@@ -253,6 +257,7 @@ function addJQueryListener(listener) {
         }
         backToTopButton.setAttribute('href', link);
     }
+
     addPushStateEventListener(updateBackToTopButton);
     on(window, 'popstate', updateBackToTopButton);
     on(backToTopButton, 'click', function () {
@@ -265,12 +270,127 @@ function addJQueryListener(listener) {
 
 (function dateLocalizationFix() {
     addJQueryListener(function (jQuery) {
+        if (!jQuery.validator) {
+            return;
+        }
         jQuery(function () {
             jQuery.extend(jQuery.validator.methods, {
-                date: function(a, b) {
+                date: function (a, b) {
                     return this.optional(b) || /^\d\d?\d?\d?[.\-/]\d\d?[.\-/]\d\d\d?\d?$/.test(a)
                 }
             });
         });
     })
+})();
+
+/**
+ * fixes sizing of video elements
+ * affects videos in slider block + oembed block
+ */
+(function initializeVideoResizing() {
+    var videos = find('.resized.type-video');
+    resizeVideos(videos);
+
+    on(window, 'resize', function() {
+        resizeVideos(videos);
+    });
+    on(window, 'sliderready', function() {
+        resizeVideos(videos);
+    });
+
+    function resizeVideos(videos) {
+        forEach(videos, function (video) {
+            var baseWidth = video.getAttribute('data-width');
+            var baseHeight = video.getAttribute('data-height');
+            var currentWidth = rect(video).width;
+
+            var newWidth;
+            var newHeight;
+
+            if (currentWidth > baseWidth) {
+                newWidth = baseWidth;
+                newHeight = baseHeight;
+            } else {
+                newWidth = currentWidth;
+                newHeight = baseHeight / baseWidth * currentWidth;
+            }
+
+            video.style.height = newHeight+"px";
+        });
+    }
+})();
+
+(function ajaxForms() {
+    function enableInputFields(form) {
+        forEach(form.querySelectorAll('input'), function(input) {
+            input.removeAttribute('disabled');
+        });
+    }
+    function disableInputFields(form) {
+        forEach(form.querySelectorAll('input'), function(input) {
+            input.setAttribute('disabled', 'disabled');
+        });
+    }
+
+    function setupAjaxForm(form) {
+        on(form, 'submit', function (e) {
+            e.preventDefault();
+
+            var method = form.getAttribute('method');
+            var action = form.getAttribute('action');
+            var data = new FormData(form);
+
+            var formContainer = form.parentElement;
+
+            disableInputFields(form);
+
+            ajax(
+                action + "?ajax=1",
+                method,
+                function(xhr) {    // success
+                    formContainer.innerHTML = xhr.response;
+                    var ajaxForm = formContainer.querySelector('.ajax-form');
+                    setupAjaxForm(ajaxForm);
+                    formContainer.dispatchEvent(new Event('formrebuild'));
+                },
+                function(xhr) {    // error
+                    alert("Bei der Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.");
+                    enableInputFields(form);
+                },
+                function(xhr) {    // progress
+                },
+                data
+            );
+        })
+    }
+
+    var ajaxForms = find('.ajax-form');
+    if (ajaxForms) {
+        if (ajaxForms instanceof Element) {
+            setupAjaxForm(ajaxForms);
+        } else {
+            forEach(ajaxForms, setupAjaxForm);
+        }
+    }
+})();
+
+(function initPopups() {
+    function initPopup(popup) {
+        var closeBtns = popup.querySelectorAll('.close-popup');
+        forEach(closeBtns, function(btn) {
+            on(btn, 'click', function(e) {
+                e.preventDefault();
+                popup.classList.add('hidden');
+            });
+        });
+    }
+
+    var popups = find('.popup');
+    if (popups) {
+        if (popups instanceof Element) {
+            initPopup(popups);
+        } else {
+            forEach(popups, initPopup);
+        }
+    }
 })();

@@ -3,7 +3,7 @@
         <div>
             <h3>$LostFoundStatus: <a href="$Link">$Title</a></h3>
             <div><strong>Rasse: </strong>$Breed</div>
-            <div><strong>Farbe: </strong>$HairColor</div>
+            <div><strong>Farbe: </strong>$FurColor</div>
         </div>
         <div>
             <% if $Attachments %>

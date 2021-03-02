@@ -3,25 +3,35 @@
     "type": "silverstripe-recipe",
     "description": "The SilverStripe Framework Installer",
     "require": {
-        "php": ">=5.6.0",
+        "php": "^7.1 || ^8",
         "silverstripe/recipe-plugin": "^1.2",
-        "silverstripe/recipe-cms": "4.5.2",
-        "silverstripe-themes/simple": "~3.2.0",
+        "silverstripe/recipe-cms": "4.7.0@stable",
+        "silverstripe/login-forms": "4.3.0@stable",
         "symbiote/silverstripe-gridfieldextensions": "^3",
+        "dnadesign/silverstripe-elemental": "^4",
+        "dynamic/silverstripe-elemental-accordion": "^2.1",
+        "dynamic/silverstripe-elemental-embedded-code": "^2.0",
+        "dynamic/silverstripe-elemental-filelist": "^2.0",
+        "dynamic/silverstripe-elemental-flexslider": "^2.0",
+        "dynamic/silverstripe-elemental-gallery": "^2.0",
+        "dynamic/silverstripe-elemental-image": "^2.0",
+        "dynamic/silverstripe-elemental-oembed": "^2.2",
         "heyday/silverstripe-menumanager": "^3.0",
-        "squizlabs/php_codesniffer": "^3.4",
-        "symbiote/silverstripe-memberprofiles": "~4.0",
-        "leafo/lessphp": "^0.5.0",
-        "jasonlewis/resource-watcher": "^1.2",
-        "silverstripe/userforms": "^5.3"
+        "silverstripe/userforms": "^5.8",
+        "dnadesign/silverstripe-elemental-userforms": "^3.0",
+        "silverstripe/spamprotection": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "sminnee/phpunit": "^5.7",
+        "sminnee/phpunit-mock-objects": "^3.4.5"
     },
     "extra": {
+        "resources-dir": "_resources",
         "project-files-installed": [
             "app/.htaccess",
             "app/_config.php",
+            "app/_config/database.yml",
+            "app/_config/mimevalidator.yml",
             "app/_config/mysite.yml",
             "app/src/Page.php",
             "app/src/PageController.php"
@@ -29,22 +39,12 @@
         "public-files-installed": [
             ".htaccess",
             "index.php",
-            "install-frameworkmissing.html",
-            "install.php",
             "web.config"
         ]
     },
     "config": {
-        "process-timeout": 0
+        "process-timeout": 600
     },
     "prefer-stable": true,
-    "minimum-stability": "dev",
-    "scripts": {
-        "compile-less": [
-            "@php scripts/less-compile.php"
-        ],
-        "watch-less": [
-            "@php scripts/watch-less.php"
-        ]
-    }
+    "minimum-stability": "dev"
 }
