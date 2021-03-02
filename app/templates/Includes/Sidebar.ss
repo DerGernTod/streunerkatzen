@@ -7,5 +7,7 @@
     <% end_if %>
 
     $SiteConfig.SidebarText
+    <% if $SiteConfig.DonateButtonLabel %>
     <button class="components">$SiteConfig.DonateButtonLabel</button>
+    <% end_if %>
 </aside>

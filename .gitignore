@@ -1,9 +1,10 @@
 /silverstripe-cache/
 /.env
 /vendor/
-/themes/simple/
-/resources/
-/public/resources/
-*.log
-/app/**/*.css
-/.vscode/settings.json
+# /themes/simple/
+/_resources/
+/public/_resources/
+
+demoassets/
+
+silverstripe.log

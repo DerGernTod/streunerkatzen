@@ -3,28 +3,9 @@ Name: myproject
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
-SilverStripe\UserForms\Model\Submission\SubmittedForm:
+SilverStripe\Core\Injector\Injector:
+  Dynamic\FlexSlider\ORM\FlexSlider:
+    class: Streunerkatzen\Extensions\FlexSliderExtension
+DNADesign\Elemental\Models\BaseElement:
   extensions:
-    - Streunerkatzen\CatUserFormSubmissionExtension
-SilverStripe\SiteConfig\SiteConfig:
-  extensions:
-    - Streunerkatzen\HeaderConfigExtension
-    - Streunerkatzen\SidebarConfigExtension
-SilverStripe\Assets\Image:
-  extensions:
-    - Streunerkatzen\GalleryImageExtension
-SilverStripe\UserForms\Model\UserDefinedForm:
-  extensions:
-    - Streunerkatzen\UserDefinedFormExtension
-SilverStripe\UserForms\Control\UserDefinedFormController:
-  extensions:
-    - Streunerkatzen\UserDefinedFormControllerExtension
-SilverStripe\UserForms\Model\EditableFormField\EditableOption:
-  extensions:
-    - Streunerkatzen\EditableOptionExtension
-SilverStripe\Forms\ListboxField:
-  extensions:
-    - Streunerkatzen\ListboxFieldExtension
-SilverStripe\Control\Email\Email:
-  admin_email:
-    noreply@streunerkatzen.org: 'Streunerkatzen Team'
+    - Streunerkatzen\Extensions\BaseElementExtension

@@ -1,10 +1,10 @@
 <?php
-namespace Streunerkatzen;
+namespace Streunerkatzen\Tasks;
 
 use PDO;
+use PDOException;
 
-class CatExporter
-{
+class CatExporter {
     private $db;
     private $categoryData = array();
     public function __construct() {
@@ -209,8 +209,7 @@ class CatExporter
         return $result;
     }
 
-    private function export($results = array())
-    {
+    private function export($results = array()) {
         $fileName = 'sobi_entries-' . date('Y-m-d-h:i:s') . '.csv';
 
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -239,6 +238,5 @@ class CatExporter
         fclose($fh);
         // Make sure nothing else is sent, our file is done
         exit;
-
     }
 }

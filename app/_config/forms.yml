@@ -1,0 +1,5 @@
+---
+Name: forms
+---
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+  default_spam_protector: Streunerkatzen\Forms\HoneyPotSpamProtector

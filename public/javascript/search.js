@@ -1,4 +1,5 @@
 var curAjax;
+var searchParams;
 /**
  * replaces the current content of the search result, and enables the newly created pagination
  * @param {string} newContent
@@ -163,11 +164,14 @@ function buildUrlAndSearch() {
     } else {
         find('#search-agent').parentElement.classList.add('hidden');
     }
-    var targetUrl = location.pathname
-        + '?SearchTitle='
-        + searchValue
-        + '&'
-        + filterParams.join('&');
+
+    searchParams = 'SearchTitle='
+    + searchValue
+    + '&'
+    + filterParams.join('&');
+    var targetUrl = location.pathname + "?" + searchParams;
+
+    find('#Form_NotificationForm_QueryString').value = searchParams;
     executeSearch(targetUrl);
 }
 
@@ -179,9 +183,7 @@ function buildUrlAndSearch() {
     var initContent = searchResults.outerHTML;
 
     var agentPopup = find('#agent-popup');
-    var agentPopupForm = find('#agent-popup>form');
     var emailField = find('#agent-email');
-    var emailTemplateField = find('#agent-mail-template');
     // ajaxify form submit
     on(find('#Form_CatSearchForm'), 'submit', function (e) {
         e.preventDefault();
@@ -206,6 +208,7 @@ function buildUrlAndSearch() {
 
     ajaxifyPagination();
     var filtersSelected = preSelectInputs();
+
     if (filtersSelected) {
         buildUrlAndSearch();
     }
@@ -215,36 +218,6 @@ function buildUrlAndSearch() {
     on(find('#search-agent'), 'click', function (e) {
         e.preventDefault();
         agentPopup.classList.remove('hidden');
-    });
-    on(agentPopupForm, 'submit', function (e) {
-        e.preventDefault();
-        var inputs = find('input');
-        forEach(inputs, function (input) {
-            input.setAttribute('disabled', 'disabled');
-        });
-        var formData = new FormData();
-        formData.append('email', emailField.value);
-        formData.append('email-template', emailTemplateField.value);
-        ajax(location.pathname + 'agent' + location.search, 'POST', function (xhr) {
-            var div = createHint(xhr.response);
-            agentPopup.appendChild(div);
-            setTimeout(function () {
-                forEach(inputs, function (input) {
-                    input.removeAttribute('disabled', 'disabled');
-                });
-                agentPopup.classList.add('hidden');
-                div.parentElement.removeChild(div);
-                emailField.value = '';
-            }, 3500);
-        }, function (xhr) {
-            alert(xhr.response);
-            forEach(inputs, function (input) {
-                input.removeAttribute('disabled', 'disabled');
-            });
-        }, void 0, formData);
-    });
-    on(agentPopupForm, 'reset', function (e) {
-        agentPopup.classList.add('hidden');
     });
 })();
 
@@ -288,3 +261,9 @@ function createHint(message, classes) {
     }
     return div;
 }
+
+(function formRebuild() {
+    on(find('#notification-form-container'), 'formrebuild', function() {
+        find('#Form_NotificationForm_QueryString').value = searchParams;
+    });
+})();

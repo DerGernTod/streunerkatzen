@@ -2,7 +2,7 @@
     <div>
         <h3>$LostFoundStatus: <a href="$Link">$Title</a></h3>
         <div><strong>Rasse: </strong>$Breed</div>
-        <div><strong>Farbe: </strong><% loop $HairColors %>
+        <div><strong>Farbe: </strong><% loop $FurColors %>
             $Title<% if not $Last %>,
             <% end_if %>
         <% end_loop %></div>

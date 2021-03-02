@@ -22,7 +22,10 @@
         currentAjax = xhr;
         var value = elem.value();
         xhr.responseType = 'json';
-        xhr.open('GET', '/streunerkatzen-silverstripe/api/catsearch?search=' + value);
+        var baseTags = document.getElementsByTagName('base');
+        var basePath = baseTags.length ? baseTags[0].href : "/";
+
+        xhr.open('GET', basePath + 'api/catsearch?search=' + value);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 var res = xhr.response;

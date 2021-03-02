@@ -1,12 +1,13 @@
 <?php
-namespace Streunerkatzen;
+namespace Streunerkatzen\Tasks;
+
+use DateTime;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Storage\AssetStore;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
 use SilverStripe\UserForms\Model\EditableFormField\EditableOption;
-use Streunerkatzen\Cat;
-use Streunerkatzen\CatExporter;
+use Streunerkatzen\Cats\Cat;
 
 function param(Array $arr, string $prop) {
     if (array_has($arr, $prop)) {
@@ -16,8 +17,6 @@ function param(Array $arr, string $prop) {
 }
 
 class CatImportTask extends BuildTask {
-
-
     public function run($request) {
         $catExporter = new CatExporter();
         $exportResult = $catExporter->getEntries();
@@ -46,12 +45,12 @@ class CatImportTask extends BuildTask {
             $cat->HasPetCollar = param($fields, "halsband");
             $lostFoundStatus = param($fields, "gesuchtgefunden");
             $cat->LostFoundStatus = $this->mapLostFoundStatus($lostFoundStatus);
-            $hairColor = $this->mapHairColor($catEntry["categories"]["name"]);
-            $mappedColor = EditableOption::get()->filter(['Title' => $hairColor])->first();
+            $furColor = $this->mapFurColor($catEntry["categories"]["name"]);
+            $mappedColor = EditableOption::get()->filter(['Title' => $furColor])->first();
             if ($mappedColor) {
-                $cat->HairColors()->Add($mappedColor);
+                $cat->FurColors()->Add($mappedColor);
             }
-            $cat->HairLength = $this->mapHairLength(param($fields, "haarlnge"));
+            $cat->FurLength = $this->mapFurLength(param($fields, "haarlnge"));
             $cat->LostFoundTime = param($fields, "tageszeit");
             createAttachments(param($catEntry, "resources"), param($catEntry, "images"), $cat);
             $cat->write();
@@ -62,25 +61,25 @@ class CatImportTask extends BuildTask {
     }
 
     /**
-     * translates imported hair colors to dropdown fields
+     * translates imported fur colors to dropdown fields
      */
-    private function mapHairColor($importedHairColor) {
+    private function mapFurColor($importedFurColor) {
 
-        if (strpos($importedHairColor, "zur Farbauswahl") !== false) {
-            $importedHairColor = "schwarz";
+        if (strpos($importedFurColor, "zur Farbauswahl") !== false) {
+            $importedFurColor = "schwarz";
         }
-        $importedHairColor = str_ireplace("m. ", "mit ", $importedHairColor);
-        return $importedHairColor;
+        $importedFurColor = str_ireplace("m. ", "mit ", $importedFurColor);
+        return $importedFurColor;
     }
 
     /**
-     * translates imported hair length to dropdown fields
+     * translates imported fur length to dropdown fields
      */
-    private function mapHairLength($importedHairLength) {
-        if (!$importedHairLength) {
-            $importedHairLength = "sonstiges";
+    private function mapFurLength($importedFurLength) {
+        if (!$importedFurLength) {
+            $importedFurLength = "sonstiges";
         }
-        return $importedHairLength;
+        return $importedFurLength;
     }
 
     /**
@@ -161,7 +160,7 @@ function createFile(string $title, string $url, string $realFile = null) {
     // Use file_get_contents() function to get the file
     // from url and use file_put_contents() function to
     // save the file by using base name
-    if(file_put_contents($filename, file_get_contents($url))) {
+    if (file_put_contents($filename, file_get_contents($url))) {
         echo "$url downloaded successfully to $filename";
     } else {
         echo "$url downloading failed.";

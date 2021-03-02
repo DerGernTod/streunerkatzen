@@ -4,5 +4,6 @@ After: framework/_config/routes#coreroutes
 ---
 SilverStripe\Control\Director:
   rules:
-    'api//$Action': 'Streunerkatzen\ApiController'
-    'notifications//$Action': 'Streunerkatzen\NotificationController'
+    'api//$Action': 'Streunerkatzen\Controllers\ApiController'
+    'cats//$Action/$ID': 'Streunerkatzen\Controllers\CatController'
+    'blog//$Action/$ID': 'Streunerkatzen\Controllers\BlogController'
