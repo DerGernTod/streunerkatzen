@@ -5,7 +5,7 @@ namespace {
     use SilverStripe\CMS\Controllers\ContentController;
     use SilverStripe\View\Requirements;
 
-class PageController extends ContentController {
+    class PageController extends ContentController {
         /**
          * An array of actions that can be accessed via a request. Each array element should be an action name, and the
          * permissions or conditions required to allow the user to access it.
@@ -23,11 +23,14 @@ class PageController extends ContentController {
          */
         private static $allowed_actions = [];
 
-        protected function init()
-        {
+        protected function init() {
             parent::init();
             Requirements::themedCSS("main.css");
             Requirements::themedJavascript("scripts.js");
+        }
+
+        public function getCurrentYear() {
+            return date("Y");
         }
     }
 }
