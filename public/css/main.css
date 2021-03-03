@@ -573,7 +573,7 @@ ul.cat-details li:after {
   background-color: lightgray;
 }
 .userform nav {
-  margin: 0.5em 0;
+  margin: 0.5em 1em;
 }
 .userform button {
   padding: 0.5em;
