@@ -8,6 +8,7 @@ use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
+use Streunerkatzen\Elements\BlogArticleListElement;
 use Streunerkatzen\Utils\Utils;
 
 class BlogArticleCategory extends DataObject {
@@ -22,7 +23,8 @@ class BlogArticleCategory extends DataObject {
     );
 
     private static $belongs_many_many = array(
-        "Articles" => BlogArticle::class
+        "Articles" => BlogArticle::class,
+        "BlogArticleListElements" => BlogArticleListElement::class
     );
 
     public function onAfterWrite() {

@@ -1,7 +1,9 @@
 <% loop $BlogArticles %>
     <article id="post-$ID" class="blog-article">
         <div class="image">
-            <img src="$PostImage.FitMax(200,200).URL" />
+            <% if $PostImage %>
+                <img src="$PostImage.FitMax(200,200).URL" />
+            <% end_if %>
         </div>
         <div class="text">
             <div>
