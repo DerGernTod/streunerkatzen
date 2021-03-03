@@ -1,11 +1,19 @@
 // main: main.less
 @import "grid/variables.less";
+@sidebarWidth: 30rem;
 main {
     display: flex;
     margin: auto;
-    max-width:120rem;
+    max-width: 120rem;
     padding: 4rem 3rem;
     box-sizing:border-box;
+    background:var(--light-bg);
+    & .flexslider {
+        background: inherit;
+        .flexslider-container {
+            padding: 2.8em;
+        }
+    }
 }
 
 .site-header-inner {
@@ -25,14 +33,11 @@ main {
 }
 
 .content-wrapper {
-    flex:1;
-    padding-right:3rem;
-    margin-right:3rem;
-    border-right:1px solid var(--bg);
-}
-
-nav.main-menu a:first-child {
-    /*margin-left:3rem;*/
+    max-width: ~"calc(100% - @{sidebarWidth})";
+    flex: 1;
+    padding-right: 3rem;
+    margin-right: 3rem;
+    border-right: 1px solid var(--bg);
 }
 
 aside.cta {
@@ -58,6 +63,7 @@ aside.cta {
     }
 
     .content-wrapper {
+        max-width: 100%;
         flex:auto;
         padding-right:0;
         margin-right:0;

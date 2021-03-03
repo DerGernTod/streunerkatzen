@@ -38,7 +38,6 @@
     --light-blue:#7a80bf;
     --bg:#4e559a;
     --light-bg:rgba(255,255,255,0.7);
-    --cta:#e4cd2a;
 }
 
 * {
@@ -63,10 +62,6 @@ html, body {
     padding:0;
     font-family: "Open Sans", sans-serif;
     text-align:justify;
-}
-
-main {
-    background:var(--light-bg);
 }
 
 h1, h2, h3, .site-title {
@@ -100,7 +95,7 @@ a:hover {
 
 img {
     width:20rem;
-    box-shadow:0 0 .2rem .1rem var(--cta);
+    box-shadow:0 0 .2rem .1rem @buttonColor;
     border-radius: .3rem;
 }
 
@@ -112,7 +107,7 @@ img {
 }
 
 .components button, .userform button, a.button {
-    background: var(--cta);
+    background: @buttonColor;
     border: 1px solid #867818;
     border-radius: 0.3rem;
     text-transform: uppercase;
@@ -122,9 +117,10 @@ img {
     text-decoration: none;
     color: black;
     font-weight: 100;
+    display: inline-block;
     &:hover {
         text-shadow: none;
-        border-color: var(--cta);
+        border-color: @buttonColor;
     }
 }
 

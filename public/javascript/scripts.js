@@ -300,8 +300,8 @@ function addJQueryListener(listener) {
 
     function resizeVideos(videos) {
         forEach(videos, function (video) {
-            var baseWidth = video.getAttribute('data-width');
-            var baseHeight = video.getAttribute('data-height');
+            var baseWidth = Number(video.getAttribute('data-width'));
+            var baseHeight = Number(video.getAttribute('data-height'));
             var currentWidth = rect(video).width;
 
             var newWidth;
