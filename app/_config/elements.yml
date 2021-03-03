@@ -4,3 +4,6 @@ Name: myelements
 Page:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
+SilverStripe\SiteConfig\SiteConfig:
+  disallowed_elements:
+    - DNADesign\ElementalUserForms\Model\ElementForm
