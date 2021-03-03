@@ -150,4 +150,14 @@ class BlogArticleListElement extends BaseElement {
     public function getBlogArticleListView() {
         return $this->renderWith($this->getTemplate());
     }
+
+    public function getShouldDisplayLoadMore() {
+        if (!$this->DisplayLoadMore) {
+            return false;
+        }
+        if ($this->NumArticles == -1) {
+            return false;
+        }
+        return $this->getBlogArticles(-1)->count() > $this->NumArticles;
+    }
 }
