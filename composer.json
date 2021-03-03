@@ -19,7 +19,8 @@
         "heyday/silverstripe-menumanager": "^3.0",
         "silverstripe/userforms": "^5.8",
         "dnadesign/silverstripe-elemental-userforms": "^3.0",
-        "silverstripe/spamprotection": "^3.0"
+        "silverstripe/spamprotection": "^3.0",
+        "leafo/lessphp": "^0.5.0"
     },
     "require-dev": {
         "sminnee/phpunit": "^5.7",
@@ -44,6 +45,14 @@
     },
     "config": {
         "process-timeout": 600
+    },
+    "scripts": {
+        "compile-less": [
+            "@php scripts/less-compile.php"
+        ],
+        "watch-less": [
+            "@php scripts/watch-less.php"
+        ]
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
