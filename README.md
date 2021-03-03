@@ -1,26 +1,32 @@
-## Overview
+# Overview
 
+## Streunerkatzen
+### Suche: 
+* reminder email nach x wochen
+* login / bearbeitung + absegnung
+* farben kategorisierung - beispiele
+* zeitraum
+
+### Review:
+* mitglied werden: adresse nur optional (falls xx checkbox angehakt wird)
+
+### Dev Environment:
+* put this repo inside htdocs/streunerkatzen-silverstripe (directory name is important)
+* install composer
+* run `composer install`
+* import streunerkatzen.sql
+
+### Troubleshooting
+* If root only lists directory, make sure mod_rewrite is enabled
+* If object not found error appears on root, make sure dir is htdocs/streunerkatzen-silverstripe
+* If login doesn't work (streunerkatzen_silverstripe@gernotraudner.at), create new db "streunerkatzen" and import streunerkatzen.sql. Make sure it doesn't contain any tables before importing.
+* If backend resources are missing, make sure dir is correct. Call `composer vendor-expose` to refresh symlinks.
+
+## Silverstripe
 Base project folder for a SilverStripe ([http://silverstripe.org](http://silverstripe.org)) installation. Required modules are installed via [http://github.com/silverstripe/recipe-cms](http://github.com/silverstripe/recipe-cms). For information on how to change the dependencies in a recipe, please have a look at [https://github.com/silverstripe/recipe-plugin](https://github.com/silverstripe/recipe-plugin). In addition, installer includes [theme/simple](https://github.com/silverstripe-themes/silverstripe-simple) as a default theme.
 
-## Installation ##
-
-`composer create-project silverstripe/installer my-app`
-
-See [Getting Started](https://docs.silverstripe.org/en/4/getting_started/) for more information.
-
-## Bugtracker ##
-
-Bugs are tracked on github.com ([framework issues](https://github.com/silverstripe/silverstripe-framework/issues),
-[cms issues](https://github.com/silverstripe/silverstripe-cms/issues)).
-Please read our [issue reporting guidelines](https://docs.silverstripe.org/en/4/contributing/issues_and_bugs/).
-
-## Development and Contribution ##
-
-If you would like to make changes to the SilverStripe core codebase, we have an extensive [guide to contributing code](https://docs.silverstripe.org/en/4/contributing/code/).
-
-## Links ##
-
- * [Changelogs](https://docs.silverstripe.org/en/4/changelogs/)
+### Links:
+ * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
  * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
