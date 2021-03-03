@@ -118,6 +118,6 @@ class BlogController extends PageController {
             'Offset' => $offset + self::LIMIT
         ];
 
-        return $this->customise($result)->renderWith('Streunerkatzen/Blog/Includes/BlogArticleList');
+        return $this->customise($result)->renderWith($element->getTemplate());
     }
 }

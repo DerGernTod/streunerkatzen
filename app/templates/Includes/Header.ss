@@ -1,5 +1,5 @@
-<header class="site-header" style="background-image: url($SiteConfig.HeaderImage.URL)">
-    <div class="site-header-inner" style="background-image: url($SiteConfig.LogoImage.Fill(500,686).URL)">
+<header class="site-header" <% if $SiteConfig.HeaderImage %>style="background-image: url($SiteConfig.HeaderImage.URL)"<% end_if %>>
+    <div class="site-header-inner" <% if $SiteConfig.LogoImage %>style="background-image: url($SiteConfig.LogoImage.Fill(500,686).URL)"<% end_if %>>
         <div class="site-header-inner-text">
             <a class="site-title" href="$BaseHref">
                 $SiteConfig.MainText
