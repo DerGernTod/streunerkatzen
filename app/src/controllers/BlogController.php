@@ -104,10 +104,9 @@ class BlogController extends PageController {
             $offset = 0;
         }
 
-        $catIDs = $element->getCatIDs();
-        $blogArticles = BlogArticle::getArticlesByCats($catIDs, self::LIMIT, $offset);
+        $blogArticles = $element->getBlogArticles(self::LIMIT, $offset);
 
-        $numArticlesLeft = BlogArticle::getArticlesByCats($catIDs, -1)->count();
+        $numArticlesLeft = $element->getBlogArticles(-1)->count();
         $numArticlesLeft = $numArticlesLeft - ($offset + self::LIMIT);
 
         $this->getResponse()->addHeader('x-offset', $offset + self::LIMIT);

@@ -16,7 +16,8 @@ class BlogArticleListElement extends BaseElement {
 
     private static $db = [
         'NumArticles' => 'Int',
-        'DisplayLoadMore' => 'Boolean'
+        'DisplayLoadMore' => 'Boolean',
+        'AllCategoriesSelected' => 'Boolean'
     ];
 
     private static $many_many = array(
@@ -49,9 +50,13 @@ class BlogArticleListElement extends BaseElement {
                 'DisplayLoadMore',
                 '"Mehr Artikel laden" Button anzeigen'
             ),
+            CheckboxField::create(
+                'AllCategoriesSelected',
+                'Artikel von allen Kategorien anzeigen'
+            ),
             CheckboxSetField::create(
                 'Categories',
-                'Kategorien, von denen Artikel angezeigt werden',
+                'Kategorien, von denen Artikel angezeigt werden (nur wenn oben nicht ausgewählt wurde, dass alle Kategorien angezeigt werden sollen)',
                 BlogArticleCategory::get()->map('ID', 'Title')
             )
         ]);
@@ -70,7 +75,12 @@ class BlogArticleListElement extends BaseElement {
         } else {
             $summary .= "Alle Artikel";
         }
-        $summary .= " aus folgenden Kategorien: " . $this->getCategoryList();
+
+        if ($this->AllCategoriesSelected) {
+            $summary .= " aus allen Kategorien";
+        } else {
+            $summary .= " aus folgenden Kategorien: " . $this->getCategoryList();
+        }
 
         return DBField::create_field('HTMLText', $summary)->Summary(20);
     }
@@ -101,9 +111,17 @@ class BlogArticleListElement extends BaseElement {
         return $catIDs;
     }
 
-    public function getBlogArticles() {
-        $catIDs = $this->getCatIDs();
+    public function getBlogArticles($limit = null, $offset = 0) {
+        if (is_null($limit)) {
+            $limit = $this->NumArticles;
+        }
 
-        return BlogArticle::getArticlesByCats($catIDs, $this->NumArticles);
+        if ($this->AllCategoriesSelected) {
+            return BlogArticle::getArticles($limit, $offset);
+        } else {
+            $catIDs = $this->getCatIDs();
+
+            return BlogArticle::getArticlesByCats($catIDs, $limit, $offset);
+        }
     }
 }
