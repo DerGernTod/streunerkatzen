@@ -169,7 +169,7 @@ class BlogArticle extends DataObject {
         );
     }
 
-    public static function getArticlesByCats($catIDs, $limit, $offset = 0) {
+    public static function getArticlesByCats($catIDs, $limit = -1, $offset = 0) {
         if ($limit > 0) {
             return BlogArticle::get()
                 ->filter([
@@ -185,6 +185,31 @@ class BlogArticle extends DataObject {
                     'PublishTime:LessThanOrEqual' => date('Y-m-d H:i:s', time())
                 ])
                 ->sort('PublishTime DESC');
+        }
+
+        return new ArrayList();
+    }
+
+    public static function getArticles($limit = -1, $offset = 0) {
+        if ($limit > 0) {
+            return BlogArticle::get()
+                ->filter([
+                    'PublishTime:LessThanOrEqual' => date('Y-m-d H:i:s', time())
+                ])
+                ->sort([
+                    'PublishTime DESC',
+                    'ID ASC'
+                ])
+                ->limit($limit, $offset);
+        } elseif ($limit < 0) {     // load all
+            return BlogArticle::get()
+                ->filter([
+                    'PublishTime:LessThanOrEqual' => date('Y-m-d H:i:s', time())
+                ])
+                ->sort([
+                    'PublishTime DESC',
+                    'ID ASC'
+                ]);
         }
 
         return new ArrayList();
