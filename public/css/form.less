@@ -120,14 +120,13 @@
 #search-agent {
     cursor: pointer;
 }
-.error.message{
-  position:absolute;
-  border: 1px solid red;
-  padding: .5em;
-  background-color: white;
-  border-radius: .15em;
-  margin: .4em;
-  font-size: 9pt;
+.error.message {
+    border: 1px solid red;
+    padding: .5em;
+    background-color: white;
+    border-radius: .15em;
+    font-size: 9pt;
+    display: block;
 }
 .userform {
     .userform-fields {
@@ -161,6 +160,9 @@
         .buttonStyle();
     }
     .field {
+        .error {
+            border-color: red;
+        }
         .right-title {
             font-size: 9pt;
         }
@@ -177,6 +179,10 @@
         label {
             font-weight: 100;
             padding-left: .3em;
+            display: inline-block;
+        }
+        .checkbox label {
+            display: inline;
         }
     }
     .step-navigation, .userform-progress {
