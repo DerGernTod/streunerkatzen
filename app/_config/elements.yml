@@ -7,3 +7,6 @@ Page:
 SilverStripe\SiteConfig\SiteConfig:
   disallowed_elements:
     - DNADesign\ElementalUserForms\Model\ElementForm
+Streunerkatzen\Blog\BlogArticle:
+  disallowed_elements:
+    - DNADesign\ElementalUserForms\Model\ElementForm
