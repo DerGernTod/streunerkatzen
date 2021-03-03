@@ -542,13 +542,12 @@ ul.cat-details li:after {
   cursor: pointer;
 }
 .error.message {
-  position: absolute;
   border: 1px solid red;
   padding: 0.5em;
   background-color: white;
   border-radius: 0.15em;
-  margin: 0.4em;
   font-size: 9pt;
+  display: block;
 }
 .userform .userform-fields {
   max-width: 520px;
@@ -582,6 +581,9 @@ ul.cat-details li:after {
 .userform .field {
   margin: 0.5em;
 }
+.userform .field .error {
+  border-color: red;
+}
 .userform .field .right-title {
   font-size: 9pt;
 }
@@ -614,6 +616,10 @@ ul.cat-details li:after {
 .userform .field label {
   font-weight: 100;
   padding-left: 0.3em;
+  display: inline-block;
+}
+.userform .field .checkbox label {
+  display: inline;
 }
 .userform .step-navigation,
 .userform .userform-progress {
