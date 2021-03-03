@@ -8,3 +8,4 @@
 demoassets/
 
 silverstripe.log
+app/_config/email.yml

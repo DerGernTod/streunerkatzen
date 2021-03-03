@@ -10,8 +10,8 @@ SilverStripe\Core\Injector\Injector:
       Host: smtp.world4you.com
       Port: 25
     calls:
-      Username: [ setUsername, ['streunerkatzen@gernotraudner.at'] ]
-      Password: [ setPassword, ['qXgR8At6e82b'] ]
+      Username: [ setUsername, ['<insert-login>'] ]
+      Password: [ setPassword, ['<insert-pw>'] ]
       AuthMode: [ setAuthMode, ['login'] ]
 SilverStripe\Control\Email\Email:
-  admin_email: streunerkatzen@gernotraudner.at
+  admin_email: <insert-email-address>
