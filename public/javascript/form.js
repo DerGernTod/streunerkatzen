@@ -1,3 +1,4 @@
+
 (function removeWeirdJsAlign() {
     var observer = new MutationObserver(function (mutations) {
         forEach(mutations, function (mutation) {
@@ -6,11 +7,15 @@
     });
     var allJs = find('.js-align');
     forEach(allJs, function (element) {
+        element.removeAttribute('style');
         observer.observe(element, {attributes: true});
     });
 })();
 (function buildListbox() {
     var listbox = find('select.listbox');
+    if (!listbox) {
+        return;
+    }
     listbox.classList.add('hidden');
     var chosen = createElement('div', [], 'chosen', listbox.parentElement);
     var options = find('select.listbox option');

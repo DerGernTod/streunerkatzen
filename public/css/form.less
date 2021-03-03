@@ -1,5 +1,7 @@
 // main: main.less
 @import "utils.less";
+@import "grid/variables.less";
+
 .buttonStyle() {
     padding: .5em;
     min-width: 6em;
@@ -129,6 +131,9 @@
 }
 .userform {
     .userform-progress {
+        .step-buttons {
+            padding: 0;
+        }
         & > p {
             display: none;
         }
@@ -138,8 +143,11 @@
         .step-button-wrapper {
             display: block;
             &.current button {
-                color: lightgray;
-                border-color: rgba(0, 0, 0, 0);
+                background-color: lighten(@buttonColor, 20%);
+                cursor: default;
+            }
+            button:disabled {
+                background-color: lightgray;
             }
         }
     }
