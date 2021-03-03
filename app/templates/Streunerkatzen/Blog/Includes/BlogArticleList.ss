@@ -17,7 +17,7 @@
                 <div class="head"> am $PublishTime.Format("dd.MM.yyyy")</div>
             </div>
             <p>$Abstract</p>
-            <a class="read-more" href="$Link">Weiterlesen...</a>
+            <a class="button" href="$Link">Weiterlesen</a>
         </div>
     </article>
 <% end_loop %>

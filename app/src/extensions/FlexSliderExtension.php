@@ -4,10 +4,8 @@ namespace Streunerkatzen\Extensions;
 use Dynamic\FlexSlider\ORM\FlexSlider;
 use SilverStripe\View\Requirements;
 
-class FlexSliderExtension extends FlexSlider
-{
-    public function getCustomScript()
-    {
+class FlexSliderExtension extends FlexSlider {
+    public function getCustomScript() {
         $showThumbnailNav = $this->owner->ThumbnailNav == true && $this->owner->Slides()->Count() > 1;
 
         // Flexslider options

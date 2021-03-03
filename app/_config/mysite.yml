@@ -9,3 +9,7 @@ SilverStripe\Core\Injector\Injector:
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - Streunerkatzen\Extensions\BaseElementExtension
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Streunerkatzen\Extensions\HeaderConfigExtension
+    - Streunerkatzen\Extensions\SidebarConfigExtension

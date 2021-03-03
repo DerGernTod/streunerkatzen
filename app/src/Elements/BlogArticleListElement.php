@@ -4,6 +4,7 @@ namespace Streunerkatzen\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 use Streunerkatzen\Blog\BlogArticle;
@@ -14,10 +15,16 @@ class BlogArticleListElement extends BaseElement {
     private static $plural_name = 'Blogartikel Listen';
     private static $table_name = 'Streunerkatzen_BlogArticleListElement';
 
+    private static $layoutTemplates = [
+        'Standard' => 'Streunerkatzen/Blog/Includes/BlogArticleList',
+        'Vereinfacht' => 'Streunerkatzen/Blog/Includes/BlogArticleListSimple'
+    ];
+
     private static $db = [
         'NumArticles' => 'Int',
         'DisplayLoadMore' => 'Boolean',
-        'AllCategoriesSelected' => 'Boolean'
+        'AllCategoriesSelected' => 'Boolean',
+        'Layout' => 'Enum("Standard,Vereinfacht")'
     ];
 
     private static $many_many = array(
@@ -38,6 +45,12 @@ class BlogArticleListElement extends BaseElement {
         return '';
     }
 
+    public function populateDefaults() {
+        $this->Layout = "Standard";
+
+        parent::populateDefaults();
+    }
+
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
@@ -49,6 +62,11 @@ class BlogArticleListElement extends BaseElement {
             CheckboxField::create(
                 'DisplayLoadMore',
                 '"Mehr Artikel laden" Button anzeigen'
+            ),
+            DropdownField::create(
+                'Layout',
+                'Layout',
+                singleton(BlogArticleListElement::class)->dbObject('Layout')->enumValues()
             ),
             CheckboxField::create(
                 'AllCategoriesSelected',
@@ -123,5 +141,13 @@ class BlogArticleListElement extends BaseElement {
 
             return BlogArticle::getArticlesByCats($catIDs, $limit, $offset);
         }
+    }
+
+    public function getTemplate() {
+        return self::$layoutTemplates[$this->Layout];
+    }
+
+    public function getBlogArticleListView() {
+        return $this->renderWith($this->getTemplate());
     }
 }

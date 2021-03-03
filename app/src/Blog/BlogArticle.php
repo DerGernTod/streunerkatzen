@@ -86,9 +86,9 @@ class BlogArticle extends DataObject {
     }
 
     public function onAfterWrite() {
-        // check if url path already exists --> if not, generate it
         $changes = false;
 
+        // check if url path already exists --> if not, generate it
         if (!$this->URLPath) {
             $this->URLPath = Utils::generateURLPath($this->Title, $this->ID);
             $changes = true;
@@ -136,17 +136,6 @@ class BlogArticle extends DataObject {
         return RequiredFields::create(
             'Title'
         );
-    }
-
-    public static function getNewestBlogArticles($count) {
-        if ($count <= 0) {
-            return null;
-        }
-        return BlogArticle::get()->sort('PublishTime', 'DESC')->limit($count);
-    }
-
-    public function getPublicationTimestamp() {
-        return strtotime($this->PublishTime);
     }
 
     public function Link() {
