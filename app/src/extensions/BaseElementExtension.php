@@ -6,8 +6,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DataExtension;
 
 class BaseElementExtension extends DataExtension {
-    public function updateCMSEditLink(&$link): void
-    {
+    public function updateCMSEditLink(&$link): void {
         if (!$this->owner->inlineEditable()) {
             $page = $this->owner->getPage();
 

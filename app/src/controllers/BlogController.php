@@ -5,19 +5,19 @@ namespace Streunerkatzen\Controllers;
 use DateTime;
 use PageController;
 use SilverStripe\Control\HTTPRequest;
-use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
-use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use Streunerkatzen\Blog\BlogArticle;
 use Streunerkatzen\Blog\BlogArticleCategory;
+use Streunerkatzen\Elements\BlogArticleListElement;
 
 class BlogController extends PageController {
     private const LIMIT = 5;
 
     private static $allowed_actions = [
         'view',
-        'category'
+        'category',
+        'articlesforblogelement'
     ];
 
     public function init() {
@@ -89,5 +89,36 @@ class BlogController extends PageController {
         }
 
         return $result;
+    }
+
+    public function articlesforblogelement(HTTPRequest $request) {
+        $elementID = $request->param('ID');
+
+        $element = BlogArticleListElement::get()->byID($elementID);
+        if (!$element) {
+            return $this->httpError(404, 'Dieses Blog Element existiert nicht.');
+        }
+
+        $offset = $request->getVar('offset');
+        if (!isset($offset)) {
+            $offset = 0;
+        }
+
+        $catIDs = $element->getCatIDs();
+        $blogArticles = BlogArticle::getArticlesByCats($catIDs, self::LIMIT, $offset);
+
+        $numArticlesLeft = BlogArticle::getArticlesByCats($catIDs, -1)->count();
+        $numArticlesLeft = $numArticlesLeft - ($offset + self::LIMIT);
+
+        $this->getResponse()->addHeader('x-offset', $offset + self::LIMIT);
+        $this->getResponse()->addHeader('x-articles-left', $numArticlesLeft);
+
+        $result = [
+            'BlogArticles' => $blogArticles,
+            'NumArticlesLeft' => $numArticlesLeft,
+            'Offset' => $offset + self::LIMIT
+        ];
+
+        return $this->customise($result)->renderWith('Streunerkatzen/Blog/Includes/BlogArticleList');
     }
 }

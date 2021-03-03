@@ -17,6 +17,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\Versioned\Versioned;
 use Streunerkatzen\Utils\Utils;
 
@@ -166,5 +167,26 @@ class BlogArticle extends DataObject {
             "item",
             $this->ID
         );
+    }
+
+    public static function getArticlesByCats($catIDs, $limit, $offset = 0) {
+        if ($limit > 0) {
+            return BlogArticle::get()
+                ->filter([
+                    'Categories.ID' => $catIDs,
+                    'PublishTime:LessThanOrEqual' => date('Y-m-d H:i:s', time())
+                ])
+                ->sort('PublishTime DESC')
+                ->limit($limit, $offset);
+        } elseif ($limit < 0) {     // load all
+            return BlogArticle::get()
+                ->filter([
+                    'Categories.ID' => $catIDs,
+                    'PublishTime:LessThanOrEqual' => date('Y-m-d H:i:s', time())
+                ])
+                ->sort('PublishTime DESC');
+        }
+
+        return new ArrayList();
     }
 }
