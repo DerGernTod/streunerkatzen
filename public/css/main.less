@@ -3,6 +3,7 @@
 @import "search.less";
 @import "form.less";
 @import "blog.less";
+@import "colors.less";
 
 @font-face {
     font-family: "Handlee";
@@ -34,12 +35,6 @@
     url(../fonts/OpenSans-Regular.svg) format("svg")
 }
 
-:root {
-    --light-blue:#7a80bf;
-    --bg:#4e559a;
-    --light-bg:rgba(255,255,255,0.7);
-}
-
 * {
     box-sizing: border-box;
 }
@@ -50,9 +45,8 @@ html {
 }
 
 body {
-    font-size:1.6rem;
-    /*background:var(--bg);*/
-    background:linear-gradient(180deg, var(--light-blue),var(--light-blue), var(--bg)) no-repeat var(--bg);
+    font-size: 1.6rem;
+    background: linear-gradient(180deg, @lightBlue, @lightBlue, @bgCol) no-repeat @bgCol;
 }
 
 html, body {
@@ -61,7 +55,7 @@ html, body {
     margin:0;
     padding:0;
     font-family: "Open Sans", sans-serif;
-    text-align:justify;
+    text-align: justify;
 }
 
 h1, h2, h3, .site-title {
@@ -82,15 +76,14 @@ h3 {
     font-size: 2rem;
 }
 
-main a {
-    color:var(--bg);
+main a, .ui-widget .ui-widget-content a {
+    color: @bgCol;
     font-weight: 700;
-    text-shadow:0.1rem 0.1rem 0.1rem var(--light-bg);
-}
-
-a:hover {
-    color:var(--light-bg);
-    text-shadow:0.1rem 0.1rem 0.1rem var(--bg);
+    text-shadow: 0.1rem 0.1rem 0.1rem @lightBgCol;
+    &:hover {
+        color: @lightBgCol;
+        text-shadow: 0.1rem 0.1rem 0.1rem @bgCol;
+    }
 }
 
 img {
@@ -100,13 +93,13 @@ img {
 }
 
 .components input, .userform input, .userform select, .userform textarea, .chosen-choices {
-    border:0.1rem solid var(--bg);
+    border:0.1rem solid @bgCol;
     border-radius:0.3rem;
-    background:var(--light-bg);
+    background: @lightBgCol;
     padding:0.5rem 1rem;
 }
 
-.components button, .userform button, a.button {
+.components button, .userform button, .userform input[type=submit], .userform input[type=reset], a.button {
     background: @buttonColor;
     border: 1px solid #867818;
     border-radius: 0.3rem;
@@ -211,4 +204,44 @@ footer a {
     width: auto;
     margin: 0 auto;
     max-width: 100%;
+}
+.element.dynamic__elements__accordion__elements__elementaccordion {
+    h3.ui-accordion-header {
+        background-color: @bgCol;
+        &.ui-state-default {
+            color: #fff;
+        }
+    }
+}
+
+.element.dynamic__elements__image__elements__elementimage > img, .ui-accordion-content img {
+    max-width: 100%;
+    width: auto;
+}
+
+.element.dynamic__elements__gallery__elements__elementphotogallery .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    & > * {
+        & * {
+            width: 100%;
+            height: 100%;
+
+        }
+        margin-bottom: 0 !important;
+        padding: 3px;
+        @media(min-width: 900px) {
+            width: 25%;
+        }
+        @media(min-width: 700px) and (max-width: 899px) {
+            width: 33%;
+        }
+        @media(min-width: 500px) and (max-width: 699px) {
+            width: 50%;
+        }
+        @media(max-width: 499px) {
+            width: 100%;
+        }
+    }
 }
