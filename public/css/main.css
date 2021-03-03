@@ -721,9 +721,10 @@ aside article h4 {
   font-family: cursive;
   margin: 2em 0;
 }
-.load-more-btn {
+.load-more-container {
   text-align: center;
-  width: 100%;
+  width: calc(100% - 2em);
+  margin: 1em;
   display: block;
 }
 @font-face {
@@ -833,6 +834,7 @@ a.button {
 a.button:hover {
   text-shadow: none;
   border-color: #e4cd2a;
+  color: #000;
 }
 header.site-header {
   padding-top: 2rem;

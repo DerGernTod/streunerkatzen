@@ -4,6 +4,8 @@
         <% include Streunerkatzen/Blog/Includes/BlogArticleList BlogArticles=$BlogArticles %>
     </div>
     <% if $NumArticlesLeft > 0 %>
-    <a class="load-more-btn load-more-articles" data-offset="$Offset" data-url="$Category.Link" href="javascript:void 0">Mehr laden...</a>
+        <div class="load-more-container">
+            <a class="load-more-btn load-more-articles button" data-offset="$Offset" data-url="$Category.Link" href="javascript:void 0">Mehr laden...</a>
+        </div>
     <% end_if %>
 </div>

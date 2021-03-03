@@ -3,8 +3,10 @@
     <div class="article-list">
         $BlogArticleListView
     </div>
-    <% if $DisplayLoadMore %>
-    <a class="load-more-btn load-more-articles" data-offset="$NumArticles" data-url="blog/articlesforblogelement/$ID" href="javascript:void 0">Mehr laden...</a>
+    <% if $ShouldDisplayLoadMore %>
+        <div class="load-more-container">
+            <a class="load-more-btn load-more-articles button" data-offset="$NumArticles" data-url="blog/articlesforblogelement/$ID" href="javascript:void 0">Mehr laden...</a>
+        </div>
     <% end_if %>
 </div>
 <% require javascript("public/javascript/blog.js") %>

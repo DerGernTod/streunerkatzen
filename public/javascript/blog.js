@@ -16,7 +16,8 @@
             ajax(url + '?offset=' + offset + '&ajax=1', 'GET', function (xhr) {
                 var div = document.createElement('div');
 
-                btn.parentElement.querySelector('.article-list').appendChild(div);
+                // step out of button wrapper
+                btn.parentElement.parentElement.querySelector('.article-list').appendChild(div);
 
                 div.outerHTML = xhr.responseText;
 
