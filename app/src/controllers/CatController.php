@@ -39,6 +39,7 @@ class CatController extends PageController {
 
         $actions = new FieldList(
             FormAction::create('handleContactForm')
+                ->addExtraClass('button')
                 ->setTitle('Nachricht absenden')
         );
 
