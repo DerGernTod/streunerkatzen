@@ -1,7 +1,9 @@
 // main: main.less
 @import "utils.less";
 @import "grid/variables.less";
-
+.fullWidth() {
+    width: 100%;
+}
 .buttonStyle() {
     padding: .5em;
     min-width: 6em;
@@ -112,6 +114,9 @@
         }
     }
 }
+textarea {
+    .fullWidth();
+}
 .user-form-container {
     max-width: 500px;
     margin-left: auto;
@@ -169,7 +174,7 @@
         }
         &.text, &.dropdown, &.listbox, &.textarea, &.file {
             input, select, textarea {
-                width: 100%;
+                .fullWidth();
             }
         }
         margin: .5em;
