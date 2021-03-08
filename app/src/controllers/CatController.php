@@ -4,6 +4,7 @@ namespace Streunerkatzen\Controllers;
 
 use PageController;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Email\Email;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -11,6 +12,7 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\View\ArrayData;
 use Streunerkatzen\Cats\Cat;
 
 class CatController extends PageController {
@@ -61,5 +63,48 @@ class CatController extends PageController {
     public function handleContactForm($data, Form $form) {
         $catID = $data['CatID'];
         $msg = $data['Message'];
+
+        $cat = Cat::get()->byID($catID);
+        if (!$cat) {
+            return $this->httpError(404, 'Diese Katze existiert nicht.');
+        }
+
+        $templateData = new ArrayData([
+            'Cat' => $cat,
+            'Message' => $msg,
+            'AdminMail' => array_key_first(Email::config()->get('admin_email'))
+        ]);
+        $emailContent = "";
+        $emailTo = "";
+
+        $contactData = $cat->Contact;
+        if ($this->checkIfEmail($contactData)) {
+            // send mail to contact
+            $emailContent = $templateData->renderWith('Streunerkatzen/Controllers/Includes/CatMessageEmail_Contact');
+            $emailTo = $contactData;
+        } else {
+            // send mail to admin
+            $emailContent = $templateData->renderWith('Streunerkatzen/Controllers/Includes/CatMessageEmail_Admin');
+            $emailTo = Email::config()->get('admin_email');
+        }
+
+        $email = new Email();
+        $email->setTo($emailTo);
+        $email->setSubject('Streunerkatzen Nachricht zum Eintrag "' . $cat->Title . '"');
+        $email->setBody($emailContent);
+        if (!$email->send()) {
+            return $this->httpError(500, 'Fehler beim E-Mail senden!');
+        }
+
+        return $this->renderWith('Streunerkatzen/Controllers/Includes/CatMessageForm_Complete');
+    }
+
+    private function checkIfEmail($string) {
+        $find1 = strpos($string, '@');
+        $find2 = strpos($string, '.');
+
+        return ($find1 !== false &&
+                $find2 !== false &&
+                $find2 > $find1);
     }
 }
