@@ -103,43 +103,6 @@ class CatSearchPageController extends PageController {
         return $filters;
     }
 
-    // public function send(HTTPRequest $request) {
-    //     // TODO: check captcha
-    //     if (!SecurityToken::inst()->checkRequest($request)) {
-    //         $this->httpError(400, "SecurityID doesn't match, possible CSRF attack.");
-    //     }
-
-    //     $text = $request->postVar('text');
-    //     $cat = Cat::get_by_id($request->postVar('catId'));
-    //     if (!$cat) {
-    //         $this->httpError(404, "Diese Katze hat sich versteckt.");
-    //     }
-    //     $contact = $cat->Contact;
-    //     if (!filter_var($contact, FILTER_VALIDATE_EMAIL)) {
-    //         // contact is not an email address
-    //         // TODO: send an email to sabine instead, containing data about $contact and $text
-    //     } else {
-    //         // TODO: send an email with $text and $cat to $contact
-    //     }
-    //     return 'success';
-    // }
-
-    // public function SendMessageForm($catId) {
-    //     return Form::create(
-    //         $this,
-    //         __FUNCTION__,
-    //         FieldList::create(
-    //             TextareaField::create('cat-msg', 'Sende eine Nachricht an den Ersteller dieses Eintrags. Denke daran, Kontaktdaten anzufügen, sodass dieser dich erreichen kann.'),
-    //             HiddenField::create('cat-id')->setValue($catId)
-    //         ),
-    //         FieldList::create(
-    //             FormAction::create('sendMessage', 'Absenden')
-    //         )
-    //     )
-    //     ->setFormMethod('POST')
-    //     ->setFormAction($this->Link('send'));
-    // }
-
     public function CatSearchForm() {
         return Form::create(
             $this,
