@@ -13,6 +13,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Director;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ListboxField;
+use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\TextareaField;
 
 class Cat extends DataObject {
@@ -71,6 +72,11 @@ class Cat extends DataObject {
 
     public function getCMSFields() {
         $fields = FieldList::create(
+            ReadonlyField::create(
+                'LinkPreview',
+                'Link',
+                Director::absoluteBaseURL().$this->Link()
+            ),
             DatetimeField::create('PublishTime', 'Datum der Veröffentlichung'),
             TextField::create('Title', 'Name der Katze'),
             TextField::create('Breed', 'Rasse'),

@@ -63,7 +63,8 @@
         </div>
         <div class="cat-attachments">
             <h2>Nachricht an Ersteller</h2>
-            $Controller.SendMessageForm($ID)
+            <p>Sende eine Nachricht an den Ersteller dieses Eintrags. Denke daran, Kontaktdaten anzufügen, sodass dieser dich erreichen kann.</p>
+            $Up.ContactForm
             <h2>Anhänge</h2>
             <ul class="cat-details">
                 <% if $Attachments %>

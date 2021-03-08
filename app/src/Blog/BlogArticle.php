@@ -113,7 +113,7 @@ class BlogArticle extends DataObject {
             ReadonlyField::create(
                 'LinkPreview',
                 'Link',
-                Director::absoluteBaseURL().'blog/view/'.$this->URLPath
+                Director::absoluteBaseURL().$this->Link()
             ),
             DatetimeField::create('PublishTime', 'Datum der Veröffentlichung'),
             TextareaField::create('Abstract', 'Kurzfassung'),
