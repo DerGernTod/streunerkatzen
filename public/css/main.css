@@ -429,6 +429,14 @@ ul.cat-details li:after {
   padding: 1em;
   border-radius: 5px;
 }
+#search-agent {
+  cursor: pointer;
+}
+.notification-popup-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
 .demo-div {
   position: fixed;
 }
@@ -537,9 +545,6 @@ ul.cat-details li:after {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-}
-#search-agent {
-  cursor: pointer;
 }
 .error.message {
   border: 1px solid red;
