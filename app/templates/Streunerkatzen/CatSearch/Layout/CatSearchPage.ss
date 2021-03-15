@@ -44,7 +44,7 @@
     </div>
 
     <div class='notification-popup-button hidden'>
-        <a id='search-agent'>🔔 Benachrichtigung aktivieren</a> <span class='hint' title='$StrippedNotificationTemplate'>?</span>
+        <a id='search-agent' class="button">🔔 Benachrichtigung aktivieren <span class='hint' title='$StrippedNotificationTemplate'>?</span></a>
     </div>
     <% include Streunerkatzen/CatSearch/CatSearchResult %>
 </div>

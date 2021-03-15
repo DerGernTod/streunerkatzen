@@ -7,3 +7,4 @@ SilverStripe\Control\Director:
     'api//$Action': 'Streunerkatzen\Controllers\ApiController'
     'cats//$Action/$ID': 'Streunerkatzen\Controllers\CatController'
     'blog//$Action/$ID': 'Streunerkatzen\Controllers\BlogController'
+    'notifications//$Action': 'Streunerkatzen\Controllers\NotificationController'

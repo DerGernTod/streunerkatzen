@@ -2,6 +2,7 @@
 namespace Streunerkatzen\CatSearch;
 
 use PageController;
+use SilverStripe\Control\Director;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\HTTPRequest;
@@ -22,7 +23,6 @@ class CatSearchPageController extends PageController {
 
     private static $allowed_actions = [
         'NotificationForm',
-        'unsubscribe',
         'send'
     ];
 
@@ -157,35 +157,6 @@ class CatSearchPageController extends PageController {
         ->loadDataFrom($this->request->getVars());
     }
 
-    public function unsubscribe(HTTPRequest $request) {
-        $getVars = $request->getVars();
-        $matchingAgents = SearchAgent::get()->filter([
-            "Token" => $getVars["token"],
-            "Email" => $getVars["email"]
-        ]);
-
-        $templateData = new ArrayData([
-            'MatchFound' => false
-        ]);
-
-        if (count($matchingAgents) > 0) {
-            $templateData->setField('MatchFound', true);
-            $agents = new ArrayList();
-            foreach ($matchingAgents as $agent) {
-                $agentData = new ArrayData([
-                    'Email' => $agent->Email,
-                    'ReadableSearch' => $agent->getReadableSearch()
-                ]);
-                $agents->push($agentData);
-            }
-            $templateData->setField('Agents', $agents);
-
-            $matchingAgents->removeAll();
-        }
-
-        return $templateData->renderWith('Streunerkatzen/CatSearch/Includes/SearchAgentUnsubscribe');
-    }
-
     public function NotificationForm() {
         $fields = new FieldList(
             EmailField::create('E-Mail', 'E-Mail'),
@@ -224,9 +195,11 @@ class CatSearchPageController extends PageController {
         $searchAgent->Token = $token;
         $searchAgent->write();
 
-        $unsubLink = $this->AbsoluteLink('unsubscribe')."?token=$token&email=".$emailParam;
+        $unsubLink = Director::absoluteBaseURL().'notifications/unsubcatsearch'.'?token='.$token.'&email='.$emailParam;
 
         $templateData = new ArrayData([
+            'ReadableSearch' => $searchAgent->getReadableSearch(),
+            'EMailContent' => $this->NotificationEmailTemplate,
             'UnsubLink' => $unsubLink
         ]);
 
