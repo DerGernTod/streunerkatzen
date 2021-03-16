@@ -11,6 +11,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Director;
+use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\TextareaField;
 
@@ -25,7 +26,7 @@ class Cat extends DataObject {
 
         'Age' => 'Varchar(250)',
         'Gender' => 'Enum("nicht bekannt,männlich,weiblich")',
-        'HasPetCollar' => 'Boolean',
+        'HasPetCollar' => 'Enum("nicht bekannt,ja,nein")',
         'PetCollarDescription' => 'Varchar(250)',
         'Characteristics' => 'Text',
         'ColorCharacteristics' => 'Text',
@@ -70,7 +71,7 @@ class Cat extends DataObject {
 
     public function getCMSFields() {
         $fields = FieldList::create(
-            DateField::create('PublishTime', 'Datum der Veröffentlichung'),
+            DatetimeField::create('PublishTime', 'Datum der Veröffentlichung'),
             TextField::create('Title', 'Name der Katze'),
             TextField::create('Breed', 'Rasse'),
             TextField::create('Age', 'Alter'),
@@ -93,7 +94,11 @@ class Cat extends DataObject {
             TextareaField::create('ColorCharacteristics', 'Farbliche Besonderheiten'),
             TextField::create('EyeColor', 'Augenfarbe'),
             TextField::create('Tattoo', 'Tattoo'),
-            CheckboxField::create('HasPetCollar', 'Halsband?'),
+            DropdownField::create(
+                'HasPetCollar',
+                'Halsband?',
+                singleton(Cat::class)->dbObject('HasPetCollar')->enumValues()
+            ),
             TextField::create('PetCollarDescription', 'Beschreibung des Halsbands'),
             DropdownField::create(
                 'IsCastrated',
@@ -126,7 +131,7 @@ class Cat extends DataObject {
             ),
             TextField::create('Street', 'Straße'),
             TextField::create('Town', 'Ort'),
-            TextField::create('ZipCode', 'PLZ'),
+            TextField::create('Zipcode', 'PLZ'),
             DropdownField::create(
                 'Country',
                 'Bundesland',
