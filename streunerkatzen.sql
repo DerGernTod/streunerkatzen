@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 10:01 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.27
+-- Host: localhost
+-- Erstellungszeit: 16. Mrz 2021 um 10:38
+-- Server-Version: 5.7.33-0ubuntu0.18.04.1
+-- PHP-Version: 7.3.27-9+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,51 +19,51 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `streunerkatzen`
+-- Datenbank: `streunerkatzen`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accordionpanel`
+-- Tabellenstruktur für Tabelle `accordionpanel`
 --
 
 CREATE TABLE `accordionpanel` (
   `ID` int(11) NOT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `AccordionID` int(11) NOT NULL DEFAULT 0
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `AccordionID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accordionpanel_live`
+-- Tabellenstruktur für Tabelle `accordionpanel_live`
 --
 
 CREATE TABLE `accordionpanel_live` (
   `ID` int(11) NOT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `AccordionID` int(11) NOT NULL DEFAULT 0
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `AccordionID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accordionpanel_versions`
+-- Tabellenstruktur für Tabelle `accordionpanel_versions`
 --
 
 CREATE TABLE `accordionpanel_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `AccordionID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `AccordionID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baseelementobject`
+-- Tabellenstruktur für Tabelle `baseelementobject`
 --
 
 CREATE TABLE `baseelementobject` (
@@ -70,18 +71,18 @@ CREATE TABLE `baseelementobject` (
   `ClassName` enum('Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\BaseObject\\Model\\BaseElementObject',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `ElementLinkID` int(11) NOT NULL DEFAULT 0
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `ElementLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baseelementobject_live`
+-- Tabellenstruktur für Tabelle `baseelementobject_live`
 --
 
 CREATE TABLE `baseelementobject_live` (
@@ -89,43 +90,43 @@ CREATE TABLE `baseelementobject_live` (
   `ClassName` enum('Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\BaseObject\\Model\\BaseElementObject',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `ElementLinkID` int(11) NOT NULL DEFAULT 0
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `ElementLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baseelementobject_versions`
+-- Tabellenstruktur für Tabelle `baseelementobject_versions`
 --
 
 CREATE TABLE `baseelementobject_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\BaseObject\\Model\\BaseElementObject',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `ElementLinkID` int(11) NOT NULL DEFAULT 0
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `ElementLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `changeset`
+-- Tabellenstruktur für Tabelle `changeset`
 --
 
 CREATE TABLE `changeset` (
@@ -135,16 +136,16 @@ CREATE TABLE `changeset` (
   `Created` datetime DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `State` enum('open','published','reverted') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'open',
-  `IsInferred` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `IsInferred` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `PublishDate` datetime DEFAULT NULL,
   `LastSynced` datetime DEFAULT NULL,
-  `OwnerID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `changeset`
+-- Daten für Tabelle `changeset`
 --
 
 INSERT INTO `changeset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`, `State`, `IsInferred`, `Description`, `PublishDate`, `LastSynced`, `OwnerID`, `PublisherID`) VALUES
@@ -347,12 +348,17 @@ INSERT INTO `changeset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`, `St
 (197, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 21:21:10', '2021-03-03 21:21:10', 'Generiert durch Veröffentlichung von \'Kontakt für Rückfragen (E-Mail oder Telefon) ohne diese Angabe kann und wird die Meldung nicht bearbeitet\' am 03.03.2021, 21:21', 'published', 1, NULL, '2021-03-03 21:21:10', '2021-03-03 21:21:10', 0, 1),
 (198, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 21:21:10', '2021-03-03 21:21:10', 'Generiert durch Veröffentlichung von \'Gibt es Fotos zum aktuellen Fall? Bitte das aussagekräftigste hier hochladen\' am 03.03.2021, 21:21', 'published', 1, NULL, '2021-03-03 21:21:10', '2021-03-03 21:21:10', 0, 1),
 (199, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 21:21:10', '2021-03-03 21:21:10', 'Generiert durch Veröffentlichung von \'Ich erkläre mich damit einverstanden, dass die Meldung bei Bedarf, anonymisiert auch an Behörde und Tierschutzombudsstelle weitergeleitet wird\' am 03.03.2021, 21:21', 'published', 1, NULL, '2021-03-03 21:21:10', '2021-03-03 21:21:10', 0, 1),
-(200, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 'Generiert durch Veröffentlichung von \'Vermisst und gefunden\' am 03.03.2021, 21:24', 'published', 1, NULL, '2021-03-03 21:24:53', '2021-03-03 21:24:53', 0, 1);
+(200, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 'Generiert durch Veröffentlichung von \'Vermisst und gefunden\' am 03.03.2021, 21:24', 'published', 1, NULL, '2021-03-03 21:24:53', '2021-03-03 21:24:53', 0, 1),
+(201, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 22:22:24', '2021-03-03 22:22:24', 'Generiert durch Veröffentlichung von \'Standard Administrator\' am 03.03.2021, 22:22', 'published', 1, NULL, '2021-03-03 22:22:24', '2021-03-03 22:22:24', 0, 2),
+(202, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 22:23:27', '2021-03-03 22:23:27', 'Generiert durch Veröffentlichung von \'Sabine\' am 03.03.2021, 22:23', 'published', 1, NULL, '2021-03-03 22:23:27', '2021-03-03 22:23:27', 0, 2);
+INSERT INTO `changeset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`, `State`, `IsInferred`, `Description`, `PublishDate`, `LastSynced`, `OwnerID`, `PublisherID`) VALUES
+(203, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 22:24:06', '2021-03-03 22:24:06', 'Generiert durch Veröffentlichung von \'Petition\' am 03.03.2021, 22:24', 'published', 1, NULL, '2021-03-03 22:24:06', '2021-03-03 22:24:06', 0, 2),
+(204, 'SilverStripe\\Versioned\\ChangeSet', '2021-03-03 22:24:21', '2021-03-03 22:24:21', 'Generiert durch Veröffentlichung von \'Petition\' am 03.03.2021, 22:24', 'published', 1, NULL, '2021-03-03 22:24:21', '2021-03-03 22:24:21', 0, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `changesetitem`
+-- Tabellenstruktur für Tabelle `changesetitem`
 --
 
 CREATE TABLE `changesetitem` (
@@ -360,16 +366,16 @@ CREATE TABLE `changesetitem` (
   `ClassName` enum('SilverStripe\\Versioned\\ChangeSetItem') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\Versioned\\ChangeSetItem',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `VersionBefore` int(11) NOT NULL DEFAULT 0,
-  `VersionAfter` int(11) NOT NULL DEFAULT 0,
+  `VersionBefore` int(11) NOT NULL DEFAULT '0',
+  `VersionAfter` int(11) NOT NULL DEFAULT '0',
   `Added` enum('explicitly','implicitly') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'implicitly',
-  `ChangeSetID` int(11) NOT NULL DEFAULT 0,
-  `ObjectID` int(11) NOT NULL DEFAULT 0,
+  `ChangeSetID` int(11) NOT NULL DEFAULT '0',
+  `ObjectID` int(11) NOT NULL DEFAULT '0',
   `ObjectClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `changesetitem`
+-- Daten für Tabelle `changesetitem`
 --
 
 INSERT INTO `changesetitem` (`ID`, `ClassName`, `LastEdited`, `Created`, `VersionBefore`, `VersionAfter`, `Added`, `ChangeSetID`, `ObjectID`, `ObjectClass`) VALUES
@@ -928,22 +934,32 @@ INSERT INTO `changesetitem` (`ID`, `ClassName`, `LastEdited`, `Created`, `Versio
 (552, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 21:21:10', '2021-03-03 21:21:10', 8, 10, 'explicitly', 199, 13, 'SilverStripe\\UserForms\\Model\\EditableFormField'),
 (553, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 3, 3, 'explicitly', 200, 15, 'SilverStripe\\CMS\\Model\\SiteTree'),
 (554, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 2, 2, 'implicitly', 200, 34, 'DNADesign\\Elemental\\Models\\ElementalArea'),
-(555, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 0, 3, 'implicitly', 200, 38, 'DNADesign\\Elemental\\Models\\BaseElement');
+(555, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 21:24:53', '2021-03-03 21:24:53', 0, 3, 'implicitly', 200, 38, 'DNADesign\\Elemental\\Models\\BaseElement'),
+(556, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:22:24', '2021-03-03 22:22:24', 0, 0, 'explicitly', 201, 1, 'SilverStripe\\Security\\Member'),
+(557, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:23:27', '2021-03-03 22:23:27', 0, 0, 'explicitly', 202, 2, 'SilverStripe\\Security\\Member'),
+(558, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:06', '2021-03-03 22:24:06', 4, 4, 'explicitly', 203, 1, 'Streunerkatzen\\Blog\\BlogArticle'),
+(559, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:06', '2021-03-03 22:24:06', 2, 2, 'implicitly', 203, 12, 'DNADesign\\Elemental\\Models\\ElementalArea'),
+(560, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:06', '2021-03-03 22:24:06', 3, 3, 'implicitly', 203, 4, 'DNADesign\\Elemental\\Models\\BaseElement'),
+(561, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:06', '2021-03-03 22:24:06', 2, 2, 'implicitly', 203, 6, 'SilverStripe\\Assets\\File'),
+(562, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:21', '2021-03-03 22:24:21', 4, 4, 'explicitly', 204, 1, 'Streunerkatzen\\Blog\\BlogArticle'),
+(563, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:21', '2021-03-03 22:24:21', 2, 2, 'implicitly', 204, 12, 'DNADesign\\Elemental\\Models\\ElementalArea'),
+(564, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:21', '2021-03-03 22:24:21', 3, 3, 'implicitly', 204, 4, 'DNADesign\\Elemental\\Models\\BaseElement'),
+(565, 'SilverStripe\\Versioned\\ChangeSetItem', '2021-03-03 22:24:21', '2021-03-03 22:24:21', 2, 2, 'implicitly', 204, 6, 'SilverStripe\\Assets\\File');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `changesetitem_referencedby`
+-- Tabellenstruktur für Tabelle `changesetitem_referencedby`
 --
 
 CREATE TABLE `changesetitem_referencedby` (
   `ID` int(11) NOT NULL,
-  `ChangeSetItemID` int(11) NOT NULL DEFAULT 0,
-  `ChildID` int(11) NOT NULL DEFAULT 0
+  `ChangeSetItemID` int(11) NOT NULL DEFAULT '0',
+  `ChildID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `changesetitem_referencedby`
+-- Daten für Tabelle `changesetitem_referencedby`
 --
 
 INSERT INTO `changesetitem_referencedby` (`ID`, `ChangeSetItemID`, `ChildID`) VALUES
@@ -1301,21 +1317,27 @@ INSERT INTO `changesetitem_referencedby` (`ID`, `ChangeSetItemID`, `ChildID`) VA
 (352, 543, 527),
 (353, 544, 527),
 (354, 554, 553),
-(355, 555, 553);
+(355, 555, 553),
+(356, 559, 558),
+(357, 560, 558),
+(358, 561, 558),
+(359, 563, 562),
+(360, 564, 562),
+(361, 565, 562);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecheckbox`
+-- Tabellenstruktur für Tabelle `editablecheckbox`
 --
 
 CREATE TABLE `editablecheckbox` (
   `ID` int(11) NOT NULL,
-  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablecheckbox`
+-- Daten für Tabelle `editablecheckbox`
 --
 
 INSERT INTO `editablecheckbox` (`ID`, `CheckedDefault`) VALUES
@@ -1328,16 +1350,16 @@ INSERT INTO `editablecheckbox` (`ID`, `CheckedDefault`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecheckbox_live`
+-- Tabellenstruktur für Tabelle `editablecheckbox_live`
 --
 
 CREATE TABLE `editablecheckbox_live` (
   `ID` int(11) NOT NULL,
-  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablecheckbox_live`
+-- Daten für Tabelle `editablecheckbox_live`
 --
 
 INSERT INTO `editablecheckbox_live` (`ID`, `CheckedDefault`) VALUES
@@ -1350,18 +1372,18 @@ INSERT INTO `editablecheckbox_live` (`ID`, `CheckedDefault`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecheckbox_versions`
+-- Tabellenstruktur für Tabelle `editablecheckbox_versions`
 --
 
 CREATE TABLE `editablecheckbox_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `CheckedDefault` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablecheckbox_versions`
+-- Daten für Tabelle `editablecheckbox_versions`
 --
 
 INSERT INTO `editablecheckbox_versions` (`ID`, `RecordID`, `Version`, `CheckedDefault`) VALUES
@@ -1386,45 +1408,45 @@ INSERT INTO `editablecheckbox_versions` (`ID`, `RecordID`, `Version`, `CheckedDe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecountrydropdownfield`
+-- Tabellenstruktur für Tabelle `editablecountrydropdownfield`
 --
 
 CREATE TABLE `editablecountrydropdownfield` (
   `ID` int(11) NOT NULL,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecountrydropdownfield_live`
+-- Tabellenstruktur für Tabelle `editablecountrydropdownfield_live`
 --
 
 CREATE TABLE `editablecountrydropdownfield_live` (
   `ID` int(11) NOT NULL,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecountrydropdownfield_versions`
+-- Tabellenstruktur für Tabelle `editablecountrydropdownfield_versions`
 --
 
 CREATE TABLE `editablecountrydropdownfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecustomrule`
+-- Tabellenstruktur für Tabelle `editablecustomrule`
 --
 
 CREATE TABLE `editablecustomrule` (
@@ -1432,18 +1454,18 @@ CREATE TABLE `editablecustomrule` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableCustomRule') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableCustomRule',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Display` enum('Show','Hide') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Show',
   `ConditionOption` enum('IsBlank','IsNotBlank','HasValue','ValueNot','ValueLessThan','ValueLessThanEqual','ValueGreaterThan','ValueGreaterThanEqual') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'IsBlank',
   `FieldValue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `ConditionFieldID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `ConditionFieldID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecustomrule_live`
+-- Tabellenstruktur für Tabelle `editablecustomrule_live`
 --
 
 CREATE TABLE `editablecustomrule_live` (
@@ -1451,88 +1473,88 @@ CREATE TABLE `editablecustomrule_live` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableCustomRule') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableCustomRule',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Display` enum('Show','Hide') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Show',
   `ConditionOption` enum('IsBlank','IsNotBlank','HasValue','ValueNot','ValueLessThan','ValueLessThanEqual','ValueGreaterThan','ValueGreaterThanEqual') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'IsBlank',
   `FieldValue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `ConditionFieldID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `ConditionFieldID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablecustomrule_versions`
+-- Tabellenstruktur für Tabelle `editablecustomrule_versions`
 --
 
 CREATE TABLE `editablecustomrule_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableCustomRule') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableCustomRule',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Display` enum('Show','Hide') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Show',
   `ConditionOption` enum('IsBlank','IsNotBlank','HasValue','ValueNot','ValueLessThan','ValueLessThanEqual','ValueGreaterThan','ValueGreaterThanEqual') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'IsBlank',
   `FieldValue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `ConditionFieldID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `ConditionFieldID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledatefield`
+-- Tabellenstruktur für Tabelle `editabledatefield`
 --
 
 CREATE TABLE `editabledatefield` (
   `ID` int(11) NOT NULL,
-  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledatefield_live`
+-- Tabellenstruktur für Tabelle `editabledatefield_live`
 --
 
 CREATE TABLE `editabledatefield_live` (
   `ID` int(11) NOT NULL,
-  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledatefield_versions`
+-- Tabellenstruktur für Tabelle `editabledatefield_versions`
 --
 
 CREATE TABLE `editabledatefield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `DefaultToToday` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledropdown`
+-- Tabellenstruktur für Tabelle `editabledropdown`
 --
 
 CREATE TABLE `editabledropdown` (
   `ID` int(11) NOT NULL,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabledropdown`
+-- Daten für Tabelle `editabledropdown`
 --
 
 INSERT INTO `editabledropdown` (`ID`, `UseEmptyString`, `EmptyString`) VALUES
@@ -1541,17 +1563,17 @@ INSERT INTO `editabledropdown` (`ID`, `UseEmptyString`, `EmptyString`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledropdown_live`
+-- Tabellenstruktur für Tabelle `editabledropdown_live`
 --
 
 CREATE TABLE `editabledropdown_live` (
   `ID` int(11) NOT NULL,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabledropdown_live`
+-- Daten für Tabelle `editabledropdown_live`
 --
 
 INSERT INTO `editabledropdown_live` (`ID`, `UseEmptyString`, `EmptyString`) VALUES
@@ -1560,19 +1582,19 @@ INSERT INTO `editabledropdown_live` (`ID`, `UseEmptyString`, `EmptyString`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabledropdown_versions`
+-- Tabellenstruktur für Tabelle `editabledropdown_versions`
 --
 
 CREATE TABLE `editabledropdown_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `UseEmptyString` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `EmptyString` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabledropdown_versions`
+-- Daten für Tabelle `editabledropdown_versions`
 --
 
 INSERT INTO `editabledropdown_versions` (`ID`, `RecordID`, `Version`, `UseEmptyString`, `EmptyString`) VALUES
@@ -1585,53 +1607,53 @@ INSERT INTO `editabledropdown_versions` (`ID`, `RecordID`, `Version`, `UseEmptyS
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefieldgroup`
+-- Tabellenstruktur für Tabelle `editablefieldgroup`
 --
 
 CREATE TABLE `editablefieldgroup` (
   `ID` int(11) NOT NULL,
-  `EndID` int(11) NOT NULL DEFAULT 0
+  `EndID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefieldgroup_live`
+-- Tabellenstruktur für Tabelle `editablefieldgroup_live`
 --
 
 CREATE TABLE `editablefieldgroup_live` (
   `ID` int(11) NOT NULL,
-  `EndID` int(11) NOT NULL DEFAULT 0
+  `EndID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefieldgroup_versions`
+-- Tabellenstruktur für Tabelle `editablefieldgroup_versions`
 --
 
 CREATE TABLE `editablefieldgroup_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `EndID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `EndID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefilefield`
+-- Tabellenstruktur für Tabelle `editablefilefield`
 --
 
 CREATE TABLE `editablefilefield` (
   `ID` int(11) NOT NULL,
-  `MaxFileSizeMB` float NOT NULL DEFAULT 0,
-  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `FolderID` int(11) NOT NULL DEFAULT 0
+  `MaxFileSizeMB` float NOT NULL DEFAULT '0',
+  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `FolderID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablefilefield`
+-- Daten für Tabelle `editablefilefield`
 --
 
 INSERT INTO `editablefilefield` (`ID`, `MaxFileSizeMB`, `FolderConfirmed`, `FolderID`) VALUES
@@ -1640,18 +1662,18 @@ INSERT INTO `editablefilefield` (`ID`, `MaxFileSizeMB`, `FolderConfirmed`, `Fold
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefilefield_live`
+-- Tabellenstruktur für Tabelle `editablefilefield_live`
 --
 
 CREATE TABLE `editablefilefield_live` (
   `ID` int(11) NOT NULL,
-  `MaxFileSizeMB` float NOT NULL DEFAULT 0,
-  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `FolderID` int(11) NOT NULL DEFAULT 0
+  `MaxFileSizeMB` float NOT NULL DEFAULT '0',
+  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `FolderID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablefilefield_live`
+-- Daten für Tabelle `editablefilefield_live`
 --
 
 INSERT INTO `editablefilefield_live` (`ID`, `MaxFileSizeMB`, `FolderConfirmed`, `FolderID`) VALUES
@@ -1660,20 +1682,20 @@ INSERT INTO `editablefilefield_live` (`ID`, `MaxFileSizeMB`, `FolderConfirmed`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablefilefield_versions`
+-- Tabellenstruktur für Tabelle `editablefilefield_versions`
 --
 
 CREATE TABLE `editablefilefield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `MaxFileSizeMB` float NOT NULL DEFAULT 0,
-  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `FolderID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `MaxFileSizeMB` float NOT NULL DEFAULT '0',
+  `FolderConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `FolderID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablefilefield_versions`
+-- Daten für Tabelle `editablefilefield_versions`
 --
 
 INSERT INTO `editablefilefield_versions` (`ID`, `RecordID`, `Version`, `MaxFileSizeMB`, `FolderConfirmed`, `FolderID`) VALUES
@@ -1686,7 +1708,7 @@ INSERT INTO `editablefilefield_versions` (`ID`, `RecordID`, `Version`, `MaxFileS
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformfield`
+-- Tabellenstruktur für Tabelle `editableformfield`
 --
 
 CREATE TABLE `editableformfield` (
@@ -1694,25 +1716,25 @@ CREATE TABLE `editableformfield` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Default` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `CustomErrorMessage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `RightTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Placeholder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `DisplayRulesConjunction` enum('And','Or') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Or',
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableformfield`
+-- Daten für Tabelle `editableformfield`
 --
 
 INSERT INTO `editableformfield` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Name`, `Title`, `Default`, `Sort`, `Required`, `CustomErrorMessage`, `ExtraClass`, `RightTitle`, `ShowOnLoad`, `ShowInSummary`, `Placeholder`, `DisplayRulesConjunction`, `ParentID`, `ParentClass`) VALUES
@@ -1748,7 +1770,7 @@ INSERT INTO `editableformfield` (`ID`, `ClassName`, `LastEdited`, `Created`, `Ve
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformfield_live`
+-- Tabellenstruktur für Tabelle `editableformfield_live`
 --
 
 CREATE TABLE `editableformfield_live` (
@@ -1756,25 +1778,25 @@ CREATE TABLE `editableformfield_live` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Default` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `CustomErrorMessage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `RightTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Placeholder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `DisplayRulesConjunction` enum('And','Or') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Or',
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableformfield_live`
+-- Daten für Tabelle `editableformfield_live`
 --
 
 INSERT INTO `editableformfield_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Name`, `Title`, `Default`, `Sort`, `Required`, `CustomErrorMessage`, `ExtraClass`, `RightTitle`, `ShowOnLoad`, `ShowInSummary`, `Placeholder`, `DisplayRulesConjunction`, `ParentID`, `ParentClass`) VALUES
@@ -1810,39 +1832,39 @@ INSERT INTO `editableformfield_live` (`ID`, `ClassName`, `LastEdited`, `Created`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformfield_versions`
+-- Tabellenstruktur für Tabelle `editableformfield_versions`
 --
 
 CREATE TABLE `editableformfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Default` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `Required` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `CustomErrorMessage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ExtraClass` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `RightTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `ShowOnLoad` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ShowInSummary` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Placeholder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `DisplayRulesConjunction` enum('And','Or') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Or',
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableformfield_versions`
+-- Daten für Tabelle `editableformfield_versions`
 --
 
 INSERT INTO `editableformfield_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `Name`, `Title`, `Default`, `Sort`, `Required`, `CustomErrorMessage`, `ExtraClass`, `RightTitle`, `ShowOnLoad`, `ShowInSummary`, `Placeholder`, `DisplayRulesConjunction`, `ParentID`, `ParentClass`) VALUES
@@ -2066,131 +2088,131 @@ INSERT INTO `editableformfield_versions` (`ID`, `RecordID`, `Version`, `WasPubli
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformheading`
+-- Tabellenstruktur für Tabelle `editableformheading`
 --
 
 CREATE TABLE `editableformheading` (
   `ID` int(11) NOT NULL,
-  `Level` int(11) NOT NULL DEFAULT 3,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `Level` int(11) NOT NULL DEFAULT '3',
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformheading_live`
+-- Tabellenstruktur für Tabelle `editableformheading_live`
 --
 
 CREATE TABLE `editableformheading_live` (
   `ID` int(11) NOT NULL,
-  `Level` int(11) NOT NULL DEFAULT 3,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `Level` int(11) NOT NULL DEFAULT '3',
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableformheading_versions`
+-- Tabellenstruktur für Tabelle `editableformheading_versions`
 --
 
 CREATE TABLE `editableformheading_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Level` int(11) NOT NULL DEFAULT 3,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Level` int(11) NOT NULL DEFAULT '3',
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableliteralfield`
+-- Tabellenstruktur für Tabelle `editableliteralfield`
 --
 
 CREATE TABLE `editableliteralfield` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableliteralfield_live`
+-- Tabellenstruktur für Tabelle `editableliteralfield_live`
 --
 
 CREATE TABLE `editableliteralfield_live` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableliteralfield_versions`
+-- Tabellenstruktur für Tabelle `editableliteralfield_versions`
 --
 
 CREATE TABLE `editableliteralfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `HideFromReports` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HideLabel` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablememberlistfield`
+-- Tabellenstruktur für Tabelle `editablememberlistfield`
 --
 
 CREATE TABLE `editablememberlistfield` (
   `ID` int(11) NOT NULL,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablememberlistfield_live`
+-- Tabellenstruktur für Tabelle `editablememberlistfield_live`
 --
 
 CREATE TABLE `editablememberlistfield_live` (
   `ID` int(11) NOT NULL,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablememberlistfield_versions`
+-- Tabellenstruktur für Tabelle `editablememberlistfield_versions`
 --
 
 CREATE TABLE `editablememberlistfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablenumericfield`
+-- Tabellenstruktur für Tabelle `editablenumericfield`
 --
 
 CREATE TABLE `editablenumericfield` (
   `ID` int(11) NOT NULL,
-  `MinValue` int(11) NOT NULL DEFAULT 0,
-  `MaxValue` int(11) NOT NULL DEFAULT 0
+  `MinValue` int(11) NOT NULL DEFAULT '0',
+  `MaxValue` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablenumericfield`
+-- Daten für Tabelle `editablenumericfield`
 --
 
 INSERT INTO `editablenumericfield` (`ID`, `MinValue`, `MaxValue`) VALUES
@@ -2201,17 +2223,17 @@ INSERT INTO `editablenumericfield` (`ID`, `MinValue`, `MaxValue`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablenumericfield_live`
+-- Tabellenstruktur für Tabelle `editablenumericfield_live`
 --
 
 CREATE TABLE `editablenumericfield_live` (
   `ID` int(11) NOT NULL,
-  `MinValue` int(11) NOT NULL DEFAULT 0,
-  `MaxValue` int(11) NOT NULL DEFAULT 0
+  `MinValue` int(11) NOT NULL DEFAULT '0',
+  `MaxValue` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablenumericfield_live`
+-- Daten für Tabelle `editablenumericfield_live`
 --
 
 INSERT INTO `editablenumericfield_live` (`ID`, `MinValue`, `MaxValue`) VALUES
@@ -2222,19 +2244,19 @@ INSERT INTO `editablenumericfield_live` (`ID`, `MinValue`, `MaxValue`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablenumericfield_versions`
+-- Tabellenstruktur für Tabelle `editablenumericfield_versions`
 --
 
 CREATE TABLE `editablenumericfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `MinValue` int(11) NOT NULL DEFAULT 0,
-  `MaxValue` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `MinValue` int(11) NOT NULL DEFAULT '0',
+  `MaxValue` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editablenumericfield_versions`
+-- Daten für Tabelle `editablenumericfield_versions`
 --
 
 INSERT INTO `editablenumericfield_versions` (`ID`, `RecordID`, `Version`, `MinValue`, `MaxValue`) VALUES
@@ -2259,7 +2281,7 @@ INSERT INTO `editablenumericfield_versions` (`ID`, `RecordID`, `Version`, `MinVa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableoption`
+-- Tabellenstruktur für Tabelle `editableoption`
 --
 
 CREATE TABLE `editableoption` (
@@ -2267,17 +2289,17 @@ CREATE TABLE `editableoption` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `Value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableoption`
+-- Daten für Tabelle `editableoption`
 --
 
 INSERT INTO `editableoption` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Name`, `Title`, `Default`, `Sort`, `Value`, `ParentID`) VALUES
@@ -2304,7 +2326,7 @@ INSERT INTO `editableoption` (`ID`, `ClassName`, `LastEdited`, `Created`, `Versi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableoption_live`
+-- Tabellenstruktur für Tabelle `editableoption_live`
 --
 
 CREATE TABLE `editableoption_live` (
@@ -2312,17 +2334,17 @@ CREATE TABLE `editableoption_live` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `Value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableoption_live`
+-- Daten für Tabelle `editableoption_live`
 --
 
 INSERT INTO `editableoption_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Name`, `Title`, `Default`, `Sort`, `Value`, `ParentID`) VALUES
@@ -2349,31 +2371,31 @@ INSERT INTO `editableoption_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editableoption_versions`
+-- Tabellenstruktur für Tabelle `editableoption_versions`
 --
 
 CREATE TABLE `editableoption_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `Default` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `Value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editableoption_versions`
+-- Daten für Tabelle `editableoption_versions`
 --
 
 INSERT INTO `editableoption_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `Name`, `Title`, `Default`, `Sort`, `Value`, `ParentID`) VALUES
@@ -2438,54 +2460,54 @@ INSERT INTO `editableoption_versions` (`ID`, `RecordID`, `Version`, `WasPublishe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablespamprotectionfield`
+-- Tabellenstruktur für Tabelle `editablespamprotectionfield`
 --
 
 CREATE TABLE `editablespamprotectionfield` (
   `ID` int(11) NOT NULL,
-  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablespamprotectionfield_live`
+-- Tabellenstruktur für Tabelle `editablespamprotectionfield_live`
 --
 
 CREATE TABLE `editablespamprotectionfield_live` (
   `ID` int(11) NOT NULL,
-  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editablespamprotectionfield_versions`
+-- Tabellenstruktur für Tabelle `editablespamprotectionfield_versions`
 --
 
 CREATE TABLE `editablespamprotectionfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `SpamFieldSettings` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabletextfield`
+-- Tabellenstruktur für Tabelle `editabletextfield`
 --
 
 CREATE TABLE `editabletextfield` (
   `ID` int(11) NOT NULL,
-  `MinLength` int(11) NOT NULL DEFAULT 0,
-  `MaxLength` int(11) NOT NULL DEFAULT 0,
-  `Rows` int(11) NOT NULL DEFAULT 1,
+  `MinLength` int(11) NOT NULL DEFAULT '0',
+  `MaxLength` int(11) NOT NULL DEFAULT '0',
+  `Rows` int(11) NOT NULL DEFAULT '1',
   `Autocomplete` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabletextfield`
+-- Daten für Tabelle `editabletextfield`
 --
 
 INSERT INTO `editabletextfield` (`ID`, `MinLength`, `MaxLength`, `Rows`, `Autocomplete`) VALUES
@@ -2517,19 +2539,19 @@ INSERT INTO `editabletextfield` (`ID`, `MinLength`, `MaxLength`, `Rows`, `Autoco
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabletextfield_live`
+-- Tabellenstruktur für Tabelle `editabletextfield_live`
 --
 
 CREATE TABLE `editabletextfield_live` (
   `ID` int(11) NOT NULL,
-  `MinLength` int(11) NOT NULL DEFAULT 0,
-  `MaxLength` int(11) NOT NULL DEFAULT 0,
-  `Rows` int(11) NOT NULL DEFAULT 1,
+  `MinLength` int(11) NOT NULL DEFAULT '0',
+  `MaxLength` int(11) NOT NULL DEFAULT '0',
+  `Rows` int(11) NOT NULL DEFAULT '1',
   `Autocomplete` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabletextfield_live`
+-- Daten für Tabelle `editabletextfield_live`
 --
 
 INSERT INTO `editabletextfield_live` (`ID`, `MinLength`, `MaxLength`, `Rows`, `Autocomplete`) VALUES
@@ -2554,21 +2576,21 @@ INSERT INTO `editabletextfield_live` (`ID`, `MinLength`, `MaxLength`, `Rows`, `A
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editabletextfield_versions`
+-- Tabellenstruktur für Tabelle `editabletextfield_versions`
 --
 
 CREATE TABLE `editabletextfield_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `MinLength` int(11) NOT NULL DEFAULT 0,
-  `MaxLength` int(11) NOT NULL DEFAULT 0,
-  `Rows` int(11) NOT NULL DEFAULT 1,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `MinLength` int(11) NOT NULL DEFAULT '0',
+  `MaxLength` int(11) NOT NULL DEFAULT '0',
+  `Rows` int(11) NOT NULL DEFAULT '1',
   `Autocomplete` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editabletextfield_versions`
+-- Daten für Tabelle `editabletextfield_versions`
 --
 
 INSERT INTO `editabletextfield_versions` (`ID`, `RecordID`, `Version`, `MinLength`, `MaxLength`, `Rows`, `Autocomplete`) VALUES
@@ -2713,7 +2735,7 @@ INSERT INTO `editabletextfield_versions` (`ID`, `RecordID`, `Version`, `MinLengt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `element`
+-- Tabellenstruktur für Tabelle `element`
 --
 
 CREATE TABLE `element` (
@@ -2721,17 +2743,17 @@ CREATE TABLE `element` (
   `ClassName` enum('DNADesign\\Elemental\\Models\\BaseElement','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\BaseElement',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `ExtraClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Style` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `element`
+-- Daten für Tabelle `element`
 --
 
 INSERT INTO `element` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Title`, `ShowTitle`, `Sort`, `ExtraClass`, `Style`, `ParentID`) VALUES
@@ -2774,42 +2796,42 @@ INSERT INTO `element` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `T
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementaccordion`
+-- Tabellenstruktur für Tabelle `elementaccordion`
 --
 
 CREATE TABLE `elementaccordion` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementaccordion_live`
+-- Tabellenstruktur für Tabelle `elementaccordion_live`
 --
 
 CREATE TABLE `elementaccordion_live` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementaccordion_versions`
+-- Tabellenstruktur für Tabelle `elementaccordion_versions`
 --
 
 CREATE TABLE `elementaccordion_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementalarea`
+-- Tabellenstruktur für Tabelle `elementalarea`
 --
 
 CREATE TABLE `elementalarea` (
@@ -2817,12 +2839,12 @@ CREATE TABLE `elementalarea` (
   `ClassName` enum('DNADesign\\Elemental\\Models\\ElementalArea') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\ElementalArea',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `OwnerClassName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementalarea`
+-- Daten für Tabelle `elementalarea`
 --
 
 INSERT INTO `elementalarea` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `OwnerClassName`) VALUES
@@ -2893,7 +2915,7 @@ INSERT INTO `elementalarea` (`ID`, `ClassName`, `LastEdited`, `Created`, `Versio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementalarea_live`
+-- Tabellenstruktur für Tabelle `elementalarea_live`
 --
 
 CREATE TABLE `elementalarea_live` (
@@ -2901,12 +2923,12 @@ CREATE TABLE `elementalarea_live` (
   `ClassName` enum('DNADesign\\Elemental\\Models\\ElementalArea') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\ElementalArea',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `OwnerClassName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementalarea_live`
+-- Daten für Tabelle `elementalarea_live`
 --
 
 INSERT INTO `elementalarea_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `OwnerClassName`) VALUES
@@ -2973,18 +2995,18 @@ INSERT INTO `elementalarea_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementalarea_versions`
+-- Tabellenstruktur für Tabelle `elementalarea_versions`
 --
 
 CREATE TABLE `elementalarea_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('DNADesign\\Elemental\\Models\\ElementalArea') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\ElementalArea',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
@@ -2992,7 +3014,7 @@ CREATE TABLE `elementalarea_versions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementalarea_versions`
+-- Daten für Tabelle `elementalarea_versions`
 --
 
 INSERT INTO `elementalarea_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `OwnerClassName`) VALUES
@@ -3097,16 +3119,16 @@ INSERT INTO `elementalarea_versions` (`ID`, `RecordID`, `Version`, `WasPublished
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementcontent`
+-- Tabellenstruktur für Tabelle `elementcontent`
 --
 
 CREATE TABLE `elementcontent` (
   `ID` int(11) NOT NULL,
-  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementcontent`
+-- Daten für Tabelle `elementcontent`
 --
 
 INSERT INTO `elementcontent` (`ID`, `HTML`) VALUES
@@ -3144,16 +3166,16 @@ INSERT INTO `elementcontent` (`ID`, `HTML`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementcontent_live`
+-- Tabellenstruktur für Tabelle `elementcontent_live`
 --
 
 CREATE TABLE `elementcontent_live` (
   `ID` int(11) NOT NULL,
-  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementcontent_live`
+-- Daten für Tabelle `elementcontent_live`
 --
 
 INSERT INTO `elementcontent_live` (`ID`, `HTML`) VALUES
@@ -3191,18 +3213,18 @@ INSERT INTO `elementcontent_live` (`ID`, `HTML`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementcontent_versions`
+-- Tabellenstruktur für Tabelle `elementcontent_versions`
 --
 
 CREATE TABLE `elementcontent_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `HTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementcontent_versions`
+-- Daten für Tabelle `elementcontent_versions`
 --
 
 INSERT INTO `elementcontent_versions` (`ID`, `RecordID`, `Version`, `HTML`) VALUES
@@ -3357,59 +3379,59 @@ INSERT INTO `elementcontent_versions` (`ID`, `RecordID`, `Version`, `HTML`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementembeddedcode`
+-- Tabellenstruktur für Tabelle `elementembeddedcode`
 --
 
 CREATE TABLE `elementembeddedcode` (
   `ID` int(11) NOT NULL,
-  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementembeddedcode_live`
+-- Tabellenstruktur für Tabelle `elementembeddedcode_live`
 --
 
 CREATE TABLE `elementembeddedcode_live` (
   `ID` int(11) NOT NULL,
-  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementembeddedcode_versions`
+-- Tabellenstruktur für Tabelle `elementembeddedcode_versions`
 --
 
 CREATE TABLE `elementembeddedcode_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Code` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementform`
+-- Tabellenstruktur für Tabelle `elementform`
 --
 
 CREATE TABLE `elementform` (
   `ID` int(11) NOT NULL,
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementform`
+-- Daten für Tabelle `elementform`
 --
 
 INSERT INTO `elementform` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -3419,24 +3441,24 @@ INSERT INTO `elementform` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnCompl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementform_live`
+-- Tabellenstruktur für Tabelle `elementform_live`
 --
 
 CREATE TABLE `elementform_live` (
   `ID` int(11) NOT NULL,
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementform_live`
+-- Daten für Tabelle `elementform_live`
 --
 
 INSERT INTO `elementform_live` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -3446,26 +3468,26 @@ INSERT INTO `elementform_live` (`ID`, `SubmitButtonText`, `ClearButtonText`, `On
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementform_versions`
+-- Tabellenstruktur für Tabelle `elementform_versions`
 --
 
 CREATE TABLE `elementform_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementform_versions`
+-- Daten für Tabelle `elementform_versions`
 --
 
 INSERT INTO `elementform_versions` (`ID`, `RecordID`, `Version`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -3487,51 +3509,51 @@ INSERT INTO `elementform_versions` (`ID`, `RecordID`, `Version`, `SubmitButtonTe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementimage`
+-- Tabellenstruktur für Tabelle `elementimage`
 --
 
 CREATE TABLE `elementimage` (
   `ID` int(11) NOT NULL,
-  `ImageID` int(11) NOT NULL DEFAULT 0
+  `ImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementimage_live`
+-- Tabellenstruktur für Tabelle `elementimage_live`
 --
 
 CREATE TABLE `elementimage_live` (
   `ID` int(11) NOT NULL,
-  `ImageID` int(11) NOT NULL DEFAULT 0
+  `ImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementimage_versions`
+-- Tabellenstruktur für Tabelle `elementimage_versions`
 --
 
 CREATE TABLE `elementimage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `ImageID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `ImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementoembed`
+-- Tabellenstruktur für Tabelle `elementoembed`
 --
 
 CREATE TABLE `elementoembed` (
   `ID` int(11) NOT NULL,
-  `EmbeddedObjectID` int(11) NOT NULL DEFAULT 0
+  `EmbeddedObjectID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementoembed`
+-- Daten für Tabelle `elementoembed`
 --
 
 INSERT INTO `elementoembed` (`ID`, `EmbeddedObjectID`) VALUES
@@ -3540,16 +3562,16 @@ INSERT INTO `elementoembed` (`ID`, `EmbeddedObjectID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementoembed_live`
+-- Tabellenstruktur für Tabelle `elementoembed_live`
 --
 
 CREATE TABLE `elementoembed_live` (
   `ID` int(11) NOT NULL,
-  `EmbeddedObjectID` int(11) NOT NULL DEFAULT 0
+  `EmbeddedObjectID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementoembed_live`
+-- Daten für Tabelle `elementoembed_live`
 --
 
 INSERT INTO `elementoembed_live` (`ID`, `EmbeddedObjectID`) VALUES
@@ -3558,18 +3580,18 @@ INSERT INTO `elementoembed_live` (`ID`, `EmbeddedObjectID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementoembed_versions`
+-- Tabellenstruktur für Tabelle `elementoembed_versions`
 --
 
 CREATE TABLE `elementoembed_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `EmbeddedObjectID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `EmbeddedObjectID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `elementoembed_versions`
+-- Daten für Tabelle `elementoembed_versions`
 --
 
 INSERT INTO `elementoembed_versions` (`ID`, `RecordID`, `Version`, `EmbeddedObjectID`) VALUES
@@ -3582,107 +3604,107 @@ INSERT INTO `elementoembed_versions` (`ID`, `RecordID`, `Version`, `EmbeddedObje
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementphotogallery`
+-- Tabellenstruktur für Tabelle `elementphotogallery`
 --
 
 CREATE TABLE `elementphotogallery` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementphotogallery_live`
+-- Tabellenstruktur für Tabelle `elementphotogallery_live`
 --
 
 CREATE TABLE `elementphotogallery_live` (
   `ID` int(11) NOT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementphotogallery_versions`
+-- Tabellenstruktur für Tabelle `elementphotogallery_versions`
 --
 
 CREATE TABLE `elementphotogallery_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementslideshow`
+-- Tabellenstruktur für Tabelle `elementslideshow`
 --
 
 CREATE TABLE `elementslideshow` (
   `ID` int(11) NOT NULL,
   `Animation` enum('slide','fade') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'slide',
-  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT 0,
+  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT '0',
   `FlexSliderSpeed` double DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementslideshow_live`
+-- Tabellenstruktur für Tabelle `elementslideshow_live`
 --
 
 CREATE TABLE `elementslideshow_live` (
   `ID` int(11) NOT NULL,
   `Animation` enum('slide','fade') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'slide',
-  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT 0,
+  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT '0',
   `FlexSliderSpeed` double DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elementslideshow_versions`
+-- Tabellenstruktur für Tabelle `elementslideshow_versions`
 --
 
 CREATE TABLE `elementslideshow_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Animation` enum('slide','fade') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'slide',
-  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT 0,
+  `Loop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Animate` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ThumbnailNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `SliderDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselControlNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselDirectionNav` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `CarouselThumbnailCt` int(11) NOT NULL DEFAULT '0',
   `FlexSliderSpeed` double DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `element_live`
+-- Tabellenstruktur für Tabelle `element_live`
 --
 
 CREATE TABLE `element_live` (
@@ -3690,17 +3712,17 @@ CREATE TABLE `element_live` (
   `ClassName` enum('DNADesign\\Elemental\\Models\\BaseElement','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\BaseElement',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `ExtraClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Style` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `element_live`
+-- Daten für Tabelle `element_live`
 --
 
 INSERT INTO `element_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Title`, `ShowTitle`, `Sort`, `ExtraClass`, `Style`, `ParentID`) VALUES
@@ -3743,31 +3765,31 @@ INSERT INTO `element_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version
 -- --------------------------------------------------------
 
 --
--- Table structure for table `element_versions`
+-- Tabellenstruktur für Tabelle `element_versions`
 --
 
 CREATE TABLE `element_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('DNADesign\\Elemental\\Models\\BaseElement','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'DNADesign\\Elemental\\Models\\BaseElement',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
+  `ShowTitle` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
   `ExtraClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Style` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `element_versions`
+-- Daten für Tabelle `element_versions`
 --
 
 INSERT INTO `element_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `Title`, `ShowTitle`, `Sort`, `ExtraClass`, `Style`, `ParentID`) VALUES
@@ -3951,16 +3973,16 @@ INSERT INTO `element_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `Wa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `errorpage`
+-- Tabellenstruktur für Tabelle `errorpage`
 --
 
 CREATE TABLE `errorpage` (
   `ID` int(11) NOT NULL,
-  `ErrorCode` int(11) NOT NULL DEFAULT 0
+  `ErrorCode` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `errorpage`
+-- Daten für Tabelle `errorpage`
 --
 
 INSERT INTO `errorpage` (`ID`, `ErrorCode`) VALUES
@@ -3970,16 +3992,16 @@ INSERT INTO `errorpage` (`ID`, `ErrorCode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `errorpage_live`
+-- Tabellenstruktur für Tabelle `errorpage_live`
 --
 
 CREATE TABLE `errorpage_live` (
   `ID` int(11) NOT NULL,
-  `ErrorCode` int(11) NOT NULL DEFAULT 0
+  `ErrorCode` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `errorpage_live`
+-- Daten für Tabelle `errorpage_live`
 --
 
 INSERT INTO `errorpage_live` (`ID`, `ErrorCode`) VALUES
@@ -3989,18 +4011,18 @@ INSERT INTO `errorpage_live` (`ID`, `ErrorCode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `errorpage_versions`
+-- Tabellenstruktur für Tabelle `errorpage_versions`
 --
 
 CREATE TABLE `errorpage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `ErrorCode` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `ErrorCode` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `errorpage_versions`
+-- Daten für Tabelle `errorpage_versions`
 --
 
 INSERT INTO `errorpage_versions` (`ID`, `RecordID`, `Version`, `ErrorCode`) VALUES
@@ -4012,7 +4034,7 @@ INSERT INTO `errorpage_versions` (`ID`, `RecordID`, `Version`, `ErrorCode`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file`
+-- Tabellenstruktur für Tabelle `file`
 --
 
 CREATE TABLE `file` (
@@ -4020,22 +4042,22 @@ CREATE TABLE `file` (
   `ClassName` enum('SilverStripe\\Assets\\File','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\Assets\\File',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `UserFormUpload` enum('f','t') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `UserFormUpload` enum('f','t','') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `OwnerID` int(11) NOT NULL DEFAULT 0,
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
   `FileHash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileFilename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileVariant` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `file`
+-- Daten für Tabelle `file`
 --
 
 INSERT INTO `file` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `UserFormUpload`, `CanViewType`, `CanEditType`, `Name`, `Title`, `ShowInSearch`, `ParentID`, `OwnerID`, `FileHash`, `FileFilename`, `FileVariant`) VALUES
@@ -4056,7 +4078,7 @@ INSERT INTO `file` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `User
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filelink`
+-- Tabellenstruktur für Tabelle `filelink`
 --
 
 CREATE TABLE `filelink` (
@@ -4064,13 +4086,13 @@ CREATE TABLE `filelink` (
   `ClassName` enum('SilverStripe\\Assets\\Shortcodes\\FileLink') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\Assets\\Shortcodes\\FileLink',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `LinkedID` int(11) NOT NULL DEFAULT 0,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `LinkedID` int(11) NOT NULL DEFAULT '0',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `filelink`
+-- Daten für Tabelle `filelink`
 --
 
 INSERT INTO `filelink` (`ID`, `ClassName`, `LastEdited`, `Created`, `LinkedID`, `ParentID`, `ParentClass`) VALUES
@@ -4087,7 +4109,7 @@ INSERT INTO `filelink` (`ID`, `ClassName`, `LastEdited`, `Created`, `LinkedID`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filelistobject`
+-- Tabellenstruktur für Tabelle `filelistobject`
 --
 
 CREATE TABLE `filelistobject` (
@@ -4096,27 +4118,27 @@ CREATE TABLE `filelistobject` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
-  `FileListID` int(11) NOT NULL DEFAULT 0,
-  `FileID` int(11) NOT NULL DEFAULT 0
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
+  `FileListID` int(11) NOT NULL DEFAULT '0',
+  `FileID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_editorgroups`
+-- Tabellenstruktur für Tabelle `file_editorgroups`
 --
 
 CREATE TABLE `file_editorgroups` (
   `ID` int(11) NOT NULL,
-  `FileID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `FileID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_live`
+-- Tabellenstruktur für Tabelle `file_live`
 --
 
 CREATE TABLE `file_live` (
@@ -4124,22 +4146,22 @@ CREATE TABLE `file_live` (
   `ClassName` enum('SilverStripe\\Assets\\File','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\Assets\\File',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `UserFormUpload` enum('f','t') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `UserFormUpload` enum('f','t','') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `OwnerID` int(11) NOT NULL DEFAULT 0,
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
   `FileHash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileFilename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileVariant` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `file_live`
+-- Daten für Tabelle `file_live`
 --
 
 INSERT INTO `file_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `UserFormUpload`, `CanViewType`, `CanEditType`, `Name`, `Title`, `ShowInSearch`, `ParentID`, `OwnerID`, `FileHash`, `FileFilename`, `FileVariant`) VALUES
@@ -4160,36 +4182,36 @@ INSERT INTO `file_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_versions`
+-- Tabellenstruktur für Tabelle `file_versions`
 --
 
 CREATE TABLE `file_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('SilverStripe\\Assets\\File','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\Assets\\File',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `UserFormUpload` enum('f','t') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `UserFormUpload` enum('f','t','') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `OwnerID` int(11) NOT NULL DEFAULT 0,
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
   `FileHash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileFilename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `FileVariant` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `file_versions`
+-- Daten für Tabelle `file_versions`
 --
 
 INSERT INTO `file_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `UserFormUpload`, `CanViewType`, `CanEditType`, `Name`, `Title`, `ShowInSearch`, `ParentID`, `OwnerID`, `FileHash`, `FileFilename`, `FileVariant`) VALUES
@@ -4226,17 +4248,17 @@ INSERT INTO `file_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_viewergroups`
+-- Tabellenstruktur für Tabelle `file_viewergroups`
 --
 
 CREATE TABLE `file_viewergroups` (
   `ID` int(11) NOT NULL,
-  `FileID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `FileID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `file_viewergroups`
+-- Daten für Tabelle `file_viewergroups`
 --
 
 INSERT INTO `file_viewergroups` (`ID`, `FileID`, `GroupID`) VALUES
@@ -4245,45 +4267,45 @@ INSERT INTO `file_viewergroups` (`ID`, `FileID`, `GroupID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleryimage`
+-- Tabellenstruktur für Tabelle `galleryimage`
 --
 
 CREATE TABLE `galleryimage` (
   `ID` int(11) NOT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
-  `PhotoGalleryID` int(11) NOT NULL DEFAULT 0
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
+  `PhotoGalleryID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleryimage_live`
+-- Tabellenstruktur für Tabelle `galleryimage_live`
 --
 
 CREATE TABLE `galleryimage_live` (
   `ID` int(11) NOT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
-  `PhotoGalleryID` int(11) NOT NULL DEFAULT 0
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
+  `PhotoGalleryID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleryimage_versions`
+-- Tabellenstruktur für Tabelle `galleryimage_versions`
 --
 
 CREATE TABLE `galleryimage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
-  `PhotoGalleryID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
+  `PhotoGalleryID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group`
+-- Tabellenstruktur für Tabelle `group`
 --
 
 CREATE TABLE `group` (
@@ -4292,16 +4314,16 @@ CREATE TABLE `group` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `Code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Locked` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `HtmlEditorConfig` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `Locked` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `HtmlEditorConfig` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `group`
+-- Daten für Tabelle `group`
 --
 
 INSERT INTO `group` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`, `Description`, `Code`, `Locked`, `Sort`, `HtmlEditorConfig`, `ParentID`) VALUES
@@ -4311,17 +4333,17 @@ INSERT INTO `group` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`, `Descr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group_members`
+-- Tabellenstruktur für Tabelle `group_members`
 --
 
 CREATE TABLE `group_members` (
   `ID` int(11) NOT NULL,
-  `GroupID` int(11) NOT NULL DEFAULT 0,
-  `MemberID` int(11) NOT NULL DEFAULT 0
+  `GroupID` int(11) NOT NULL DEFAULT '0',
+  `MemberID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `group_members`
+-- Daten für Tabelle `group_members`
 --
 
 INSERT INTO `group_members` (`ID`, `GroupID`, `MemberID`) VALUES
@@ -4331,19 +4353,19 @@ INSERT INTO `group_members` (`ID`, `GroupID`, `MemberID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group_roles`
+-- Tabellenstruktur für Tabelle `group_roles`
 --
 
 CREATE TABLE `group_roles` (
   `ID` int(11) NOT NULL,
-  `GroupID` int(11) NOT NULL DEFAULT 0,
-  `PermissionRoleID` int(11) NOT NULL DEFAULT 0
+  `GroupID` int(11) NOT NULL DEFAULT '0',
+  `PermissionRoleID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `linkableembed`
+-- Tabellenstruktur für Tabelle `linkableembed`
 --
 
 CREATE TABLE `linkableembed` (
@@ -4356,14 +4378,14 @@ CREATE TABLE `linkableembed` (
   `SourceURL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Width` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Height` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ThumbURL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ExtraClass` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `EmbedHTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `EmbedHTML` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `linkableembed`
+-- Daten für Tabelle `linkableembed`
 --
 
 INSERT INTO `linkableembed` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`, `Type`, `SourceURL`, `Width`, `Height`, `Description`, `ThumbURL`, `ExtraClass`, `EmbedHTML`) VALUES
@@ -4372,7 +4394,7 @@ INSERT INTO `linkableembed` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `linkablelink`
+-- Tabellenstruktur für Tabelle `linkablelink`
 --
 
 CREATE TABLE `linkablelink` (
@@ -4386,16 +4408,16 @@ CREATE TABLE `linkablelink` (
   `URL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OpenInNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `OpenInNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Template` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SiteTreeID` int(11) NOT NULL DEFAULT 0,
-  `FileID` int(11) NOT NULL DEFAULT 0
+  `SiteTreeID` int(11) NOT NULL DEFAULT '0',
+  `FileID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loginattempt`
+-- Tabellenstruktur für Tabelle `loginattempt`
 --
 
 CREATE TABLE `loginattempt` (
@@ -4407,20 +4429,37 @@ CREATE TABLE `loginattempt` (
   `EmailHashed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Status` enum('Success','Failure') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Success',
   `IP` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MemberID` int(11) NOT NULL DEFAULT 0
+  `MemberID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `loginattempt`
+-- Daten für Tabelle `loginattempt`
 --
 
 INSERT INTO `loginattempt` (`ID`, `ClassName`, `LastEdited`, `Created`, `Email`, `EmailHashed`, `Status`, `IP`, `MemberID`) VALUES
-(1, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 19:49:49', '2021-03-03 19:49:49', NULL, 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Success', '192.168.100.11', 1);
+(1, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 19:49:49', '2021-03-03 19:49:49', NULL, 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Success', '192.168.100.11', 1),
+(2, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 22:19:24', '2021-03-03 22:19:24', NULL, '61b08ae880db259b3e656d29eb7b6ed7aca25d86', 'Success', '139.178.102.83', 2),
+(3, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 22:21:19', '2021-03-03 22:21:19', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '139.178.102.83', 0),
+(4, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 22:21:24', '2021-03-03 22:21:24', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '139.178.102.83', 0),
+(5, 'SilverStripe\\Security\\LoginAttempt', '2021-03-03 22:21:42', '2021-03-03 22:21:42', NULL, '61b08ae880db259b3e656d29eb7b6ed7aca25d86', 'Success', '139.178.102.83', 2),
+(6, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:07:54', '2021-03-04 07:07:54', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(7, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:08:02', '2021-03-04 07:08:02', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(8, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:08:07', '2021-03-04 07:08:07', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(9, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:08:17', '2021-03-04 07:08:17', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(10, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:08:26', '2021-03-04 07:08:26', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(11, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 07:08:38', '2021-03-04 07:08:38', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(12, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:27:47', '2021-03-04 08:27:47', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(13, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:27:58', '2021-03-04 08:27:58', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(14, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:28:09', '2021-03-04 08:28:09', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(15, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:28:14', '2021-03-04 08:28:14', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(16, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:30:18', '2021-03-04 08:30:18', NULL, '6220d012167711f5d91c6b46310585afd00cf660', 'Failure', '217.149.161.212', 0),
+(17, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:34:12', '2021-03-04 08:34:12', NULL, '61b08ae880db259b3e656d29eb7b6ed7aca25d86', 'Success', '185.69.244.133', 2),
+(18, 'SilverStripe\\Security\\LoginAttempt', '2021-03-04 08:37:50', '2021-03-04 08:37:50', NULL, '61b08ae880db259b3e656d29eb7b6ed7aca25d86', 'Success', '217.149.161.212', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- Tabellenstruktur für Tabelle `member`
 --
 
 CREATE TABLE `member` (
@@ -4441,21 +4480,21 @@ CREATE TABLE `member` (
   `PasswordExpiry` date DEFAULT NULL,
   `LockedOutUntil` datetime DEFAULT NULL,
   `Locale` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `FailedLoginCount` int(11) NOT NULL DEFAULT 0
+  `FailedLoginCount` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `member`
+-- Daten für Tabelle `member`
 --
 
 INSERT INTO `member` (`ID`, `ClassName`, `LastEdited`, `Created`, `FirstName`, `Surname`, `Email`, `TempIDHash`, `TempIDExpired`, `Password`, `AutoLoginHash`, `AutoLoginExpired`, `PasswordEncryption`, `Salt`, `PasswordExpiry`, `LockedOutUntil`, `Locale`, `FailedLoginCount`) VALUES
-(1, 'SilverStripe\\Security\\Member', '2021-03-03 19:51:05', '2021-03-03 19:41:16', 'Standard Administrator', NULL, 'admin', 'd8561b25018d593169367cccc86e50c052d129ce', '2021-03-06 19:49:49', NULL, NULL, NULL, 'none', NULL, NULL, NULL, 'de_DE', 0),
-(2, 'SilverStripe\\Security\\Member', '2021-03-03 19:45:52', '2021-03-03 19:45:52', 'Sabine', NULL, 'info@streunerkatzen.org', NULL, NULL, '$2y$10$9d0509bc2a2a39a519ad4eTcgRk0cjCSkZV1y.c/XsgpOcch.u9mS', NULL, NULL, 'blowfish', '10$9d0509bc2a2a39a519ad4e', NULL, NULL, 'de_DE', 0);
+(1, 'SilverStripe\\Security\\Member', '2021-03-03 22:22:24', '2021-03-03 19:41:16', 'Standard Administrator', NULL, 'admin', 'd8561b25018d593169367cccc86e50c052d129ce', '2021-03-06 19:49:49', '$2y$10$8150f017690c1af68e4c6uxdC.qYsx9U1NpgbBAdbfVKbrjvBRNSK', NULL, NULL, 'blowfish', '10$8150f017690c1af68e4c69', NULL, NULL, 'de_DE', 0),
+(2, 'SilverStripe\\Security\\Member', '2021-03-04 08:37:50', '2021-03-03 19:45:52', 'Sabine', NULL, 'info@streunerkatzen.org', 'c5d8f2ebd3a02f271d3259aef4e0d8446022b7f1', '2021-03-07 08:37:50', '$2y$10$7d9fb7551889f43d673a0ODYJNVsI9Qxhcnhu5OGfhXi2eZwG0Y6a', NULL, NULL, 'blowfish', '10$7d9fb7551889f43d673a0b', NULL, NULL, 'de_DE', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `memberpassword`
+-- Tabellenstruktur für Tabelle `memberpassword`
 --
 
 CREATE TABLE `memberpassword` (
@@ -4466,21 +4505,23 @@ CREATE TABLE `memberpassword` (
   `Password` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Salt` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `PasswordEncryption` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MemberID` int(11) NOT NULL DEFAULT 0
+  `MemberID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `memberpassword`
+-- Daten für Tabelle `memberpassword`
 --
 
 INSERT INTO `memberpassword` (`ID`, `ClassName`, `LastEdited`, `Created`, `Password`, `Salt`, `PasswordEncryption`, `MemberID`) VALUES
 (1, 'SilverStripe\\Security\\MemberPassword', '2021-03-03 19:41:16', '2021-03-03 19:41:16', NULL, NULL, 'none', 1),
-(2, 'SilverStripe\\Security\\MemberPassword', '2021-03-03 19:45:53', '2021-03-03 19:45:53', '$2y$10$9d0509bc2a2a39a519ad4eTcgRk0cjCSkZV1y.c/XsgpOcch.u9mS', '10$9d0509bc2a2a39a519ad4e', 'blowfish', 2);
+(2, 'SilverStripe\\Security\\MemberPassword', '2021-03-03 19:45:53', '2021-03-03 19:45:53', '$2y$10$9d0509bc2a2a39a519ad4eTcgRk0cjCSkZV1y.c/XsgpOcch.u9mS', '10$9d0509bc2a2a39a519ad4e', 'blowfish', 2),
+(3, 'SilverStripe\\Security\\MemberPassword', '2021-03-03 22:22:24', '2021-03-03 22:22:24', '$2y$10$8150f017690c1af68e4c6uxdC.qYsx9U1NpgbBAdbfVKbrjvBRNSK', '10$8150f017690c1af68e4c69', 'blowfish', 1),
+(4, 'SilverStripe\\Security\\MemberPassword', '2021-03-03 22:23:27', '2021-03-03 22:23:27', '$2y$10$7d9fb7551889f43d673a0ODYJNVsI9Qxhcnhu5OGfhXi2eZwG0Y6a', '10$7d9fb7551889f43d673a0b', 'blowfish', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menuitem`
+-- Tabellenstruktur für Tabelle `menuitem`
 --
 
 CREATE TABLE `menuitem` (
@@ -4489,15 +4530,15 @@ CREATE TABLE `menuitem` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `MenuTitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0,
-  `MenuSetID` int(11) NOT NULL DEFAULT 0
+  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0',
+  `MenuSetID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menuitem`
+-- Daten für Tabelle `menuitem`
 --
 
 INSERT INTO `menuitem` (`ID`, `ClassName`, `LastEdited`, `Created`, `MenuTitle`, `Link`, `Sort`, `IsNewWindow`, `PageID`, `MenuSetID`) VALUES
@@ -4508,7 +4549,7 @@ INSERT INTO `menuitem` (`ID`, `ClassName`, `LastEdited`, `Created`, `MenuTitle`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menuset`
+-- Tabellenstruktur für Tabelle `menuset`
 --
 
 CREATE TABLE `menuset` (
@@ -4520,7 +4561,7 @@ CREATE TABLE `menuset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menuset`
+-- Daten für Tabelle `menuset`
 --
 
 INSERT INTO `menuset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`) VALUES
@@ -4529,16 +4570,16 @@ INSERT INTO `menuset` (`ID`, `ClassName`, `LastEdited`, `Created`, `Name`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page`
+-- Tabellenstruktur für Tabelle `page`
 --
 
 CREATE TABLE `page` (
   `ID` int(11) NOT NULL,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `page`
+-- Daten für Tabelle `page`
 --
 
 INSERT INTO `page` (`ID`, `ElementalAreaID`) VALUES
@@ -4573,16 +4614,16 @@ INSERT INTO `page` (`ID`, `ElementalAreaID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page_live`
+-- Tabellenstruktur für Tabelle `page_live`
 --
 
 CREATE TABLE `page_live` (
   `ID` int(11) NOT NULL,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `page_live`
+-- Daten für Tabelle `page_live`
 --
 
 INSERT INTO `page_live` (`ID`, `ElementalAreaID`) VALUES
@@ -4617,18 +4658,18 @@ INSERT INTO `page_live` (`ID`, `ElementalAreaID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page_versions`
+-- Tabellenstruktur für Tabelle `page_versions`
 --
 
 CREATE TABLE `page_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `page_versions`
+-- Daten für Tabelle `page_versions`
 --
 
 INSERT INTO `page_versions` (`ID`, `RecordID`, `Version`, `ElementalAreaID`) VALUES
@@ -4740,7 +4781,7 @@ INSERT INTO `page_versions` (`ID`, `RecordID`, `Version`, `ElementalAreaID`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permission`
+-- Tabellenstruktur für Tabelle `permission`
 --
 
 CREATE TABLE `permission` (
@@ -4749,13 +4790,13 @@ CREATE TABLE `permission` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Arg` int(11) NOT NULL DEFAULT 0,
-  `Type` int(11) NOT NULL DEFAULT 1,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `Arg` int(11) NOT NULL DEFAULT '0',
+  `Type` int(11) NOT NULL DEFAULT '1',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `permission`
+-- Daten für Tabelle `permission`
 --
 
 INSERT INTO `permission` (`ID`, `ClassName`, `LastEdited`, `Created`, `Code`, `Arg`, `Type`, `GroupID`) VALUES
@@ -4768,7 +4809,7 @@ INSERT INTO `permission` (`ID`, `ClassName`, `LastEdited`, `Created`, `Code`, `A
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissionrole`
+-- Tabellenstruktur für Tabelle `permissionrole`
 --
 
 CREATE TABLE `permissionrole` (
@@ -4777,13 +4818,13 @@ CREATE TABLE `permissionrole` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnlyAdminCanApply` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnlyAdminCanApply` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissionrolecode`
+-- Tabellenstruktur für Tabelle `permissionrolecode`
 --
 
 CREATE TABLE `permissionrolecode` (
@@ -4792,54 +4833,54 @@ CREATE TABLE `permissionrolecode` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `RoleID` int(11) NOT NULL DEFAULT 0
+  `RoleID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `redirectorpage`
+-- Tabellenstruktur für Tabelle `redirectorpage`
 --
 
 CREATE TABLE `redirectorpage` (
   `ID` int(11) NOT NULL,
   `RedirectionType` enum('Internal','External') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Internal',
   `ExternalURL` varchar(2083) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LinkToID` int(11) NOT NULL DEFAULT 0
+  `LinkToID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `redirectorpage_live`
+-- Tabellenstruktur für Tabelle `redirectorpage_live`
 --
 
 CREATE TABLE `redirectorpage_live` (
   `ID` int(11) NOT NULL,
   `RedirectionType` enum('Internal','External') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Internal',
   `ExternalURL` varchar(2083) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LinkToID` int(11) NOT NULL DEFAULT 0
+  `LinkToID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `redirectorpage_versions`
+-- Tabellenstruktur für Tabelle `redirectorpage_versions`
 --
 
 CREATE TABLE `redirectorpage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
   `RedirectionType` enum('Internal','External') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Internal',
   `ExternalURL` varchar(2083) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LinkToID` int(11) NOT NULL DEFAULT 0
+  `LinkToID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rememberloginhash`
+-- Tabellenstruktur für Tabelle `rememberloginhash`
 --
 
 CREATE TABLE `rememberloginhash` (
@@ -4850,13 +4891,20 @@ CREATE TABLE `rememberloginhash` (
   `DeviceID` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Hash` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ExpiryDate` datetime DEFAULT NULL,
-  `MemberID` int(11) NOT NULL DEFAULT 0
+  `MemberID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `rememberloginhash`
+--
+
+INSERT INTO `rememberloginhash` (`ID`, `ClassName`, `LastEdited`, `Created`, `DeviceID`, `Hash`, `ExpiryDate`, `MemberID`) VALUES
+(1, 'SilverStripe\\Security\\RememberLoginHash', '2021-03-04 13:43:06', '2021-03-04 08:34:12', 'bb452d6a9b9ee81ce0a83faee8764afcac0b6e99', '$2y$10$7d9fb7551889f43d673a0Obetjs3yPmwaVq99sdZv5.ukyqc2.Cm2', '2021-06-02 08:34:12', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siteconfig`
+-- Tabellenstruktur für Tabelle `siteconfig`
 --
 
 CREATE TABLE `siteconfig` (
@@ -4865,19 +4913,19 @@ CREATE TABLE `siteconfig` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `MainText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SubText` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SubText` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Tagline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Anyone',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'LoggedInUsers',
   `CanCreateTopLevelType` enum('LoggedInUsers','OnlyTheseUsers') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'LoggedInUsers',
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0,
-  `LogoImageID` int(11) NOT NULL DEFAULT 0,
-  `HeaderImageID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0',
+  `LogoImageID` int(11) NOT NULL DEFAULT '0',
+  `HeaderImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `siteconfig`
+-- Daten für Tabelle `siteconfig`
 --
 
 INSERT INTO `siteconfig` (`ID`, `ClassName`, `LastEdited`, `Created`, `MainText`, `SubText`, `Title`, `Tagline`, `CanViewType`, `CanEditType`, `CanCreateTopLevelType`, `ElementalAreaID`, `LogoImageID`, `HeaderImageID`) VALUES
@@ -4886,43 +4934,43 @@ INSERT INTO `siteconfig` (`ID`, `ClassName`, `LastEdited`, `Created`, `MainText`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siteconfig_createtoplevelgroups`
+-- Tabellenstruktur für Tabelle `siteconfig_createtoplevelgroups`
 --
 
 CREATE TABLE `siteconfig_createtoplevelgroups` (
   `ID` int(11) NOT NULL,
-  `SiteConfigID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `SiteConfigID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siteconfig_editorgroups`
+-- Tabellenstruktur für Tabelle `siteconfig_editorgroups`
 --
 
 CREATE TABLE `siteconfig_editorgroups` (
   `ID` int(11) NOT NULL,
-  `SiteConfigID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `SiteConfigID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siteconfig_viewergroups`
+-- Tabellenstruktur für Tabelle `siteconfig_viewergroups`
 --
 
 CREATE TABLE `siteconfig_viewergroups` (
   `ID` int(11) NOT NULL,
-  `SiteConfigID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `SiteConfigID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetree`
+-- Tabellenstruktur für Tabelle `sitetree`
 --
 
 CREATE TABLE `sitetree` (
@@ -4932,24 +4980,24 @@ CREATE TABLE `sitetree` (
   `Created` datetime DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `URLSegment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `MenuTitle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `ReportClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sitetree`
+-- Daten für Tabelle `sitetree`
 --
 
 INSERT INTO `sitetree` (`ID`, `ClassName`, `LastEdited`, `Created`, `CanViewType`, `CanEditType`, `Version`, `URLSegment`, `Title`, `MenuTitle`, `Content`, `MetaDescription`, `ExtraMeta`, `ShowInMenus`, `ShowInSearch`, `Sort`, `HasBrokenFile`, `HasBrokenLink`, `ReportClass`, `ParentID`) VALUES
@@ -4984,7 +5032,7 @@ INSERT INTO `sitetree` (`ID`, `ClassName`, `LastEdited`, `Created`, `CanViewType
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetreelink`
+-- Tabellenstruktur für Tabelle `sitetreelink`
 --
 
 CREATE TABLE `sitetreelink` (
@@ -4992,27 +5040,27 @@ CREATE TABLE `sitetreelink` (
   `ClassName` enum('SilverStripe\\CMS\\Model\\SiteTreeLink') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\CMS\\Model\\SiteTreeLink',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `LinkedID` int(11) NOT NULL DEFAULT 0,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `LinkedID` int(11) NOT NULL DEFAULT '0',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetree_editorgroups`
+-- Tabellenstruktur für Tabelle `sitetree_editorgroups`
 --
 
 CREATE TABLE `sitetree_editorgroups` (
   `ID` int(11) NOT NULL,
-  `SiteTreeID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `SiteTreeID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetree_live`
+-- Tabellenstruktur für Tabelle `sitetree_live`
 --
 
 CREATE TABLE `sitetree_live` (
@@ -5022,24 +5070,24 @@ CREATE TABLE `sitetree_live` (
   `Created` datetime DEFAULT NULL,
   `CanViewType` enum('Anyone','LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
   `CanEditType` enum('LoggedInUsers','OnlyTheseUsers','Inherit') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Inherit',
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `URLSegment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `MenuTitle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `ReportClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sitetree_live`
+-- Daten für Tabelle `sitetree_live`
 --
 
 INSERT INTO `sitetree_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `CanViewType`, `CanEditType`, `Version`, `URLSegment`, `Title`, `MenuTitle`, `Content`, `MetaDescription`, `ExtraMeta`, `ShowInMenus`, `ShowInSearch`, `Sort`, `HasBrokenFile`, `HasBrokenLink`, `ReportClass`, `ParentID`) VALUES
@@ -5074,18 +5122,18 @@ INSERT INTO `sitetree_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `CanVie
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetree_versions`
+-- Tabellenstruktur für Tabelle `sitetree_versions`
 --
 
 CREATE TABLE `sitetree_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('SilverStripe\\CMS\\Model\\SiteTree','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Page',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
@@ -5094,20 +5142,20 @@ CREATE TABLE `sitetree_versions` (
   `URLSegment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `MenuTitle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `Sort` int(11) NOT NULL DEFAULT 0,
-  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `Content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `MetaDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ExtraMeta` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowInMenus` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ShowInSearch` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `HasBrokenFile` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HasBrokenLink` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `ReportClass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sitetree_versions`
+-- Daten für Tabelle `sitetree_versions`
 --
 
 INSERT INTO `sitetree_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `CanViewType`, `CanEditType`, `URLSegment`, `Title`, `MenuTitle`, `Content`, `MetaDescription`, `ExtraMeta`, `ShowInMenus`, `ShowInSearch`, `Sort`, `HasBrokenFile`, `HasBrokenLink`, `ReportClass`, `ParentID`) VALUES
@@ -5221,19 +5269,19 @@ INSERT INTO `sitetree_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `W
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitetree_viewergroups`
+-- Tabellenstruktur für Tabelle `sitetree_viewergroups`
 --
 
 CREATE TABLE `sitetree_viewergroups` (
   `ID` int(11) NOT NULL,
-  `SiteTreeID` int(11) NOT NULL DEFAULT 0,
-  `GroupID` int(11) NOT NULL DEFAULT 0
+  `SiteTreeID` int(11) NOT NULL DEFAULT '0',
+  `GroupID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slideimage`
+-- Tabellenstruktur für Tabelle `slideimage`
 --
 
 CREATE TABLE `slideimage` (
@@ -5241,24 +5289,24 @@ CREATE TABLE `slideimage` (
   `ClassName` enum('Dynamic\\FlexSlider\\Model\\SlideImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\FlexSlider\\Model\\SlideImage',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Headline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
   `SlideType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SlideshowElementID` int(11) NOT NULL DEFAULT 0,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `VideoID` int(11) NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0,
-  `PageLinkID` int(11) NOT NULL DEFAULT 0,
-  `SlideLinkID` int(11) NOT NULL DEFAULT 0
+  `SlideshowElementID` int(11) NOT NULL DEFAULT '0',
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `VideoID` int(11) NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0',
+  `PageLinkID` int(11) NOT NULL DEFAULT '0',
+  `SlideLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slideimage_live`
+-- Tabellenstruktur für Tabelle `slideimage_live`
 --
 
 CREATE TABLE `slideimage_live` (
@@ -5266,55 +5314,55 @@ CREATE TABLE `slideimage_live` (
   `ClassName` enum('Dynamic\\FlexSlider\\Model\\SlideImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\FlexSlider\\Model\\SlideImage',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Headline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
   `SlideType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SlideshowElementID` int(11) NOT NULL DEFAULT 0,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `VideoID` int(11) NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0,
-  `PageLinkID` int(11) NOT NULL DEFAULT 0,
-  `SlideLinkID` int(11) NOT NULL DEFAULT 0
+  `SlideshowElementID` int(11) NOT NULL DEFAULT '0',
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `VideoID` int(11) NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0',
+  `PageLinkID` int(11) NOT NULL DEFAULT '0',
+  `SlideLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slideimage_versions`
+-- Tabellenstruktur für Tabelle `slideimage_versions`
 --
 
 CREATE TABLE `slideimage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('Dynamic\\FlexSlider\\Model\\SlideImage') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Dynamic\\FlexSlider\\Model\\SlideImage',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Headline` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SortOrder` int(11) NOT NULL DEFAULT 0,
+  `Description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `SortOrder` int(11) NOT NULL DEFAULT '0',
   `SlideType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SlideshowElementID` int(11) NOT NULL DEFAULT 0,
-  `ImageID` int(11) NOT NULL DEFAULT 0,
-  `VideoID` int(11) NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0,
-  `PageLinkID` int(11) NOT NULL DEFAULT 0,
-  `SlideLinkID` int(11) NOT NULL DEFAULT 0
+  `SlideshowElementID` int(11) NOT NULL DEFAULT '0',
+  `ImageID` int(11) NOT NULL DEFAULT '0',
+  `VideoID` int(11) NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0',
+  `PageLinkID` int(11) NOT NULL DEFAULT '0',
+  `SlideLinkID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticlecategories`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticlecategories`
 --
 
 CREATE TABLE `streunerkatzen_blogarticlecategories` (
@@ -5327,7 +5375,7 @@ CREATE TABLE `streunerkatzen_blogarticlecategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticlecategories`
+-- Daten für Tabelle `streunerkatzen_blogarticlecategories`
 --
 
 INSERT INTO `streunerkatzen_blogarticlecategories` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`, `URLPath`) VALUES
@@ -5340,19 +5388,19 @@ INSERT INTO `streunerkatzen_blogarticlecategories` (`ID`, `ClassName`, `LastEdit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticlelistelement`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticlelistelement`
 --
 
 CREATE TABLE `streunerkatzen_blogarticlelistelement` (
   `ID` int(11) NOT NULL,
-  `NumArticles` int(11) NOT NULL DEFAULT 0,
-  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `NumArticles` int(11) NOT NULL DEFAULT '0',
+  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Layout` enum('Standard','Vereinfacht') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Standard'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticlelistelement`
+-- Daten für Tabelle `streunerkatzen_blogarticlelistelement`
 --
 
 INSERT INTO `streunerkatzen_blogarticlelistelement` (`ID`, `NumArticles`, `DisplayLoadMore`, `AllCategoriesSelected`, `Layout`) VALUES
@@ -5362,31 +5410,31 @@ INSERT INTO `streunerkatzen_blogarticlelistelement` (`ID`, `NumArticles`, `Displ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticlelistelement_categories`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticlelistelement_categories`
 --
 
 CREATE TABLE `streunerkatzen_blogarticlelistelement_categories` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_BlogArticleListElementID` int(11) NOT NULL DEFAULT 0,
-  `Streunerkatzen_BlogArticleCategoriesID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_BlogArticleListElementID` int(11) NOT NULL DEFAULT '0',
+  `Streunerkatzen_BlogArticleCategoriesID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticlelistelement_live`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticlelistelement_live`
 --
 
 CREATE TABLE `streunerkatzen_blogarticlelistelement_live` (
   `ID` int(11) NOT NULL,
-  `NumArticles` int(11) NOT NULL DEFAULT 0,
-  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `NumArticles` int(11) NOT NULL DEFAULT '0',
+  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Layout` enum('Standard','Vereinfacht') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Standard'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticlelistelement_live`
+-- Daten für Tabelle `streunerkatzen_blogarticlelistelement_live`
 --
 
 INSERT INTO `streunerkatzen_blogarticlelistelement_live` (`ID`, `NumArticles`, `DisplayLoadMore`, `AllCategoriesSelected`, `Layout`) VALUES
@@ -5396,21 +5444,21 @@ INSERT INTO `streunerkatzen_blogarticlelistelement_live` (`ID`, `NumArticles`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticlelistelement_versions`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticlelistelement_versions`
 --
 
 CREATE TABLE `streunerkatzen_blogarticlelistelement_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `NumArticles` int(11) NOT NULL DEFAULT 0,
-  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `NumArticles` int(11) NOT NULL DEFAULT '0',
+  `DisplayLoadMore` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `AllCategoriesSelected` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `Layout` enum('Standard','Vereinfacht') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Standard'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticlelistelement_versions`
+-- Daten für Tabelle `streunerkatzen_blogarticlelistelement_versions`
 --
 
 INSERT INTO `streunerkatzen_blogarticlelistelement_versions` (`ID`, `RecordID`, `Version`, `NumArticles`, `DisplayLoadMore`, `AllCategoriesSelected`, `Layout`) VALUES
@@ -5426,7 +5474,7 @@ INSERT INTO `streunerkatzen_blogarticlelistelement_versions` (`ID`, `RecordID`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticles`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticles`
 --
 
 CREATE TABLE `streunerkatzen_blogarticles` (
@@ -5434,17 +5482,17 @@ CREATE TABLE `streunerkatzen_blogarticles` (
   `ClassName` enum('Streunerkatzen\\Blog\\BlogArticle') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Abstract` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `PublishTime` datetime DEFAULT NULL,
   `URLPath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0,
-  `PostImageID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0',
+  `PostImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticles`
+-- Daten für Tabelle `streunerkatzen_blogarticles`
 --
 
 INSERT INTO `streunerkatzen_blogarticles` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Title`, `Abstract`, `PublishTime`, `URLPath`, `ElementalAreaID`, `PostImageID`) VALUES
@@ -5454,17 +5502,17 @@ INSERT INTO `streunerkatzen_blogarticles` (`ID`, `ClassName`, `LastEdited`, `Cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticles_categories`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticles_categories`
 --
 
 CREATE TABLE `streunerkatzen_blogarticles_categories` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_BlogArticlesID` int(11) NOT NULL DEFAULT 0,
-  `Streunerkatzen_BlogArticleCategoriesID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_BlogArticlesID` int(11) NOT NULL DEFAULT '0',
+  `Streunerkatzen_BlogArticleCategoriesID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticles_categories`
+-- Daten für Tabelle `streunerkatzen_blogarticles_categories`
 --
 
 INSERT INTO `streunerkatzen_blogarticles_categories` (`ID`, `Streunerkatzen_BlogArticlesID`, `Streunerkatzen_BlogArticleCategoriesID`) VALUES
@@ -5475,7 +5523,7 @@ INSERT INTO `streunerkatzen_blogarticles_categories` (`ID`, `Streunerkatzen_Blog
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticles_live`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticles_live`
 --
 
 CREATE TABLE `streunerkatzen_blogarticles_live` (
@@ -5483,17 +5531,17 @@ CREATE TABLE `streunerkatzen_blogarticles_live` (
   `ClassName` enum('Streunerkatzen\\Blog\\BlogArticle') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Abstract` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `PublishTime` datetime DEFAULT NULL,
   `URLPath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0,
-  `PostImageID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0',
+  `PostImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticles_live`
+-- Daten für Tabelle `streunerkatzen_blogarticles_live`
 --
 
 INSERT INTO `streunerkatzen_blogarticles_live` (`ID`, `ClassName`, `LastEdited`, `Created`, `Version`, `Title`, `Abstract`, `PublishTime`, `URLPath`, `ElementalAreaID`, `PostImageID`) VALUES
@@ -5503,18 +5551,18 @@ INSERT INTO `streunerkatzen_blogarticles_live` (`ID`, `ClassName`, `LastEdited`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_blogarticles_versions`
+-- Tabellenstruktur für Tabelle `streunerkatzen_blogarticles_versions`
 --
 
 CREATE TABLE `streunerkatzen_blogarticles_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `AuthorID` int(11) NOT NULL DEFAULT 0,
-  `PublisherID` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `WasPublished` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDeleted` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `WasDraft` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `AuthorID` int(11) NOT NULL DEFAULT '0',
+  `PublisherID` int(11) NOT NULL DEFAULT '0',
   `ClassName` enum('Streunerkatzen\\Blog\\BlogArticle') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
@@ -5522,12 +5570,12 @@ CREATE TABLE `streunerkatzen_blogarticles_versions` (
   `Abstract` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `PublishTime` datetime DEFAULT NULL,
   `URLPath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ElementalAreaID` int(11) NOT NULL DEFAULT 0,
-  `PostImageID` int(11) NOT NULL DEFAULT 0
+  `ElementalAreaID` int(11) NOT NULL DEFAULT '0',
+  `PostImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_blogarticles_versions`
+-- Daten für Tabelle `streunerkatzen_blogarticles_versions`
 --
 
 INSERT INTO `streunerkatzen_blogarticles_versions` (`ID`, `RecordID`, `Version`, `WasPublished`, `WasDeleted`, `WasDraft`, `AuthorID`, `PublisherID`, `ClassName`, `LastEdited`, `Created`, `Title`, `Abstract`, `PublishTime`, `URLPath`, `ElementalAreaID`, `PostImageID`) VALUES
@@ -5544,19 +5592,19 @@ INSERT INTO `streunerkatzen_blogarticles_versions` (`ID`, `RecordID`, `Version`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_buttonelement`
+-- Tabellenstruktur für Tabelle `streunerkatzen_buttonelement`
 --
 
 CREATE TABLE `streunerkatzen_buttonelement` (
   `ID` int(11) NOT NULL,
   `Label` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0
+  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_buttonelement`
+-- Daten für Tabelle `streunerkatzen_buttonelement`
 --
 
 INSERT INTO `streunerkatzen_buttonelement` (`ID`, `Label`, `Link`, `IsNewWindow`, `PageID`) VALUES
@@ -5565,19 +5613,19 @@ INSERT INTO `streunerkatzen_buttonelement` (`ID`, `Label`, `Link`, `IsNewWindow`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_buttonelement_live`
+-- Tabellenstruktur für Tabelle `streunerkatzen_buttonelement_live`
 --
 
 CREATE TABLE `streunerkatzen_buttonelement_live` (
   `ID` int(11) NOT NULL,
   `Label` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0
+  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_buttonelement_live`
+-- Daten für Tabelle `streunerkatzen_buttonelement_live`
 --
 
 INSERT INTO `streunerkatzen_buttonelement_live` (`ID`, `Label`, `Link`, `IsNewWindow`, `PageID`) VALUES
@@ -5586,21 +5634,21 @@ INSERT INTO `streunerkatzen_buttonelement_live` (`ID`, `Label`, `Link`, `IsNewWi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_buttonelement_versions`
+-- Tabellenstruktur für Tabelle `streunerkatzen_buttonelement_versions`
 --
 
 CREATE TABLE `streunerkatzen_buttonelement_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
   `Label` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `PageID` int(11) NOT NULL DEFAULT 0
+  `Link` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `IsNewWindow` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `PageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_buttonelement_versions`
+-- Daten für Tabelle `streunerkatzen_buttonelement_versions`
 --
 
 INSERT INTO `streunerkatzen_buttonelement_versions` (`ID`, `RecordID`, `Version`, `Label`, `Link`, `IsNewWindow`, `PageID`) VALUES
@@ -5611,7 +5659,7 @@ INSERT INTO `streunerkatzen_buttonelement_versions` (`ID`, `RecordID`, `Version`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_cats`
+-- Tabellenstruktur für Tabelle `streunerkatzen_cats`
 --
 
 CREATE TABLE `streunerkatzen_cats` (
@@ -5623,10 +5671,10 @@ CREATE TABLE `streunerkatzen_cats` (
   `PublishTime` datetime DEFAULT NULL,
   `Age` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Gender` enum('nicht bekannt','männlich','weiblich') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'nicht bekannt',
-  `HasPetCollar` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `HasPetCollar` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `PetCollarDescription` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Characteristics` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ColorCharacteristics` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Characteristics` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ColorCharacteristics` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `EyeColor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ChipNumber` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Tattoo` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -5634,88 +5682,88 @@ CREATE TABLE `streunerkatzen_cats` (
   `IsCastrated` enum('nicht bekannt','ja','nein') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'nicht bekannt',
   `IsHouseCat` enum('nicht bekannt','ja','nein') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'nicht bekannt',
   `IsChipped` enum('nicht bekannt','ja','nein') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'nicht bekannt',
-  `BehaviourOwner` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `BehaviourStranger` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `BehaviourOwner` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `BehaviourStranger` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `LostFoundDate` date DEFAULT NULL,
   `Street` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Town` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Zipcode` int(11) NOT NULL DEFAULT 0,
+  `Zipcode` int(11) NOT NULL DEFAULT '0',
   `Country` enum('Wien','Niederösterreich','Oberösterreich','Salzburg','Steiermark','Burgenland','Kärnten','Tirol','Vorarlberg') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Wien',
-  `LostFoundDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MoreInfo` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LostFoundDescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `MoreInfo` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `LostFoundTime` enum('nicht bekannt','morgens/vormittags','mittags/nachmittags','abends/nachts') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'nicht bekannt',
   `LostFoundStatus` enum('Vermisst','Gefunden','Tot gefunden','Pflegekatze') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Vermisst',
   `FurLength` enum('kurz','mittel','lang','sonstiges') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'kurz',
   `Contact` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NotifierID` int(11) NOT NULL DEFAULT 0
+  `NotifierID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_catsearchpage`
+-- Tabellenstruktur für Tabelle `streunerkatzen_catsearchpage`
 --
 
 CREATE TABLE `streunerkatzen_catsearchpage` (
   `ID` int(11) NOT NULL,
-  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_catsearchpage_live`
+-- Tabellenstruktur für Tabelle `streunerkatzen_catsearchpage_live`
 --
 
 CREATE TABLE `streunerkatzen_catsearchpage_live` (
   `ID` int(11) NOT NULL,
-  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_catsearchpage_versions`
+-- Tabellenstruktur für Tabelle `streunerkatzen_catsearchpage_versions`
 --
 
 CREATE TABLE `streunerkatzen_catsearchpage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `NotificationEmailTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `NotificationTemplate` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_cats_attachments`
+-- Tabellenstruktur für Tabelle `streunerkatzen_cats_attachments`
 --
 
 CREATE TABLE `streunerkatzen_cats_attachments` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT 0,
-  `FileID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT '0',
+  `FileID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_cats_furcolors`
+-- Tabellenstruktur für Tabelle `streunerkatzen_cats_furcolors`
 --
 
 CREATE TABLE `streunerkatzen_cats_furcolors` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT 0,
-  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT '0',
+  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_furcolors`
+-- Tabellenstruktur für Tabelle `streunerkatzen_furcolors`
 --
 
 CREATE TABLE `streunerkatzen_furcolors` (
@@ -5727,7 +5775,7 @@ CREATE TABLE `streunerkatzen_furcolors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `streunerkatzen_furcolors`
+-- Daten für Tabelle `streunerkatzen_furcolors`
 --
 
 INSERT INTO `streunerkatzen_furcolors` (`ID`, `ClassName`, `LastEdited`, `Created`, `Title`) VALUES
@@ -5751,31 +5799,31 @@ INSERT INTO `streunerkatzen_furcolors` (`ID`, `ClassName`, `LastEdited`, `Create
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_furcolors_cat`
+-- Tabellenstruktur für Tabelle `streunerkatzen_furcolors_cat`
 --
 
 CREATE TABLE `streunerkatzen_furcolors_cat` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT 0,
-  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT '0',
+  `Streunerkatzen_CatsID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_furcolors_exampleimages`
+-- Tabellenstruktur für Tabelle `streunerkatzen_furcolors_exampleimages`
 --
 
 CREATE TABLE `streunerkatzen_furcolors_exampleimages` (
   `ID` int(11) NOT NULL,
-  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT 0,
-  `ImageID` int(11) NOT NULL DEFAULT 0
+  `Streunerkatzen_FurColorsID` int(11) NOT NULL DEFAULT '0',
+  `ImageID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_notifier`
+-- Tabellenstruktur für Tabelle `streunerkatzen_notifier`
 --
 
 CREATE TABLE `streunerkatzen_notifier` (
@@ -5790,7 +5838,7 @@ CREATE TABLE `streunerkatzen_notifier` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_searchagents`
+-- Tabellenstruktur für Tabelle `streunerkatzen_searchagents`
 --
 
 CREATE TABLE `streunerkatzen_searchagents` (
@@ -5800,59 +5848,59 @@ CREATE TABLE `streunerkatzen_searchagents` (
   `Created` datetime DEFAULT NULL,
   `Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Filter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Email` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Email` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_singlecatelement`
+-- Tabellenstruktur für Tabelle `streunerkatzen_singlecatelement`
 --
 
 CREATE TABLE `streunerkatzen_singlecatelement` (
   `ID` int(11) NOT NULL,
-  `CatID` int(11) NOT NULL DEFAULT 0
+  `CatID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_singlecatelement_live`
+-- Tabellenstruktur für Tabelle `streunerkatzen_singlecatelement_live`
 --
 
 CREATE TABLE `streunerkatzen_singlecatelement_live` (
   `ID` int(11) NOT NULL,
-  `CatID` int(11) NOT NULL DEFAULT 0
+  `CatID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `streunerkatzen_singlecatelement_versions`
+-- Tabellenstruktur für Tabelle `streunerkatzen_singlecatelement_versions`
 --
 
 CREATE TABLE `streunerkatzen_singlecatelement_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `CatID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `CatID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submittedfilefield`
+-- Tabellenstruktur für Tabelle `submittedfilefield`
 --
 
 CREATE TABLE `submittedfilefield` (
   `ID` int(11) NOT NULL,
-  `UploadedFileID` int(11) NOT NULL DEFAULT 0
+  `UploadedFileID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submittedform`
+-- Tabellenstruktur für Tabelle `submittedform`
 --
 
 CREATE TABLE `submittedform` (
@@ -5860,15 +5908,15 @@ CREATE TABLE `submittedform` (
   `ClassName` enum('SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm',
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
-  `SubmittedByID` int(11) NOT NULL DEFAULT 0,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
+  `SubmittedByID` int(11) NOT NULL DEFAULT '0',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
   `ParentClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submittedformfield`
+-- Tabellenstruktur für Tabelle `submittedformfield`
 --
 
 CREATE TABLE `submittedformfield` (
@@ -5877,32 +5925,32 @@ CREATE TABLE `submittedformfield` (
   `LastEdited` datetime DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdefinedform`
+-- Tabellenstruktur für Tabelle `userdefinedform`
 --
 
 CREATE TABLE `userdefinedform` (
   `ID` int(11) NOT NULL,
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `userdefinedform`
+-- Daten für Tabelle `userdefinedform`
 --
 
 INSERT INTO `userdefinedform` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -5912,7 +5960,7 @@ INSERT INTO `userdefinedform` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnC
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdefinedform_emailrecipient`
+-- Tabellenstruktur für Tabelle `userdefinedform_emailrecipient`
 --
 
 CREATE TABLE `userdefinedform_emailrecipient` (
@@ -5924,23 +5972,23 @@ CREATE TABLE `userdefinedform_emailrecipient` (
   `EmailSubject` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `EmailFrom` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `EmailReplyTo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `EmailBody` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `EmailBodyHtml` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EmailBody` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `EmailBodyHtml` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `EmailTemplate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SendPlain` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `HideFormData` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `SendPlain` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `HideFormData` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `CustomRulesCondition` enum('And','Or') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'And',
-  `SendEmailFromFieldID` int(11) NOT NULL DEFAULT 0,
-  `SendEmailToFieldID` int(11) NOT NULL DEFAULT 0,
-  `SendEmailSubjectFieldID` int(11) NOT NULL DEFAULT 0,
-  `FormID` int(11) NOT NULL DEFAULT 0,
+  `SendEmailFromFieldID` int(11) NOT NULL DEFAULT '0',
+  `SendEmailToFieldID` int(11) NOT NULL DEFAULT '0',
+  `SendEmailSubjectFieldID` int(11) NOT NULL DEFAULT '0',
+  `FormID` int(11) NOT NULL DEFAULT '0',
   `FormClass` enum('Streunerkatzen\\Blog\\BlogArticle','Streunerkatzen\\Blog\\BlogArticleCategory','Streunerkatzen\\CatSearch\\SearchAgent','Streunerkatzen\\Cats\\Cat','Streunerkatzen\\Cats\\FurColor','Streunerkatzen\\Cats\\Notifier','Heyday\\MenuManager\\MenuItem','Heyday\\MenuManager\\MenuSet','SilverStripe\\Assets\\File','SilverStripe\\SiteConfig\\SiteConfig','SilverStripe\\Versioned\\ChangeSet','SilverStripe\\Versioned\\ChangeSetItem','DNADesign\\Elemental\\Models\\BaseElement','DNADesign\\Elemental\\Models\\ElementalArea','Dynamic\\FlexSlider\\Model\\SlideImage','Dynamic\\BaseObject\\Model\\BaseElementObject','Dynamic\\Elements\\FileList\\Model\\FileListObject','Sheadawson\\Linkable\\Models\\EmbeddedObject','Sheadawson\\Linkable\\Models\\Link','SilverStripe\\Assets\\Shortcodes\\FileLink','SilverStripe\\CMS\\Model\\SiteTree','SilverStripe\\CMS\\Model\\SiteTreeLink','SilverStripe\\Security\\Group','SilverStripe\\Security\\LoginAttempt','SilverStripe\\Security\\Member','SilverStripe\\Security\\MemberPassword','SilverStripe\\Security\\Permission','SilverStripe\\Security\\PermissionRole','SilverStripe\\Security\\PermissionRoleCode','SilverStripe\\Security\\RememberLoginHash','SilverStripe\\UserForms\\Model\\EditableCustomRule','SilverStripe\\UserForms\\Model\\EditableFormField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableOption','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipient','SilverStripe\\UserForms\\Model\\Recipient\\EmailRecipientCondition','SilverStripe\\UserForms\\Model\\Submission\\SubmittedForm','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFormField','SilverStripe\\Assets\\Folder','SilverStripe\\Assets\\Image','Streunerkatzen\\Elements\\BlogArticleListElement','Streunerkatzen\\Elements\\ButtonElement','Streunerkatzen\\Elements\\SingleCatElement','DNADesign\\Elemental\\Models\\ElementContent','DNADesign\\ElementalUserForms\\Model\\ElementForm','Dynamic\\Elements\\Accordion\\Elements\\ElementAccordion','Dynamic\\Elements\\Embedded\\Elements\\ElementEmbeddedCode','Dynamic\\Elements\\FileList\\Elements\\ElementFileList','Dynamic\\Elements\\Flexslider\\Elements\\ElementSlideshow','Dynamic\\Elements\\Gallery\\Elements\\ElementPhotoGallery','Dynamic\\Elements\\Image\\Elements\\ElementImage','Dynamic\\Elements\\Oembed\\Elements\\ElementOembed','Dynamic\\Elements\\Accordion\\Model\\AccordionPanel','Dynamic\\Elements\\Gallery\\Model\\GalleryImage','Page','Streunerkatzen\\CatSearch\\CatSearchPage','SilverStripe\\ErrorPage\\ErrorPage','SilverStripe\\CMS\\Model\\RedirectorPage','SilverStripe\\CMS\\Model\\VirtualPage','SilverStripe\\UserForms\\Model\\UserDefinedForm','SilverStripe\\SpamProtection\\EditableSpamProtectionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckbox','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCountryDropdownField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDateField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableEmailField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroup','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFieldGroupEnd','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFileField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormHeading','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableFormStep','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableLiteralField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMemberListField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableMultipleOptionField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableNumericField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableTextField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableCheckboxGroupField','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableDropdown','SilverStripe\\UserForms\\Model\\EditableFormField\\EditableRadioField','SilverStripe\\UserForms\\Model\\Submission\\SubmittedFileField') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Streunerkatzen\\Blog\\BlogArticle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdefinedform_emailrecipientcondition`
+-- Tabellenstruktur für Tabelle `userdefinedform_emailrecipientcondition`
 --
 
 CREATE TABLE `userdefinedform_emailrecipientcondition` (
@@ -5950,31 +5998,31 @@ CREATE TABLE `userdefinedform_emailrecipientcondition` (
   `Created` datetime DEFAULT NULL,
   `ConditionOption` enum('IsBlank','IsNotBlank','Equals','NotEquals','ValueLessThan','ValueLessThanEqual','ValueGreaterThan','ValueGreaterThanEqual') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'IsBlank',
   `ConditionValue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ParentID` int(11) NOT NULL DEFAULT 0,
-  `ConditionFieldID` int(11) NOT NULL DEFAULT 0
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  `ConditionFieldID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdefinedform_live`
+-- Tabellenstruktur für Tabelle `userdefinedform_live`
 --
 
 CREATE TABLE `userdefinedform_live` (
   `ID` int(11) NOT NULL,
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `userdefinedform_live`
+-- Daten für Tabelle `userdefinedform_live`
 --
 
 INSERT INTO `userdefinedform_live` (`ID`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -5984,26 +6032,26 @@ INSERT INTO `userdefinedform_live` (`ID`, `SubmitButtonText`, `ClearButtonText`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdefinedform_versions`
+-- Tabellenstruktur für Tabelle `userdefinedform_versions`
 --
 
 CREATE TABLE `userdefinedform_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
   `SubmitButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ClearButtonText` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
-  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+  `OnCompleteMessage` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ShowClearButton` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableSaveSubmissions` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `EnableLiveValidation` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisplayErrorMessagesAtTop` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableAuthenicatedFinishAction` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `DisableCsrfSecurityToken` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `userdefinedform_versions`
+-- Daten für Tabelle `userdefinedform_versions`
 --
 
 INSERT INTO `userdefinedform_versions` (`ID`, `RecordID`, `Version`, `SubmitButtonText`, `ClearButtonText`, `OnCompleteMessage`, `ShowClearButton`, `DisableSaveSubmissions`, `EnableLiveValidation`, `DisplayErrorMessagesAtTop`, `DisableAuthenicatedFinishAction`, `DisableCsrfSecurityToken`) VALUES
@@ -6016,47 +6064,47 @@ INSERT INTO `userdefinedform_versions` (`ID`, `RecordID`, `Version`, `SubmitButt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `virtualpage`
+-- Tabellenstruktur für Tabelle `virtualpage`
 --
 
 CREATE TABLE `virtualpage` (
   `ID` int(11) NOT NULL,
-  `VersionID` int(11) NOT NULL DEFAULT 0,
-  `CopyContentFromID` int(11) NOT NULL DEFAULT 0
+  `VersionID` int(11) NOT NULL DEFAULT '0',
+  `CopyContentFromID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `virtualpage_live`
+-- Tabellenstruktur für Tabelle `virtualpage_live`
 --
 
 CREATE TABLE `virtualpage_live` (
   `ID` int(11) NOT NULL,
-  `VersionID` int(11) NOT NULL DEFAULT 0,
-  `CopyContentFromID` int(11) NOT NULL DEFAULT 0
+  `VersionID` int(11) NOT NULL DEFAULT '0',
+  `CopyContentFromID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `virtualpage_versions`
+-- Tabellenstruktur für Tabelle `virtualpage_versions`
 --
 
 CREATE TABLE `virtualpage_versions` (
   `ID` int(11) NOT NULL,
-  `RecordID` int(11) NOT NULL DEFAULT 0,
-  `Version` int(11) NOT NULL DEFAULT 0,
-  `VersionID` int(11) NOT NULL DEFAULT 0,
-  `CopyContentFromID` int(11) NOT NULL DEFAULT 0
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `VersionID` int(11) NOT NULL DEFAULT '0',
+  `CopyContentFromID` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `accordionpanel`
+-- Indizes für die Tabelle `accordionpanel`
 --
 ALTER TABLE `accordionpanel`
   ADD PRIMARY KEY (`ID`),
@@ -6064,7 +6112,7 @@ ALTER TABLE `accordionpanel`
   ADD KEY `AccordionID` (`AccordionID`);
 
 --
--- Indexes for table `accordionpanel_live`
+-- Indizes für die Tabelle `accordionpanel_live`
 --
 ALTER TABLE `accordionpanel_live`
   ADD PRIMARY KEY (`ID`),
@@ -6072,7 +6120,7 @@ ALTER TABLE `accordionpanel_live`
   ADD KEY `AccordionID` (`AccordionID`);
 
 --
--- Indexes for table `accordionpanel_versions`
+-- Indizes für die Tabelle `accordionpanel_versions`
 --
 ALTER TABLE `accordionpanel_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6083,7 +6131,7 @@ ALTER TABLE `accordionpanel_versions`
   ADD KEY `AccordionID` (`AccordionID`);
 
 --
--- Indexes for table `baseelementobject`
+-- Indizes für die Tabelle `baseelementobject`
 --
 ALTER TABLE `baseelementobject`
   ADD PRIMARY KEY (`ID`),
@@ -6093,7 +6141,7 @@ ALTER TABLE `baseelementobject`
   ADD KEY `ElementLinkID` (`ElementLinkID`);
 
 --
--- Indexes for table `baseelementobject_live`
+-- Indizes für die Tabelle `baseelementobject_live`
 --
 ALTER TABLE `baseelementobject_live`
   ADD PRIMARY KEY (`ID`),
@@ -6103,7 +6151,7 @@ ALTER TABLE `baseelementobject_live`
   ADD KEY `ElementLinkID` (`ElementLinkID`);
 
 --
--- Indexes for table `baseelementobject_versions`
+-- Indizes für die Tabelle `baseelementobject_versions`
 --
 ALTER TABLE `baseelementobject_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6118,7 +6166,7 @@ ALTER TABLE `baseelementobject_versions`
   ADD KEY `ElementLinkID` (`ElementLinkID`);
 
 --
--- Indexes for table `changeset`
+-- Indizes für die Tabelle `changeset`
 --
 ALTER TABLE `changeset`
   ADD PRIMARY KEY (`ID`),
@@ -6129,7 +6177,7 @@ ALTER TABLE `changeset`
   ADD KEY `PublisherID` (`PublisherID`);
 
 --
--- Indexes for table `changesetitem`
+-- Indizes für die Tabelle `changesetitem`
 --
 ALTER TABLE `changesetitem`
   ADD PRIMARY KEY (`ID`),
@@ -6139,7 +6187,7 @@ ALTER TABLE `changesetitem`
   ADD KEY `Object` (`ObjectID`,`ObjectClass`);
 
 --
--- Indexes for table `changesetitem_referencedby`
+-- Indizes für die Tabelle `changesetitem_referencedby`
 --
 ALTER TABLE `changesetitem_referencedby`
   ADD PRIMARY KEY (`ID`),
@@ -6147,19 +6195,19 @@ ALTER TABLE `changesetitem_referencedby`
   ADD KEY `ChildID` (`ChildID`);
 
 --
--- Indexes for table `editablecheckbox`
+-- Indizes für die Tabelle `editablecheckbox`
 --
 ALTER TABLE `editablecheckbox`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablecheckbox_live`
+-- Indizes für die Tabelle `editablecheckbox_live`
 --
 ALTER TABLE `editablecheckbox_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablecheckbox_versions`
+-- Indizes für die Tabelle `editablecheckbox_versions`
 --
 ALTER TABLE `editablecheckbox_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6168,19 +6216,19 @@ ALTER TABLE `editablecheckbox_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editablecountrydropdownfield`
+-- Indizes für die Tabelle `editablecountrydropdownfield`
 --
 ALTER TABLE `editablecountrydropdownfield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablecountrydropdownfield_live`
+-- Indizes für die Tabelle `editablecountrydropdownfield_live`
 --
 ALTER TABLE `editablecountrydropdownfield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablecountrydropdownfield_versions`
+-- Indizes für die Tabelle `editablecountrydropdownfield_versions`
 --
 ALTER TABLE `editablecountrydropdownfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6189,7 +6237,7 @@ ALTER TABLE `editablecountrydropdownfield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editablecustomrule`
+-- Indizes für die Tabelle `editablecustomrule`
 --
 ALTER TABLE `editablecustomrule`
   ADD PRIMARY KEY (`ID`),
@@ -6198,7 +6246,7 @@ ALTER TABLE `editablecustomrule`
   ADD KEY `ConditionFieldID` (`ConditionFieldID`);
 
 --
--- Indexes for table `editablecustomrule_live`
+-- Indizes für die Tabelle `editablecustomrule_live`
 --
 ALTER TABLE `editablecustomrule_live`
   ADD PRIMARY KEY (`ID`),
@@ -6207,7 +6255,7 @@ ALTER TABLE `editablecustomrule_live`
   ADD KEY `ConditionFieldID` (`ConditionFieldID`);
 
 --
--- Indexes for table `editablecustomrule_versions`
+-- Indizes für die Tabelle `editablecustomrule_versions`
 --
 ALTER TABLE `editablecustomrule_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6221,19 +6269,19 @@ ALTER TABLE `editablecustomrule_versions`
   ADD KEY `ConditionFieldID` (`ConditionFieldID`);
 
 --
--- Indexes for table `editabledatefield`
+-- Indizes für die Tabelle `editabledatefield`
 --
 ALTER TABLE `editabledatefield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabledatefield_live`
+-- Indizes für die Tabelle `editabledatefield_live`
 --
 ALTER TABLE `editabledatefield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabledatefield_versions`
+-- Indizes für die Tabelle `editabledatefield_versions`
 --
 ALTER TABLE `editabledatefield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6242,19 +6290,19 @@ ALTER TABLE `editabledatefield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editabledropdown`
+-- Indizes für die Tabelle `editabledropdown`
 --
 ALTER TABLE `editabledropdown`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabledropdown_live`
+-- Indizes für die Tabelle `editabledropdown_live`
 --
 ALTER TABLE `editabledropdown_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabledropdown_versions`
+-- Indizes für die Tabelle `editabledropdown_versions`
 --
 ALTER TABLE `editabledropdown_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6263,21 +6311,21 @@ ALTER TABLE `editabledropdown_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editablefieldgroup`
+-- Indizes für die Tabelle `editablefieldgroup`
 --
 ALTER TABLE `editablefieldgroup`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `EndID` (`EndID`);
 
 --
--- Indexes for table `editablefieldgroup_live`
+-- Indizes für die Tabelle `editablefieldgroup_live`
 --
 ALTER TABLE `editablefieldgroup_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `EndID` (`EndID`);
 
 --
--- Indexes for table `editablefieldgroup_versions`
+-- Indizes für die Tabelle `editablefieldgroup_versions`
 --
 ALTER TABLE `editablefieldgroup_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6287,21 +6335,21 @@ ALTER TABLE `editablefieldgroup_versions`
   ADD KEY `EndID` (`EndID`);
 
 --
--- Indexes for table `editablefilefield`
+-- Indizes für die Tabelle `editablefilefield`
 --
 ALTER TABLE `editablefilefield`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FolderID` (`FolderID`);
 
 --
--- Indexes for table `editablefilefield_live`
+-- Indizes für die Tabelle `editablefilefield_live`
 --
 ALTER TABLE `editablefilefield_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FolderID` (`FolderID`);
 
 --
--- Indexes for table `editablefilefield_versions`
+-- Indizes für die Tabelle `editablefilefield_versions`
 --
 ALTER TABLE `editablefilefield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6311,7 +6359,7 @@ ALTER TABLE `editablefilefield_versions`
   ADD KEY `FolderID` (`FolderID`);
 
 --
--- Indexes for table `editableformfield`
+-- Indizes für die Tabelle `editableformfield`
 --
 ALTER TABLE `editableformfield`
   ADD PRIMARY KEY (`ID`),
@@ -6320,7 +6368,7 @@ ALTER TABLE `editableformfield`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `editableformfield_live`
+-- Indizes für die Tabelle `editableformfield_live`
 --
 ALTER TABLE `editableformfield_live`
   ADD PRIMARY KEY (`ID`),
@@ -6329,7 +6377,7 @@ ALTER TABLE `editableformfield_live`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `editableformfield_versions`
+-- Indizes für die Tabelle `editableformfield_versions`
 --
 ALTER TABLE `editableformfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6343,19 +6391,19 @@ ALTER TABLE `editableformfield_versions`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `editableformheading`
+-- Indizes für die Tabelle `editableformheading`
 --
 ALTER TABLE `editableformheading`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editableformheading_live`
+-- Indizes für die Tabelle `editableformheading_live`
 --
 ALTER TABLE `editableformheading_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editableformheading_versions`
+-- Indizes für die Tabelle `editableformheading_versions`
 --
 ALTER TABLE `editableformheading_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6364,19 +6412,19 @@ ALTER TABLE `editableformheading_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editableliteralfield`
+-- Indizes für die Tabelle `editableliteralfield`
 --
 ALTER TABLE `editableliteralfield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editableliteralfield_live`
+-- Indizes für die Tabelle `editableliteralfield_live`
 --
 ALTER TABLE `editableliteralfield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editableliteralfield_versions`
+-- Indizes für die Tabelle `editableliteralfield_versions`
 --
 ALTER TABLE `editableliteralfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6385,21 +6433,21 @@ ALTER TABLE `editableliteralfield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editablememberlistfield`
+-- Indizes für die Tabelle `editablememberlistfield`
 --
 ALTER TABLE `editablememberlistfield`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `editablememberlistfield_live`
+-- Indizes für die Tabelle `editablememberlistfield_live`
 --
 ALTER TABLE `editablememberlistfield_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `editablememberlistfield_versions`
+-- Indizes für die Tabelle `editablememberlistfield_versions`
 --
 ALTER TABLE `editablememberlistfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6409,19 +6457,19 @@ ALTER TABLE `editablememberlistfield_versions`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `editablenumericfield`
+-- Indizes für die Tabelle `editablenumericfield`
 --
 ALTER TABLE `editablenumericfield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablenumericfield_live`
+-- Indizes für die Tabelle `editablenumericfield_live`
 --
 ALTER TABLE `editablenumericfield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablenumericfield_versions`
+-- Indizes für die Tabelle `editablenumericfield_versions`
 --
 ALTER TABLE `editablenumericfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6430,7 +6478,7 @@ ALTER TABLE `editablenumericfield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editableoption`
+-- Indizes für die Tabelle `editableoption`
 --
 ALTER TABLE `editableoption`
   ADD PRIMARY KEY (`ID`),
@@ -6439,7 +6487,7 @@ ALTER TABLE `editableoption`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `editableoption_live`
+-- Indizes für die Tabelle `editableoption_live`
 --
 ALTER TABLE `editableoption_live`
   ADD PRIMARY KEY (`ID`),
@@ -6448,7 +6496,7 @@ ALTER TABLE `editableoption_live`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `editableoption_versions`
+-- Indizes für die Tabelle `editableoption_versions`
 --
 ALTER TABLE `editableoption_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6462,19 +6510,19 @@ ALTER TABLE `editableoption_versions`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `editablespamprotectionfield`
+-- Indizes für die Tabelle `editablespamprotectionfield`
 --
 ALTER TABLE `editablespamprotectionfield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablespamprotectionfield_live`
+-- Indizes für die Tabelle `editablespamprotectionfield_live`
 --
 ALTER TABLE `editablespamprotectionfield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editablespamprotectionfield_versions`
+-- Indizes für die Tabelle `editablespamprotectionfield_versions`
 --
 ALTER TABLE `editablespamprotectionfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6483,19 +6531,19 @@ ALTER TABLE `editablespamprotectionfield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `editabletextfield`
+-- Indizes für die Tabelle `editabletextfield`
 --
 ALTER TABLE `editabletextfield`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabletextfield_live`
+-- Indizes für die Tabelle `editabletextfield_live`
 --
 ALTER TABLE `editabletextfield_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `editabletextfield_versions`
+-- Indizes für die Tabelle `editabletextfield_versions`
 --
 ALTER TABLE `editabletextfield_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6504,7 +6552,7 @@ ALTER TABLE `editabletextfield_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `element`
+-- Indizes für die Tabelle `element`
 --
 ALTER TABLE `element`
   ADD PRIMARY KEY (`ID`),
@@ -6513,19 +6561,19 @@ ALTER TABLE `element`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `elementaccordion`
+-- Indizes für die Tabelle `elementaccordion`
 --
 ALTER TABLE `elementaccordion`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementaccordion_live`
+-- Indizes für die Tabelle `elementaccordion_live`
 --
 ALTER TABLE `elementaccordion_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementaccordion_versions`
+-- Indizes für die Tabelle `elementaccordion_versions`
 --
 ALTER TABLE `elementaccordion_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6534,21 +6582,21 @@ ALTER TABLE `elementaccordion_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `elementalarea`
+-- Indizes für die Tabelle `elementalarea`
 --
 ALTER TABLE `elementalarea`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `elementalarea_live`
+-- Indizes für die Tabelle `elementalarea_live`
 --
 ALTER TABLE `elementalarea_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `elementalarea_versions`
+-- Indizes für die Tabelle `elementalarea_versions`
 --
 ALTER TABLE `elementalarea_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6560,19 +6608,19 @@ ALTER TABLE `elementalarea_versions`
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `elementcontent`
+-- Indizes für die Tabelle `elementcontent`
 --
 ALTER TABLE `elementcontent`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementcontent_live`
+-- Indizes für die Tabelle `elementcontent_live`
 --
 ALTER TABLE `elementcontent_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementcontent_versions`
+-- Indizes für die Tabelle `elementcontent_versions`
 --
 ALTER TABLE `elementcontent_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6581,19 +6629,19 @@ ALTER TABLE `elementcontent_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `elementembeddedcode`
+-- Indizes für die Tabelle `elementembeddedcode`
 --
 ALTER TABLE `elementembeddedcode`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementembeddedcode_live`
+-- Indizes für die Tabelle `elementembeddedcode_live`
 --
 ALTER TABLE `elementembeddedcode_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementembeddedcode_versions`
+-- Indizes für die Tabelle `elementembeddedcode_versions`
 --
 ALTER TABLE `elementembeddedcode_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6602,19 +6650,19 @@ ALTER TABLE `elementembeddedcode_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `elementform`
+-- Indizes für die Tabelle `elementform`
 --
 ALTER TABLE `elementform`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementform_live`
+-- Indizes für die Tabelle `elementform_live`
 --
 ALTER TABLE `elementform_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementform_versions`
+-- Indizes für die Tabelle `elementform_versions`
 --
 ALTER TABLE `elementform_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6623,21 +6671,21 @@ ALTER TABLE `elementform_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `elementimage`
+-- Indizes für die Tabelle `elementimage`
 --
 ALTER TABLE `elementimage`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ImageID` (`ImageID`);
 
 --
--- Indexes for table `elementimage_live`
+-- Indizes für die Tabelle `elementimage_live`
 --
 ALTER TABLE `elementimage_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ImageID` (`ImageID`);
 
 --
--- Indexes for table `elementimage_versions`
+-- Indizes für die Tabelle `elementimage_versions`
 --
 ALTER TABLE `elementimage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6647,21 +6695,21 @@ ALTER TABLE `elementimage_versions`
   ADD KEY `ImageID` (`ImageID`);
 
 --
--- Indexes for table `elementoembed`
+-- Indizes für die Tabelle `elementoembed`
 --
 ALTER TABLE `elementoembed`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `EmbeddedObjectID` (`EmbeddedObjectID`);
 
 --
--- Indexes for table `elementoembed_live`
+-- Indizes für die Tabelle `elementoembed_live`
 --
 ALTER TABLE `elementoembed_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `EmbeddedObjectID` (`EmbeddedObjectID`);
 
 --
--- Indexes for table `elementoembed_versions`
+-- Indizes für die Tabelle `elementoembed_versions`
 --
 ALTER TABLE `elementoembed_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6671,19 +6719,19 @@ ALTER TABLE `elementoembed_versions`
   ADD KEY `EmbeddedObjectID` (`EmbeddedObjectID`);
 
 --
--- Indexes for table `elementphotogallery`
+-- Indizes für die Tabelle `elementphotogallery`
 --
 ALTER TABLE `elementphotogallery`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementphotogallery_live`
+-- Indizes für die Tabelle `elementphotogallery_live`
 --
 ALTER TABLE `elementphotogallery_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementphotogallery_versions`
+-- Indizes für die Tabelle `elementphotogallery_versions`
 --
 ALTER TABLE `elementphotogallery_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6692,19 +6740,19 @@ ALTER TABLE `elementphotogallery_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `elementslideshow`
+-- Indizes für die Tabelle `elementslideshow`
 --
 ALTER TABLE `elementslideshow`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementslideshow_live`
+-- Indizes für die Tabelle `elementslideshow_live`
 --
 ALTER TABLE `elementslideshow_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `elementslideshow_versions`
+-- Indizes für die Tabelle `elementslideshow_versions`
 --
 ALTER TABLE `elementslideshow_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6713,7 +6761,7 @@ ALTER TABLE `elementslideshow_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `element_live`
+-- Indizes für die Tabelle `element_live`
 --
 ALTER TABLE `element_live`
   ADD PRIMARY KEY (`ID`),
@@ -6722,7 +6770,7 @@ ALTER TABLE `element_live`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `element_versions`
+-- Indizes für die Tabelle `element_versions`
 --
 ALTER TABLE `element_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6736,19 +6784,19 @@ ALTER TABLE `element_versions`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `errorpage`
+-- Indizes für die Tabelle `errorpage`
 --
 ALTER TABLE `errorpage`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `errorpage_live`
+-- Indizes für die Tabelle `errorpage_live`
 --
 ALTER TABLE `errorpage_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `errorpage_versions`
+-- Indizes für die Tabelle `errorpage_versions`
 --
 ALTER TABLE `errorpage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6757,7 +6805,7 @@ ALTER TABLE `errorpage_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `file`
+-- Indizes für die Tabelle `file`
 --
 ALTER TABLE `file`
   ADD PRIMARY KEY (`ID`),
@@ -6768,7 +6816,7 @@ ALTER TABLE `file`
   ADD KEY `FileHash` (`FileHash`);
 
 --
--- Indexes for table `filelink`
+-- Indizes für die Tabelle `filelink`
 --
 ALTER TABLE `filelink`
   ADD PRIMARY KEY (`ID`),
@@ -6777,7 +6825,7 @@ ALTER TABLE `filelink`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `filelistobject`
+-- Indizes für die Tabelle `filelistobject`
 --
 ALTER TABLE `filelistobject`
   ADD PRIMARY KEY (`ID`),
@@ -6786,7 +6834,7 @@ ALTER TABLE `filelistobject`
   ADD KEY `FileID` (`FileID`);
 
 --
--- Indexes for table `file_editorgroups`
+-- Indizes für die Tabelle `file_editorgroups`
 --
 ALTER TABLE `file_editorgroups`
   ADD PRIMARY KEY (`ID`),
@@ -6794,7 +6842,7 @@ ALTER TABLE `file_editorgroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `file_live`
+-- Indizes für die Tabelle `file_live`
 --
 ALTER TABLE `file_live`
   ADD PRIMARY KEY (`ID`),
@@ -6805,7 +6853,7 @@ ALTER TABLE `file_live`
   ADD KEY `FileHash` (`FileHash`);
 
 --
--- Indexes for table `file_versions`
+-- Indizes für die Tabelle `file_versions`
 --
 ALTER TABLE `file_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6821,7 +6869,7 @@ ALTER TABLE `file_versions`
   ADD KEY `FileHash` (`FileHash`);
 
 --
--- Indexes for table `file_viewergroups`
+-- Indizes für die Tabelle `file_viewergroups`
 --
 ALTER TABLE `file_viewergroups`
   ADD PRIMARY KEY (`ID`),
@@ -6829,7 +6877,7 @@ ALTER TABLE `file_viewergroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `galleryimage`
+-- Indizes für die Tabelle `galleryimage`
 --
 ALTER TABLE `galleryimage`
   ADD PRIMARY KEY (`ID`),
@@ -6837,7 +6885,7 @@ ALTER TABLE `galleryimage`
   ADD KEY `PhotoGalleryID` (`PhotoGalleryID`);
 
 --
--- Indexes for table `galleryimage_live`
+-- Indizes für die Tabelle `galleryimage_live`
 --
 ALTER TABLE `galleryimage_live`
   ADD PRIMARY KEY (`ID`),
@@ -6845,7 +6893,7 @@ ALTER TABLE `galleryimage_live`
   ADD KEY `PhotoGalleryID` (`PhotoGalleryID`);
 
 --
--- Indexes for table `galleryimage_versions`
+-- Indizes für die Tabelle `galleryimage_versions`
 --
 ALTER TABLE `galleryimage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6856,7 +6904,7 @@ ALTER TABLE `galleryimage_versions`
   ADD KEY `PhotoGalleryID` (`PhotoGalleryID`);
 
 --
--- Indexes for table `group`
+-- Indizes für die Tabelle `group`
 --
 ALTER TABLE `group`
   ADD PRIMARY KEY (`ID`),
@@ -6864,7 +6912,7 @@ ALTER TABLE `group`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `group_members`
+-- Indizes für die Tabelle `group_members`
 --
 ALTER TABLE `group_members`
   ADD PRIMARY KEY (`ID`),
@@ -6872,7 +6920,7 @@ ALTER TABLE `group_members`
   ADD KEY `MemberID` (`MemberID`);
 
 --
--- Indexes for table `group_roles`
+-- Indizes für die Tabelle `group_roles`
 --
 ALTER TABLE `group_roles`
   ADD PRIMARY KEY (`ID`),
@@ -6880,14 +6928,14 @@ ALTER TABLE `group_roles`
   ADD KEY `PermissionRoleID` (`PermissionRoleID`);
 
 --
--- Indexes for table `linkableembed`
+-- Indizes für die Tabelle `linkableembed`
 --
 ALTER TABLE `linkableembed`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `linkablelink`
+-- Indizes für die Tabelle `linkablelink`
 --
 ALTER TABLE `linkablelink`
   ADD PRIMARY KEY (`ID`),
@@ -6896,7 +6944,7 @@ ALTER TABLE `linkablelink`
   ADD KEY `FileID` (`FileID`);
 
 --
--- Indexes for table `loginattempt`
+-- Indizes für die Tabelle `loginattempt`
 --
 ALTER TABLE `loginattempt`
   ADD PRIMARY KEY (`ID`),
@@ -6905,7 +6953,7 @@ ALTER TABLE `loginattempt`
   ADD KEY `EmailHashed` (`EmailHashed`);
 
 --
--- Indexes for table `member`
+-- Indizes für die Tabelle `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`ID`),
@@ -6915,7 +6963,7 @@ ALTER TABLE `member`
   ADD KEY `Email` (`Email`);
 
 --
--- Indexes for table `memberpassword`
+-- Indizes für die Tabelle `memberpassword`
 --
 ALTER TABLE `memberpassword`
   ADD PRIMARY KEY (`ID`),
@@ -6923,7 +6971,7 @@ ALTER TABLE `memberpassword`
   ADD KEY `MemberID` (`MemberID`);
 
 --
--- Indexes for table `menuitem`
+-- Indizes für die Tabelle `menuitem`
 --
 ALTER TABLE `menuitem`
   ADD PRIMARY KEY (`ID`),
@@ -6933,28 +6981,28 @@ ALTER TABLE `menuitem`
   ADD KEY `MenuSetID` (`MenuSetID`);
 
 --
--- Indexes for table `menuset`
+-- Indizes für die Tabelle `menuset`
 --
 ALTER TABLE `menuset`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `page`
+-- Indizes für die Tabelle `page`
 --
 ALTER TABLE `page`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ElementalAreaID` (`ElementalAreaID`);
 
 --
--- Indexes for table `page_live`
+-- Indizes für die Tabelle `page_live`
 --
 ALTER TABLE `page_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ElementalAreaID` (`ElementalAreaID`);
 
 --
--- Indexes for table `page_versions`
+-- Indizes für die Tabelle `page_versions`
 --
 ALTER TABLE `page_versions`
   ADD PRIMARY KEY (`ID`),
@@ -6964,7 +7012,7 @@ ALTER TABLE `page_versions`
   ADD KEY `ElementalAreaID` (`ElementalAreaID`);
 
 --
--- Indexes for table `permission`
+-- Indizes für die Tabelle `permission`
 --
 ALTER TABLE `permission`
   ADD PRIMARY KEY (`ID`),
@@ -6973,7 +7021,7 @@ ALTER TABLE `permission`
   ADD KEY `Code` (`Code`);
 
 --
--- Indexes for table `permissionrole`
+-- Indizes für die Tabelle `permissionrole`
 --
 ALTER TABLE `permissionrole`
   ADD PRIMARY KEY (`ID`),
@@ -6981,7 +7029,7 @@ ALTER TABLE `permissionrole`
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `permissionrolecode`
+-- Indizes für die Tabelle `permissionrolecode`
 --
 ALTER TABLE `permissionrolecode`
   ADD PRIMARY KEY (`ID`),
@@ -6989,21 +7037,21 @@ ALTER TABLE `permissionrolecode`
   ADD KEY `RoleID` (`RoleID`);
 
 --
--- Indexes for table `redirectorpage`
+-- Indizes für die Tabelle `redirectorpage`
 --
 ALTER TABLE `redirectorpage`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `LinkToID` (`LinkToID`);
 
 --
--- Indexes for table `redirectorpage_live`
+-- Indizes für die Tabelle `redirectorpage_live`
 --
 ALTER TABLE `redirectorpage_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `LinkToID` (`LinkToID`);
 
 --
--- Indexes for table `redirectorpage_versions`
+-- Indizes für die Tabelle `redirectorpage_versions`
 --
 ALTER TABLE `redirectorpage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7013,7 +7061,7 @@ ALTER TABLE `redirectorpage_versions`
   ADD KEY `LinkToID` (`LinkToID`);
 
 --
--- Indexes for table `rememberloginhash`
+-- Indizes für die Tabelle `rememberloginhash`
 --
 ALTER TABLE `rememberloginhash`
   ADD PRIMARY KEY (`ID`),
@@ -7023,7 +7071,7 @@ ALTER TABLE `rememberloginhash`
   ADD KEY `Hash` (`Hash`);
 
 --
--- Indexes for table `siteconfig`
+-- Indizes für die Tabelle `siteconfig`
 --
 ALTER TABLE `siteconfig`
   ADD PRIMARY KEY (`ID`),
@@ -7033,7 +7081,7 @@ ALTER TABLE `siteconfig`
   ADD KEY `HeaderImageID` (`HeaderImageID`);
 
 --
--- Indexes for table `siteconfig_createtoplevelgroups`
+-- Indizes für die Tabelle `siteconfig_createtoplevelgroups`
 --
 ALTER TABLE `siteconfig_createtoplevelgroups`
   ADD PRIMARY KEY (`ID`),
@@ -7041,7 +7089,7 @@ ALTER TABLE `siteconfig_createtoplevelgroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `siteconfig_editorgroups`
+-- Indizes für die Tabelle `siteconfig_editorgroups`
 --
 ALTER TABLE `siteconfig_editorgroups`
   ADD PRIMARY KEY (`ID`),
@@ -7049,7 +7097,7 @@ ALTER TABLE `siteconfig_editorgroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `siteconfig_viewergroups`
+-- Indizes für die Tabelle `siteconfig_viewergroups`
 --
 ALTER TABLE `siteconfig_viewergroups`
   ADD PRIMARY KEY (`ID`),
@@ -7057,7 +7105,7 @@ ALTER TABLE `siteconfig_viewergroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `sitetree`
+-- Indizes für die Tabelle `sitetree`
 --
 ALTER TABLE `sitetree`
   ADD PRIMARY KEY (`ID`),
@@ -7067,7 +7115,7 @@ ALTER TABLE `sitetree`
   ADD KEY `URLSegment` (`URLSegment`);
 
 --
--- Indexes for table `sitetreelink`
+-- Indizes für die Tabelle `sitetreelink`
 --
 ALTER TABLE `sitetreelink`
   ADD PRIMARY KEY (`ID`),
@@ -7076,7 +7124,7 @@ ALTER TABLE `sitetreelink`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `sitetree_editorgroups`
+-- Indizes für die Tabelle `sitetree_editorgroups`
 --
 ALTER TABLE `sitetree_editorgroups`
   ADD PRIMARY KEY (`ID`),
@@ -7084,7 +7132,7 @@ ALTER TABLE `sitetree_editorgroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `sitetree_live`
+-- Indizes für die Tabelle `sitetree_live`
 --
 ALTER TABLE `sitetree_live`
   ADD PRIMARY KEY (`ID`),
@@ -7094,7 +7142,7 @@ ALTER TABLE `sitetree_live`
   ADD KEY `URLSegment` (`URLSegment`);
 
 --
--- Indexes for table `sitetree_versions`
+-- Indizes für die Tabelle `sitetree_versions`
 --
 ALTER TABLE `sitetree_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7109,7 +7157,7 @@ ALTER TABLE `sitetree_versions`
   ADD KEY `URLSegment` (`URLSegment`);
 
 --
--- Indexes for table `sitetree_viewergroups`
+-- Indizes für die Tabelle `sitetree_viewergroups`
 --
 ALTER TABLE `sitetree_viewergroups`
   ADD PRIMARY KEY (`ID`),
@@ -7117,7 +7165,7 @@ ALTER TABLE `sitetree_viewergroups`
   ADD KEY `GroupID` (`GroupID`);
 
 --
--- Indexes for table `slideimage`
+-- Indizes für die Tabelle `slideimage`
 --
 ALTER TABLE `slideimage`
   ADD PRIMARY KEY (`ID`),
@@ -7131,7 +7179,7 @@ ALTER TABLE `slideimage`
   ADD KEY `SlideLinkID` (`SlideLinkID`);
 
 --
--- Indexes for table `slideimage_live`
+-- Indizes für die Tabelle `slideimage_live`
 --
 ALTER TABLE `slideimage_live`
   ADD PRIMARY KEY (`ID`),
@@ -7145,7 +7193,7 @@ ALTER TABLE `slideimage_live`
   ADD KEY `SlideLinkID` (`SlideLinkID`);
 
 --
--- Indexes for table `slideimage_versions`
+-- Indizes für die Tabelle `slideimage_versions`
 --
 ALTER TABLE `slideimage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7164,7 +7212,7 @@ ALTER TABLE `slideimage_versions`
   ADD KEY `SlideLinkID` (`SlideLinkID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticlecategories`
+-- Indizes für die Tabelle `streunerkatzen_blogarticlecategories`
 --
 ALTER TABLE `streunerkatzen_blogarticlecategories`
   ADD PRIMARY KEY (`ID`),
@@ -7172,13 +7220,13 @@ ALTER TABLE `streunerkatzen_blogarticlecategories`
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `streunerkatzen_blogarticlelistelement`
+-- Indizes für die Tabelle `streunerkatzen_blogarticlelistelement`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticlelistelement_categories`
+-- Indizes für die Tabelle `streunerkatzen_blogarticlelistelement_categories`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_categories`
   ADD PRIMARY KEY (`ID`),
@@ -7186,13 +7234,13 @@ ALTER TABLE `streunerkatzen_blogarticlelistelement_categories`
   ADD KEY `Streunerkatzen_BlogArticleCategoriesID` (`Streunerkatzen_BlogArticleCategoriesID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticlelistelement_live`
+-- Indizes für die Tabelle `streunerkatzen_blogarticlelistelement_live`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticlelistelement_versions`
+-- Indizes für die Tabelle `streunerkatzen_blogarticlelistelement_versions`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7201,7 +7249,7 @@ ALTER TABLE `streunerkatzen_blogarticlelistelement_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `streunerkatzen_blogarticles`
+-- Indizes für die Tabelle `streunerkatzen_blogarticles`
 --
 ALTER TABLE `streunerkatzen_blogarticles`
   ADD PRIMARY KEY (`ID`),
@@ -7211,7 +7259,7 @@ ALTER TABLE `streunerkatzen_blogarticles`
   ADD KEY `PostImageID` (`PostImageID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticles_categories`
+-- Indizes für die Tabelle `streunerkatzen_blogarticles_categories`
 --
 ALTER TABLE `streunerkatzen_blogarticles_categories`
   ADD PRIMARY KEY (`ID`),
@@ -7219,7 +7267,7 @@ ALTER TABLE `streunerkatzen_blogarticles_categories`
   ADD KEY `Streunerkatzen_BlogArticleCategoriesID` (`Streunerkatzen_BlogArticleCategoriesID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticles_live`
+-- Indizes für die Tabelle `streunerkatzen_blogarticles_live`
 --
 ALTER TABLE `streunerkatzen_blogarticles_live`
   ADD PRIMARY KEY (`ID`),
@@ -7229,7 +7277,7 @@ ALTER TABLE `streunerkatzen_blogarticles_live`
   ADD KEY `PostImageID` (`PostImageID`);
 
 --
--- Indexes for table `streunerkatzen_blogarticles_versions`
+-- Indizes für die Tabelle `streunerkatzen_blogarticles_versions`
 --
 ALTER TABLE `streunerkatzen_blogarticles_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7244,21 +7292,21 @@ ALTER TABLE `streunerkatzen_blogarticles_versions`
   ADD KEY `PostImageID` (`PostImageID`);
 
 --
--- Indexes for table `streunerkatzen_buttonelement`
+-- Indizes für die Tabelle `streunerkatzen_buttonelement`
 --
 ALTER TABLE `streunerkatzen_buttonelement`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `PageID` (`PageID`);
 
 --
--- Indexes for table `streunerkatzen_buttonelement_live`
+-- Indizes für die Tabelle `streunerkatzen_buttonelement_live`
 --
 ALTER TABLE `streunerkatzen_buttonelement_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `PageID` (`PageID`);
 
 --
--- Indexes for table `streunerkatzen_buttonelement_versions`
+-- Indizes für die Tabelle `streunerkatzen_buttonelement_versions`
 --
 ALTER TABLE `streunerkatzen_buttonelement_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7268,7 +7316,7 @@ ALTER TABLE `streunerkatzen_buttonelement_versions`
   ADD KEY `PageID` (`PageID`);
 
 --
--- Indexes for table `streunerkatzen_cats`
+-- Indizes für die Tabelle `streunerkatzen_cats`
 --
 ALTER TABLE `streunerkatzen_cats`
   ADD PRIMARY KEY (`ID`),
@@ -7276,19 +7324,19 @@ ALTER TABLE `streunerkatzen_cats`
   ADD KEY `NotifierID` (`NotifierID`);
 
 --
--- Indexes for table `streunerkatzen_catsearchpage`
+-- Indizes für die Tabelle `streunerkatzen_catsearchpage`
 --
 ALTER TABLE `streunerkatzen_catsearchpage`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `streunerkatzen_catsearchpage_live`
+-- Indizes für die Tabelle `streunerkatzen_catsearchpage_live`
 --
 ALTER TABLE `streunerkatzen_catsearchpage_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `streunerkatzen_catsearchpage_versions`
+-- Indizes für die Tabelle `streunerkatzen_catsearchpage_versions`
 --
 ALTER TABLE `streunerkatzen_catsearchpage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7297,7 +7345,7 @@ ALTER TABLE `streunerkatzen_catsearchpage_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `streunerkatzen_cats_attachments`
+-- Indizes für die Tabelle `streunerkatzen_cats_attachments`
 --
 ALTER TABLE `streunerkatzen_cats_attachments`
   ADD PRIMARY KEY (`ID`),
@@ -7305,7 +7353,7 @@ ALTER TABLE `streunerkatzen_cats_attachments`
   ADD KEY `FileID` (`FileID`);
 
 --
--- Indexes for table `streunerkatzen_cats_furcolors`
+-- Indizes für die Tabelle `streunerkatzen_cats_furcolors`
 --
 ALTER TABLE `streunerkatzen_cats_furcolors`
   ADD PRIMARY KEY (`ID`),
@@ -7313,14 +7361,14 @@ ALTER TABLE `streunerkatzen_cats_furcolors`
   ADD KEY `Streunerkatzen_FurColorsID` (`Streunerkatzen_FurColorsID`);
 
 --
--- Indexes for table `streunerkatzen_furcolors`
+-- Indizes für die Tabelle `streunerkatzen_furcolors`
 --
 ALTER TABLE `streunerkatzen_furcolors`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `streunerkatzen_furcolors_cat`
+-- Indizes für die Tabelle `streunerkatzen_furcolors_cat`
 --
 ALTER TABLE `streunerkatzen_furcolors_cat`
   ADD PRIMARY KEY (`ID`),
@@ -7328,7 +7376,7 @@ ALTER TABLE `streunerkatzen_furcolors_cat`
   ADD KEY `Streunerkatzen_CatsID` (`Streunerkatzen_CatsID`);
 
 --
--- Indexes for table `streunerkatzen_furcolors_exampleimages`
+-- Indizes für die Tabelle `streunerkatzen_furcolors_exampleimages`
 --
 ALTER TABLE `streunerkatzen_furcolors_exampleimages`
   ADD PRIMARY KEY (`ID`),
@@ -7336,35 +7384,35 @@ ALTER TABLE `streunerkatzen_furcolors_exampleimages`
   ADD KEY `ImageID` (`ImageID`);
 
 --
--- Indexes for table `streunerkatzen_notifier`
+-- Indizes für die Tabelle `streunerkatzen_notifier`
 --
 ALTER TABLE `streunerkatzen_notifier`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `streunerkatzen_searchagents`
+-- Indizes für die Tabelle `streunerkatzen_searchagents`
 --
 ALTER TABLE `streunerkatzen_searchagents`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ClassName` (`ClassName`);
 
 --
--- Indexes for table `streunerkatzen_singlecatelement`
+-- Indizes für die Tabelle `streunerkatzen_singlecatelement`
 --
 ALTER TABLE `streunerkatzen_singlecatelement`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CatID` (`CatID`);
 
 --
--- Indexes for table `streunerkatzen_singlecatelement_live`
+-- Indizes für die Tabelle `streunerkatzen_singlecatelement_live`
 --
 ALTER TABLE `streunerkatzen_singlecatelement_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CatID` (`CatID`);
 
 --
--- Indexes for table `streunerkatzen_singlecatelement_versions`
+-- Indizes für die Tabelle `streunerkatzen_singlecatelement_versions`
 --
 ALTER TABLE `streunerkatzen_singlecatelement_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7374,14 +7422,14 @@ ALTER TABLE `streunerkatzen_singlecatelement_versions`
   ADD KEY `CatID` (`CatID`);
 
 --
--- Indexes for table `submittedfilefield`
+-- Indizes für die Tabelle `submittedfilefield`
 --
 ALTER TABLE `submittedfilefield`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `UploadedFileID` (`UploadedFileID`);
 
 --
--- Indexes for table `submittedform`
+-- Indizes für die Tabelle `submittedform`
 --
 ALTER TABLE `submittedform`
   ADD PRIMARY KEY (`ID`),
@@ -7390,7 +7438,7 @@ ALTER TABLE `submittedform`
   ADD KEY `Parent` (`ParentID`,`ParentClass`);
 
 --
--- Indexes for table `submittedformfield`
+-- Indizes für die Tabelle `submittedformfield`
 --
 ALTER TABLE `submittedformfield`
   ADD PRIMARY KEY (`ID`),
@@ -7398,13 +7446,13 @@ ALTER TABLE `submittedformfield`
   ADD KEY `ParentID` (`ParentID`);
 
 --
--- Indexes for table `userdefinedform`
+-- Indizes für die Tabelle `userdefinedform`
 --
 ALTER TABLE `userdefinedform`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `userdefinedform_emailrecipient`
+-- Indizes für die Tabelle `userdefinedform_emailrecipient`
 --
 ALTER TABLE `userdefinedform_emailrecipient`
   ADD PRIMARY KEY (`ID`),
@@ -7415,7 +7463,7 @@ ALTER TABLE `userdefinedform_emailrecipient`
   ADD KEY `Form` (`FormID`,`FormClass`);
 
 --
--- Indexes for table `userdefinedform_emailrecipientcondition`
+-- Indizes für die Tabelle `userdefinedform_emailrecipientcondition`
 --
 ALTER TABLE `userdefinedform_emailrecipientcondition`
   ADD PRIMARY KEY (`ID`),
@@ -7424,13 +7472,13 @@ ALTER TABLE `userdefinedform_emailrecipientcondition`
   ADD KEY `ConditionFieldID` (`ConditionFieldID`);
 
 --
--- Indexes for table `userdefinedform_live`
+-- Indizes für die Tabelle `userdefinedform_live`
 --
 ALTER TABLE `userdefinedform_live`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `userdefinedform_versions`
+-- Indizes für die Tabelle `userdefinedform_versions`
 --
 ALTER TABLE `userdefinedform_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7439,21 +7487,21 @@ ALTER TABLE `userdefinedform_versions`
   ADD KEY `Version` (`Version`);
 
 --
--- Indexes for table `virtualpage`
+-- Indizes für die Tabelle `virtualpage`
 --
 ALTER TABLE `virtualpage`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CopyContentFromID` (`CopyContentFromID`);
 
 --
--- Indexes for table `virtualpage_live`
+-- Indizes für die Tabelle `virtualpage_live`
 --
 ALTER TABLE `virtualpage_live`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CopyContentFromID` (`CopyContentFromID`);
 
 --
--- Indexes for table `virtualpage_versions`
+-- Indizes für die Tabelle `virtualpage_versions`
 --
 ALTER TABLE `virtualpage_versions`
   ADD PRIMARY KEY (`ID`),
@@ -7463,1007 +7511,1007 @@ ALTER TABLE `virtualpage_versions`
   ADD KEY `CopyContentFromID` (`CopyContentFromID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `accordionpanel`
+-- AUTO_INCREMENT für Tabelle `accordionpanel`
 --
 ALTER TABLE `accordionpanel`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `accordionpanel_live`
+-- AUTO_INCREMENT für Tabelle `accordionpanel_live`
 --
 ALTER TABLE `accordionpanel_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `accordionpanel_versions`
+-- AUTO_INCREMENT für Tabelle `accordionpanel_versions`
 --
 ALTER TABLE `accordionpanel_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `baseelementobject`
+-- AUTO_INCREMENT für Tabelle `baseelementobject`
 --
 ALTER TABLE `baseelementobject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `baseelementobject_live`
+-- AUTO_INCREMENT für Tabelle `baseelementobject_live`
 --
 ALTER TABLE `baseelementobject_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `baseelementobject_versions`
+-- AUTO_INCREMENT für Tabelle `baseelementobject_versions`
 --
 ALTER TABLE `baseelementobject_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `changeset`
+-- AUTO_INCREMENT für Tabelle `changeset`
 --
 ALTER TABLE `changeset`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
--- AUTO_INCREMENT for table `changesetitem`
+-- AUTO_INCREMENT für Tabelle `changesetitem`
 --
 ALTER TABLE `changesetitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=556;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=566;
 
 --
--- AUTO_INCREMENT for table `changesetitem_referencedby`
+-- AUTO_INCREMENT für Tabelle `changesetitem_referencedby`
 --
 ALTER TABLE `changesetitem_referencedby`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=362;
 
 --
--- AUTO_INCREMENT for table `editablecheckbox`
+-- AUTO_INCREMENT für Tabelle `editablecheckbox`
 --
 ALTER TABLE `editablecheckbox`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `editablecheckbox_live`
+-- AUTO_INCREMENT für Tabelle `editablecheckbox_live`
 --
 ALTER TABLE `editablecheckbox_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `editablecheckbox_versions`
+-- AUTO_INCREMENT für Tabelle `editablecheckbox_versions`
 --
 ALTER TABLE `editablecheckbox_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `editablecountrydropdownfield`
+-- AUTO_INCREMENT für Tabelle `editablecountrydropdownfield`
 --
 ALTER TABLE `editablecountrydropdownfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablecountrydropdownfield_live`
+-- AUTO_INCREMENT für Tabelle `editablecountrydropdownfield_live`
 --
 ALTER TABLE `editablecountrydropdownfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablecountrydropdownfield_versions`
+-- AUTO_INCREMENT für Tabelle `editablecountrydropdownfield_versions`
 --
 ALTER TABLE `editablecountrydropdownfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablecustomrule`
+-- AUTO_INCREMENT für Tabelle `editablecustomrule`
 --
 ALTER TABLE `editablecustomrule`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablecustomrule_live`
+-- AUTO_INCREMENT für Tabelle `editablecustomrule_live`
 --
 ALTER TABLE `editablecustomrule_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablecustomrule_versions`
+-- AUTO_INCREMENT für Tabelle `editablecustomrule_versions`
 --
 ALTER TABLE `editablecustomrule_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editabledatefield`
+-- AUTO_INCREMENT für Tabelle `editabledatefield`
 --
 ALTER TABLE `editabledatefield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editabledatefield_live`
+-- AUTO_INCREMENT für Tabelle `editabledatefield_live`
 --
 ALTER TABLE `editabledatefield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editabledatefield_versions`
+-- AUTO_INCREMENT für Tabelle `editabledatefield_versions`
 --
 ALTER TABLE `editabledatefield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editabledropdown`
+-- AUTO_INCREMENT für Tabelle `editabledropdown`
 --
 ALTER TABLE `editabledropdown`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `editabledropdown_live`
+-- AUTO_INCREMENT für Tabelle `editabledropdown_live`
 --
 ALTER TABLE `editabledropdown_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `editabledropdown_versions`
+-- AUTO_INCREMENT für Tabelle `editabledropdown_versions`
 --
 ALTER TABLE `editabledropdown_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `editablefieldgroup`
+-- AUTO_INCREMENT für Tabelle `editablefieldgroup`
 --
 ALTER TABLE `editablefieldgroup`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablefieldgroup_live`
+-- AUTO_INCREMENT für Tabelle `editablefieldgroup_live`
 --
 ALTER TABLE `editablefieldgroup_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablefieldgroup_versions`
+-- AUTO_INCREMENT für Tabelle `editablefieldgroup_versions`
 --
 ALTER TABLE `editablefieldgroup_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablefilefield`
+-- AUTO_INCREMENT für Tabelle `editablefilefield`
 --
 ALTER TABLE `editablefilefield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `editablefilefield_live`
+-- AUTO_INCREMENT für Tabelle `editablefilefield_live`
 --
 ALTER TABLE `editablefilefield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `editablefilefield_versions`
+-- AUTO_INCREMENT für Tabelle `editablefilefield_versions`
 --
 ALTER TABLE `editablefilefield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `editableformfield`
+-- AUTO_INCREMENT für Tabelle `editableformfield`
 --
 ALTER TABLE `editableformfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `editableformfield_live`
+-- AUTO_INCREMENT für Tabelle `editableformfield_live`
 --
 ALTER TABLE `editableformfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `editableformfield_versions`
+-- AUTO_INCREMENT für Tabelle `editableformfield_versions`
 --
 ALTER TABLE `editableformfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
--- AUTO_INCREMENT for table `editableformheading`
+-- AUTO_INCREMENT für Tabelle `editableformheading`
 --
 ALTER TABLE `editableformheading`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editableformheading_live`
+-- AUTO_INCREMENT für Tabelle `editableformheading_live`
 --
 ALTER TABLE `editableformheading_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editableformheading_versions`
+-- AUTO_INCREMENT für Tabelle `editableformheading_versions`
 --
 ALTER TABLE `editableformheading_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editableliteralfield`
+-- AUTO_INCREMENT für Tabelle `editableliteralfield`
 --
 ALTER TABLE `editableliteralfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editableliteralfield_live`
+-- AUTO_INCREMENT für Tabelle `editableliteralfield_live`
 --
 ALTER TABLE `editableliteralfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editableliteralfield_versions`
+-- AUTO_INCREMENT für Tabelle `editableliteralfield_versions`
 --
 ALTER TABLE `editableliteralfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablememberlistfield`
+-- AUTO_INCREMENT für Tabelle `editablememberlistfield`
 --
 ALTER TABLE `editablememberlistfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablememberlistfield_live`
+-- AUTO_INCREMENT für Tabelle `editablememberlistfield_live`
 --
 ALTER TABLE `editablememberlistfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablememberlistfield_versions`
+-- AUTO_INCREMENT für Tabelle `editablememberlistfield_versions`
 --
 ALTER TABLE `editablememberlistfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablenumericfield`
+-- AUTO_INCREMENT für Tabelle `editablenumericfield`
 --
 ALTER TABLE `editablenumericfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `editablenumericfield_live`
+-- AUTO_INCREMENT für Tabelle `editablenumericfield_live`
 --
 ALTER TABLE `editablenumericfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `editablenumericfield_versions`
+-- AUTO_INCREMENT für Tabelle `editablenumericfield_versions`
 --
 ALTER TABLE `editablenumericfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `editableoption`
+-- AUTO_INCREMENT für Tabelle `editableoption`
 --
 ALTER TABLE `editableoption`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `editableoption_live`
+-- AUTO_INCREMENT für Tabelle `editableoption_live`
 --
 ALTER TABLE `editableoption_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `editableoption_versions`
+-- AUTO_INCREMENT für Tabelle `editableoption_versions`
 --
 ALTER TABLE `editableoption_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- AUTO_INCREMENT for table `editablespamprotectionfield`
+-- AUTO_INCREMENT für Tabelle `editablespamprotectionfield`
 --
 ALTER TABLE `editablespamprotectionfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablespamprotectionfield_live`
+-- AUTO_INCREMENT für Tabelle `editablespamprotectionfield_live`
 --
 ALTER TABLE `editablespamprotectionfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editablespamprotectionfield_versions`
+-- AUTO_INCREMENT für Tabelle `editablespamprotectionfield_versions`
 --
 ALTER TABLE `editablespamprotectionfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `editabletextfield`
+-- AUTO_INCREMENT für Tabelle `editabletextfield`
 --
 ALTER TABLE `editabletextfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `editabletextfield_live`
+-- AUTO_INCREMENT für Tabelle `editabletextfield_live`
 --
 ALTER TABLE `editabletextfield_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `editabletextfield_versions`
+-- AUTO_INCREMENT für Tabelle `editabletextfield_versions`
 --
 ALTER TABLE `editabletextfield_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
--- AUTO_INCREMENT for table `element`
+-- AUTO_INCREMENT für Tabelle `element`
 --
 ALTER TABLE `element`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `elementaccordion`
+-- AUTO_INCREMENT für Tabelle `elementaccordion`
 --
 ALTER TABLE `elementaccordion`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementaccordion_live`
+-- AUTO_INCREMENT für Tabelle `elementaccordion_live`
 --
 ALTER TABLE `elementaccordion_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementaccordion_versions`
+-- AUTO_INCREMENT für Tabelle `elementaccordion_versions`
 --
 ALTER TABLE `elementaccordion_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementalarea`
+-- AUTO_INCREMENT für Tabelle `elementalarea`
 --
 ALTER TABLE `elementalarea`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `elementalarea_live`
+-- AUTO_INCREMENT für Tabelle `elementalarea_live`
 --
 ALTER TABLE `elementalarea_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `elementalarea_versions`
+-- AUTO_INCREMENT für Tabelle `elementalarea_versions`
 --
 ALTER TABLE `elementalarea_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
--- AUTO_INCREMENT for table `elementcontent`
+-- AUTO_INCREMENT für Tabelle `elementcontent`
 --
 ALTER TABLE `elementcontent`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `elementcontent_live`
+-- AUTO_INCREMENT für Tabelle `elementcontent_live`
 --
 ALTER TABLE `elementcontent_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `elementcontent_versions`
+-- AUTO_INCREMENT für Tabelle `elementcontent_versions`
 --
 ALTER TABLE `elementcontent_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
--- AUTO_INCREMENT for table `elementembeddedcode`
+-- AUTO_INCREMENT für Tabelle `elementembeddedcode`
 --
 ALTER TABLE `elementembeddedcode`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementembeddedcode_live`
+-- AUTO_INCREMENT für Tabelle `elementembeddedcode_live`
 --
 ALTER TABLE `elementembeddedcode_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementembeddedcode_versions`
+-- AUTO_INCREMENT für Tabelle `elementembeddedcode_versions`
 --
 ALTER TABLE `elementembeddedcode_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementform`
+-- AUTO_INCREMENT für Tabelle `elementform`
 --
 ALTER TABLE `elementform`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `elementform_live`
+-- AUTO_INCREMENT für Tabelle `elementform_live`
 --
 ALTER TABLE `elementform_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `elementform_versions`
+-- AUTO_INCREMENT für Tabelle `elementform_versions`
 --
 ALTER TABLE `elementform_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `elementimage`
+-- AUTO_INCREMENT für Tabelle `elementimage`
 --
 ALTER TABLE `elementimage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementimage_live`
+-- AUTO_INCREMENT für Tabelle `elementimage_live`
 --
 ALTER TABLE `elementimage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementimage_versions`
+-- AUTO_INCREMENT für Tabelle `elementimage_versions`
 --
 ALTER TABLE `elementimage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementoembed`
+-- AUTO_INCREMENT für Tabelle `elementoembed`
 --
 ALTER TABLE `elementoembed`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `elementoembed_live`
+-- AUTO_INCREMENT für Tabelle `elementoembed_live`
 --
 ALTER TABLE `elementoembed_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `elementoembed_versions`
+-- AUTO_INCREMENT für Tabelle `elementoembed_versions`
 --
 ALTER TABLE `elementoembed_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `elementphotogallery`
+-- AUTO_INCREMENT für Tabelle `elementphotogallery`
 --
 ALTER TABLE `elementphotogallery`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementphotogallery_live`
+-- AUTO_INCREMENT für Tabelle `elementphotogallery_live`
 --
 ALTER TABLE `elementphotogallery_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementphotogallery_versions`
+-- AUTO_INCREMENT für Tabelle `elementphotogallery_versions`
 --
 ALTER TABLE `elementphotogallery_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementslideshow`
+-- AUTO_INCREMENT für Tabelle `elementslideshow`
 --
 ALTER TABLE `elementslideshow`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementslideshow_live`
+-- AUTO_INCREMENT für Tabelle `elementslideshow_live`
 --
 ALTER TABLE `elementslideshow_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `elementslideshow_versions`
+-- AUTO_INCREMENT für Tabelle `elementslideshow_versions`
 --
 ALTER TABLE `elementslideshow_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `element_live`
+-- AUTO_INCREMENT für Tabelle `element_live`
 --
 ALTER TABLE `element_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `element_versions`
+-- AUTO_INCREMENT für Tabelle `element_versions`
 --
 ALTER TABLE `element_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
--- AUTO_INCREMENT for table `errorpage`
+-- AUTO_INCREMENT für Tabelle `errorpage`
 --
 ALTER TABLE `errorpage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `errorpage_live`
+-- AUTO_INCREMENT für Tabelle `errorpage_live`
 --
 ALTER TABLE `errorpage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `errorpage_versions`
+-- AUTO_INCREMENT für Tabelle `errorpage_versions`
 --
 ALTER TABLE `errorpage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `file`
+-- AUTO_INCREMENT für Tabelle `file`
 --
 ALTER TABLE `file`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `filelink`
+-- AUTO_INCREMENT für Tabelle `filelink`
 --
 ALTER TABLE `filelink`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `filelistobject`
+-- AUTO_INCREMENT für Tabelle `filelistobject`
 --
 ALTER TABLE `filelistobject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `file_editorgroups`
+-- AUTO_INCREMENT für Tabelle `file_editorgroups`
 --
 ALTER TABLE `file_editorgroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `file_live`
+-- AUTO_INCREMENT für Tabelle `file_live`
 --
 ALTER TABLE `file_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `file_versions`
+-- AUTO_INCREMENT für Tabelle `file_versions`
 --
 ALTER TABLE `file_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `file_viewergroups`
+-- AUTO_INCREMENT für Tabelle `file_viewergroups`
 --
 ALTER TABLE `file_viewergroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `galleryimage`
+-- AUTO_INCREMENT für Tabelle `galleryimage`
 --
 ALTER TABLE `galleryimage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `galleryimage_live`
+-- AUTO_INCREMENT für Tabelle `galleryimage_live`
 --
 ALTER TABLE `galleryimage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `galleryimage_versions`
+-- AUTO_INCREMENT für Tabelle `galleryimage_versions`
 --
 ALTER TABLE `galleryimage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `group`
+-- AUTO_INCREMENT für Tabelle `group`
 --
 ALTER TABLE `group`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `group_members`
+-- AUTO_INCREMENT für Tabelle `group_members`
 --
 ALTER TABLE `group_members`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `group_roles`
+-- AUTO_INCREMENT für Tabelle `group_roles`
 --
 ALTER TABLE `group_roles`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `linkableembed`
+-- AUTO_INCREMENT für Tabelle `linkableembed`
 --
 ALTER TABLE `linkableembed`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `linkablelink`
+-- AUTO_INCREMENT für Tabelle `linkablelink`
 --
 ALTER TABLE `linkablelink`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `loginattempt`
+-- AUTO_INCREMENT für Tabelle `loginattempt`
 --
 ALTER TABLE `loginattempt`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT für Tabelle `member`
 --
 ALTER TABLE `member`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `memberpassword`
+-- AUTO_INCREMENT für Tabelle `memberpassword`
 --
 ALTER TABLE `memberpassword`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `menuitem`
+-- AUTO_INCREMENT für Tabelle `menuitem`
 --
 ALTER TABLE `menuitem`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `menuset`
+-- AUTO_INCREMENT für Tabelle `menuset`
 --
 ALTER TABLE `menuset`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `page`
+-- AUTO_INCREMENT für Tabelle `page`
 --
 ALTER TABLE `page`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `page_live`
+-- AUTO_INCREMENT für Tabelle `page_live`
 --
 ALTER TABLE `page_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `page_versions`
+-- AUTO_INCREMENT für Tabelle `page_versions`
 --
 ALTER TABLE `page_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- AUTO_INCREMENT for table `permission`
+-- AUTO_INCREMENT für Tabelle `permission`
 --
 ALTER TABLE `permission`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `permissionrole`
+-- AUTO_INCREMENT für Tabelle `permissionrole`
 --
 ALTER TABLE `permissionrole`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `permissionrolecode`
+-- AUTO_INCREMENT für Tabelle `permissionrolecode`
 --
 ALTER TABLE `permissionrolecode`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `redirectorpage`
+-- AUTO_INCREMENT für Tabelle `redirectorpage`
 --
 ALTER TABLE `redirectorpage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `redirectorpage_live`
+-- AUTO_INCREMENT für Tabelle `redirectorpage_live`
 --
 ALTER TABLE `redirectorpage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `redirectorpage_versions`
+-- AUTO_INCREMENT für Tabelle `redirectorpage_versions`
 --
 ALTER TABLE `redirectorpage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rememberloginhash`
+-- AUTO_INCREMENT für Tabelle `rememberloginhash`
 --
 ALTER TABLE `rememberloginhash`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `siteconfig`
+-- AUTO_INCREMENT für Tabelle `siteconfig`
 --
 ALTER TABLE `siteconfig`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `siteconfig_createtoplevelgroups`
+-- AUTO_INCREMENT für Tabelle `siteconfig_createtoplevelgroups`
 --
 ALTER TABLE `siteconfig_createtoplevelgroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `siteconfig_editorgroups`
+-- AUTO_INCREMENT für Tabelle `siteconfig_editorgroups`
 --
 ALTER TABLE `siteconfig_editorgroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `siteconfig_viewergroups`
+-- AUTO_INCREMENT für Tabelle `siteconfig_viewergroups`
 --
 ALTER TABLE `siteconfig_viewergroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sitetree`
+-- AUTO_INCREMENT für Tabelle `sitetree`
 --
 ALTER TABLE `sitetree`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `sitetreelink`
+-- AUTO_INCREMENT für Tabelle `sitetreelink`
 --
 ALTER TABLE `sitetreelink`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sitetree_editorgroups`
+-- AUTO_INCREMENT für Tabelle `sitetree_editorgroups`
 --
 ALTER TABLE `sitetree_editorgroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sitetree_live`
+-- AUTO_INCREMENT für Tabelle `sitetree_live`
 --
 ALTER TABLE `sitetree_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `sitetree_versions`
+-- AUTO_INCREMENT für Tabelle `sitetree_versions`
 --
 ALTER TABLE `sitetree_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
--- AUTO_INCREMENT for table `sitetree_viewergroups`
+-- AUTO_INCREMENT für Tabelle `sitetree_viewergroups`
 --
 ALTER TABLE `sitetree_viewergroups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `slideimage`
+-- AUTO_INCREMENT für Tabelle `slideimage`
 --
 ALTER TABLE `slideimage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `slideimage_live`
+-- AUTO_INCREMENT für Tabelle `slideimage_live`
 --
 ALTER TABLE `slideimage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `slideimage_versions`
+-- AUTO_INCREMENT für Tabelle `slideimage_versions`
 --
 ALTER TABLE `slideimage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticlecategories`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticlecategories`
 --
 ALTER TABLE `streunerkatzen_blogarticlecategories`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticlelistelement`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticlelistelement`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticlelistelement_categories`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticlelistelement_categories`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_categories`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticlelistelement_live`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticlelistelement_live`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticlelistelement_versions`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticlelistelement_versions`
 --
 ALTER TABLE `streunerkatzen_blogarticlelistelement_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticles`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticles`
 --
 ALTER TABLE `streunerkatzen_blogarticles`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticles_categories`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticles_categories`
 --
 ALTER TABLE `streunerkatzen_blogarticles_categories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticles_live`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticles_live`
 --
 ALTER TABLE `streunerkatzen_blogarticles_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_blogarticles_versions`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_blogarticles_versions`
 --
 ALTER TABLE `streunerkatzen_blogarticles_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_buttonelement`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_buttonelement`
 --
 ALTER TABLE `streunerkatzen_buttonelement`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_buttonelement_live`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_buttonelement_live`
 --
 ALTER TABLE `streunerkatzen_buttonelement_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_buttonelement_versions`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_buttonelement_versions`
 --
 ALTER TABLE `streunerkatzen_buttonelement_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_cats`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_cats`
 --
 ALTER TABLE `streunerkatzen_cats`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_catsearchpage`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_catsearchpage`
 --
 ALTER TABLE `streunerkatzen_catsearchpage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_catsearchpage_live`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_catsearchpage_live`
 --
 ALTER TABLE `streunerkatzen_catsearchpage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_catsearchpage_versions`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_catsearchpage_versions`
 --
 ALTER TABLE `streunerkatzen_catsearchpage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_cats_attachments`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_cats_attachments`
 --
 ALTER TABLE `streunerkatzen_cats_attachments`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_cats_furcolors`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_cats_furcolors`
 --
 ALTER TABLE `streunerkatzen_cats_furcolors`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_furcolors`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_furcolors`
 --
 ALTER TABLE `streunerkatzen_furcolors`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_furcolors_cat`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_furcolors_cat`
 --
 ALTER TABLE `streunerkatzen_furcolors_cat`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_furcolors_exampleimages`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_furcolors_exampleimages`
 --
 ALTER TABLE `streunerkatzen_furcolors_exampleimages`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_notifier`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_notifier`
 --
 ALTER TABLE `streunerkatzen_notifier`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_searchagents`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_searchagents`
 --
 ALTER TABLE `streunerkatzen_searchagents`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_singlecatelement`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_singlecatelement`
 --
 ALTER TABLE `streunerkatzen_singlecatelement`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_singlecatelement_live`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_singlecatelement_live`
 --
 ALTER TABLE `streunerkatzen_singlecatelement_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `streunerkatzen_singlecatelement_versions`
+-- AUTO_INCREMENT für Tabelle `streunerkatzen_singlecatelement_versions`
 --
 ALTER TABLE `streunerkatzen_singlecatelement_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `submittedfilefield`
+-- AUTO_INCREMENT für Tabelle `submittedfilefield`
 --
 ALTER TABLE `submittedfilefield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `submittedform`
+-- AUTO_INCREMENT für Tabelle `submittedform`
 --
 ALTER TABLE `submittedform`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `submittedformfield`
+-- AUTO_INCREMENT für Tabelle `submittedformfield`
 --
 ALTER TABLE `submittedformfield`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `userdefinedform`
+-- AUTO_INCREMENT für Tabelle `userdefinedform`
 --
 ALTER TABLE `userdefinedform`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `userdefinedform_emailrecipient`
+-- AUTO_INCREMENT für Tabelle `userdefinedform_emailrecipient`
 --
 ALTER TABLE `userdefinedform_emailrecipient`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `userdefinedform_emailrecipientcondition`
+-- AUTO_INCREMENT für Tabelle `userdefinedform_emailrecipientcondition`
 --
 ALTER TABLE `userdefinedform_emailrecipientcondition`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `userdefinedform_live`
+-- AUTO_INCREMENT für Tabelle `userdefinedform_live`
 --
 ALTER TABLE `userdefinedform_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `userdefinedform_versions`
+-- AUTO_INCREMENT für Tabelle `userdefinedform_versions`
 --
 ALTER TABLE `userdefinedform_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `virtualpage`
+-- AUTO_INCREMENT für Tabelle `virtualpage`
 --
 ALTER TABLE `virtualpage`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `virtualpage_live`
+-- AUTO_INCREMENT für Tabelle `virtualpage_live`
 --
 ALTER TABLE `virtualpage_live`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `virtualpage_versions`
+-- AUTO_INCREMENT für Tabelle `virtualpage_versions`
 --
 ALTER TABLE `virtualpage_versions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
