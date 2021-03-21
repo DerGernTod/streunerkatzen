@@ -2,14 +2,15 @@
 @import "colors.less";
 @import "utils.less";
 @import "grid/variables.less";
-@media (max-width: @small-width) {
+@media (max-width: @small-width-max) {
     .article-list {
         .blog-article {
             flex-direction: column;
             div {
                 width: 100%;
             }
-            .image, img {
+            .image,
+            img {
                 width: inherit;
                 max-height: 200px;
                 overflow: hidden;
@@ -18,7 +19,7 @@
         }
     }
 }
-@media (min-width: (@small-width + 1)) {
+@media (min-width: @medium-width) {
     .article-list {
         .blog-article {
             .image {
@@ -50,7 +51,7 @@ aside {
         .image {
             background-size: cover;
         }
-        clear:both;
+        clear: both;
     }
 }
 .blog-article {

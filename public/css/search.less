@@ -13,52 +13,57 @@
     float: left;
     width: 50%;
     // small width
-    @media (min-width: @small-width-min) and (max-width: @small-width-max) {
+    @media (min-width: @small-width-max) and (max-width: @medium-width) {
         float: none;
-      	width: 100%;
+        width: 100%;
     }
 }
 .cat-attachments {
     float: right;
     width: 50%;
     // small width
-    @media (min-width: @small-width-min) and (max-width: @small-width-max) {
+    @media (min-width: @small-width-max) and (max-width: @medium-width) {
         float: none;
-      	width: 100%;
+        width: 100%;
     }
 }
+
 .search-results {
     float: right;
     width: 70%;
     padding: 1em 0 1em 1em;
-}
-.search-results ul {
-    list-style: none;
-    border: solid darken(@mainBGColor, 15);
-    border-width: 0 1px 1px 0;
-    li {
-        display: block;
-        width: 100%;
+    ul {
+        list-style: none;
         border: solid darken(@mainBGColor, 15);
-        border-width: 1px 0 0 1px;
-        padding: 1em;
-        overflow: hidden;
-        .cat-summary {
-            & > div {
-                float: left;
-                width: 70%;
-                &:nth-child(2) {
-                    float: right;
-                    width: 30%;
-                    & > * {
+        border-width: 0 1px 1px 0;
+        li {
+            display: block;
+            width: 100%;
+            border: solid darken(@mainBGColor, 15);
+            border-width: 1px 0 0 1px;
+            padding: 1em;
+            overflow: hidden;
+            .cat-summary {
+                img {
+                    max-width: 100%;
+                }
+                & > div {
+                    float: left;
+                    width: 70%;
+                    &:nth-child(2) {
                         float: right;
+                        width: 30%;
+                        & > * {
+                            float: right;
+                        }
                     }
                 }
+                .heightClearfix();
             }
-
         }
     }
 }
+
 ul.cat-details {
     list-style: none;
     margin: 1em auto;
@@ -98,7 +103,8 @@ ul.cat-details {
         align-items: baseline;
         margin: -1px;
     }
-    input[type='radio'], input[type='checkbox'] {
+    input[type='radio'],
+    input[type='checkbox'] {
         display: none;
         .checkbox-and-radio() {
             border: solid @secondaryBGColor;
@@ -115,10 +121,10 @@ ul.cat-details {
                 background-color: @mainBGColor;
             }
         }
-        &+label {
+        & + label {
             .checkbox-and-radio();
         }
-        &:checked+label {
+        &:checked + label {
             background-color: @secondaryBGColor;
             color: @secondaryFontColor;
             &:hover {
@@ -126,7 +132,8 @@ ul.cat-details {
                 color: @mainFontColor;
             }
         }
-        &+label:active, &:checked+label:active {
+        & + label:active,
+        &:checked + label:active {
             background-color: @secondaryBGColor + 100;
         }
     }
@@ -154,8 +161,65 @@ ul.cat-details {
 #search-agent {
     cursor: pointer;
 }
+
 .notification-popup-button {
     position: fixed;
     bottom: 30px;
     right: 70px;
+}
+
+.show-advanced-filters-label {
+    display: none;
+}
+
+@media (max-width: @small-width-max) {
+    .advanced-filters {
+        background-color: white;
+        padding: 0 2rem;
+    }
+    .show-advanced-filters-label {
+        text-transform: uppercase;
+        font-family: Handlee, sans-serif;
+        display: block;
+        padding: 1rem;
+        cursor: pointer;
+        border: 1px solid;
+        &.enabled:before {
+            transform: rotate(90deg);
+        }
+        &:before {
+            content: ">";
+            display: inline-block;
+            transition: transform .25s ease-in-out;
+            margin: 0 1rem;
+            transform: rotate(0);
+        }
+        &.enabled + .advanced-filters {
+            transition: max-height 1s ease-in-out;
+            max-height: 1000px;
+            overflow: hidden;
+        }
+    }
+    .advanced-filters {
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        max-height: 0;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: @small-width-max) {
+    .search-results {
+        margin-top: 1rem;
+        float: none;
+        width: 100%;
+        padding: 0;
+        ul {
+            padding: 0;
+        }
+    }
+    .filter-search-form {
+        padding-bottom: 1rem;
+        width: 100%;
+        float: none;
+    }
 }

@@ -33,14 +33,19 @@ function executeSearch(targetUrl) {
     if (curAjax) {
         curAjax.abort();
     }
-    curAjax = ajax(targetUrl + '&ajax=1', 'GET', function (xhr) {
-        replaceSearchContent(xhr.response);
-        triggerPushState({ searchResult: xhr.response }, document.title, targetUrl);
-        setInputEnabled(true);
-    }, function () {
-        alert('Fehler bei der Anfrage!');
-        setInputEnabled(true);
-    });
+    curAjax = ajax(
+        targetUrl + '&ajax=1',
+        'GET',
+        function (xhr) {
+            replaceSearchContent(xhr.response);
+            triggerPushState({ searchResult: xhr.response }, document.title, targetUrl);
+            setInputEnabled(true);
+        },
+        function () {
+            alert('Fehler bei der Anfrage!');
+            setInputEnabled(true);
+        }
+    );
 }
 
 /**
@@ -54,7 +59,7 @@ function ajaxifyPagination() {
     forEach(pagination, function (anchor) {
         on(anchor, 'click', function (e) {
             e.preventDefault();
-            window.scrollTo({top: 0});
+            window.scrollTo({ top: 0 });
             setInputEnabled(false);
             var targetUrl = e.target.getAttribute('href').replace(/[?&]?ajax=1/, '');
             executeSearch(targetUrl);
@@ -68,29 +73,31 @@ function ajaxifyPagination() {
  */
 function preSelectInputs() {
     var didSelectFilters = false;
-    location.search.substr(1).split('&')
-    .map(function (elem) {
-        return elem.split('=');
-    })
-    .forEach(function (keyValPair) {
-        var match = /(.*)\[[0-9].*\]/.exec(keyValPair[0]);
-        console.log('preselecting', keyValPair);
-        if (match && match.length > 1) {
-            var key = match[1];
-            var val = decodeURIComponent(keyValPair[1]);
-            var inputElem = find('#filter-field-' + key + '-' + val.replace(/ /g, '\\ '));
-            if (inputElem) {
-                inputElem.setAttribute('checked', 'checked');
-                didSelectFilters = true;
+    location.search
+        .substr(1)
+        .split('&')
+        .map(function (elem) {
+            return elem.split('=');
+        })
+        .forEach(function (keyValPair) {
+            var match = /(.*)\[[0-9].*\]/.exec(keyValPair[0]);
+            console.log('preselecting', keyValPair);
+            if (match && match.length > 1) {
+                var key = match[1];
+                var val = decodeURIComponent(keyValPair[1]);
+                var inputElem = find('#filter-field-' + key + '-' + val.replace(/ /g, '\\ '));
+                if (inputElem) {
+                    inputElem.setAttribute('checked', 'checked');
+                    didSelectFilters = true;
+                }
+            } else {
+                var elem = find('#filter-field-' + keyValPair[0]);
+                if (elem) {
+                    elem.value = keyValPair[1];
+                    didSelectFilters = true;
+                }
             }
-        } else {
-            var elem = find('#filter-field-' + keyValPair[0]);
-            if (elem) {
-                elem.value = keyValPair[1];
-                didSelectFilters = true;
-            }
-        }
-    });
+        });
     return didSelectFilters;
 }
 
@@ -118,7 +125,7 @@ function buildUrlAndSearch() {
     // filter on checkboxes and radios
     var filteredElems = find('.filter-field:checked');
     if (filteredElems.length) {
-        forEach(filteredElems, function(elem) {
+        forEach(filteredElems, function (elem) {
             pushFilter(elem, filters);
         });
     } else if (filteredElems) {
@@ -128,7 +135,7 @@ function buildUrlAndSearch() {
     var filterParams = [];
     var hasFilters = false;
     for (var key in filters) {
-        forEach(filters[key], function(item, index) {
+        forEach(filters[key], function (item, index) {
             if (item !== 'nicht bekannt') {
                 hasFilters = true;
             }
@@ -165,11 +172,8 @@ function buildUrlAndSearch() {
         find('#search-agent').parentElement.classList.add('hidden');
     }
 
-    searchParams = 'SearchTitle='
-    + searchValue
-    + '&'
-    + filterParams.join('&');
-    var targetUrl = location.pathname + "?" + searchParams;
+    searchParams = 'SearchTitle=' + searchValue + '&' + filterParams.join('&');
+    var targetUrl = location.pathname + '?' + searchParams;
 
     find('#Form_NotificationForm_QueryString').value = searchParams;
     executeSearch(targetUrl);
@@ -198,7 +202,7 @@ function buildUrlAndSearch() {
         });
     });
 
-    on(window, 'popstate', function(e) {
+    on(window, 'popstate', function (e) {
         if (e.state && e.state.searchResult) {
             replaceSearchContent(e.state.searchResult);
         } else {
@@ -236,16 +240,23 @@ function buildUrlAndSearch() {
         data.set('catId', catId.value);
         data.set('text', area.value);
         data.set('SecurityID', secId.value);
-        ajax(this.action, 'POST', function () {
-            sendBtn.removeAttribute('disabled');
-            area.removeAttribute('disabled');
-            area.value = '';
-            alert('Nachricht gesendet!');
-        }, function () {
-            sendBtn.removeAttribute('disabled');
-            area.removeAttribute('disabled');
-            alert('Fehler beim Senden der Nachricht!');
-        }, void 0, data);
+        ajax(
+            this.action,
+            'POST',
+            function () {
+                sendBtn.removeAttribute('disabled');
+                area.removeAttribute('disabled');
+                area.value = '';
+                alert('Nachricht gesendet!');
+            },
+            function () {
+                sendBtn.removeAttribute('disabled');
+                area.removeAttribute('disabled');
+                alert('Fehler beim Senden der Nachricht!');
+            },
+            void 0,
+            data
+        );
     });
 })();
 
@@ -263,7 +274,13 @@ function createHint(message, classes) {
 }
 
 (function formRebuild() {
-    on(find('#notification-form-container'), 'formrebuild', function() {
+    on(find('#notification-form-container'), 'formrebuild', function () {
         find('#Form_NotificationForm_QueryString').value = searchParams;
+    });
+})();
+
+(function toggleAdvancedFilters() {
+    on(find('.show-advanced-filters-label'), 'click', function () {
+        this.classList.toggle('enabled');
     });
 })();

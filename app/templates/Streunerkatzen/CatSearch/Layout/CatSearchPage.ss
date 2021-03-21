@@ -14,19 +14,22 @@
                 <input type="date" placeholder="jjjj-mm-tt" name="filter-field-LostFoundDate-to" id="filter-field-LostFoundDate-to"></input>
             </div>
         </div>
-        <% loop Filters() %>
-            <div id="filter-$Title" class="filter-group">
-                <h2>$Label</h2>
-                <div class="filter-group-content-container">
-                    <div class="filter-group-content">
-                        <% loop $Values %>
-                            <input type="$Up.InputType" class="filter-field" name="filter-field-$Up.Title" id="filter-field-$Up.Title-$Text"></input>
-                            <label for="filter-field-$Up.Title-$Text">$Text</label>
-                        <% end_loop %>
+        <div class="show-advanced-filters-label ui-accordion-header ui-state-default">Suchergebnisse filtern</div>
+        <div class="advanced-filters">
+            <% loop Filters() %>
+                <div id="filter-$Title" class="filter-group">
+                    <h2>$Label</h2>
+                    <div class="filter-group-content-container">
+                        <div class="filter-group-content">
+                            <% loop $Values %>
+                                <input type="$Up.InputType" class="filter-field" name="filter-field-$Up.Title" id="filter-field-$Up.Title-$Text"></input>
+                                <label for="filter-field-$Up.Title-$Text">$Text</label>
+                            <% end_loop %>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% end_loop %>
+            <% end_loop %>
+        </div>
 
     </form>
 

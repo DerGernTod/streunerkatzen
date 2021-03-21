@@ -5,10 +5,11 @@
 .main-menu {
     font-size: 12pt;
     padding: 0 3rem;
-    background:linear-gradient(45deg, rgba(255,255,255,0.5),transparent);
-    margin-top:1rem;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), transparent);
+    margin-top: 1rem;
     vertical-align: baseline;
-    &, & * {
+    &,
+    & * {
         color: @secondaryFontColor;
     }
 
@@ -17,15 +18,14 @@
         position: relative;
         height: 100%;
 
-        color:white;
+        color: white;
         font-size: 1.8rem;
         padding: 1rem;
-        text-transform:uppercase;
+        text-transform: uppercase;
         text-shadow: 0.1rem 0.1rem 0.2rem black;
         a {
-            text-decoration:none;
-            display:inline-block;
-
+            text-decoration: none;
+            display: inline-block;
         }
     }
     .current > a {
@@ -66,7 +66,7 @@
     text-align: center;
 }
 
-@media (min-width: (@small-width + 1)) {
+@media (min-width: @large-width) {
     .main-menu {
         & > .item {
             &:hover {
@@ -81,7 +81,7 @@
                     }
                 }
             }
-            &.has-sub-items{
+            &.has-sub-items {
                 display: inline-flex;
                 align-items: center;
                 &:after {
@@ -100,7 +100,7 @@
     }
 }
 
-@media (max-width: @small-width) {
+@media (max-width: @medium-width-max) {
     #open-mobile-menu {
         position: absolute;
         right: 15px;
@@ -113,13 +113,16 @@
             position: relative;
             margin-top: 10px;
 
-            &::before, &::after {
+            &::before,
+            &::after {
                 content: "";
                 position: absolute;
                 left: 0;
             }
 
-            &, &::before, &::after {
+            &,
+            &::before,
+            &::after {
                 height: 3px;
                 width: 25px;
                 border-radius: 10px;
@@ -136,7 +139,6 @@
         }
     }
     .main-menu {
-
         min-height: 50px;
         padding-top: .5em;
         display: none;

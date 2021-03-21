@@ -108,10 +108,10 @@ class CatSearchPageController extends PageController {
             $this,
             __FUNCTION__,
             FieldList::create(
-                TextField::create('SearchTitle', 'Suche')
+                TextField::create('SearchTitle', 'Katzenname')
             ),
             FieldList::create(
-                FormAction::create('sendSearch', 'Suchen')
+                FormAction::create('sendSearch', 'Suchen')->addExtraClass('button')
             )
         )
         ->setFormMethod('GET')

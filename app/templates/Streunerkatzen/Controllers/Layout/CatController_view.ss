@@ -2,7 +2,7 @@
     <% with $Cat %>
         <h1>$Title</h1>
         <div class='cat-meta'>
-            zuerst hier gesehen: $PublishTime
+            Hinzugefügt am $PublishTime.Format("dd.MM.YYYY") um $PublishTime.Format("H:mm")
         </div>
         <div class="cat-about">
             <h2>Details</h2>

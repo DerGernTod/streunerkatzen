@@ -3,18 +3,15 @@
 @grid-spacing: 1rem;
 @number-of-columns: 12;
 
-@threshold: 0.001rem;
+@threshold: 0.000001rem;
 
-@large-width: 75rem;  // 1200 / 16 (default font size)
-@large-width-min: @large-width;
+@large-width: @medium-width-max + @threshold;
+@large-width-max: 70rem;
 
-@medium-width: 62rem;
-@medium-width-max: (@large-width-min - @threshold);
-@medium-width-min: @medium-width;
+@medium-width: @small-width-max + @threshold;
+@medium-width-max: 62rem;
 
-@small-width: 48rem;
-@small-width-max: (@medium-width-min - @threshold);
-@small-width-min: @small-width;
+@small-width-max: 48rem;
 
 @collage-height: 204px;
 @footer-height: 120px;

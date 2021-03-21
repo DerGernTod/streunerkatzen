@@ -2,12 +2,47 @@
 @import "grid/variables.less";
 @import "colors.less";
 @sidebarWidth: 30rem;
+
+header.site-header {
+    padding-top: 2rem;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: transparent;
+    background-size: cover;
+    color: white;
+}
+
+.site-header-inner {
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: transparent;
+    background-size: contain;
+    max-width: 120rem;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 1rem 2rem 1rem 11rem;
+    margin-left: 3rem;
+    display: flex;
+}
+
+.site-title {
+    color: white;
+    text-decoration: none;
+    text-shadow: 0.1rem 0 0.2rem black;
+}
+
+.site-subtitle {
+    margin-top: 0;
+    color: white;
+    text-shadow: 0.1rem 0 0.2rem black;
+}
+
 main {
     display: flex;
     margin: auto;
     max-width: 120rem;
     padding: 4rem 3rem;
-    box-sizing:border-box;
+    box-sizing: border-box;
     background: @lightBgCol;
     & .flexslider {
         background: inherit;
@@ -17,111 +52,95 @@ main {
     }
 }
 
-.site-header-inner {
-    max-width:120rem;
-    margin:auto;
-    box-sizing:border-box;
-    padding-left: 11rem;
-    padding-right:2rem;
-    padding-bottom:1rem;
-    padding-top:1rem;
-    margin-left:3rem;
-    display:flex;
-}
-
 .site-header-inner-text {
-    flex:1;
+    flex: 1;
 }
 
 .content-wrapper {
     max-width: ~"calc(100% - @{sidebarWidth})";
     flex: 1;
-    padding-right: 3rem;
-    margin-right: 3rem;
-    border-right: 1px solid @bgCol;
 }
 
 aside.cta {
     width: 30rem;
+    border-left: 1px solid @bgCol;
+    padding-left: 3rem;
+    margin-left: 3rem;
 }
-@media (min-width: (@small-width + 1)) {
-    .site-title {
-        font-size: 3rem;
+
+@media (max-width: @medium-width-max) {
+    aside.cta {
+        width: auto;
+        padding-left: 0;
+        margin-left: 0;
+        border-left: none;
+        margin-top: 6rem;
+        border-top: 1px solid @bgCol;
     }
-}
-@media (max-width: @small-width) {
-    .site-title {
-        font-size: 2.1rem;
-    }
-}
-@media(max-width: 999px) {
+
     main {
-        flex-direction:column;
+        flex-direction: column;
     }
 
     .startpage main {
-        flex-direction:column-reverse;
+        flex-direction: column-reverse;
     }
 
     .content-wrapper {
         max-width: 100%;
-        flex:auto;
-        padding-right:0;
-        margin-right:0;
-        border-right:none;
-        border-bottom: 1px solid @bgCol;
+        flex: auto;
     }
 
     .startpage .content-wrapper {
-        border-bottom:none;
-        border-top:1px solid @bgCol;
+        border-bottom: none;
+        border-top: 1px solid @bgCol;
+    }
+}
+
+@media (max-width: @small-width-max) {
+    .site-title {
+        font-size: 2.1rem;
     }
 
-    aside.cta {
-        width:auto;
+    .site-header {
+        padding-top: 1rem;
     }
+
+    .site-header-inner {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 9rem;
+    }
+
+    .site-subtitle,
+    .site-header nav {
+        display: none;
+    }
+}
+
+@media (min-width: @medium-width) and (max-width: @medium-width-max) {
+    .site-title {
+        font-size: 3rem;
+    }
+
+    .site-header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .site-header-inner {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 16rem;
+    }
+}
+
+@media (min-width: @large-width) and (max-width: @large-width-max) {
     h1 {
         font-size: 2.5rem;
     }
 
     h2 {
         font-size: 2.2rem;
-    }
-}
-
-@media(max-width: 799px) {
-
-    .site-header {
-        padding-top:1rem;
-        padding-bottom:1rem;
-    }
-
-    .site-header-inner {
-        padding-top:4rem;
-        padding-bottom:4rem;
-        padding-left:12rem;
-    }
-    .site-subtitle, .site-header nav {
-        display:none;
-    }
-}
-
-/*
-@media(max-width: 599px) {
-    .site-header-inner {
-        padding-top:8rem;
-        padding-bottom:0;
-    }
-}*/
-
-@media(max-width: 599px) {
-
-    .site-header {
-        padding-top:1rem;
-    }
-    .site-header-inner {
-        padding-top:2rem;
-        padding-bottom:2rem;
-        padding-left:6rem;
     }
 }

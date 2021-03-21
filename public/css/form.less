@@ -15,27 +15,6 @@
     max-width: 200px;
     max-height: 200px;
 }
-#Form_CatSearchForm {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    max-width: 300px;
-    .field {
-        float: left;
-        label {
-            display: none;
-        }
-        input {
-            width: 14em;
-            padding: .4em;
-        }
-    }
-    input[type="submit"] {
-        .buttonStyle();
-    }
-    clear: both;
-    .heightClearfix();
-}
 .chosen {
     ul {
         list-style: none;
@@ -58,7 +37,6 @@
             flex-wrap: nowrap;
             justify-content: space-between;
             align-items: center;
-
         }
         li:last-child {
             width: 25px;
@@ -125,7 +103,8 @@ textarea {
 #search-agent {
     cursor: pointer;
 }
-.error.message, .validationerror .message {
+.error.message,
+.validationerror .message {
     border: 1px solid red;
     padding: .5em;
     background-color: white;
@@ -141,6 +120,9 @@ textarea {
         padding: 0;
     }
     .userform-progress {
+        @media (max-width: @small-width-max) {
+            display: none !important;
+        }
         & > p {
             display: none;
         }
@@ -151,10 +133,16 @@ textarea {
             display: block;
             &.current button {
                 background-color: lighten(@buttonColor, 20%);
+                border-color: lighten(@buttonColor, 20%);
                 cursor: default;
+                &:hover {
+                    border-color: lighten(@buttonColor, 20%);
+                }
             }
             button:disabled {
                 background-color: lightgray;
+                border-color: lightgray;
+                cursor: default;
             }
         }
     }
@@ -171,12 +159,23 @@ textarea {
         .right-title {
             font-size: 9pt;
         }
-        &.text, &.dropdown, &.listbox, &.textarea, &.checkbox .middleColumn, &.file {
+        &.text,
+        &.dropdown,
+        &.listbox,
+        &.textarea,
+        &.checkbox .middleColumn,
+        &.file {
             justify-content: space-between;
             align-items: baseline;
         }
-        &.text, &.dropdown, &.listbox, &.textarea, &.file {
-            input, select, textarea {
+        &.text,
+        &.dropdown,
+        &.listbox,
+        &.textarea,
+        &.file {
+            input,
+            select,
+            textarea {
                 .fullWidth();
             }
         }
@@ -184,13 +183,15 @@ textarea {
         label {
             font-weight: 100;
             padding-left: .3em;
-            display: inline-block;
+            display: inline;
+            text-align: left;
         }
         .checkbox label {
             display: inline;
         }
     }
-    .step-navigation, .userform-progress {
+    .step-navigation,
+    .userform-progress {
         margin: .5em;
         .step-buttons {
             display: flex;
@@ -201,7 +202,9 @@ textarea {
         display: flex;
     }
 }
-input, select, textarea {
+input,
+select,
+textarea {
     padding: .4em;
     margin: .25em 0;
 }
@@ -225,7 +228,7 @@ select.hidden-field {
             display: flex;
             flex-wrap: wrap;
 
-            &>div {
+            & > div {
                 font-size: 0.8em;
                 height: 2em;
                 border: 1px solid lightgray;
@@ -291,7 +294,7 @@ select.hidden-field {
                     height: 100%;
                     width: 100%;
                     border: 3px solid #cacce1;
-                    border-radius:0.3rem;
+                    border-radius: 0.3rem;
                     overflow: hidden;
                     position: relative;
                     cursor: pointer;
@@ -371,18 +374,33 @@ select.hidden-field {
         }
     }
 }
-@media (max-width: 600px) {
+@media (max-width: @medium-width-max) {
     .userform .field {
         margin-right: 0;
         margin-left: 0;
     }
 }
-@media (max-width: 600px) and (min-width: 501px) {
+@media (max-width: @medium-width-max) and (min-width: @medium-width) {
     .multi-image-select-container .multi-image-select .options .option .option-container .option-content,
-    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label {
+    .multi-image-select-container
+        .multi-image-select
+        .options
+        .option
+        .option-container
+        .option-content
+        .images.none
+        + .label {
         height: 24.8vw;
     }
-    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label p {
+    .multi-image-select-container
+        .multi-image-select
+        .options
+        .option
+        .option-container
+        .option-content
+        .images.none
+        + .label
+        p {
         line-height: 24.8vw;
     }
     .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images {
@@ -392,7 +410,7 @@ select.hidden-field {
         height: 5.9vw;
     }
 }
-@media (max-width: 500px) {
+@media (max-width: @small-width-max) {
     .multi-image-select-container .multi-image-select .options .option {
         width: 100%;
     }

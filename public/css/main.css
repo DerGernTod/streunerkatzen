@@ -1,3 +1,33 @@
+header.site-header {
+  padding-top: 2rem;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-color: transparent;
+  background-size: cover;
+  color: white;
+}
+.site-header-inner {
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: contain;
+  max-width: 120rem;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 1rem 2rem 1rem 11rem;
+  margin-left: 3rem;
+  display: flex;
+}
+.site-title {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0.1rem 0 0.2rem black;
+}
+.site-subtitle {
+  margin-top: 0;
+  color: white;
+  text-shadow: 0.1rem 0 0.2rem black;
+}
 main {
   display: flex;
   margin: auto;
@@ -12,41 +42,28 @@ main .flexslider {
 main .flexslider .flexslider-container {
   padding: 2.8em;
 }
-.site-header-inner {
-  max-width: 120rem;
-  margin: auto;
-  box-sizing: border-box;
-  padding-left: 11rem;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  margin-left: 3rem;
-  display: flex;
-}
 .site-header-inner-text {
   flex: 1;
 }
 .content-wrapper {
   max-width: calc(100% - 30rem);
   flex: 1;
-  padding-right: 3rem;
-  margin-right: 3rem;
-  border-right: 1px solid #4e559a;
 }
 aside.cta {
   width: 30rem;
+  border-left: 1px solid #4e559a;
+  padding-left: 3rem;
+  margin-left: 3rem;
 }
-@media (min-width: 49rem) {
-  .site-title {
-    font-size: 3rem;
+@media (max-width: 62rem) {
+  aside.cta {
+    width: auto;
+    padding-left: 0;
+    margin-left: 0;
+    border-left: none;
+    margin-top: 6rem;
+    border-top: 1px solid #4e559a;
   }
-}
-@media (max-width: 48rem) {
-  .site-title {
-    font-size: 2.1rem;
-  }
-}
-@media (max-width: 999px) {
   main {
     flex-direction: column;
   }
@@ -56,26 +73,33 @@ aside.cta {
   .content-wrapper {
     max-width: 100%;
     flex: auto;
-    padding-right: 0;
-    margin-right: 0;
-    border-right: none;
-    border-bottom: 1px solid #4e559a;
   }
   .startpage .content-wrapper {
     border-bottom: none;
     border-top: 1px solid #4e559a;
   }
-  aside.cta {
-    width: auto;
+}
+@media (max-width: 48rem) {
+  .site-title {
+    font-size: 2.1rem;
   }
-  h1 {
-    font-size: 2.5rem;
+  .site-header {
+    padding-top: 1rem;
   }
-  h2 {
-    font-size: 2.2rem;
+  .site-header-inner {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 9rem;
+  }
+  .site-subtitle,
+  .site-header nav {
+    display: none;
   }
 }
-@media (max-width: 799px) {
+@media (min-width: 48.000001rem) and (max-width: 62rem) {
+  .site-title {
+    font-size: 3rem;
+  }
   .site-header {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -83,28 +107,15 @@ aside.cta {
   .site-header-inner {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    padding-left: 12rem;
-  }
-  .site-subtitle,
-  .site-header nav {
-    display: none;
+    padding-left: 16rem;
   }
 }
-/*
-@media(max-width: 599px) {
-    .site-header-inner {
-        padding-top:8rem;
-        padding-bottom:0;
-    }
-}*/
-@media (max-width: 599px) {
-  .site-header {
-    padding-top: 1rem;
+@media (min-width: 62.000001rem) and (max-width: 70rem) {
+  h1 {
+    font-size: 2.5rem;
   }
-  .site-header-inner {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 6rem;
+  h2 {
+    font-size: 2.2rem;
   }
 }
 .main-menu {
@@ -165,7 +176,7 @@ aside.cta {
 #footer .main-items {
   text-align: center;
 }
-@media (min-width: 49rem) {
+@media (min-width: 62.000001rem) {
   .main-menu > .item:hover {
     background: rgba(255, 255, 255, 0.5);
   }
@@ -194,7 +205,7 @@ aside.cta {
     box-shadow: 0.1rem 0.1rem 0.2rem black;
   }
 }
-@media (max-width: 48rem) {
+@media (max-width: 62rem) {
   #open-mobile-menu {
     position: absolute;
     right: 15px;
@@ -277,7 +288,7 @@ aside.cta {
   float: left;
   width: 50%;
 }
-@media (min-width: 48rem) and (max-width: 61.999rem) {
+@media (min-width: 48rem) and (max-width: 48.000001rem) {
   .cat-about {
     float: none;
     width: 100%;
@@ -287,7 +298,7 @@ aside.cta {
   float: right;
   width: 50%;
 }
-@media (min-width: 48rem) and (max-width: 61.999rem) {
+@media (min-width: 48rem) and (max-width: 48.000001rem) {
   .cat-attachments {
     float: none;
     width: 100%;
@@ -311,6 +322,9 @@ aside.cta {
   padding: 1em;
   overflow: hidden;
 }
+.search-results ul li .cat-summary img {
+  max-width: 100%;
+}
 .search-results ul li .cat-summary > div {
   float: left;
   width: 70%;
@@ -321,6 +335,13 @@ aside.cta {
 }
 .search-results ul li .cat-summary > div:nth-child(2) > * {
   float: right;
+}
+.search-results ul li .cat-summary:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
 }
 ul.cat-details {
   list-style: none;
@@ -437,40 +458,65 @@ ul.cat-details li:after {
   bottom: 30px;
   right: 70px;
 }
+.show-advanced-filters-label {
+  display: none;
+}
+@media (max-width: 48rem) {
+  .advanced-filters {
+    background-color: white;
+    padding: 0 2rem;
+  }
+  .show-advanced-filters-label {
+    text-transform: uppercase;
+    font-family: Handlee, sans-serif;
+    display: block;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid;
+  }
+  .show-advanced-filters-label.enabled:before {
+    transform: rotate(90deg);
+  }
+  .show-advanced-filters-label:before {
+    content: ">";
+    display: inline-block;
+    transition: transform 0.25s ease-in-out;
+    margin: 0 1rem;
+    transform: rotate(0);
+  }
+  .show-advanced-filters-label.enabled + .advanced-filters {
+    transition: max-height 1s ease-in-out;
+    max-height: 1000px;
+    overflow: hidden;
+  }
+  .advanced-filters {
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    max-height: 0;
+    overflow: hidden;
+  }
+}
+@media (max-width: 48rem) {
+  .search-results {
+    margin-top: 1rem;
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+  .search-results ul {
+    padding: 0;
+  }
+  .filter-search-form {
+    padding-bottom: 1rem;
+    width: 100%;
+    float: none;
+  }
+}
 .demo-div {
   position: fixed;
 }
 .demo-img {
   max-width: 200px;
   max-height: 200px;
-}
-#Form_CatSearchForm {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  max-width: 300px;
-  clear: both;
-}
-#Form_CatSearchForm .field {
-  float: left;
-}
-#Form_CatSearchForm .field label {
-  display: none;
-}
-#Form_CatSearchForm .field input {
-  width: 14em;
-  padding: 0.4em;
-}
-#Form_CatSearchForm input[type="submit"] {
-  padding: 0.5em;
-  min-width: 6em;
-}
-#Form_CatSearchForm:after {
-  content: ".";
-  height: 0;
-  visibility: hidden;
-  clear: both;
-  display: block;
 }
 .chosen ul {
   list-style: none;
@@ -567,6 +613,11 @@ textarea {
 .userform .step-buttons {
   padding: 0;
 }
+@media (max-width: 48rem) {
+  .userform .userform-progress {
+    display: none !important;
+  }
+}
 .userform .userform-progress > p {
   display: none;
 }
@@ -578,10 +629,16 @@ textarea {
 }
 .userform .userform-progress .step-button-wrapper.current button {
   background-color: #efe285;
+  border-color: #efe285;
   cursor: default;
+}
+.userform .userform-progress .step-button-wrapper.current button:hover {
+  border-color: #efe285;
 }
 .userform .userform-progress .step-button-wrapper button:disabled {
   background-color: lightgray;
+  border-color: lightgray;
+  cursor: default;
 }
 .userform nav {
   margin: 0.5em 1em;
@@ -628,7 +685,8 @@ textarea {
 .userform .field label {
   font-weight: 100;
   padding-left: 0.3em;
-  display: inline-block;
+  display: inline;
+  text-align: left;
 }
 .userform .field .checkbox label {
   display: inline;
@@ -794,13 +852,13 @@ select.hidden-field {
   margin-left: 50%;
   transform: translateX(-50%);
 }
-@media (max-width: 600px) {
+@media (max-width: 62rem) {
   .userform .field {
     margin-right: 0;
     margin-left: 0;
   }
 }
-@media (max-width: 600px) and (min-width: 501px) {
+@media (max-width: 62rem) and (min-width: 48.000001rem) {
   .multi-image-select-container .multi-image-select .options .option .option-container .option-content,
   .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label {
     height: 24.8vw;
@@ -815,7 +873,7 @@ select.hidden-field {
     height: 5.9vw;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 48rem) {
   .multi-image-select-container .multi-image-select .options .option {
     width: 100%;
   }
@@ -835,7 +893,7 @@ select.hidden-field {
     text-align: center;
   }
 }
-@media (min-width: 49rem) {
+@media (min-width: 48.000001rem) {
   .article-list .blog-article .image {
     width: 200px;
     margin-right: 3rem;
@@ -948,6 +1006,12 @@ body {
   font-family: "Open Sans", sans-serif;
   text-align: justify;
 }
+@media (max-width: 48rem) {
+  html,
+  body {
+    text-align: left;
+  }
+}
 h1,
 h2,
 h3,
@@ -1017,30 +1081,6 @@ img {
   border-color: #e4cd2a;
   color: #000;
 }
-header.site-header {
-  padding-top: 2rem;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-color: transparent;
-  background-size: cover;
-  color: white;
-}
-.site-header-inner {
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-color: transparent;
-  background-size: contain;
-}
-.site-title {
-  color: white;
-  text-decoration: none;
-  text-shadow: 0.1rem 0 0.2rem black;
-}
-.site-subtitle {
-  margin-top: 0;
-  color: white;
-  text-shadow: 0.1rem 0 0.2rem black;
-}
 footer {
   color: white;
   text-align: center;
@@ -1096,10 +1136,16 @@ footer a {
   margin: 0 auto;
   max-width: 100%;
 }
-.element.dynamic__elements__accordion__elements__elementaccordion h3.ui-accordion-header {
+.ui-accordion-header {
   background-color: #4e559a;
 }
-.element.dynamic__elements__accordion__elements__elementaccordion h3.ui-accordion-header.ui-state-default {
+.ui-accordion-header.ui-state-default {
+  color: #fff;
+}
+.element.dynamic__elements__accordion__elements__elementaccordion .ui-accordion-header {
+  background-color: #4e559a;
+}
+.element.dynamic__elements__accordion__elements__elementaccordion .ui-accordion-header.ui-state-default {
   color: #fff;
 }
 .element.dynamic__elements__image__elements__elementimage > img,

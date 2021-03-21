@@ -10,29 +10,25 @@
     src: url(../fonts/Handlee-Regular.ttf);
 }
 @font-face {
-    font-family:"Handlee";
-    font-style:normal;
-    font-weight:400;
-    font-display:auto;
-    src:url(../fonts/Handlee-Regular.eot);
-    src:url(../fonts/Handlee-Regular.eot?#iefix) format("embedded-opentype"),
-    url(../fonts/Handlee-Regular.woff2) format("woff2"),
-    url(../fonts/Handlee-Regular.woff) format("woff"),
-    url(../fonts/Handlee-Regular.ttf) format("truetype"),
-    url(../fonts/Handlee-Regular.svg) format("svg")
+    font-family: "Handlee";
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url(../fonts/Handlee-Regular.eot);
+    src: url(../fonts/Handlee-Regular.eot?#iefix) format("embedded-opentype"),
+        url(../fonts/Handlee-Regular.woff2) format("woff2"), url(../fonts/Handlee-Regular.woff) format("woff"),
+        url(../fonts/Handlee-Regular.ttf) format("truetype"), url(../fonts/Handlee-Regular.svg) format("svg");
 }
 
 @font-face {
-    font-family:"Open Sans";
-    font-style:normal;
-    font-weight:400;
-    font-display:auto;
-    src:url(../fonts/OpenSans-Regular.eot);
-    src:url(../fonts/OpenSans-Regular.eot?#iefix) format("embedded-opentype"),
-    url(../fonts/OpenSans-Regular.woff2) format("woff2"),
-    url(../fonts/OpenSans-Regular.woff) format("woff"),
-    url(../fonts/OpenSans-Regular.ttf) format("truetype"),
-    url(../fonts/OpenSans-Regular.svg) format("svg")
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url(../fonts/OpenSans-Regular.eot);
+    src: url(../fonts/OpenSans-Regular.eot?#iefix) format("embedded-opentype"),
+        url(../fonts/OpenSans-Regular.woff2) format("woff2"), url(../fonts/OpenSans-Regular.woff) format("woff"),
+        url(../fonts/OpenSans-Regular.ttf) format("truetype"), url(../fonts/OpenSans-Regular.svg) format("svg");
 }
 
 * {
@@ -49,19 +45,26 @@ body {
     background: linear-gradient(180deg, @lightBlue, @lightBlue, @bgCol) no-repeat @bgCol;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-family: "Open Sans", sans-serif;
     text-align: justify;
+    @media (max-width: @small-width-max) {
+        text-align: left;
+    }
 }
 
-h1, h2, h3, .site-title {
-    font-family:Handlee, sans-serif;
+h1,
+h2,
+h3,
+.site-title {
+    font-family: Handlee, sans-serif;
     text-transform: uppercase;
-    font-weight:700;
+    font-weight: 700;
 }
 
 h1 {
@@ -76,7 +79,8 @@ h3 {
     font-size: 2rem;
 }
 
-main a, .ui-widget .ui-widget-content a {
+main a,
+.ui-widget .ui-widget-content a {
     color: @bgCol;
     font-weight: 700;
     text-shadow: 0.1rem 0.1rem 0.1rem @lightBgCol;
@@ -87,19 +91,27 @@ main a, .ui-widget .ui-widget-content a {
 }
 
 img {
-    width:20rem;
-    box-shadow:0 0 .2rem .1rem @buttonColor;
+    width: 20rem;
+    box-shadow: 0 0 .2rem .1rem @buttonColor;
     border-radius: .3rem;
 }
 
-.components input, .userform input, .userform select, .userform textarea, .chosen-choices {
-    border:0.1rem solid @bgCol;
-    border-radius:0.3rem;
+.components input,
+.userform input,
+.userform select,
+.userform textarea,
+.chosen-choices {
+    border: 0.1rem solid @bgCol;
+    border-radius: 0.3rem;
     background: @lightBgCol;
-    padding:0.5rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
-.components button, .userform button, .userform input[type=submit], .userform input[type=reset], .button {
+.components button,
+.userform button,
+.userform input[type=submit],
+.userform input[type=reset],
+.button {
     background: @buttonColor;
     border: 1px solid #867818;
     border-radius: 0.3rem;
@@ -118,43 +130,14 @@ img {
     }
 }
 
-
-header.site-header {
-    padding-top:2rem;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-color: transparent;
-    background-size:cover;
-    color:white;
-}
-
-.site-header-inner {
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-color: transparent;
-    background-size:contain;
-}
-
-.site-title {
-    color:white;
-    text-decoration: none;
-    text-shadow:0.1rem 0 0.2rem black;
-}
-
-.site-subtitle {
-    margin-top:0;
-    color:white;
-    text-shadow:0.1rem 0 0.2rem black;
-}
-
 footer {
-    color:white;
-    text-align:center;
-    padding:1rem;
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }
 
 footer a {
-    color:white;
+    color: white;
 }
 
 .hidden {
@@ -177,7 +160,7 @@ footer a {
 
 .popup {
     position: fixed;
-    display:flex;
+    display: flex;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -196,7 +179,6 @@ footer a {
     }
 }
 
-
 .resized.type-video iframe {
     width: 100%;
     height: 100%;
@@ -210,16 +192,20 @@ footer a {
     margin: 0 auto;
     max-width: 100%;
 }
+.ui-accordion-header {
+    background-color: @bgCol;
+    &.ui-state-default {
+        color: #fff;
+    }
+}
 .element.dynamic__elements__accordion__elements__elementaccordion {
-    h3.ui-accordion-header {
-        background-color: @bgCol;
-        &.ui-state-default {
-            color: #fff;
-        }
+    .ui-accordion-header {
+        .ui-accordion-header();
     }
 }
 
-.element.dynamic__elements__image__elements__elementimage > img, .ui-accordion-content img {
+.element.dynamic__elements__image__elements__elementimage > img,
+.ui-accordion-content img {
     max-width: 100%;
     width: auto;
 }
@@ -232,20 +218,19 @@ footer a {
         & * {
             width: 100%;
             height: 100%;
-
         }
         margin-bottom: 0 !important;
         padding: 3px;
-        @media(min-width: 900px) {
+        @media (min-width: 900px) {
             width: 25%;
         }
-        @media(min-width: 700px) and (max-width: 899px) {
+        @media (min-width: 700px) and (max-width: 899px) {
             width: 33%;
         }
-        @media(min-width: 500px) and (max-width: 699px) {
+        @media (min-width: 500px) and (max-width: 699px) {
             width: 50%;
         }
-        @media(max-width: 499px) {
+        @media (max-width: 499px) {
             width: 100%;
         }
     }
