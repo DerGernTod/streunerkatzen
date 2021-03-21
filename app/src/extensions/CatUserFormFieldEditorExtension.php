@@ -40,7 +40,12 @@ class CatUserFormFieldEditorExtension extends UserFormFieldEditorExtension {
         $editableColumns = new GridFieldEditableColumns();
 
         $isCatField = strcmp(get_class($this->owner), CatElementForm::class) == 0;
-        $fieldClasses = singleton(EditableFormField::class)->getEditableFieldClasses(true, $isCatField);
+        $fieldClasses = [];
+        if ($isCatField) {
+            $fieldClasses = singleton(EditableFormField::class)->getEditableCatFieldClasses();
+        } else {
+            $fieldClasses = singleton(EditableFormField::class)->getEditableStandardFieldClasses();
+        }
 
         $editableColumns->setDisplayFields([
             'ClassName' => function ($record, $column, $grid) use ($fieldClasses) {
