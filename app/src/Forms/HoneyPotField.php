@@ -25,6 +25,6 @@ class HoneyPotField extends TextField {
     }
 
     public function FieldHolder($properties = array()) {
-        return $this->renderWith('Streunerkatzen\Forms\Includes\HoneyPotField_holder');
+        return $this->renderWith('Streunerkatzen\Forms\HoneyPotField_holder');
     }
 }

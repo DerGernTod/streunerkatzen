@@ -434,8 +434,8 @@ ul.cat-details li:after {
 }
 .notification-popup-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 70px;
 }
 .demo-div {
   position: fixed;
@@ -651,6 +651,175 @@ textarea {
   padding: 0.4em;
   margin: 0.25em 0;
 }
+select.hidden-field {
+  display: none;
+}
+.multi-image-select-container {
+  width: 100%;
+}
+.multi-image-select-container .multi-image-select {
+  width: 100%;
+  position: relative;
+}
+.multi-image-select-container .multi-image-select .selected-options {
+  width: 100%;
+  border: 0.1rem solid #4e559a;
+  border-radius: 0.3rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1rem;
+  min-height: 4.27rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.multi-image-select-container .multi-image-select .selected-options > div {
+  font-size: 0.8em;
+  height: 2em;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  padding: 0 0.5em;
+  line-height: 2em;
+  margin: 0.2em;
+}
+.multi-image-select-container .multi-image-select .selected-options > div .close {
+  cursor: pointer;
+  margin-left: 0.7em;
+}
+.multi-image-select-container .multi-image-select .selected-options > div .close:hover {
+  background-color: white;
+  border-radius: 0.3rem;
+}
+.multi-image-select-container .multi-image-select .options {
+  width: 100%;
+  max-height: 100vh;
+  height: 35rem;
+  overflow-y: scroll;
+  position: absolute;
+  background-color: white;
+  padding: 5px;
+}
+.multi-image-select-container .multi-image-select .options .option {
+  width: 50%;
+  float: left;
+  overflow: hidden;
+  padding: 5px;
+}
+.multi-image-select-container .multi-image-select .options .option.selected .selected-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 2.1em;
+  height: 2.1em;
+  background-color: white;
+  border-radius: 2.1em;
+  transform: rotate(-45deg);
+}
+.multi-image-select-container .multi-image-select .options .option.selected .selected-check::after {
+  content: "";
+  width: 1em;
+  height: 0.5em;
+  position: absolute;
+  margin-left: 50%;
+  margin-top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-bottom: 4px solid #4e559a;
+  border-left: 4px solid #4e559a;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container {
+  height: 100%;
+  width: 100%;
+  border: 3px solid #cacce1;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container:hover {
+  border-color: #4e559a;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content {
+  height: 15rem;
+  position: relative;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .label {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3.5rem;
+  background-color: #4e559a;
+  color: white;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .label p {
+  margin: 0;
+  text-align: center;
+  line-height: 3.5rem;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 11.5rem;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none {
+  display: none;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label {
+  height: 15rem;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label p {
+  line-height: 15rem;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images .half {
+  width: 50%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images .third {
+  width: 33.33%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+.multi-image-select-container .multi-image-select .options .option .option-container .option-content .images img {
+  border: none;
+  box-shadow: none;
+  width: auto;
+  border-radius: 0;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+  .userform .field {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+@media (max-width: 600px) and (min-width: 501px) {
+  .multi-image-select-container .multi-image-select .options .option .option-container .option-content,
+  .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label {
+    height: 24.8vw;
+  }
+  .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label p {
+    line-height: 24.8vw;
+  }
+  .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images {
+    height: 19vw;
+  }
+  .multi-image-select-container .multi-image-select .options .option .option-container .option-content .label {
+    height: 5.9vw;
+  }
+}
+@media (max-width: 500px) {
+  .multi-image-select-container .multi-image-select .options .option {
+    width: 100%;
+  }
+}
 @media (max-width: 48rem) {
   .article-list .blog-article {
     flex-direction: column;
@@ -850,12 +1019,16 @@ img {
 }
 header.site-header {
   padding-top: 2rem;
-  background: url(../images/AdobeStock_178470290_masked_2.png) no-repeat right center transparent;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-color: transparent;
   background-size: cover;
   color: white;
 }
 .site-header-inner {
-  background: url(../images/logo.png) no-repeat top left transparent;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
   background-size: contain;
 }
 .site-title {
@@ -966,4 +1139,26 @@ footer a {
   .element.dynamic__elements__gallery__elements__elementphotogallery .row > * {
     width: 100%;
   }
+}
+.back-to-top {
+  background-image: url(../images/back-to-top-icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #cacce1;
+  border-radius: 2.7em;
+  width: 2.7em;
+  height: 2.7em;
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+  display: block;
+  cursor: default;
+}
+.back-to-top.revealed {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
 }

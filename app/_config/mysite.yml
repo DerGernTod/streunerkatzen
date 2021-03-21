@@ -6,6 +6,10 @@ SilverStripe\Core\Manifest\ModuleManifest:
 SilverStripe\Core\Injector\Injector:
   Dynamic\FlexSlider\ORM\FlexSlider:
     class: Streunerkatzen\Extensions\FlexSliderExtension
+  SilverStripe\UserForms\Model\EditableFormField:
+    class: Streunerkatzen\Extensions\EditableFormFieldExtension
+  SilverStripe\UserForms\Extension\UserFormFieldEditorExtension:
+    class: Streunerkatzen\Extensions\CatUserFormFieldEditorExtension
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - Streunerkatzen\Extensions\BaseElementExtension

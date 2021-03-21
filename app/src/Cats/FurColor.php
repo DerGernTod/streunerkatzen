@@ -27,6 +27,19 @@ class FurColor extends DataObject {
         'ExampleImages'
     ];
 
+    private static $summary_fields = [
+        'Title' => 'Beschreibung',
+        'NumExampleImages' => 'Beispielbilder'
+    ];
+
+    public function getNumExampleImages() {
+        if ($this->ExampleImages()->Count() == 1) {
+            return "1 Beispielbild";
+        } else {
+            return $this->ExampleImages()->Count() . " Beispielbilder";
+        }
+    }
+
     public function getCMSFields() {
         $fields = FieldList::create(
             TextField::create('Title', 'Beschreibung'),

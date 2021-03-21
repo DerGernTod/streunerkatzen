@@ -205,3 +205,195 @@ input, select, textarea {
     padding: .4em;
     margin: .25em 0;
 }
+select.hidden-field {
+    display: none;
+}
+.multi-image-select-container {
+    width: 100%;
+
+    .multi-image-select {
+        width: 100%;
+        position: relative;
+
+        .selected-options {
+            width: 100%;
+            border: 0.1rem solid @bgCol;
+            border-radius: 0.3rem;
+            background: @lightBgCol;
+            padding: 0.5rem 1rem;
+            min-height: 4.27rem;
+            display: flex;
+            flex-wrap: wrap;
+
+            &>div {
+                font-size: 0.8em;
+                height: 2em;
+                border: 1px solid lightgray;
+                border-radius: 3px;
+                background-color: darken(white, 10%);
+                padding: 0 0.5em;
+                line-height: 2em;
+                margin: 0.2em;
+
+                .close {
+                    cursor: pointer;
+                    margin-left: 0.7em;
+
+                    &:hover {
+                        background-color: white;
+                        border-radius: 0.3rem;
+                    }
+                }
+            }
+        }
+
+        .options {
+            width: 100%;
+            max-height: 100vh;
+            height: 35rem;
+            overflow-y: scroll;
+            position: absolute;
+            background-color: white;
+            padding: 5px;
+
+            .option {
+                width: 50%;
+                float: left;
+                overflow: hidden;
+                padding: 5px;
+
+                &.selected {
+                    .selected-check {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        width: 2.1em;
+                        height: 2.1em;
+                        background-color: white;
+                        border-radius: 2.1em;
+                        transform: rotate(-45deg);
+
+                        &::after {
+                            content: "";
+                            width: 1em;
+                            height: 0.5em;
+                            position: absolute;
+                            margin-left: 50%;
+                            margin-top: 50%;
+                            transform: translateX(-50%) translateY(-50%);
+                            border-bottom: 4px solid @bgCol;
+                            border-left: 4px solid @bgCol;
+                        }
+                    }
+                }
+
+                .option-container {
+                    height: 100%;
+                    width: 100%;
+                    border: 3px solid #cacce1;
+                    border-radius:0.3rem;
+                    overflow: hidden;
+                    position: relative;
+                    cursor: pointer;
+
+                    &:hover {
+                        border-color: @bgCol;
+                    }
+
+                    .option-content {
+                        height: 15rem;
+                        position: relative;
+
+                        .label {
+                            width: 100%;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            height: 3.5rem;
+                            background-color: @bgCol;
+                            color: white;
+
+                            p {
+                                margin: 0;
+                                text-align: center;
+                                line-height: 3.5rem;
+                            }
+                        }
+
+                        .images {
+                            width: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 11.5rem;
+
+                            &.none {
+                                display: none;
+
+                                & + .label {
+                                    height: 15rem;
+
+                                    p {
+                                        line-height: 15rem;
+                                    }
+                                }
+                            }
+
+                            .half {
+                                width: 50%;
+                                height: 100%;
+                                float: left;
+                                overflow: hidden;
+                            }
+
+                            .third {
+                                width: 33.33%;
+                                height: 100%;
+                                float: left;
+                                overflow: hidden;
+                            }
+
+                            img {
+                                border: none;
+                                box-shadow: none;
+                                width: auto;
+                                border-radius: 0;
+                                max-height: 100%;
+                                display: block;
+                                margin: 0 auto;
+                                margin-left: 50%;
+                                transform: translateX(-50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    .userform .field {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+@media (max-width: 600px) and (min-width: 501px) {
+    .multi-image-select-container .multi-image-select .options .option .option-container .option-content,
+    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label {
+        height: 24.8vw;
+    }
+    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images.none + .label p {
+        line-height: 24.8vw;
+    }
+    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .images {
+        height: 19vw;
+    }
+    .multi-image-select-container .multi-image-select .options .option .option-container .option-content .label {
+        height: 5.9vw;
+    }
+}
+@media (max-width: 500px) {
+    .multi-image-select-container .multi-image-select .options .option {
+        width: 100%;
+    }
+}

@@ -22,4 +22,3 @@ class Notifier extends DataObject {
         return Director::absoluteBaseURL()."notifications/configure?token=".$this->EditToken;
     }
 }
-?>

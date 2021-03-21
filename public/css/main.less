@@ -121,13 +121,17 @@ img {
 
 header.site-header {
     padding-top:2rem;
-    background:url(../images/AdobeStock_178470290_masked_2.png) no-repeat right center transparent;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: transparent;
     background-size:cover;
     color:white;
 }
 
 .site-header-inner {
-    background:url(../images/logo.png) no-repeat top left transparent;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: transparent;
     background-size:contain;
 }
 
@@ -244,5 +248,28 @@ footer a {
         @media(max-width: 499px) {
             width: 100%;
         }
+    }
+}
+
+.back-to-top {
+    background-image: url(../images/back-to-top-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #cacce1;
+    border-radius: 2.7em;
+    width: 2.7em;
+    height: 2.7em;
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s;
+    display: block;
+    cursor: default;
+    &.revealed {
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
     }
 }
