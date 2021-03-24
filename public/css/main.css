@@ -1057,8 +1057,8 @@ img {
 }
 .components button,
 .userform button,
-.userform input[type=submit],
-.userform input[type=reset],
+input[type=submit],
+input[type=reset],
 .button {
   background: #e4cd2a;
   border: 1px solid #867818;
@@ -1071,11 +1071,14 @@ img {
   color: black;
   font-weight: 100;
   display: inline-block;
+  text-shadow: unset;
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
 }
 .components button:hover,
 .userform button:hover,
-.userform input[type=submit]:hover,
-.userform input[type=reset]:hover,
+input[type=submit]:hover,
+input[type=reset]:hover,
 .button:hover {
   text-shadow: none;
   border-color: #e4cd2a;
