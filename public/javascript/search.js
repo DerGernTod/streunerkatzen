@@ -187,7 +187,7 @@ function buildUrlAndSearch() {
     var initContent = searchResults.outerHTML;
 
     var agentPopup = find('#agent-popup');
-    var emailField = find('#agent-email');
+    var emailField = find('#Form_NotificationForm_E-Mail');
     // ajaxify form submit
     on(find('#Form_CatSearchForm'), 'submit', function (e) {
         e.preventDefault();
