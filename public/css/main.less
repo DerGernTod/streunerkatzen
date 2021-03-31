@@ -57,6 +57,51 @@ body {
         text-align: left;
     }
 }
+.cat-about {
+    float: left;
+    width: 50%;
+    // small width
+    @media (min-width: @small-width-max) and (max-width: @medium-width) {
+        float: none;
+        width: 100%;
+    }
+}
+.cat-container {
+    display: flex;
+    flex-direction: row;
+    & > div {
+        width: 50%;
+    }
+    @media (max-width: @medium-width) {
+        flex-direction: column;
+        & > div {
+            width: 100%;
+        }
+    }
+}
+ul.cat-details {
+    list-style: none;
+    margin: 1em auto;
+    width: 80%;
+    padding: 0;
+    text-align: left;
+    li {
+        margin: 1em 0;
+        display: block;
+        background: inherit;
+        span {
+            display: block;
+            float: left;
+            padding: 0 .1em;
+            &:nth-child(2) {
+                float: right;
+                text-align: right;
+            }
+            max-width: 50%;
+        }
+        .heightClearfix();
+    }
+}
 
 h1,
 h2,

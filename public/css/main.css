@@ -284,16 +284,6 @@ aside.cta {
 .pagination span {
   font-weight: bolder;
 }
-.cat-about {
-  float: left;
-  width: 50%;
-}
-@media (min-width: 48rem) and (max-width: 48.000001rem) {
-  .cat-about {
-    float: none;
-    width: 100%;
-  }
-}
 .cat-attachments {
   float: right;
   width: 50%;
@@ -311,15 +301,13 @@ aside.cta {
 }
 .search-results ul {
   list-style: none;
-  border: solid #c8c8c8;
-  border-width: 0 1px 1px 0;
 }
 .search-results ul li {
   display: block;
   width: 100%;
-  border: solid #c8c8c8;
-  border-width: 1px 0 0 1px;
+  border: 1px solid #c8c8c8;
   padding: 1em;
+  margin-top: -1px;
   overflow: hidden;
 }
 .search-results ul li .cat-summary img {
@@ -337,33 +325,6 @@ aside.cta {
   float: right;
 }
 .search-results ul li .cat-summary:after {
-  content: ".";
-  height: 0;
-  visibility: hidden;
-  clear: both;
-  display: block;
-}
-ul.cat-details {
-  list-style: none;
-  margin: 1em auto;
-  width: 80%;
-}
-ul.cat-details li {
-  margin: 1em 0;
-  display: block;
-  background: inherit;
-}
-ul.cat-details li span {
-  display: block;
-  float: left;
-  padding: 0 0.1em;
-  max-width: 50%;
-}
-ul.cat-details li span:nth-child(2) {
-  float: right;
-  text-align: right;
-}
-ul.cat-details li:after {
   content: ".";
   height: 0;
   visibility: hidden;
@@ -755,6 +716,7 @@ select.hidden-field {
   position: absolute;
   background-color: white;
   padding: 5px;
+  z-index: 10;
 }
 .multi-image-select-container .multi-image-select .options .option {
   width: 50%;
@@ -1011,6 +973,60 @@ body {
   body {
     text-align: left;
   }
+}
+.cat-about {
+  float: left;
+  width: 50%;
+}
+@media (min-width: 48rem) and (max-width: 48.000001rem) {
+  .cat-about {
+    float: none;
+    width: 100%;
+  }
+}
+.cat-container {
+  display: flex;
+  flex-direction: row;
+}
+.cat-container > div {
+  width: 50%;
+}
+@media (max-width: 48.000001rem) {
+  .cat-container {
+    flex-direction: column;
+  }
+  .cat-container > div {
+    width: 100%;
+  }
+}
+ul.cat-details {
+  list-style: none;
+  margin: 1em auto;
+  width: 80%;
+  padding: 0;
+  text-align: left;
+}
+ul.cat-details li {
+  margin: 1em 0;
+  display: block;
+  background: inherit;
+}
+ul.cat-details li span {
+  display: block;
+  float: left;
+  padding: 0 0.1em;
+  max-width: 50%;
+}
+ul.cat-details li span:nth-child(2) {
+  float: right;
+  text-align: right;
+}
+ul.cat-details li:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
 }
 h1,
 h2,
