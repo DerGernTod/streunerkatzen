@@ -55,7 +55,7 @@
                 <li><span>Zeitpunkt</span><span>$LostFoundTime</span></li>
                 <li><span>Straße</span><span>$Street</span></li>
                 <li><span>Ort</span><span>$Town</span></li>
-                <li><span>PLZ</span><span>$ZipCode</span></li>
+                <li><span>PLZ</span><span>$Zipcode</span></li>
                 <li><span>Bundesland</span><span>$Country</span></li>
                 <li><span>Beschreibung der Situation</span><span>$LostFoundDescription</span></li>
                 <li><span>Details</span><span>$MoreInfo</span></li>

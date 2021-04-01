@@ -4,6 +4,7 @@ namespace Streunerkatzen\Controllers;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Versioned\Versioned;
 use Streunerkatzen\Cats\Cat;
 
 class ApiController extends Controller {
@@ -13,7 +14,7 @@ class ApiController extends Controller {
 
     public function catsearch(HTTPRequest $request) {
         $search = $request->getVar('search');
-        $queryResult = Cat::get()
+        $queryResult = Versioned::get_by_stage(Cat::class, Versioned::LIVE)
             ->sort('PublishTime DESC')
             ->filter(['Title:StartsWith' => $search])
             ->limit(10);

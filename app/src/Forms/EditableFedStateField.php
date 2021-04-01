@@ -4,6 +4,7 @@ namespace Streunerkatzen\Forms;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\UserForms\Model\EditableCustomRule;
 use SilverStripe\UserForms\Model\EditableFormField;
@@ -32,6 +33,7 @@ class EditableFedStateField extends EditableFormField {
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName('Name');
         $fields->removeByName('Default');
         $fields->addFieldToTab(
             'Root.Main',
@@ -51,7 +53,28 @@ class EditableFedStateField extends EditableFormField {
             TextField::create('EmptyString', _t(__CLASS__ . '.EMPTY_STRING', 'Empty String'))
         );
 
+        $fields->addFieldToTab(
+            'Root.Main',
+            ReadonlyField::create(
+                'Name',
+                _t(__CLASS__.'.NAME', 'Name')
+            ),
+            'ExtraClass'
+        );
+
         return $fields;
+    }
+
+    public function onBeforeWrite() {
+        parent::onBeforeWrite();
+        // check if field name starts with correct class
+        $classNamePieces = explode('\\', static::class);
+        $class = array_pop($classNamePieces);
+
+        if (!(strpos($this->Name, $class) === 0)) {
+            // if not generate new name
+            $this->Name = $this->generateName();
+        }
     }
 
     private function getFederalStates() {

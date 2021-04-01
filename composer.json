@@ -41,6 +41,9 @@
             ".htaccess",
             "index.php",
             "web.config"
+        ],
+        "expose": [
+            "app/css"
         ]
     },
     "config": {

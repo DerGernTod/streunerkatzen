@@ -4,6 +4,7 @@ namespace Streunerkatzen\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\Versioned\Versioned;
 use Streunerkatzen\Cats\Cat;
 
 class SingleCatElement extends BaseElement {
@@ -22,7 +23,7 @@ class SingleCatElement extends BaseElement {
             DropdownField::create(
                 'CatID',
                 'Katze',
-                Cat::get()->map('ID', 'Title')
+                Versioned::get_by_stage(Cat::class, Versioned::LIVE)->map('ID', 'Title')
             )->setEmptyString('Keine Katze ausgewählt')
         ]);
 

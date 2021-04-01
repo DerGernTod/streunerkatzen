@@ -18,3 +18,14 @@ SilverStripe\SiteConfig\SiteConfig:
 SilverStripe\UserForms\Model\EditableFormField:
   extensions:
     - Streunerkatzen\Extensions\EditableFormFieldExtension
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - app/css/HidePageTypes.css
+  extensions:
+    - Streunerkatzen\Extensions\CMSLinksLeftAndMainExtension
+SilverStripe\UserForms\Model\Submission\SubmittedForm:
+  extensions:
+    - Streunerkatzen\Extensions\CatSubmittedFormExtension
+SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
+  extensions:
+    - Streunerkatzen\Extensions\GridFieldDetailForm_ItemRequestExtension

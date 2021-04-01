@@ -2,6 +2,8 @@
 
 namespace Streunerkatzen;
 
+use SilverStripe\Admin\CMSMenu;
+use SilverStripe\CampaignAdmin\CampaignAdmin;
 use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 use SilverStripe\Security\PasswordValidator;
 use SilverStripe\Security\Member;
@@ -23,3 +25,6 @@ ShortcodeParser::get('default')->register('cat', [Cat::class, 'CatShortcode']);
 TinyMCEConfig::get('cms')
     ->enablePlugins(['catplugin' => 'plugin/catplugin.js'])
     ->addButtonsToLine(2, 'catplugin');
+
+// remove campaigns menu
+CMSMenu::remove_menu_class(CampaignAdmin::class);

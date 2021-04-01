@@ -1,4 +1,9 @@
 de_DE:
+  Streunerkatzen\Extensions\CatUserFormFieldEditorExtension:
+    ADD_FIELD: 'Feld hinzufügen'
+    ADD_FIELD_GROUP: 'Gruppe hinzufügen'
+    ADD_PAGE_BREAK: 'Seite hinzufügen'
+    FORMFIELDS: Formularfelder
   DNADesign\Elemental\Forms\TextCheckboxGroupField:
     Title: 'Titel'
     DISPLAYED: 'Angezeigt'

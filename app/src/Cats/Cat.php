@@ -7,14 +7,15 @@ use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\Versioned\Versioned;
 
 class Cat extends DataObject {
     private static $singular_name = 'Katze';
@@ -57,6 +58,7 @@ class Cat extends DataObject {
         'FurLength' => 'Enum("kurz,mittel,lang,sonstiges")',
         'Contact' => 'Varchar(250)'
     ];
+
     private static $has_one = [
         'Notifier' => Notifier::class
     ];
@@ -68,6 +70,10 @@ class Cat extends DataObject {
 
     private static $owns = [
         'Attachments'
+    ];
+
+    private static $extensions = [
+        Versioned::class,
     ];
 
     public function getCMSFields() {
@@ -145,9 +151,12 @@ class Cat extends DataObject {
             ),
             TextareaField::create('LostFoundDescription', 'Beschreibung der Situation'),
             TextareaField::create('MoreInfo', 'Details'),
-            UploadField::create('Attachments', 'Anhänge'),
+            $upload = UploadField::create('Attachments', 'Anhänge'),
             TextField::create('Contact', 'Kontakt')
         );
+
+        $upload->setFolderName("Katzen");
+
         return $fields;
     }
 
@@ -158,6 +167,22 @@ class Cat extends DataObject {
     public function AbsoluteLink() {
         return Director::absoluteBaseURL().$this->Link();
     }
+
+    public function CMSEditLink() {
+        $admin = Injector::inst()->get(CatAdmin::class);
+        $className = str_replace('\\', '-', $this->ClassName);
+
+        return Controller::join_links(
+            $admin->Link($className),
+            "EditForm",
+            "field",
+            $className,
+            "item",
+            $this->ID,
+            "edit"
+        );
+    }
+
     /**
      * used to normalize unknown fields
      */
