@@ -111,13 +111,13 @@ class CatSearchPageController extends PageController {
                 TextField::create('SearchTitle', 'Katzenname')
             ),
             FieldList::create(
-                FormAction::create('sendSearch', 'Suchen')->addExtraClass('button')
+                FormAction::create('sendSearch', 'Suchen')
             )
         )
-        ->setFormMethod('GET')
-        ->setFormAction($this->Link())
-        ->disableSecurityToken()
-        ->loadDataFrom($this->request->getVars());
+            ->setFormMethod('GET')
+            ->setFormAction($this->Link())
+            ->disableSecurityToken()
+            ->loadDataFrom($this->request->getVars());
     }
 
     public function NotificationForm() {

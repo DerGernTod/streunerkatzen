@@ -113,9 +113,12 @@ function triggerPushState(pushStateOptions, title, url) {
 function ajax(url, method, onFinished, onError, onProgress, data) {
     var x = new XMLHttpRequest();
     x.open(method, url);
+    var loader = createElement("div", [{key: "data-url", value: url}], "loader", document.body);
+    createElement("div", [], "spinner", loader);
     x.onreadystatechange = function () {
         onProgress && onProgress.apply(x, [].concat([x], arguments));
         if (x.readyState === 4) {
+            loader.parentElement.removeChild(loader);
             if (x.status === 200 && onFinished) {
                 onFinished.apply(x, [].concat([x], arguments));
             } else if (x.status !== 200) {

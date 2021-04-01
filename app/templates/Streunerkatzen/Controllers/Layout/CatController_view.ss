@@ -67,17 +67,24 @@
             <div class="form-container">
                 $Up.ContactForm($ID)
             </div>
-            <h2>Anhänge</h2>
-            <ul class="cat-details">
-                <% if $Attachments %>
-                    <% loop $Attachments %>
-                        <li><a href="$Me.AbsoluteLink" target="_blank"><% if $Me.IsImage %>$Me.Fill(300,300)<% else %>$Me.Title<% end_if %></a></li>
-                    <% end_loop %>
-                <% else %>
-                    <li><span>Keine</span></li>
-                <% end_if %>
+            <div class="cat-attachments">
+                <h2>Nachricht an Ersteller</h2>
+                <p>Sende eine Nachricht an den Ersteller dieses Eintrags. Denke daran, Kontaktdaten anzufügen, sodass dieser dich erreichen kann.</p>
+                <div class="form-container">
+                    $Up.ContactForm($ID)
+                </div>
+                <h2>Anhänge</h2>
+                <ul class="cat-details">
+                    <% if $Attachments %>
+                        <% loop $Attachments %>
+                            <li><a href="$Me.AbsoluteLink" target="_blank"><% if $Me.IsImage %>$Me.Fill(300,300)<% else %>$Me.Title<% end_if %></a></li>
+                        <% end_loop %>
+                    <% else %>
+                        <li><span>Keine</span></li>
+                    <% end_if %>
 
-            </ul>
+                </ul>
+            </div>
         </div>
     <% end_with %>
 <% else %>

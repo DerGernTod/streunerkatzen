@@ -57,6 +57,51 @@ body {
         text-align: left;
     }
 }
+.cat-about {
+    float: left;
+    width: 50%;
+    // small width
+    @media (min-width: @small-width-max) and (max-width: @medium-width) {
+        float: none;
+        width: 100%;
+    }
+}
+.cat-container {
+    display: flex;
+    flex-direction: row;
+    & > div {
+        width: 50%;
+    }
+    @media (max-width: @medium-width) {
+        flex-direction: column;
+        & > div {
+            width: 100%;
+        }
+    }
+}
+ul.cat-details {
+    list-style: none;
+    margin: 1em auto;
+    width: 80%;
+    padding: 0;
+    text-align: left;
+    li {
+        margin: 1em 0;
+        display: block;
+        background: inherit;
+        span {
+            display: block;
+            float: left;
+            padding: 0 .1em;
+            &:nth-child(2) {
+                float: right;
+                text-align: right;
+            }
+            max-width: 50%;
+        }
+        .heightClearfix();
+    }
+}
 
 h1,
 h2,
@@ -77,6 +122,45 @@ h2 {
 
 h3 {
     font-size: 2rem;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, .4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    .spinner {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        &:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid @bgCol;
+            border-color: @bgCol transparent @bgCol transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+            0% {
+            transform: rotate(0deg);
+            }
+            100% {
+            transform: rotate(360deg);
+            }
+        }
+    }
+
 }
 
 main a,
@@ -109,8 +193,8 @@ img {
 
 .components button,
 .userform button,
-.userform input[type=submit],
-.userform input[type=reset],
+input[type=submit],
+input[type=reset],
 .button {
     background: @buttonColor;
     border: 1px solid #867818;
@@ -123,6 +207,9 @@ img {
     color: black;
     font-weight: 100;
     display: inline-block;
+    text-shadow: unset;
+    font-size: 1.6rem;
+    font-family: "Open Sans", sans-serif;
     &:hover {
         text-shadow: none;
         border-color: @buttonColor;
