@@ -9,17 +9,16 @@ use Streunerkatzen\Elements\CatElementForm;
 
 class CMSLinksLeftAndMainExtension extends LeftAndMainExtension {
     public function init() {
-        $catForm = Versioned::get_by_stage(CatElementForm::class, Versioned::LIVE);
+        $catForms = Versioned::get_by_stage(CatElementForm::class, Versioned::LIVE);
 
-        if ($catForm->count() > 0) {
-            $catForm = $catForm->offsetGet(0);
-            $id = "CatSubmissionsLink";
+        foreach ($catForms as $catForm) {
+            $id = "CatForm_" . $catForm->ID;
             $priority = 1;     // lower number --> lower in the list
             $attributes = [
                 'target' => '_self'
             ];
 
-            $title = "Katzen - Einreichungen";
+            $title = "Katzenformular";
             $link = "";
 
             $submissionsToReview = $catForm->Submissions()->filter([
